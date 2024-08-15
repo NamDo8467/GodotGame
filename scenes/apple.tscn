@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://ci7amiaybwmci"]
+
+[ext_resource type="Script" path="res://scripts/apple.gd" id="1_80lum"]
+[ext_resource type="Texture2D" uid="uid://ddjidi5iuo00w" path="res://assets/Free/Items/Fruits/Apple.png" id="1_de7ru"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6mcd"]
+atlas = ExtResource("1_de7ru")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61mra"]
+atlas = ExtResource("1_de7ru")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m68xk"]
+atlas = ExtResource("1_de7ru")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1dkh"]
+atlas = ExtResource("1_de7ru")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycw7q"]
+atlas = ExtResource("1_de7ru")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu5au"]
+atlas = ExtResource("1_de7ru")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_po5pn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6mcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61mra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m68xk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1dkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycw7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu5au")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cagxr"]
+radius = 6.0
+
+[node name="Apple" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_80lum")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 0)
+scale = Vector2(1.28125, 1.1875)
+sprite_frames = SubResource("SpriteFrames_po5pn")
+autoplay = "default"
+frame_progress = 0.462177
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 0)
+shape = SubResource("CircleShape2D_cagxr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
