@@ -1,19 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://dawdfx56ehjen"]
+[gd_scene load_steps=8 format=3 uid="uid://dawdfx56ehjen"]
 
-[ext_resource type="Texture2D" uid="uid://bu3cus2upwcaq" path="res://assets/Free/Traps/Platforms/Grey Off.png" id="1_3887j"]
+[ext_resource type="Texture2D" uid="uid://caafhqjcj56da" path="res://assets/Free/Traps/Falling Platforms/On (32x10).png" id="1_geu00"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj8d7"]
+atlas = ExtResource("1_geu00")
+region = Rect2(0, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi0mh"]
+atlas = ExtResource("1_geu00")
+region = Rect2(32, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw43s"]
+atlas = ExtResource("1_geu00")
+region = Rect2(64, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qta1m"]
+atlas = ExtResource("1_geu00")
+region = Rect2(96, 0, 32, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qii1k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj8d7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi0mh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw43s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qta1m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0mpy"]
-size = Vector2(50, 14.5)
+size = Vector2(48, 14.25)
 
 [node name="Platform" type="AnimatableBody2D"]
 collision_mask = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.57813, 2.41667)
-texture = ExtResource("1_3887j")
-region_enabled = true
-region_rect = Rect2(0, 1.05083, 32, 6.94917)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.48438, 1.5)
+sprite_frames = SubResource("SpriteFrames_qii1k")
+autoplay = "default"
+frame = 3
+frame_progress = 0.730753
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.125)
 shape = SubResource("RectangleShape2D_m0mpy")
 one_way_collision = true
