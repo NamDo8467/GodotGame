@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://ylf2edawsy56"]
+
+[ext_resource type="Script" path="res://scripts/banana.gd" id="1_bcv4l"]
+[ext_resource type="Texture2D" uid="uid://m5ik5nbwh1la" path="res://assets/Free/Items/Fruits/Bananas.png" id="1_qlhhn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6bj6"]
+atlas = ExtResource("1_qlhhn")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67nxi"]
+atlas = ExtResource("1_qlhhn")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35425"]
+atlas = ExtResource("1_qlhhn")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jexth"]
+atlas = ExtResource("1_qlhhn")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d4ni"]
+atlas = ExtResource("1_qlhhn")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh05j"]
+atlas = ExtResource("1_qlhhn")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjm7p"]
+atlas = ExtResource("1_qlhhn")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg6va"]
+atlas = ExtResource("1_qlhhn")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16w6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6bj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67nxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35425")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jexth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d4ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh05j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjm7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg6va")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0u07b"]
+radius = 7.8064
+
+[node name="Banana" type="Area2D"]
+scale = Vector2(1.281, 1.188)
+collision_mask = 2
+script = ExtResource("1_bcv4l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.38419e-07, 0)
+scale = Vector2(1.23185, 1.15762)
+sprite_frames = SubResource("SpriteFrames_16w6w")
+autoplay = "default"
+frame = 1
+frame_progress = 0.121061
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0u07b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
