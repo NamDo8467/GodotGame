@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://xyyod2mbt1g7"]
+[gd_scene load_steps=26 format=3 uid="uid://xyyod2mbt1g7"]
 
 [ext_resource type="PackedScene" uid="uid://dmwr40hhjso1q" path="res://scenes/player.tscn" id="1_nhp1e"]
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="2_7rku5"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ylf2edawsy56" path="res://scenes/banana.tscn" id="6_gimrx"]
 [ext_resource type="Texture2D" uid="uid://ceoln4dg2ygh1" path="res://assets/Free/Background/Purple.png" id="7_vjwqo"]
 [ext_resource type="Texture2D" uid="uid://dsnku5xc6osyr" path="res://assets/Free/Background/Yellow.png" id="8_y34vu"]
+[ext_resource type="PackedScene" uid="uid://bj5v7r8yby6un" path="res://scenes/spike.tscn" id="13_bw5m3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kb7fo"]
 texture = ExtResource("2_7rku5")
@@ -460,8 +461,23 @@ sources/3 = SubResource("TileSetAtlasSource_js8xv")
 sources/4 = SubResource("TileSetAtlasSource_lhuy7")
 sources/5 = SubResource("TileSetAtlasSource_yvur2")
 
-[sub_resource type="Animation" id="Animation_dghhk"]
-resource_name = "move"
+[sub_resource type="Animation" id="Animation_u6300"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(776, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_efkox"]
+resource_name = "moving"
 length = 1.5
 loop_mode = 2
 tracks/0/type = "value"
@@ -474,28 +490,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(777, -26), Vector2(661, -26)]
+"values": [Vector2(776, -24), Vector2(661, -24)]
 }
 
-[sub_resource type="Animation" id="Animation_3bcaf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(777, -26)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gkcfn"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_264a2"]
 _data = {
-"RESET": SubResource("Animation_3bcaf"),
-"move": SubResource("Animation_dghhk")
+"RESET": SubResource("Animation_u6300"),
+"moving": SubResource("Animation_efkox")
 }
 
 [node name="Game" type="Node2D"]
@@ -558,13 +559,14 @@ scale = Vector2(1.3, 1.3)
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource("5_50076")]
-position = Vector2(777, -26)
+position = Vector2(776, -24)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms"]
+root_node = NodePath("../Platform")
 libraries = {
-"": SubResource("AnimationLibrary_gkcfn")
+"": SubResource("AnimationLibrary_264a2")
 }
-autoplay = "move"
+autoplay = "moving"
 
 [node name="Bananas" type="Node" parent="."]
 
@@ -576,3 +578,13 @@ position = Vector2(1079, -238)
 
 [node name="Banana3" parent="Bananas" instance=ExtResource("6_gimrx")]
 position = Vector2(1223, -49)
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="spike" parent="Spikes" instance=ExtResource("13_bw5m3")]
+position = Vector2(167, -79)
+metadata/_edit_group_ = true
+
+[node name="spike2" parent="Spikes" instance=ExtResource("13_bw5m3")]
+position = Vector2(204, -79)
+metadata/_edit_group_ = true
