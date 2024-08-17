@@ -1,5 +1,5 @@
 extends Area2D
-
+@onready var apple = $AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,4 +12,10 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	queue_free()
+	apple.play("collected")
+	
+
+func _on_animated_sprite_2d_animation_finished():
+	if apple.animation == "collected":
+		queue_free()
+	
