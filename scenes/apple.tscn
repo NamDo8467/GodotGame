@@ -112,6 +112,7 @@ script = ExtResource("1_80lum")
 position = Vector2(8, 0)
 scale = Vector2(1.28125, 1.1875)
 sprite_frames = SubResource("SpriteFrames_po5pn")
+animation = &"collected"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
