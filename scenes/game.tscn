@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://xyyod2mbt1g7"]
+[gd_scene load_steps=30 format=3 uid="uid://xyyod2mbt1g7"]
 
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_0ccm5"]
 [ext_resource type="PackedScene" uid="uid://dmwr40hhjso1q" path="res://scenes/player.tscn" id="1_nhp1e"]
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="2_7rku5"]
 [ext_resource type="PackedScene" uid="uid://ci7amiaybwmci" path="res://scenes/apple.tscn" id="3_bk3lm"]
@@ -14,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dsnku5xc6osyr" path="res://assets/Free/Background/Yellow.png" id="8_y34vu"]
 [ext_resource type="PackedScene" uid="uid://bj5v7r8yby6un" path="res://scenes/spike.tscn" id="13_bw5m3"]
 [ext_resource type="PackedScene" uid="uid://col0nvuy0spi7" path="res://scenes/slime.tscn" id="14_6nskg"]
+[ext_resource type="FontFile" uid="uid://c3pyqg3iwto6y" path="res://assets/Free/Menu/Text/PixelOperator8.ttf" id="15_1cwj1"]
+[ext_resource type="PackedScene" uid="uid://4xku4oby7r6e" path="res://scenes/fruit.tscn" id="17_201r3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kb7fo"]
 texture = ExtResource("2_7rku5")
@@ -477,41 +480,27 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(840, -24), Vector2(664, -24)]
-}
-
-[sub_resource type="Animation" id="Animation_efkox"]
-resource_name = "moving"
-length = 1.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(776, -24), Vector2(661, -24)]
+"values": [Vector2(816, -103.5), Vector2(640, -103.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_264a2"]
 _data = {
-"RESET": SubResource("Animation_u6300"),
-"moving": SubResource("Animation_efkox")
+"RESET": SubResource("Animation_u6300")
 }
 
 [node name="Game" type="Node2D"]
+position = Vector2(-24, -81)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_0ccm5")
 
 [node name="Player" parent="." instance=ExtResource("1_nhp1e")]
 position = Vector2(22, 66)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(21, 48)
+position = Vector2(3, -6)
 zoom = Vector2(1.2, 1.2)
-limit_bottom = 190
+limit_bottom = 100
 limit_smoothed = true
 position_smoothing_enabled = true
 
@@ -548,27 +537,27 @@ layer_5/tile_data = PackedInt32Array(-7078036, 0, 0, -7012500, 0, 1, -6946964, 0
 position = Vector2(326, 124)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(0, 10)
+position = Vector2(-3, 150)
 shape = SubResource("WorldBoundaryShape2D_e836o")
 
 [node name="Apples" type="Node" parent="."]
 
 [node name="Apple" parent="Apples" instance=ExtResource("3_bk3lm")]
-position = Vector2(138, -170)
+position = Vector2(114, -251)
 scale = Vector2(1.3, 1.3)
 
 [node name="Apple2" parent="Apples" instance=ExtResource("3_bk3lm")]
-position = Vector2(204, -170)
+position = Vector2(180, -251)
 scale = Vector2(1.3, 1.3)
 
 [node name="Apple3" parent="Apples" instance=ExtResource("3_bk3lm")]
-position = Vector2(172, -192)
+position = Vector2(148, -273)
 scale = Vector2(1.3, 1.3)
 
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource("5_50076")]
-position = Vector2(840, -24)
+position = Vector2(816, -103.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms"]
 root_node = NodePath("../Platform")
@@ -580,25 +569,38 @@ autoplay = "RESET"
 [node name="Bananas" type="Node" parent="."]
 
 [node name="Banana" parent="Bananas" instance=ExtResource("6_gimrx")]
-position = Vector2(1126, -313)
+position = Vector2(1102, -394)
 
 [node name="Banana2" parent="Bananas" instance=ExtResource("6_gimrx")]
-position = Vector2(1079, -238)
+position = Vector2(1055, -319)
 
 [node name="Banana3" parent="Bananas" instance=ExtResource("6_gimrx")]
-position = Vector2(1223, -49)
+position = Vector2(1199, -130)
 
 [node name="Spikes" type="Node" parent="."]
 
 [node name="spike" parent="Spikes" instance=ExtResource("13_bw5m3")]
-position = Vector2(167, -79)
+position = Vector2(143, -160)
 metadata/_edit_group_ = true
 
 [node name="spike2" parent="Spikes" instance=ExtResource("13_bw5m3")]
-position = Vector2(204, -79)
+position = Vector2(180, -160)
 metadata/_edit_group_ = true
 
 [node name="Slimes" type="Node" parent="."]
 
 [node name="slime" parent="Slimes" instance=ExtResource("14_6nskg")]
-position = Vector2(1692, -14)
+position = Vector2(1668, -95)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -200.0
+offset_top = -104.0
+offset_right = -114.0
+offset_bottom = -91.0
+theme_override_fonts/font = ExtResource("15_1cwj1")
+theme_override_font_sizes/font_size = 16
+text = "Space to jump
+"
+
+[node name="fruit" parent="." instance=ExtResource("17_201r3")]
+position = Vector2(444, -211)
