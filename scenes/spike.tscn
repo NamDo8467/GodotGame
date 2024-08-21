@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj5v7r8yby6un"]
+[gd_scene load_steps=5 format=3 uid="uid://bj5v7r8yby6un"]
 
 [ext_resource type="Texture2D" uid="uid://dlkjkunsbkp1t" path="res://assets/Free/Traps/Spikes/Idle.png" id="1_6ete5"]
 [ext_resource type="Script" path="res://scripts/spike.gd" id="1_e8342"]
+[ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="3_vbso4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kc34x"]
-size = Vector2(35, 14)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8em38"]
+size = Vector2(30, 13)
 
-[node name="spike" type="Area2D"]
-collision_mask = 2
+[node name="spike" type="Node2D"]
 script = ExtResource("1_e8342")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,8 +15,8 @@ position = Vector2(1, -17)
 scale = Vector2(2.34375, 2.0625)
 texture = ExtResource("1_6ete5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -8)
-shape = SubResource("RectangleShape2D_kc34x")
+[node name="KillZone" parent="." instance=ExtResource("3_vbso4")]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_8em38")
