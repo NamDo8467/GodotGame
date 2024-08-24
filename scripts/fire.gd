@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 @onready var timer = $Timer
 
 var SECOND = 2
