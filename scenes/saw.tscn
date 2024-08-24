@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://s32oqptgr45m"]
+
+[ext_resource type="Texture2D" uid="uid://jictbflhcw34" path="res://assets/Free/Traps/Saw/On (38x38).png" id="1_wmtxm"]
+[ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="2_l5yrt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0r1h"]
+atlas = ExtResource("1_wmtxm")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj0r4"]
+atlas = ExtResource("1_wmtxm")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq3dt"]
+atlas = ExtResource("1_wmtxm")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsld6"]
+atlas = ExtResource("1_wmtxm")
+region = Rect2(114, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2uoe"]
+atlas = ExtResource("1_wmtxm")
+region = Rect2(152, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8slj"]
+atlas = ExtResource("1_wmtxm")
+region = Rect2(190, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddpb6"]
+atlas = ExtResource("1_wmtxm")
+region = Rect2(228, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0g40"]
+atlas = ExtResource("1_wmtxm")
+region = Rect2(266, 0, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnpag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0r1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj0r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq3dt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsld6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2uoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8slj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddpb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0g40")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qulsu"]
+radius = 32.0624
+
+[node name="saw" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.89474, 1.89474)
+sprite_frames = SubResource("SpriteFrames_rnpag")
+autoplay = "default"
+frame_progress = 0.606523
+
+[node name="KillZone" parent="." instance=ExtResource("2_l5yrt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+shape = SubResource("CircleShape2D_qulsu")
