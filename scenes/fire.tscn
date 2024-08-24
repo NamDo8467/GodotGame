@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmod05f0wsmsp"]
+
+[ext_resource type="Script" path="res://scripts/fire.gd" id="1_rd7gp"]
+[ext_resource type="Texture2D" uid="uid://bwlrheq0565xr" path="res://assets/Free/Traps/Fire/On (16x32).png" id="1_vo81o"]
+[ext_resource type="Texture2D" uid="uid://by1jw8lvginli" path="res://assets/Free/Traps/Fire/Off.png" id="2_bsnwq"]
+[ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="4_kg0vt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js7ya"]
+atlas = ExtResource("2_bsnwq")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es0u7"]
+atlas = ExtResource("1_vo81o")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmh7j"]
+atlas = ExtResource("1_vo81o")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv68r"]
+atlas = ExtResource("1_vo81o")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bf1av"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js7ya")
+}],
+"loop": false,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es0u7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmh7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv68r")
+}],
+"loop": true,
+"name": &"on",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tduay"]
+size = Vector2(13, 17)
+
+[node name="Fire" type="Area2D"]
+script = ExtResource("1_rd7gp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.5, -21)
+scale = Vector2(1.4375, 1.3125)
+sprite_frames = SubResource("SpriteFrames_bf1av")
+animation = &"on"
+autoplay = "off"
+
+[node name="KillZone" parent="." instance=ExtResource("4_kg0vt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(3.5, -30.5)
+shape = SubResource("RectangleShape2D_tduay")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
