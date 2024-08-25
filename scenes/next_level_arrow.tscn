@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsos6grqnibai"]
+[gd_scene load_steps=15 format=3 uid="uid://bsos6grqnibai"]
 
+[ext_resource type="Script" path="res://scripts/next_level_arrow.gd" id="1_dyl0d"]
 [ext_resource type="Texture2D" uid="uid://dbm6r5ng3hvto" path="res://assets/Free/Traps/Arrow/Idle (18x18).png" id="1_uptl4"]
 [ext_resource type="Texture2D" uid="uid://ms3kr8eenwnx" path="res://assets/Free/Traps/Arrow/Hit (18x18).png" id="2_igl6x"]
 
@@ -83,11 +84,19 @@ animations = [{
 radius = 16.0312
 
 [node name="next_level_arrow" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_dyl0d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.55556, 2.55556)
 sprite_frames = SubResource("SpriteFrames_jmd5e")
+animation = &"hit"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eeos8")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
