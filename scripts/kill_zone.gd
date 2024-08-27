@@ -5,14 +5,16 @@ extends Area2D
 
 func _on_body_entered(body):
 	#print("You die")
-	Engine.time_scale = 0.8
+	#Engine.time_scale = 0.8
 	body.get_node("CollisionShape2D").queue_free()
 	timer.start()
 	
 	
+	
 func _on_timer_timeout():
-	Engine.time_scale = 1
+	#Engine.time_scale = 1
 	get_tree().reload_current_scene()
+	Global.reset_score()
 
 
 
