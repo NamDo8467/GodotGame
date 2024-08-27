@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bsos6grqnibai"]
+[gd_scene load_steps=15 format=3 uid="uid://bsos6grqnibai"]
 
 [ext_resource type="Script" path="res://scripts/next_level_arrow.gd" id="1_dyl0d"]
 [ext_resource type="Texture2D" uid="uid://dbm6r5ng3hvto" path="res://assets/Free/Traps/Arrow/Idle (18x18).png" id="1_uptl4"]
 [ext_resource type="Texture2D" uid="uid://ms3kr8eenwnx" path="res://assets/Free/Traps/Arrow/Hit (18x18).png" id="2_igl6x"]
-[ext_resource type="PackedScene" uid="uid://cxh0o4qse41h6" path="res://scenes/scene_transition_animation.tscn" id="4_hm6v3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tn3sj"]
 atlas = ExtResource("1_uptl4")
@@ -96,7 +95,5 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eeos8")
-
-[node name="SceneTransitionAnimation" parent="." instance=ExtResource("4_hm6v3")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

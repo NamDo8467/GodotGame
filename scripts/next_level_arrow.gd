@@ -1,7 +1,7 @@
 extends Area2D
 @onready var arrow = $AnimatedSprite2D
-@onready var timer = $Timer
-@onready var scene_transition_animation = $SceneTransitionAnimation/AnimationPlayer
+#@onready var scene_transition_animation = $"../SceneTransitionAnimation/AnimationPlayer"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,17 +12,9 @@ func _process(delta):
 	pass
 
 func _on_body_entered(body):
-	#Engine.time_scale = 0.7
-	#timer.start()
 	arrow.play("hit")
-	await get_tree().create_timer(0.5).timeout
+	#print(scene_transition_animation)
+	SceneTransitionAnimation.change_scene()
 	
-	scene_transition_animation.play("fade_in")
-	await get_tree().create_timer(1).timeout
-	
-	#scene_transition_animation.play("fade_out")
-	#await get_tree().create_timer(0.5).timeout
-	
-func _on_timer_timeout():
-	Engine.time_scale = 1
-	queue_free()
+	#scene_transition_animation.play("fade_in")
+	#get_tree().change_scene_to_file("res://scenes/level_2.tscn")
