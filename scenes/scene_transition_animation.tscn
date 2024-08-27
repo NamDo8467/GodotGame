@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxh0o4qse41h6"]
+[gd_scene load_steps=6 format=3 uid="uid://cxh0o4qse41h6"]
+
+[ext_resource type="Script" path="res://scripts/scene_transition_animation.gd" id="1_tvr6q"]
 
 [sub_resource type="Animation" id="Animation_hj5a8"]
 resource_name = "fade_in"
-length = 0.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -10,7 +12,19 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -18,7 +32,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ockou"]
 resource_name = "fade_out"
-length = 0.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,28 +40,39 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_586g4"]
+resource_name = "RESET"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ypf1"]
 _data = {
+"RESET": SubResource("Animation_586g4"),
 "fade_in": SubResource("Animation_hj5a8"),
 "fade_out": SubResource("Animation_ockou")
 }
 
-[node name="SceneTransitionAnimation" type="Node2D"]
+[node name="SceneTransitionAnimation" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_tvr6q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1077.0
-offset_top = -674.0
-offset_right = 1087.0
-offset_bottom = 717.0
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4ypf1")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
