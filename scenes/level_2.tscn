@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8t7c2087aacx"]
+
+[ext_resource type="Script" path="res://scripts/level_2.gd" id="1_u85m2"]
+[ext_resource type="PackedScene" uid="uid://cxh0o4qse41h6" path="res://scenes/scene_transition_animation.tscn" id="2_xk4ig"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_u85m2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 386.0
+offset_top = 252.0
+offset_right = 488.0
+offset_bottom = 275.0
+text = "This is level 2"
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("2_xk4ig")]
