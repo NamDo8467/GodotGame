@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/scene_transition_animation.gd" id="1_tvr6q"]
 
+[sub_resource type="Animation" id="Animation_586g4"]
+resource_name = "RESET"
+
 [sub_resource type="Animation" id="Animation_hj5a8"]
 resource_name = "fade_in"
 length = 2.0
@@ -45,9 +48,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_586g4"]
-resource_name = "RESET"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ypf1"]
 _data = {
