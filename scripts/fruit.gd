@@ -17,10 +17,10 @@ func _process(delta):
 
 func _on_body_entered(body):
 	fruit.play("collected")
-	Global.add_score()
 
 
 func _on_animated_sprite_2d_animation_finished():
+	Global.add_score() 
 	if fruit.animation == "collected":
 		queue_free()
 		
