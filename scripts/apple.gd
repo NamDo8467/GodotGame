@@ -18,6 +18,7 @@ func _on_body_entered(body):
 	
 
 func _on_animated_sprite_2d_animation_finished():
+	Global.add_score()
 	if apple.animation == "collected":
 		queue_free()
 	
