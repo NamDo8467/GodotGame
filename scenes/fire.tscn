@@ -56,7 +56,7 @@ script = ExtResource("1_rd7gp")
 position = Vector2(3.5, -21)
 scale = Vector2(1.4375, 1.3125)
 sprite_frames = SubResource("SpriteFrames_bf1av")
-animation = &"on"
+animation = &"off"
 autoplay = "off"
 
 [node name="KillZone" parent="." instance=ExtResource("4_kg0vt")]
