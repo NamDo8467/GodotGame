@@ -22,8 +22,8 @@ SceneTransitionAnimation="*res://scenes/scene_transition_animation.tscn"
 
 [display]
 
-window/size/viewport_width=900
-window/size/viewport_height=600
+window/size/viewport_width=1700
+window/size/viewport_height=950
 window/stretch/mode="viewport"
 
 [dotnet]
