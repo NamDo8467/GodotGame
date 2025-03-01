@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bipjq0uqskgw7"]
+[gd_scene load_steps=8 format=3 uid="uid://bipjq0uqskgw7"]
 
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_mjir2"]
 [ext_resource type="PackedScene" uid="uid://xnv6oyf6p7o3" path="res://scenes/mushroom.tscn" id="3_h3f7p"]
 [ext_resource type="PackedScene" uid="uid://d0odsmq7rt247" path="res://scenes/plate_stack.tscn" id="4_uu5d8"]
 [ext_resource type="PackedScene" uid="uid://nk47flta8bsj" path="res://scenes/player_spawner.tscn" id="5_lpass"]
+[ext_resource type="PackedScene" uid="uid://daaj22ddieg52" path="res://scenes/appliances/fridge.tscn" id="5_rwd7c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5upv"]
 texture = ExtResource("1_mjir2")
@@ -482,3 +483,11 @@ position = Vector2(1071, 650)
 
 [node name="PlayerSpawner" parent="." instance=ExtResource("5_lpass")]
 position = Vector2(406, 794)
+
+[node name="Appliances" type="Node" parent="."]
+
+[node name="Fridge2" parent="Appliances" instance=ExtResource("5_rwd7c")]
+position = Vector2(591, 940)
+
+[node name="Fridge" parent="Appliances" instance=ExtResource("5_rwd7c")]
+position = Vector2(1065, 315)
