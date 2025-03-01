@@ -6,6 +6,15 @@ var score = 0
 # Load level from a file
 var level = 1
 
+# Map of each food's ingredient
+var food = {
+	"pasta": ["tomato", "dough", "cheese", "pepperoni"],
+	"friedRice": ["rice", "egg", "garlic", "onions"]
+}
+
+# Current food in the level
+var current_food = ""
+
 func add_score():
 	score += 1
 	
