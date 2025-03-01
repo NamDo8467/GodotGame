@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0odsmq7rt247"]
+
+[ext_resource type="Texture2D" uid="uid://tcs31njdrlli" path="res://assets/Food/03_dish_pile.png" id="1_aijg2"]
+
+[node name="PlateStack" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(17, -17)
+texture = ExtResource("1_aijg2")
