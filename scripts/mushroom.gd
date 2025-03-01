@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 60
+const SPEED = 65
 @onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_left = $RayCastLeft
 @onready var mushroom = $AnimatedSprite2D
@@ -13,10 +13,10 @@ var direction = -1 # currently going to the left
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if ray_cast_right.is_colliding():
+	if ray_cast_right.is_colliding() or position.x >= 550:
 		direction = -1
 		mushroom.flip_h = false
-	elif ray_cast_left.is_colliding():
+	elif ray_cast_left.is_colliding() or position.x <= 100:
 		direction = 1
 		mushroom.flip_h = true
 	
