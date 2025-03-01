@@ -8,12 +8,18 @@ var level = 1
 
 # Map of each food's ingredient
 var food = {
-	"pasta": ["tomato", "dough", "cheese", "pepperoni"],
+	"pasta": ["tomato", "dough", "cheese", "mushroom"],
 	"friedRice": ["rice", "egg", "garlic", "onions"]
 }
 
 # Current food in the level
-var current_food = ""
+var current_food = "pasta"
+
+# Current collected ingredient
+var current_ingredient_list = []
+
+# Current possesing weapon
+var current_weapon = null
 
 func add_score():
 	score += 1
