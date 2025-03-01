@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bipjq0uqskgw7"]
+[gd_scene load_steps=7 format=3 uid="uid://bipjq0uqskgw7"]
 
-[ext_resource type="PackedScene" uid="uid://dmwr40hhjso1q" path="res://scenes/player.tscn" id="1_1jl1h"]
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_mjir2"]
 [ext_resource type="PackedScene" uid="uid://xnv6oyf6p7o3" path="res://scenes/mushroom.tscn" id="3_h3f7p"]
+[ext_resource type="PackedScene" uid="uid://d0odsmq7rt247" path="res://scenes/plate_stack.tscn" id="4_uu5d8"]
+[ext_resource type="PackedScene" uid="uid://nk47flta8bsj" path="res://scenes/player_spawner.tscn" id="5_lpass"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5upv"]
 texture = ExtResource("1_mjir2")
@@ -467,9 +468,6 @@ sources/0 = SubResource("TileSetAtlasSource_i5upv")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_1jl1h")]
-position = Vector2(787, 888)
-
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(198, 7)
 tile_set = SubResource("TileSet_o2ori")
@@ -478,3 +476,9 @@ layer_0/tile_data = PackedInt32Array(3801155, 1114112, 4, 3801156, 1179648, 4, 3
 
 [node name="Mushroom" parent="." instance=ExtResource("3_h3f7p")]
 position = Vector2(510, 936)
+
+[node name="PlateStack" parent="." instance=ExtResource("4_uu5d8")]
+position = Vector2(1071, 650)
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("5_lpass")]
+position = Vector2(406, 794)
