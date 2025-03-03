@@ -47,7 +47,7 @@ size_flags_vertical = 3
 theme = SubResource("Theme_feumu")
 text = "Quit"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Title_Image" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
