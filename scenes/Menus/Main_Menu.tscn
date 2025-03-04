@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2lh1owu5r8d5"]
+[gd_scene load_steps=6 format=3 uid="uid://d2lh1owu5r8d5"]
 
 [ext_resource type="Script" path="res://scripts/Menu/Main_Menu.gd" id="1_8gmd5"]
 [ext_resource type="FontFile" uid="uid://c3pyqg3iwto6y" path="res://assets/Free/Menu/Text/PixelOperator8.ttf" id="1_igmf1"]
+[ext_resource type="Texture2D" uid="uid://botkn7xf5lsv5" path="res://scenes/Menus/Game_background.png" id="2_2vn77"]
+[ext_resource type="Texture2D" uid="uid://d3ttql6svjdbw" path="res://scenes/Menus/Title.png" id="4_b461t"]
 
 [sub_resource type="Theme" id="Theme_feumu"]
 default_font = ExtResource("1_igmf1")
@@ -15,19 +17,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8gmd5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -162.0
-offset_top = -52.0
-offset_right = 162.0
-offset_bottom = 194.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_2vn77")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -268.0
+offset_right = 351.0
+offset_bottom = -22.0
+grow_vertical = 0
 
 [node name="B_StartGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -36,6 +45,12 @@ theme = SubResource("Theme_feumu")
 text = "Start Game"
 
 [node name="B_Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_feumu")
+text = "Settings"
+
+[node name="B_Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_feumu")
@@ -52,12 +67,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -201.5
-offset_top = 71.0
-offset_right = 201.5
-offset_bottom = 204.0
+offset_left = -415.0
+offset_top = 133.0
+offset_right = -12.0
+offset_bottom = 322.0
 grow_horizontal = 2
+texture = ExtResource("4_b461t")
 
 [connection signal="pressed" from="VBoxContainer/B_StartGame" to="." method="StartGame_Pressed"]
 [connection signal="pressed" from="VBoxContainer/B_Settings" to="." method="Settings_Pressed"]
+[connection signal="pressed" from="VBoxContainer/B_Credits" to="." method="Credits_Pressed"]
 [connection signal="pressed" from="VBoxContainer/B_Quit" to="." method="Quit_Pressed"]

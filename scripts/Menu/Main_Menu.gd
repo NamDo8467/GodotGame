@@ -14,7 +14,11 @@ func StartGame_Pressed():
 
 func Settings_Pressed():
 	#TODO: Connect this to a menu
-	print("Open Settings")
+	print("Open Settings screen")
 
+func Credits_Pressed():
+	#TODO: Connect this to a menu
+	print("Open Credits screen")
+	
 func Quit_Pressed():
 	get_tree().quit()
