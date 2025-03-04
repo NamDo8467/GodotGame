@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bipjq0uqskgw7"]
+[gd_scene load_steps=13 format=3 uid="uid://bipjq0uqskgw7"]
 
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_mjir2"]
 [ext_resource type="PackedScene" uid="uid://xnv6oyf6p7o3" path="res://scenes/mushroom.tscn" id="3_h3f7p"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://nk47flta8bsj" path="res://scenes/player_spawner.tscn" id="5_lpass"]
 [ext_resource type="PackedScene" uid="uid://daaj22ddieg52" path="res://scenes/appliances/fridge.tscn" id="5_rwd7c"]
 [ext_resource type="PackedScene" uid="uid://8atf1kg4igj7" path="res://scenes/trampoline.tscn" id="6_fi33c"]
+[ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="7_rs2bs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5upv"]
 texture = ExtResource("1_mjir2")
@@ -499,6 +500,8 @@ _data = {
 "move": SubResource("Animation_2c1ke")
 }
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r1m6d"]
+
 [node name="Apartment" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -519,7 +522,7 @@ libraries = {
 position = Vector2(1071, 650)
 
 [node name="PlayerSpawner" parent="." instance=ExtResource("5_lpass")]
-position = Vector2(406, 794)
+position = Vector2(755, 879)
 
 [node name="Appliances" type="Node" parent="."]
 
@@ -528,3 +531,11 @@ position = Vector2(1065, 315)
 
 [node name="Trampoline" parent="." instance=ExtResource("6_fi33c")]
 position = Vector2(45, 940)
+
+[node name="KillZone" parent="." instance=ExtResource("7_rs2bs")]
+position = Vector2(393, 955)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(37, -2)
+scale = Vector2(2.7, 1)
+shape = SubResource("WorldBoundaryShape2D_r1m6d")
