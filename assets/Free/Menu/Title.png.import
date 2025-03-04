@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://botkn7xf5lsv5"
-path="res://.godot/imported/Game_background.png-93d17bc18cab94f01d00a2b6c67ca9fd.ctex"
+uid="uid://d3ttql6svjdbw"
+path="res://.godot/imported/Title.png-5ba8d351372094816dcc5b9aa1d4c7de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Menus/Game_background.png"
-dest_files=["res://.godot/imported/Game_background.png-93d17bc18cab94f01d00a2b6c67ca9fd.ctex"]
+source_file="res://assets/Free/Menu/Title.png"
+dest_files=["res://.godot/imported/Title.png-5ba8d351372094816dcc5b9aa1d4c7de.ctex"]
 
 [params]
 

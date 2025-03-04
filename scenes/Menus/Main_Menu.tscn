@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/Menu/Main_Menu.gd" id="1_8gmd5"]
 [ext_resource type="FontFile" uid="uid://c3pyqg3iwto6y" path="res://assets/Free/Menu/Text/PixelOperator8.ttf" id="1_igmf1"]
-[ext_resource type="Texture2D" uid="uid://botkn7xf5lsv5" path="res://scenes/Menus/Game_background.png" id="2_2vn77"]
-[ext_resource type="Texture2D" uid="uid://d3ttql6svjdbw" path="res://scenes/Menus/Title.png" id="4_b461t"]
+[ext_resource type="Texture2D" uid="uid://botkn7xf5lsv5" path="res://assets/Free/Menu/Main_Menu_Background.png" id="2_2vn77"]
+[ext_resource type="Texture2D" uid="uid://d3ttql6svjdbw" path="res://assets/Free/Menu/Title.png" id="4_b461t"]
 
 [sub_resource type="Theme" id="Theme_feumu"]
 default_font = ExtResource("1_igmf1")
@@ -54,7 +54,7 @@ text = "Settings"
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_feumu")
-text = "Settings"
+text = "Credits"
 
 [node name="B_Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
