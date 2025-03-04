@@ -22,4 +22,5 @@ func Quit_Pressed():
 
 func Button_Pressed_Sound():
 	#TODO: Add a button clicking sound effect
+	$SFX_Button_Pressed.play()
 	return

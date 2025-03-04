@@ -74,6 +74,8 @@ offset_bottom = 322.0
 grow_horizontal = 2
 texture = ExtResource("4_b461t")
 
+[node name="SFX_Button_Pressed" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="pressed" from="VBoxContainer/B_StartGame" to="." method="StartGame_Pressed"]
 [connection signal="pressed" from="VBoxContainer/B_Settings" to="." method="Settings_Pressed"]
 [connection signal="pressed" from="VBoxContainer/B_Credits" to="." method="Credits_Pressed"]
