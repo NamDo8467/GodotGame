@@ -10,4 +10,3 @@ func _process(_delta):
 		player1 = player1_scene.instantiate()
 		player1.position = starting_position
 		get_parent().add_child(player1)
-
