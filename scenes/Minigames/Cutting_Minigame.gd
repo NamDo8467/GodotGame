@@ -16,22 +16,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print("Knife Rotation: " + str(knife.rotation))
+	
 	Move_P1()
 	Move_P2()
 	
 	Move_Knife()
 
 func Move_P1():
-	if Input.is_action_pressed("P1_Minigame_Move_Right"):
+	if Input.is_action_pressed("P1_Minigame_Move_Right") && knife.rotation < 0.3:
 		p1.position.x += player_Speed
-	if Input.is_action_pressed("P1_Minigame_Move_Left"):
+	if Input.is_action_pressed("P1_Minigame_Move_Left") && knife.rotation > -0.3:
 		p1.position.x -= player_Speed
 
-
 func Move_P2():
-	if Input.is_action_pressed("P2_Minigame_Move_Right"):
+	if Input.is_action_pressed("P2_Minigame_Move_Right") && knife.rotation > -0.3:
 		p2.position.x += player_Speed
-	if Input.is_action_pressed("P2_Minigame_Move_Left"):
+	if Input.is_action_pressed("P2_Minigame_Move_Left") && knife.rotation < 0.3:
 		p2.position.x -= player_Speed
 
 func Move_Knife():
@@ -40,3 +41,9 @@ func Move_Knife():
 	var Hypotenuse = p1.position.distance_to(knife.position)
 	var Adjacent = (p1.position.x - p2.position.x) / 2
 	knife.rotation = PI/2 - acos(Adjacent / Hypotenuse)
+	
+	if (knife.rotation > 0.3):
+		knife.rotation = 0.3
+	
+	if (knife.rotation < -0.3):
+		knife.rotation = -0.3
