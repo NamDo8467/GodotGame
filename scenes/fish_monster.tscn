@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwbiqfumj6y40"]
+
+[ext_resource type="Texture2D" uid="uid://cdff5jc3taja6" path="res://assets/Food/DATT_2310_-_Fish_1.png" id="1_pdl3r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cua8b"]
+atlas = ExtResource("1_pdl3r")
+region = Rect2(0, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duu1e"]
+atlas = ExtResource("1_pdl3r")
+region = Rect2(240, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayeey"]
+atlas = ExtResource("1_pdl3r")
+region = Rect2(480, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnr8n"]
+atlas = ExtResource("1_pdl3r")
+region = Rect2(720, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_473eq"]
+atlas = ExtResource("1_pdl3r")
+region = Rect2(960, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1ypp"]
+atlas = ExtResource("1_pdl3r")
+region = Rect2(1200, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bef4n"]
+atlas = ExtResource("1_pdl3r")
+region = Rect2(1440, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08nnr"]
+atlas = ExtResource("1_pdl3r")
+region = Rect2(1680, 0, 240, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ygk6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cua8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duu1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayeey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnr8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_473eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1ypp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bef4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08nnr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="FishMonster" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(466, 42.25)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_ygk6w")
+autoplay = "default"
+frame_progress = 0.88851
