@@ -1,65 +1,65 @@
 [gd_scene load_steps=11 format=3 uid="uid://bwbiqfumj6y40"]
 
-[ext_resource type="Texture2D" uid="uid://cdff5jc3taja6" path="res://assets/Food/DATT_2310_-_Fish_1.png" id="1_pdl3r"]
+[ext_resource type="Texture2D" uid="uid://bbvwbh3kmriaq" path="res://assets/Food/fish_monster.png" id="1_si1p8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cua8b"]
-atlas = ExtResource("1_pdl3r")
-region = Rect2(0, 0, 240, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_duu1e"]
-atlas = ExtResource("1_pdl3r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0yqo"]
+atlas = ExtResource("1_si1p8")
 region = Rect2(240, 0, 240, 270)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ayeey"]
-atlas = ExtResource("1_pdl3r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqk5m"]
+atlas = ExtResource("1_si1p8")
 region = Rect2(480, 0, 240, 270)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xnr8n"]
-atlas = ExtResource("1_pdl3r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_384jw"]
+atlas = ExtResource("1_si1p8")
 region = Rect2(720, 0, 240, 270)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_473eq"]
-atlas = ExtResource("1_pdl3r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm0yc"]
+atlas = ExtResource("1_si1p8")
 region = Rect2(960, 0, 240, 270)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l1ypp"]
-atlas = ExtResource("1_pdl3r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vprml"]
+atlas = ExtResource("1_si1p8")
 region = Rect2(1200, 0, 240, 270)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bef4n"]
-atlas = ExtResource("1_pdl3r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyu32"]
+atlas = ExtResource("1_si1p8")
 region = Rect2(1440, 0, 240, 270)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_08nnr"]
-atlas = ExtResource("1_pdl3r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2k5h"]
+atlas = ExtResource("1_si1p8")
 region = Rect2(1680, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbl67"]
+atlas = ExtResource("1_si1p8")
+region = Rect2(0, 0, 240, 270)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ygk6w"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cua8b")
+"texture": SubResource("AtlasTexture_c0yqo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_duu1e")
+"texture": SubResource("AtlasTexture_sqk5m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ayeey")
+"texture": SubResource("AtlasTexture_384jw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xnr8n")
+"texture": SubResource("AtlasTexture_bm0yc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_473eq")
+"texture": SubResource("AtlasTexture_vprml")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l1ypp")
+"texture": SubResource("AtlasTexture_cyu32")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bef4n")
+"texture": SubResource("AtlasTexture_n2k5h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_08nnr")
+"texture": SubResource("AtlasTexture_rbl67")
 }],
 "loop": true,
 "name": &"default",
@@ -69,8 +69,9 @@ animations = [{
 [node name="FishMonster" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(466, 42.25)
+position = Vector2(38, 4)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_ygk6w")
 autoplay = "default"
-frame_progress = 0.88851
+frame = 7
+frame_progress = 0.26962
