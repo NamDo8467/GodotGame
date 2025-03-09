@@ -3,8 +3,8 @@ extends Node2D
 
 var player1_scene = preload("res://scenes/player.tscn")
 var player2_scene = preload("res://scenes/player2.tscn")
-var player1_starting_position = Vector2(787,888)
-var player2_starting_position = Vector2(928, 888)
+var player1_starting_position = Vector2(-89,927)
+var player2_starting_position = Vector2(-150, 927)
 var player1 = null
 var player2 = null
 
