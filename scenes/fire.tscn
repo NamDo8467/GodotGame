@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmod05f0wsmsp"]
+[gd_scene load_steps=12 format=3 uid="uid://bmod05f0wsmsp"]
 
 [ext_resource type="Script" path="res://scripts/fire.gd" id="1_rd7gp"]
 [ext_resource type="Texture2D" uid="uid://bwlrheq0565xr" path="res://assets/Free/Traps/Fire/On (16x32).png" id="1_vo81o"]
@@ -49,7 +49,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tduay"]
 size = Vector2(13, 17)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3iujt"]
+size = Vector2(19, 120)
+
 [node name="Fire" type="Node2D"]
+rotation = 3.14159
 script = ExtResource("1_rd7gp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -60,14 +64,23 @@ animation = &"on"
 autoplay = "off"
 
 [node name="KillZone" parent="." instance=ExtResource("4_kg0vt")]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 position = Vector2(3.5, -30.5)
 shape = SubResource("RectangleShape2D_tduay")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
+[node name="TriggerZone" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerZone"]
+position = Vector2(3.49999, -98)
+shape = SubResource("RectangleShape2D_3iujt")
+
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="TriggerZone" to="." method="_on_trigger_zone_body_entered"]
