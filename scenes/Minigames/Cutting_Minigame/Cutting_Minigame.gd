@@ -163,4 +163,4 @@ func Update_Score_Text():
 	total = round(total)
 	total /= 100
 	
-	score_Text.text = ("[right]" + str(total) + "%[/right]   ")
+	score_Text.text = ("[right]Score " + str(total) + "%[/right]   ")
