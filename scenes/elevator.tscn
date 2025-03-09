@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://br8nu8mu2ikc5"]
+
+[ext_resource type="Texture2D" uid="uid://c7pkxr58c61l4" path="res://assets/Appliances/elevator.png" id="1_nhbvs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fot2"]
+atlas = ExtResource("1_nhbvs")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eppgq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fot2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twcpy"]
+size = Vector2(196, 7)
+
+[node name="Elevator" type="Node2D"]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
+position = Vector2(121.25, 186.75)
+scale = Vector2(0.4425, 0.4425)
+sprite_frames = SubResource("SpriteFrames_eppgq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(117, 291.5)
+shape = SubResource("RectangleShape2D_twcpy")
