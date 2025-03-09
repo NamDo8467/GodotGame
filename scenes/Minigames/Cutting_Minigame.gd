@@ -87,12 +87,17 @@ func Create_CutLines():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var num_CutLines = rng.randi_range(5, 6)
+	var cutting_Zone_length = BASE_CUTTING_ZONE / num_CutLines
+	
 	var tmp_Position = Vector2(MIN_CUTTING_ZONE, 0)
 	var tmp_Angle = 0
 	
-	for x in num_CutLines:
+	for zone in num_CutLines:
 		rng.randomize()
-		tmp_Position
+		tmp_Position = MIN_CUTTING_ZONE + cutting_Zone_length * zone
+		tmp_Position += rng.randi_range(0, cutting_Zone_length)
+		
 		rng.randomize()
 		tmp_Angle = rng.rand_range(-0.3, 0.3)
-		# create them
+		
+		

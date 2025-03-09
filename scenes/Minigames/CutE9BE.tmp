@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rawb5qng2ktq"]
+[gd_scene load_steps=7 format=3 uid="uid://rawb5qng2ktq"]
 
 [ext_resource type="Texture2D" uid="uid://d3xh16jpkg2ed" path="res://assets/Minigame_Assets/Cutting_Board.png" id="1_ixnxd"]
 [ext_resource type="Script" path="res://scenes/Minigames/Cutting_Minigame.gd" id="1_qghd1"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cyh8wvs5rl2pi" path="res://assets/Minigame_Assets/2_Handle_Knife.png" id="3_w6fhc"]
 [ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="5_3j5cp"]
 [ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="6_njla1"]
-[ext_resource type="Texture2D" uid="uid://ft677ca7mddi" path="res://assets/Minigame_Assets/Dotted_Line.png" id="7_w6k82"]
 
 [node name="CuttingMinigame" type="Node2D"]
 script = ExtResource("1_qghd1")
@@ -52,8 +51,3 @@ texture = ExtResource("5_3j5cp")
 position = Vector2(40, 536)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_njla1")
-
-[node name="Dotted_Line" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(40, 300)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("7_w6k82")
