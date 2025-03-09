@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var knife = $CanvasLayer/Knife
-@onready var p1 = $CanvasLayer/Player_1
-@onready var p2 = $CanvasLayer/Player_2
+@onready var knife = $Knife
+@onready var p1 = $Player_1
+@onready var p2 = $Player_2
 
 var BASE_POSITION = Vector2(40,300)
 
@@ -16,6 +16,8 @@ var knife_Shrink_Percent = 0.95
 var knife_Shirnk_Time = 0.6 # Total Time /2 for going down then back up
 
 # Cutting Line Variables
+var Cutting_Line_Sprite = preload("res://scenes/Minigames/Cutting_Minigame/Cutting_Line.tscn")
+
 var MIN_CUTTING_ZONE = 160 # Arbitrary
 var MAX_CUTTING_ZONE = 610 # Arbitrary
 var BASE_CUTTING_ZONE = 450
@@ -89,15 +91,20 @@ func Create_CutLines():
 	var num_CutLines = rng.randi_range(5, 6)
 	var cutting_Zone_length = BASE_CUTTING_ZONE / num_CutLines
 	
-	var tmp_Position = Vector2(MIN_CUTTING_ZONE, 0)
+	var tmp_X_Position = MIN_CUTTING_ZONE
 	var tmp_Angle = 0
 	
 	for zone in num_CutLines:
 		rng.randomize()
-		tmp_Position = MIN_CUTTING_ZONE + cutting_Zone_length * zone
-		tmp_Position += rng.randi_range(0, cutting_Zone_length)
+		tmp_X_Position = MIN_CUTTING_ZONE + cutting_Zone_length * zone
+		tmp_X_Position += rng.randi_range(0, cutting_Zone_length)
 		
 		rng.randomize()
-		tmp_Angle = rng.rand_range(-0.3, 0.3)
+		tmp_Angle = rng.randf_range(-0.3, 0.3)
 		
+		var instance = Cutting_Line_Sprite.instantiate()
 		
+		instance.position.x = tmp_X_Position
+		instance.rotation = tmp_Angle
+		
+		add_child(instance)
