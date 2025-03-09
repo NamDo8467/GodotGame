@@ -3,10 +3,11 @@ extends Node2D
 @onready var knife = $Knife
 @onready var p1 = $Player_1
 @onready var p2 = $Player_2
+@onready var score_Text = $CanvasLayer/Score_Text
 
 var BASE_POSITION = Vector2(40,300)
 
-var player_Speed = 1 
+var player_Speed = 2
 
 
 # Knife Cutting Variables
@@ -14,13 +15,20 @@ var isCutting = false
 var original_Knife_Scale
 var knife_Shrink_Percent = 0.95
 var knife_Shirnk_Time = 0.6 # Total Time /2 for going down then back up
+var cut_Scores = []
+var DISTANCE_THRESHOLD = 40
+var DISTANCE_CUTOFF = 5
+var ANGLE_THRESHOLD = 0.2
+var ANGLE_CUTOFF = 0.05
 
 # Cutting Line Variables
 var Cutting_Line_Sprite = preload("res://scenes/Minigames/Cutting_Minigame/Cutting_Line.tscn")
-
+var Cut_Line_Nodes = Array()
 var MIN_CUTTING_ZONE = 160 # Arbitrary
 var MAX_CUTTING_ZONE = 610 # Arbitrary
 var BASE_CUTTING_ZONE = 450
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,11 +47,9 @@ func _process(delta):
 		Move_P1()
 		Move_P2()
 		Move_Knife()
-	#print("P1 Position: " + str(p1.position))
-	#print("P2 Position: " + str(p2.position))
-	#print("Knife Rotation: " + str(knife.rotation))
 	
 	Cut_Knife()
+	Update_Score_Text()
 
 func Can_Move():
 	if isCutting: return false
@@ -83,7 +89,40 @@ func Cut_Knife():
 		
 		tween.tween_property(knife, "scale", original_Knife_Scale * knife_Shrink_Percent, knife_Shirnk_Time/2)
 		tween.tween_property(knife, "scale", original_Knife_Scale, knife_Shirnk_Time/2).finished.connect(set.bind("isCutting", false))
+		
+		print(knife.position)
+		print(knife.rotation)
+		
+		print(Cut_Line_Nodes[0].position)
+		print(Cut_Line_Nodes[0].rotation)
+		
+		var closest_Line
+		var distance_Diff = 0
+		var angle_Diff = 0
+		var index = 0
+		
+		for line in Cut_Line_Nodes:
+			distance_Diff = abs(knife.position.x - line.position.x)
+			angle_Diff = abs(knife.rotation - line.rotation)
+			
+			if distance_Diff < DISTANCE_THRESHOLD:
+				if angle_Diff < ANGLE_THRESHOLD:
+					Cut_Line_Nodes[index].hide()
+					Calculate_Score(index, distance_Diff, angle_Diff)
+					break
+				
+			index += 1
 
+func Calculate_Score(index, distance, angle):
+	var distance_Score = 50  
+	var angle_Score = 50  
+	
+	if distance > DISTANCE_CUTOFF:
+		distance_Score -= 50 * distance / DISTANCE_THRESHOLD 
+	if angle > ANGLE_CUTOFF:
+		angle_Score -= 50 * angle / ANGLE_THRESHOLD 
+	
+	cut_Scores[index] = distance_Score + angle_Score
 
 func Create_CutLines():
 	var rng = RandomNumberGenerator.new()
@@ -95,6 +134,8 @@ func Create_CutLines():
 	var tmp_Angle = 0
 	
 	for zone in num_CutLines:
+		cut_Scores.append(0)
+		
 		rng.randomize()
 		tmp_X_Position = MIN_CUTTING_ZONE + cutting_Zone_length * zone
 		tmp_X_Position += rng.randi_range(0, cutting_Zone_length)
@@ -107,4 +148,19 @@ func Create_CutLines():
 		instance.position.x = tmp_X_Position
 		instance.rotation = tmp_Angle
 		
+		Cut_Line_Nodes.append(instance)
 		add_child(instance)
+
+
+func Update_Score_Text():
+	var total = 0
+
+	for score in cut_Scores:
+		total += score
+	
+	total /= cut_Scores.size()
+	total *= 100
+	total = round(total)
+	total /= 100
+	
+	score_Text.text = ("[right]" + str(total) + "%[/right]   ")

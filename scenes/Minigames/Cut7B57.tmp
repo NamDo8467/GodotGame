@@ -13,17 +13,6 @@ script = ExtResource("1_qghd1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Score_Text" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -260.0
-offset_bottom = 40.0
-grow_horizontal = 0
-bbcode_enabled = true
-text = "[right]score[/right]   "
-scroll_active = false
-
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(450, 299.5)
 scale = Vector2(14.0625, 9.35938)
