@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://br8nu8mu2ikc5"]
+[gd_scene load_steps=6 format=3 uid="uid://br8nu8mu2ikc5"]
 
 [ext_resource type="Texture2D" uid="uid://c7pkxr58c61l4" path="res://assets/Appliances/elevator.png" id="1_nhbvs"]
+[ext_resource type="Script" path="res://scripts/elevator.gd" id="1_umjbg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6fot2"]
 atlas = ExtResource("1_nhbvs")
@@ -18,17 +19,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_twcpy"]
-size = Vector2(196, 7)
+size = Vector2(196, 18)
 
-[node name="Elevator" type="Node2D"]
+[node name="Elevator" type="AnimatableBody2D"]
+position = Vector2(-271, 648)
+collision_mask = 3
+script = ExtResource("1_umjbg")
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
-position = Vector2(121.25, 186.75)
-scale = Vector2(0.4425, 0.4425)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(121.25, 785)
+scale = Vector2(0.4425, 0.595833)
 sprite_frames = SubResource("SpriteFrames_eppgq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(117, 291.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(117, 927)
 shape = SubResource("RectangleShape2D_twcpy")
