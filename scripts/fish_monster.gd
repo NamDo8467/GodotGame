@@ -1,11 +1,15 @@
 extends Node2D
 
+const SPEED = 65
+@onready var fish_monster = $AnimatedSprite2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
+var direction = 1 # currently going to the right
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if position.x >= 530:
+		direction = -1
+		fish_monster.flip_h = true
+	elif position.x <= -8:
+		direction = 1
+		fish_monster.flip_h = false
+	position.x += direction * SPEED * delta
