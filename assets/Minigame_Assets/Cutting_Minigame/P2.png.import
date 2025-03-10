@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyh8wvs5rl2pi"
-path="res://.godot/imported/2_Handle_Knife.png-c1140b52602b68c434ed4d21f8df8337.ctex"
+uid="uid://bwfxivpr5g67d"
+path="res://.godot/imported/P2.png-8524e7e08dcf6c1cd16fbe089c8f87eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Minigame_Assets/2_Handle_Knife.png"
-dest_files=["res://.godot/imported/2_Handle_Knife.png-c1140b52602b68c434ed4d21f8df8337.ctex"]
+source_file="res://assets/Minigame_Assets/Cutting_Minigame/P2.png"
+dest_files=["res://.godot/imported/P2.png-8524e7e08dcf6c1cd16fbe089c8f87eb.ctex"]
 
 [params]
 

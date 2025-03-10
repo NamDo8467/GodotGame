@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://biq48j6x3hsw8"
-path="res://.godot/imported/Fish.png-878c82efe1fdb8af5e85f197dd15d162.ctex"
+path="res://.godot/imported/Fish.png-5f2c06c97e7bcca7a9064aa9608c01b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Minigame_Assets/Fish.png"
-dest_files=["res://.godot/imported/Fish.png-878c82efe1fdb8af5e85f197dd15d162.ctex"]
+source_file="res://assets/Minigame_Assets/Cutting_Minigame/Fish.png"
+dest_files=["res://.godot/imported/Fish.png-5f2c06c97e7bcca7a9064aa9608c01b4.ctex"]
 
 [params]
 

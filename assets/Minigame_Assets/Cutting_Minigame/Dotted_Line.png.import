@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwfxivpr5g67d"
-path="res://.godot/imported/P2.png-b2bf30de13b29fe30e553c4b56d3aed3.ctex"
+uid="uid://ft677ca7mddi"
+path="res://.godot/imported/Dotted_Line.png-892a71ebcfe21e7e25a9dfd1eb686a46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Minigame_Assets/P2.png"
-dest_files=["res://.godot/imported/P2.png-b2bf30de13b29fe30e553c4b56d3aed3.ctex"]
+source_file="res://assets/Minigame_Assets/Cutting_Minigame/Dotted_Line.png"
+dest_files=["res://.godot/imported/Dotted_Line.png-892a71ebcfe21e7e25a9dfd1eb686a46.ctex"]
 
 [params]
 

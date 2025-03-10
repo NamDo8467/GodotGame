@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caukgvcfok5u4"
-path="res://.godot/imported/P1.png-4142cc72eac7f9ecacf4d431e7cb60ec.ctex"
+uid="uid://d3xh16jpkg2ed"
+path="res://.godot/imported/Cutting_Board.png-771f53f813cd49aa922b47d871ecc952.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Minigame_Assets/P1.png"
-dest_files=["res://.godot/imported/P1.png-4142cc72eac7f9ecacf4d431e7cb60ec.ctex"]
+source_file="res://assets/Minigame_Assets/Cutting_Minigame/Cutting_Board.png"
+dest_files=["res://.godot/imported/Cutting_Board.png-771f53f813cd49aa922b47d871ecc952.ctex"]
 
 [params]
 
