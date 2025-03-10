@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc241rdyeidi5"
-path="res://.godot/imported/Layer_1_Updated.png-3fcf8d8b8095729e02b57207521a2e14.ctex"
+uid="uid://cp0y8oqypptqt"
+path="res://.godot/imported/Layer_3.png-cf2244eb1960291cca40b19b1cddbddb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Minigame_Assets/Timer/Layer_1_Updated.png"
-dest_files=["res://.godot/imported/Layer_1_Updated.png-3fcf8d8b8095729e02b57207521a2e14.ctex"]
+source_file="res://assets/Minigame_Assets/Timer/Layer_3.png"
+dest_files=["res://.godot/imported/Layer_3.png-cf2244eb1960291cca40b19b1cddbddb.ctex"]
 
 [params]
 

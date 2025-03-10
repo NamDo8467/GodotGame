@@ -4,8 +4,17 @@ extends Node2D
 @onready var p1 = $Player_1
 @onready var p2 = $Player_2
 @onready var score_Text = $CanvasLayer/Score_Text
+@onready var start_Timmer = $CanvasLayer/Start_Timmer
+@onready var game_Timmer = $CanvasLayer/Game_Timmer
+@onready var current_Timmer = $CanvasLayer/Current_Timmer
 
 var BASE_POSITION = Vector2(40,300)
+
+# Timmer Variables
+var timmer_Tween : Tween
+var is_Game_Started = false
+var current_Time = 0.0
+var minigame_Time = 10.0
 
 # Player Variables
 var is_P1_Action1 = 0.0 # 0 is false
@@ -15,7 +24,7 @@ var player_Speed = 2
 
 # Knife Cutting Variables
 var is_Cutting = false
-var original_Knife_Scale
+var original_Knife_Scale : Vector2
 var knife_Shrink_Percent = 0.95
 var knife_Shirnk_Time = 0.6 # Total Time /2 for going down then back up
 var cut_Scores = []
@@ -34,6 +43,9 @@ var BASE_CUTTING_ZONE = 450
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Start_Countdown()
+	await get_tree().create_timer(3).timeout
+	
+	Start_Timmer()
 	
 	Create_CutLines()
 	
@@ -44,11 +56,62 @@ func _ready():
 	original_Knife_Scale = knife.scale
 
 func Start_Countdown():
-	pass
+	current_Time = 0
+	current_Timmer.rotation = current_Time
 
+	var tween = create_tween()
+	
+	tween.tween_property(game_Timmer, "value", minigame_Time, 3)
+
+	await get_tree().create_timer(1).timeout
+	start_Timmer.text = "[center]2[/center]"
+	await get_tree().create_timer(1).timeout
+	start_Timmer.text = "[center]1[/center]"
+	await get_tree().create_timer(1).timeout
+	start_Timmer.text = "[center]GO![/center]"
+	
+	is_Game_Started = true
+	
+	var fade_out = create_tween()
+	fade_out.tween_property(start_Timmer, "modulate", Color(1, 1, 1, 0), 1)
+
+func Start_Timmer():
+	var degree = 360 * (minigame_Time / game_Timmer.max_value)
+	timmer_Tween = create_tween()
+	timmer_Tween.tween_property(current_Timmer, "rotation_degrees", degree, minigame_Time).finished.connect(End_Minigame)
+
+func Create_CutLines():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var num_CutLines = rng.randi_range(5, 6)
+	var cutting_Zone_length = BASE_CUTTING_ZONE / num_CutLines
+	
+	var tmp_X_Position = MIN_CUTTING_ZONE
+	var tmp_Angle = 0
+	
+	for zone in num_CutLines:
+		cut_Scores.append(-1)
+		
+		rng.randomize()
+		tmp_X_Position = MIN_CUTTING_ZONE + cutting_Zone_length * zone
+		tmp_X_Position += rng.randi_range(0, cutting_Zone_length)
+		
+		rng.randomize()
+		tmp_Angle = rng.randf_range(-0.3, 0.3)
+		
+		var instance = Cutting_Line_Sprite.instantiate()
+		
+		instance.position.x = tmp_X_Position
+		instance.rotation = tmp_Angle
+		
+		Cut_Line_Nodes.append(instance)
+		add_child(instance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !is_Game_Started:
+		return
+	
 	if Can_Move():
 		Move_P1()
 		Move_P2()
@@ -58,7 +121,9 @@ func _process(delta):
 	if Can_Cut(delta):
 		Cut_Knife()
 	
-	Update_Score_Text()
+	Game_Finished_Check()
+	
+	Update_Timmer(delta)
 
 func Can_Move():
 	if is_Cutting: return false
@@ -91,7 +156,6 @@ func Move_Knife():
 		knife.rotation = -0.3
 
 func Can_Cut(time_delta):
-	print(is_P1_Action1)
 	is_P1_Action1 -= time_delta
 	is_P2_Action1 -= time_delta
 	
@@ -139,6 +203,9 @@ func Cut_Knife():
 				break
 			
 		index += 1
+		
+	
+	Update_Score_Text()
 
 func Calculate_Score(index, distance, angle):
 	var distance_Score = 50  
@@ -151,42 +218,51 @@ func Calculate_Score(index, distance, angle):
 	
 	cut_Scores[index] = distance_Score + angle_Score
 
-func Create_CutLines():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var num_CutLines = rng.randi_range(5, 6)
-	var cutting_Zone_length = BASE_CUTTING_ZONE / num_CutLines
-	
-	var tmp_X_Position = MIN_CUTTING_ZONE
-	var tmp_Angle = 0
-	
-	for zone in num_CutLines:
-		cut_Scores.append(0)
-		
-		rng.randomize()
-		tmp_X_Position = MIN_CUTTING_ZONE + cutting_Zone_length * zone
-		tmp_X_Position += rng.randi_range(0, cutting_Zone_length)
-		
-		rng.randomize()
-		tmp_Angle = rng.randf_range(-0.3, 0.3)
-		
-		var instance = Cutting_Line_Sprite.instantiate()
-		
-		instance.position.x = tmp_X_Position
-		instance.rotation = tmp_Angle
-		
-		Cut_Line_Nodes.append(instance)
-		add_child(instance)
-
 func Update_Score_Text():
 	var total = 0
+	var num_Scores = 0
 
 	for score in cut_Scores:
-		total += score
+		if score >= 0:
+			total += score
+			num_Scores += 1
 	
-	total /= cut_Scores.size()
+	total /= num_Scores
 	total *= 100
 	total = round(total)
 	total /= 100
 	
 	score_Text.text = ("[right]Score " + str(total) + "%[/right]   ")
+
+func Update_Timmer(delta):
+	current_Time += delta
+
+func Game_Finished_Check():
+	var index = 0
+	
+	for score in cut_Scores:
+		index += 1
+		
+		if score < 0:
+			return
+		
+		if index == cut_Scores.size():
+			End_Minigame()
+
+func End_Minigame():
+	if !is_Game_Started:
+		return
+	
+	for i in cut_Scores.size():
+		if cut_Scores[i] < 0:
+			cut_Scores[i] = 0
+	
+	Update_Score_Text()
+	
+	timmer_Tween.stop()
+	
+	is_Game_Started = false
+	start_Timmer.modulate = Color(0, 0, 0, 1)
+	
+	start_Timmer.text = "[center]Done![/center]" 
+	print("Game Finished")
