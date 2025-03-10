@@ -7,11 +7,14 @@ extends Node2D
 
 var BASE_POSITION = Vector2(40,300)
 
+# Player Variables
+var is_P1_Action1 = 0.0 # 0 is false
+var is_P2_Action1 = 0.0 # 0 is false
+var SYNC_PRESS_TIME = 1.0
 var player_Speed = 2
 
-
 # Knife Cutting Variables
-var isCutting = false
+var is_Cutting = false
 var original_Knife_Scale
 var knife_Shrink_Percent = 0.95
 var knife_Shirnk_Time = 0.6 # Total Time /2 for going down then back up
@@ -28,10 +31,10 @@ var MIN_CUTTING_ZONE = 160 # Arbitrary
 var MAX_CUTTING_ZONE = 610 # Arbitrary
 var BASE_CUTTING_ZONE = 450
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Start_Countdown()
+	
 	Create_CutLines()
 	
 	knife.position = BASE_POSITION
@@ -40,20 +43,26 @@ func _ready():
 	
 	original_Knife_Scale = knife.scale
 
+func Start_Countdown():
+	pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (Can_Move()):
+	if Can_Move():
 		Move_P1()
 		Move_P2()
-		Move_Knife()
 	
-	Cut_Knife()
+	Move_Knife()
+	
+	if Can_Cut(delta):
+		Cut_Knife()
+	
 	Update_Score_Text()
 
 func Can_Move():
-	if isCutting: return false
-	if isCutting: return false
+	if is_Cutting: return false
+
 	return true
 
 func Move_P1():
@@ -81,37 +90,55 @@ func Move_Knife():
 	if (knife.rotation < -0.3):
 		knife.rotation = -0.3
 
+func Can_Cut(time_delta):
+	print(is_P1_Action1)
+	is_P1_Action1 -= time_delta
+	is_P2_Action1 -= time_delta
+	
+	if is_Cutting:
+		return false
+	
+	if Input.is_action_pressed("P1_Minigame_Action_1") && is_P1_Action1 <= 0:
+		is_P1_Action1 = SYNC_PRESS_TIME
+	if Input.is_action_pressed("P2_Minigame_Action_1") && is_P2_Action1 <= 0:
+		is_P2_Action1 = SYNC_PRESS_TIME
+	
+	if (is_P1_Action1 <= 0) || (is_P2_Action1 <= 0):
+		return false
+	
+	is_P1_Action1 = 0
+	is_P2_Action1 = 0
+	
+	return true
+
 func Cut_Knife():
-	if Input.is_action_pressed("P1_Minigame_Action_1") && !isCutting:
-		var tween = get_tree().create_tween()
+	var tween = get_tree().create_tween()
 		
-		isCutting = true
-		
-		tween.tween_property(knife, "scale", original_Knife_Scale * knife_Shrink_Percent, knife_Shirnk_Time/2)
-		tween.tween_property(knife, "scale", original_Knife_Scale, knife_Shirnk_Time/2).finished.connect(set.bind("isCutting", false))
-		
-		print(knife.position)
-		print(knife.rotation)
-		
-		print(Cut_Line_Nodes[0].position)
-		print(Cut_Line_Nodes[0].rotation)
-		
-		var closest_Line
-		var distance_Diff = 0
-		var angle_Diff = 0
-		var index = 0
-		
-		for line in Cut_Line_Nodes:
-			distance_Diff = abs(knife.position.x - line.position.x)
-			angle_Diff = abs(knife.rotation - line.rotation)
-			
-			if distance_Diff < DISTANCE_THRESHOLD:
-				if angle_Diff < ANGLE_THRESHOLD:
-					Cut_Line_Nodes[index].hide()
-					Calculate_Score(index, distance_Diff, angle_Diff)
-					break
-				
+	is_Cutting = true
+	
+	tween.tween_property(knife, "scale", original_Knife_Scale * knife_Shrink_Percent, knife_Shirnk_Time/2)
+	tween.tween_property(knife, "scale", original_Knife_Scale, knife_Shirnk_Time/2).finished.connect(set.bind("is_Cutting", false))
+	
+	var closest_Line
+	var distance_Diff = 0
+	var angle_Diff = 0
+	var index = 0
+	
+	for line in Cut_Line_Nodes:
+		if !Cut_Line_Nodes[index].is_visible_in_tree():
 			index += 1
+			continue
+		
+		distance_Diff = abs(knife.position.x - line.position.x)
+		angle_Diff = abs(knife.rotation - line.rotation)
+		
+		if distance_Diff < DISTANCE_THRESHOLD:
+			if angle_Diff < ANGLE_THRESHOLD:
+				Cut_Line_Nodes[index].hide()
+				Calculate_Score(index, distance_Diff, angle_Diff)
+				break
+			
+		index += 1
 
 func Calculate_Score(index, distance, angle):
 	var distance_Score = 50  
@@ -150,7 +177,6 @@ func Create_CutLines():
 		
 		Cut_Line_Nodes.append(instance)
 		add_child(instance)
-
 
 func Update_Score_Text():
 	var total = 0
