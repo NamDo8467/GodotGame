@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwhq1gf5evoxs"]
+
+[ext_resource type="Texture2D" uid="uid://cj8ycrv4lpuc6" path="res://assets/cabbage_monster.png" id="1_ha5fi"]
+[ext_resource type="Script" path="res://scripts/cabbage_monster.gd" id="1_vrx5y"]
+[ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="2_tgyog"]
+[ext_resource type="PackedScene" uid="uid://cfufk2wgddhdb" path="res://scenes/hit_zone.tscn" id="3_xkpqw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rrem"]
+atlas = ExtResource("1_ha5fi")
+region = Rect2(0, 0, 442, 589)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_remuc"]
+atlas = ExtResource("1_ha5fi")
+region = Rect2(442, 0, 442, 589)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luax6"]
+atlas = ExtResource("1_ha5fi")
+region = Rect2(884, 0, 442, 589)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b45l2"]
+atlas = ExtResource("1_ha5fi")
+region = Rect2(1326, 0, 442, 589)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3h5p8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rrem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_remuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luax6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b45l2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vja87"]
+size = Vector2(24, 41.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72y5j"]
+size = Vector2(30, 3)
+
+[node name="CabbageMonster" type="Node2D"]
+position = Vector2(-3, 2)
+script = ExtResource("1_vrx5y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(21.25, -27.9332)
+scale = Vector2(0.0938914, 0.0947073)
+sprite_frames = SubResource("SpriteFrames_3h5p8")
+autoplay = "default"
+frame_progress = 0.0165479
+
+[node name="KillZone" parent="." instance=ExtResource("2_tgyog")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(21, -23.375)
+shape = SubResource("RectangleShape2D_vja87")
+
+[node name="HitZone" parent="." instance=ExtResource("3_xkpqw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
+position = Vector2(18, -47.5)
+shape = SubResource("RectangleShape2D_72y5j")
