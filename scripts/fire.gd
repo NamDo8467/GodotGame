@@ -36,6 +36,4 @@ func _on_trigger_zone_body_entered(body):
 
 func _on_kill_zone_body_entered(body):
 	if body.name == "TileMap":
-		#print(body)
 		queue_free()
-		#return
