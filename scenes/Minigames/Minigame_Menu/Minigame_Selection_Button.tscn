@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://nbk36xcy0uq8"]
 
-[ext_resource type="Script" path="res://scenes/Minigames/Minigame Menu/Minigame_Selection_Button.gd" id="1_pr0g5"]
+[ext_resource type="Script" path="res://scripts/Minigames/Minigame_Menu/Minigame_Selection_Button.gd" id="1_pr0g5"]
 
 [node name="Minigame_Selection_Button" type="Button"]
 offset_right = 768.0
@@ -17,9 +17,8 @@ offset_bottom = -157.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[u]Step Name[/u]
+text = "[font_size=24][u]Step Name[/u]
 "
 scroll_active = false
 

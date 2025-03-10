@@ -12,22 +12,30 @@ var name_font_size = 24
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Set_Step_Text()
+
+func Set_Step_Text():
 	name_Text = step_Name.text
 	descritpion_Text = step_Descritpion.text
 	controls_Text = step_Controls.text
-	
-	step_Name.push_font_size(name_font_size)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _on_focus_entered():
-	Toggle_Highlight_Text()
+	Bold_Text()
 
 func _on_focus_exited():
-	Toggle_Highlight_Text()
+	Normalize_Text()
 
-func Toggle_Highlight_Text():
-	step_Name.text = "[b]" + step_Name.text
+func Bold_Text():
+	step_Name.text = "[b]" + name_Text
+	step_Descritpion.text = "[b]" + descritpion_Text
+	step_Controls.text = "[b]" + controls_Text
+
+func Normalize_Text():
+	step_Name.text = name_Text
+	step_Descritpion.text = descritpion_Text
+	step_Controls.text = controls_Text
 

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal Minigame_Finished(score)
+
 @onready var knife = $Knife
 @onready var p1 = $Player_1
 @onready var p2 = $Player_2
@@ -15,6 +17,8 @@ var timmer_Tween : Tween
 var is_Game_Started = false
 var current_Time = 0.0
 var minigame_Time = 10.0
+var transition : ColorRect
+var tansition_Time = 2.0
 
 # Player Variables
 var is_P1_Action1 = 0.0 # 0 is false
@@ -28,6 +32,7 @@ var original_Knife_Scale : Vector2
 var knife_Shrink_Percent = 0.95
 var knife_Shirnk_Time = 0.6 # Total Time /2 for going down then back up
 var cut_Scores = []
+var current_Score = 0
 var DISTANCE_THRESHOLD = 40
 var DISTANCE_CUTOFF = 5
 var ANGLE_THRESHOLD = 0.2
@@ -36,9 +41,9 @@ var ANGLE_CUTOFF = 0.05
 # Cutting Line Variables
 var Cutting_Line_Sprite = preload("res://scenes/Minigames/Cutting_Minigame/Cutting_Line.tscn")
 var Cut_Line_Nodes = Array()
-var MIN_CUTTING_ZONE = 160 # Arbitrary
-var MAX_CUTTING_ZONE = 610 # Arbitrary
-var BASE_CUTTING_ZONE = 450
+var MIN_CUTTING_ZONE = 160.0 # Arbitrary
+var MAX_CUTTING_ZONE = 610.0 # Arbitrary
+var BASE_CUTTING_ZONE = 450.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -183,7 +188,6 @@ func Cut_Knife():
 	tween.tween_property(knife, "scale", original_Knife_Scale * knife_Shrink_Percent, knife_Shirnk_Time/2)
 	tween.tween_property(knife, "scale", original_Knife_Scale, knife_Shirnk_Time/2).finished.connect(set.bind("is_Cutting", false))
 	
-	var closest_Line
 	var distance_Diff = 0
 	var angle_Diff = 0
 	var index = 0
@@ -232,7 +236,9 @@ func Update_Score_Text():
 	total = round(total)
 	total /= 100
 	
-	score_Text.text = ("[right]Score " + str(total) + "%[/right]   ")
+	current_Score = total
+	
+	score_Text.text = ("[right]Score " + str(current_Score) + "%[/right]   ")
 
 func Update_Timmer(delta):
 	current_Time += delta
@@ -264,5 +270,7 @@ func End_Minigame():
 	is_Game_Started = false
 	start_Timmer.modulate = Color(0, 0, 0, 1)
 	
-	start_Timmer.text = "[center]Done![/center]" 
-	print("Game Finished")
+	start_Timmer.text = "[font_size=100][center]Your score is " + str(current_Score) + "%[/center]" 
+	
+	emit_signal("Minigame_Finished", current_Score)
+
