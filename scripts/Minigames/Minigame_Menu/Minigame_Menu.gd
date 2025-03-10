@@ -15,7 +15,7 @@ var current_scores = []
 var current_Minigame
 var current_Minigame_num = 0
 var Minigame_0 = preload("res://scenes/Minigames/Cutting_Minigame/Cutting_Minigame.tscn")
-var Minigame_1 = preload("res://scenes/Minigames/Cutting_Minigame/Cutting_Minigame.tscn")
+var Minigame_1 = preload("res://scenes/Minigames/Cutting_Minigame/Cutting_Minigame_Lettuce_Placeholder.tscn")
 var Minigame_2 = preload("res://scenes/Minigames/Mixing_Bowl_Minigame/Mixing_Bowl_Minigame.tscn")
 var is_Minigame_Started = false
 
@@ -81,8 +81,6 @@ func Select_Minigame(number):
 			current_Minigame = Minigame_2.instantiate()
 
 func Start_Minigame():
-	p1_State = false
-	p2_State = false
 	is_Minigame_Started = true
 	
 	var tween = create_tween()
@@ -91,6 +89,9 @@ func Start_Minigame():
 	tween.tween_property(transition, "color", Color(0,0,0,0), tansition_Time / 2)
 	
 	await get_tree().create_timer(tansition_Time).timeout
+
+	Toggle_P1_Ready()
+	Toggle_P2_Ready()
 	
 	current_Minigame.transition = transition
 	current_Minigame.connect("Minigame_Finished", Minigame_Finished)
@@ -101,20 +102,17 @@ func Minigame_Finished(score):
 	steps.get_child(current_Minigame_num).get_child(0).text = "[font_size=14]Score:    " + str(score) + "%" #TODO: Make this better and cleaner
 	steps.get_child(current_Minigame_num).get_child(0).visible = true #TODO: Make this better and cleaner
 	
-	
 	var tween = create_tween()
 	
 	tween.tween_property(transition, "color", Color(0,0,0,1), tansition_Time)
+	tween.tween_property(transition, "color", Color(0,0,0,0), tansition_Time / 2)
 	await get_tree().create_timer(tansition_Time).timeout
 	
 	current_Minigame.queue_free()
 	
+	is_Minigame_Started = false
 	current_Minigame_num += 1
 	
 	Update_Current_Minigame(current_Minigame_num)
 	Select_Minigame(current_Minigame_num)
-	
-	tween.tween_property(transition, "color", Color(0,0,0,0), tansition_Time / 2)
-
-	await get_tree().create_timer(tansition_Time).timeout
 	

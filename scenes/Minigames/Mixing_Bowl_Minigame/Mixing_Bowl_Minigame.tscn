@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnvuomishuc75"]
+[gd_scene load_steps=7 format=3 uid="uid://bnvuomishuc75"]
 
+[ext_resource type="Script" path="res://scripts/Minigames/Mixing_Bowl_Minigame/Mixing_Bowl_Minigame.gd" id="1_s43et"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="1_w3n65"]
+[ext_resource type="Texture2D" uid="uid://cvffwabybj7qd" path="res://assets/Minigame_Assets/Timer/Layer_0.png" id="2_afayr"]
+[ext_resource type="Texture2D" uid="uid://cp0y8oqypptqt" path="res://assets/Minigame_Assets/Timer/Layer_3.png" id="3_ikq7u"]
+[ext_resource type="Texture2D" uid="uid://drhqdpctovfub" path="res://assets/Minigame_Assets/Timer/Layer_1.png" id="4_rcj06"]
+[ext_resource type="Texture2D" uid="uid://c0r8ue83qn0gh" path="res://assets/Minigame_Assets/Timer/Layer_2.png" id="5_738mh"]
 
 [node name="MixingBowlMinigame" type="Node2D"]
+script = ExtResource("1_s43et")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -17,6 +23,61 @@ bbcode_enabled = true
 text = "[right]score[/right]   "
 scroll_active = false
 metadata/_edit_use_anchors_ = true
+
+[node name="Start_Timmer" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -82.5
+offset_bottom = 82.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]3[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Game_Timmer" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -212.5
+offset_top = -190.0
+offset_right = 207.5
+offset_bottom = 184.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+max_value = 30.0
+step = 0.0
+fill_mode = 4
+texture_under = ExtResource("2_afayr")
+texture_over = ExtResource("3_ikq7u")
+texture_progress = ExtResource("4_rcj06")
+radial_initial_angle = 1.0
+
+[node name="Current_Timmer" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.5
+offset_top = -276.0
+offset_right = 99.5
+offset_bottom = 98.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 4.0544
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(215, 172)
+texture = ExtResource("5_738mh")
+expand_mode = 1
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(450, 299.5)

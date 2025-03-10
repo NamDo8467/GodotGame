@@ -16,7 +16,7 @@ var BASE_POSITION = Vector2(40,300)
 var timmer_Tween : Tween
 var is_Game_Started = false
 var current_Time = 0.0
-var minigame_Time = 10.0
+var minigame_Time = 15.0
 var transition : ColorRect
 var tansition_Time = 2.0
 
@@ -204,12 +204,10 @@ func Cut_Knife():
 			if angle_Diff < ANGLE_THRESHOLD:
 				Cut_Line_Nodes[index].hide()
 				Calculate_Score(index, distance_Diff, angle_Diff)
+				Update_Score_Text()
 				break
 			
 		index += 1
-		
-	
-	Update_Score_Text()
 
 func Calculate_Score(index, distance, angle):
 	var distance_Score = 50  
