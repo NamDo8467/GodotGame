@@ -9,8 +9,7 @@ func _on_body_entered(body):
 		timer.start()
 
 func _on_timer_timeout():
-	player.queue_free()
-		
+	player.queue_free()		
 
 
 
