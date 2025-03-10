@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://yv2vf83msywe"]
+[gd_scene load_steps=3 format=3 uid="uid://yv2vf83msywe"]
 
 [ext_resource type="Texture2D" uid="uid://c8k2jnrmn6dul" path="res://assets/Minigame_Assets/Menu/Menu_Background.png" id="1_mxljc"]
+[ext_resource type="Texture2D" uid="uid://cs6p3vbm5rgtu" path="res://assets/Minigame_Assets/Menu/Menu_Foreground.png" id="2_lh1hw"]
 
 [node name="MinigameMenu" type="Control"]
 layout_mode = 3
@@ -19,3 +20,28 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_mxljc")
 expand_mode = 1
+
+[node name="Forground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lh1hw")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Forground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26
+anchor_top = 0.397
+anchor_right = 0.706
+anchor_bottom = 1.0
+offset_left = -1.52588e-05
+offset_top = -0.200012
+offset_right = -0.400024
+
+[node name="Button" type="Button" parent="Forground/VBoxContainer"]
+layout_mode = 2
+alignment = 0

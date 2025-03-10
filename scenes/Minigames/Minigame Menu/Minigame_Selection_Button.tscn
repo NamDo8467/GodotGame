@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://nbk36xcy0uq8"]
+
+[ext_resource type="Script" path="res://scenes/Minigames/Minigame Menu/Minigame_Selection_Button.gd" id="1_pr0g5"]
+
+[node name="Minigame_Selection_Button" type="Button"]
+offset_right = 768.0
+offset_bottom = 192.0
+flat = true
+script = ExtResource("1_pr0g5")
+
+[node name="Step_Name" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -157.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[u]Step Name[/u]
+"
+scroll_active = false
+
+[node name="Step_Descritpion" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 35.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Step Descritpion
+hello"
+
+[node name="Step_Controls" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 83.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Step Controls
+Move with L stick
+"
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
