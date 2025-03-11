@@ -36,8 +36,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -291.0
-offset_bottom = -126.0
+offset_top = -82.5
+offset_bottom = 82.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 120
@@ -95,7 +95,6 @@ offset_right = 690.0
 offset_bottom = 95.0
 grow_vertical = 0
 scale = Vector2(1, 0.4)
-step = 0.0
 texture_under = ExtResource("6_7ifni")
 texture_over = ExtResource("7_tpea6")
 texture_progress = ExtResource("8_i5ljf")
@@ -115,10 +114,10 @@ position = Vector2(499, 573)
 scale = Vector2(0.462037, 0.4)
 texture = ExtResource("11_fidi3")
 
-[node name="Player_1_Bowl" type="Node2D" parent="Bowl"]
+[node name="Player_1_X_Position" type="Node2D" parent="Bowl"]
 position = Vector2(-580.8, -226.8)
 
-[node name="Player_2_Bowl" type="Node2D" parent="Bowl"]
+[node name="Player_2_X_Position" type="Node2D" parent="Bowl"]
 position = Vector2(609.6, -248.4)
 
 [node name="Player_1" type="Sprite2D" parent="."]

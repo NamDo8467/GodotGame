@@ -10,7 +10,7 @@ signal Minigame_Finished(score)
 @onready var game_Timmer = $CanvasLayer/Game_Timmer
 @onready var current_Timmer = $CanvasLayer/Current_Timmer
 
-var BASE_POSITION = Vector2(40,300)
+var BASE_POSITION = Vector2(50,448.5)
 
 # Timmer Variables
 var timmer_Tween : Tween
@@ -53,10 +53,6 @@ func _ready():
 	Start_Timmer()
 	
 	Create_CutLines()
-	
-	knife.position = BASE_POSITION
-	p1.position = Vector2(BASE_POSITION.x, 64)
-	p2.position = Vector2(BASE_POSITION.x, 536)
 	
 	original_Knife_Scale = knife.scale
 
