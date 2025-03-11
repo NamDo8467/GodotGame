@@ -40,7 +40,7 @@ func _process(delta):
 		return
 	
 	if Input.is_action_just_released("go_to_minigames"):
-		current_scores = [85, 85, 85]
+		current_scores = [85.23, 85.21, 85.48]
 		End_Minigames_Mode()
 	
 	Ready_Buttons()
@@ -105,7 +105,7 @@ func Start_Minigame():
 
 func Minigame_Finished(score):
 	current_scores.append(score)
-	Global.append_score_from_minigame(score)
+	
 	steps.get_child(current_Minigame_num).get_child(0).text = "[font_size=14]Score:    " + str(score) + "%" #TODO: Make this better and cleaner
 	steps.get_child(current_Minigame_num).get_child(0).visible = true #TODO: Make this better and cleaner
 	
@@ -136,6 +136,8 @@ func End_Minigames_Mode():
 		total += score
 	
 	total /= current_scores.size()
+	
+	Global.score_from_minigames = total
 	
 	SceneTransitionAnimation.change_scene()
 	await SceneTransitionAnimation.animation_player.animation_finished

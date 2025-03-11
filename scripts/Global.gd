@@ -6,7 +6,7 @@ var score = 0
 # Load level from a file
 var level = 1
 
-var scores_from_minigames = []
+var score_from_minigames = 0.0
 
 # Map of each food's ingredient
 var food = {
@@ -47,5 +47,3 @@ func transition_to_serving():
 	await SceneTransitionAnimation.animation_player.animation_finished
 	get_tree().change_scene_to_file("res://scenes/serving.tscn")
 	
-func append_score_from_minigame(score):
-	scores_from_minigames.append(score)
