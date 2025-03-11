@@ -114,10 +114,10 @@ position = Vector2(499, 573)
 scale = Vector2(0.462037, 0.4)
 texture = ExtResource("11_fidi3")
 
-[node name="Player_1_Bowl" type="Node2D" parent="Bowl"]
+[node name="Player_1_X_Position" type="Node2D" parent="Bowl"]
 position = Vector2(-580.8, -226.8)
 
-[node name="Player_2_Bowl" type="Node2D" parent="Bowl"]
+[node name="Player_2_X_Position" type="Node2D" parent="Bowl"]
 position = Vector2(609.6, -248.4)
 
 [node name="Player_1" type="Sprite2D" parent="."]
