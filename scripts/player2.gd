@@ -25,9 +25,14 @@ func _physics_process(delta):
 	# Flip the player to the direction it is going
 	if direction > 0:
 		player_sprite.flip_h = false
-	elif direction <0:
+		if current_weapon_index != -1:
+			weapon_list[current_weapon_index].position = Vector2(-43, -34)
+		#print("yes")
+	elif direction < 0:
+		if current_weapon_index != -1:
+			weapon_list[current_weapon_index].position = Vector2(-52, -34)
 		player_sprite.flip_h = true
-		
+		#print("No")
 	
 	# Play animations
 	if is_on_floor():
@@ -46,7 +51,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	# Handle choosing weapon
-	if Input.is_action_pressed("choose_weapon_c"):
+	if Input.is_action_just_pressed("choose_weapon_c"):
 		if len(weapon_list) > 0:
 			if current_weapon_index + 1 >= len(weapon_list):
 				remove_child(weapon_list[current_weapon_index])
@@ -54,7 +59,13 @@ func _physics_process(delta):
 			else:
 				current_weapon_index = current_weapon_index + 1
 				var new_weapon = weapon_list[current_weapon_index]
-				new_weapon.position = Vector2(-38,-34)
+				# -52, -43
+				new_weapon.position = Vector2(-43, -34)
+				if direction > 0:
+					new_weapon.position = Vector2(-43, -34)
+				elif direction < 0:
+					new_weapon.position = Vector2(-52, -34)
+		
 				add_child(new_weapon)
 		
 func add_to_weapon_list(weapon):
