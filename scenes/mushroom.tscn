@@ -190,7 +190,7 @@ animations = [{
 height = 26.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h03gj"]
-size = Vector2(11, 2)
+size = Vector2(17, 2)
 
 [node name="Mushroom" type="Node2D"]
 script = ExtResource("1_ohlfh")
