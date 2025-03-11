@@ -100,6 +100,7 @@ scale = Vector2(0.45, 0.45)
 texture = ExtResource("4_66wye")
 
 [node name="Knife" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(40, 300)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_t4sjx")
