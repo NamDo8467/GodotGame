@@ -113,6 +113,20 @@ func Minigame_Finished(score):
 	is_Minigame_Started = false
 	current_Minigame_num += 1
 	
+	if current_Minigame_num == 3:
+		End_Minigames_Mode()
+		return
+	
 	Update_Current_Minigame(current_Minigame_num)
 	Select_Minigame(current_Minigame_num)
 	
+
+func End_Minigames_Mode():
+	var total = 0
+	for score in current_scores:
+		total += score
+	
+	total /= current_scores.size()
+	
+	print("Your final score was: " + str(total))
+	return
