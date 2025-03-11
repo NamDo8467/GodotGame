@@ -44,6 +44,8 @@ func _process(delta):
 	if p1_State && p2_State:
 		Select_Minigame(current_Minigame_num)
 		Start_Minigame()
+	if Input.is_action_just_released("go_to_serving"):
+		Global.transition_to_serving()
 
 func Ready_Buttons():
 	if Input.is_action_just_pressed("P1_Minigame_Action_1"):
@@ -99,6 +101,7 @@ func Start_Minigame():
 
 func Minigame_Finished(score):
 	current_scores.append(score)
+	Global.append_score_from_minigame(score)
 	steps.get_child(current_Minigame_num).get_child(0).text = "[font_size=14]Score:    " + str(score) + "%" #TODO: Make this better and cleaner
 	steps.get_child(current_Minigame_num).get_child(0).visible = true #TODO: Make this better and cleaner
 	
