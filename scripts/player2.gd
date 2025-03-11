@@ -1,0 +1,65 @@
+extends CharacterBody2D
+
+const SPEED = 250.0
+const JUMP_VELOCITY = -380.0
+var weapon_list = []
+var current_weapon_index = -1
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var player_sprite = $AnimatedSprite2D
+
+var starting_position = Vector2(787, 888)
+
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed("jump_c") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	
+	# direction = -1, 0, 1
+	var direction = Input.get_axis("move_left_c", "move_right_c")
+
+	# Flip the player to the direction it is going
+	if direction > 0:
+		player_sprite.flip_h = false
+	elif direction <0:
+		player_sprite.flip_h = true
+		
+	
+	# Play animations
+	if is_on_floor():
+		if direction == 0:
+			player_sprite.play("idle")
+		elif direction == -1 or direction == 1:
+			player_sprite.play("run")
+	else:
+		player_sprite.play("jump")
+		
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	move_and_slide()
+	
+	# Handle choosing weapon
+	if Input.is_action_pressed("choose_weapon_c"):
+		if len(weapon_list) > 0:
+			if current_weapon_index + 1 >= len(weapon_list):
+				remove_child(weapon_list[current_weapon_index])
+				current_weapon_index = -1
+			else:
+				current_weapon_index = current_weapon_index + 1
+				var new_weapon = weapon_list[current_weapon_index]
+				new_weapon.position = Vector2(-38,-34)
+				add_child(new_weapon)
+		
+func add_to_weapon_list(weapon):
+	weapon_list.append(weapon)
+	
+
+
+

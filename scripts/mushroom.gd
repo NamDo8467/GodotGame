@@ -1,0 +1,25 @@
+extends Node2D
+
+const SPEED = 65
+@onready var ray_cast_right = $RayCastRight
+@onready var ray_cast_left = $RayCastLeft
+@onready var mushroom = $AnimatedSprite2D
+@onready var kill_zone = $KillZone
+
+var direction = -1 # currently going to the left
+
+#func _ready():
+	#mushroom.flip_h = true
+#
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+	#pass
+	#if ray_cast_right.is_colliding() or position.x >= 550:
+		#direction = -1
+		#mushroom.flip_h = false
+	#elif ray_cast_left.is_colliding() or position.x <= 100:
+		#direction = 1
+		#mushroom.flip_h = true
+	#
+	#position.x += direction * SPEED * delta
+
