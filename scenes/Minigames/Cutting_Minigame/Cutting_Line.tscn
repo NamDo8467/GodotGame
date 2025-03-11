@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b20xu64mjgjnq"]
+
+[ext_resource type="Texture2D" uid="uid://ft677ca7mddi" path="res://assets/Minigame_Assets/Cutting_Minigame/Dotted_Line.png" id="1_selkt"]
+
+[node name="Cutting_Line" type="Sprite2D"]
+position = Vector2(40, 300)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_selkt")
