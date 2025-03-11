@@ -6,6 +6,8 @@ var score = 0
 # Load level from a file
 var level = 1
 
+var scores_from_minigames = []
+
 # Map of each food's ingredient
 var food = {
 	"pasta": ["tomato", "dough", "cheese", "mushroom"],
@@ -19,7 +21,7 @@ var current_food = "pasta"
 var current_ingredient_list = []
 
 # Current possesing weapon
-var current_weapon = null
+var current_weapon_list = []
 
 # Spawning position
 var spawning_position_y = 927
@@ -31,3 +33,19 @@ func reset_score():
 	# Load score from a file
 	score = 0
 	
+func reset_apartment_scene():
+	score = 0
+	spawning_position_y = 927
+
+func transition_to_minigames():
+	SceneTransitionAnimation.change_scene()
+	await SceneTransitionAnimation.animation_player.animation_finished
+	get_tree().change_scene_to_file("res://scenes/Minigames/Minigame_Menu/Minigame_Menu.tscn")
+
+func transition_to_serving():
+	SceneTransitionAnimation.change_scene()
+	await SceneTransitionAnimation.animation_player.animation_finished
+	get_tree().change_scene_to_file("res://scenes/serving.tscn")
+	
+func append_score_from_minigame(score):
+	scores_from_minigames.append(score)
