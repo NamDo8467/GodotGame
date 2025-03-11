@@ -42,10 +42,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vja87"]
-size = Vector2(24, 41.25)
+size = Vector2(26, 41.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72y5j"]
-size = Vector2(30, 3)
+size = Vector2(27, 2)
 
 [node name="CabbageMonster" type="Node2D"]
 position = Vector2(-3, 2)
@@ -61,11 +61,15 @@ frame_progress = 0.0165479
 [node name="KillZone" parent="." instance=ExtResource("2_tgyog")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(21, -23.375)
+position = Vector2(19, -24)
 shape = SubResource("RectangleShape2D_vja87")
 
 [node name="HitZone" parent="." instance=ExtResource("3_xkpqw")]
+position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
-position = Vector2(18, -47.5)
+position = Vector2(20, -47)
 shape = SubResource("RectangleShape2D_72y5j")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
