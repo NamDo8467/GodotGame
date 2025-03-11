@@ -38,7 +38,11 @@ func Update_Current_Minigame(number):
 func _process(delta):
 	if is_Minigame_Started:
 		return
-
+	
+	if Input.is_action_just_released("go_to_minigames"):
+		current_scores = [85, 85, 85]
+		End_Minigames_Mode()
+	
 	Ready_Buttons()
 	
 	if p1_State && p2_State:
@@ -108,6 +112,11 @@ func Minigame_Finished(score):
 	var tween = create_tween()
 	
 	tween.tween_property(transition, "color", Color(0,0,0,1), tansition_Time)
+	
+	if current_Minigame_num == 2:
+		End_Minigames_Mode()
+		return
+	
 	tween.tween_property(transition, "color", Color(0,0,0,0), tansition_Time / 2)
 	await get_tree().create_timer(tansition_Time).timeout
 	
@@ -116,9 +125,6 @@ func Minigame_Finished(score):
 	is_Minigame_Started = false
 	current_Minigame_num += 1
 	
-	if current_Minigame_num == 3:
-		End_Minigames_Mode()
-		return
 	
 	Update_Current_Minigame(current_Minigame_num)
 	Select_Minigame(current_Minigame_num)
@@ -131,5 +137,6 @@ func End_Minigames_Mode():
 	
 	total /= current_scores.size()
 	
-	print("Your final score was: " + str(total))
-	return
+	SceneTransitionAnimation.change_scene()
+	await SceneTransitionAnimation.animation_player.animation_finished
+	get_tree().change_scene_to_file("res://scenes/serving.tscn")
