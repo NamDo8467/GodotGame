@@ -81,3 +81,23 @@ offset_bottom = 472.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ombf6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0y01k")
 script = ExtResource("4_u1kph")
+
+[node name="Thank_You_Text" type="RichTextLabel" parent="ProgressBar"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.5
+offset_top = -114.5
+offset_right = 495.5
+offset_bottom = -45.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=50][wave][center]Thanks for Playing!"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
