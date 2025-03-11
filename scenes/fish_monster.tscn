@@ -1,0 +1,99 @@
+[gd_scene load_steps=16 format=3 uid="uid://bwbiqfumj6y40"]
+
+[ext_resource type="Script" path="res://scripts/fish_monster.gd" id="1_f88be"]
+[ext_resource type="Texture2D" uid="uid://bbvwbh3kmriaq" path="res://assets/Food/fish_monster.png" id="1_si1p8"]
+[ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="2_r6u83"]
+[ext_resource type="PackedScene" uid="uid://cfufk2wgddhdb" path="res://scenes/hit_zone.tscn" id="3_aj3no"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0yqo"]
+atlas = ExtResource("1_si1p8")
+region = Rect2(240, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqk5m"]
+atlas = ExtResource("1_si1p8")
+region = Rect2(480, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_384jw"]
+atlas = ExtResource("1_si1p8")
+region = Rect2(720, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm0yc"]
+atlas = ExtResource("1_si1p8")
+region = Rect2(960, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vprml"]
+atlas = ExtResource("1_si1p8")
+region = Rect2(1200, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyu32"]
+atlas = ExtResource("1_si1p8")
+region = Rect2(1440, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2k5h"]
+atlas = ExtResource("1_si1p8")
+region = Rect2(1680, 0, 240, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbl67"]
+atlas = ExtResource("1_si1p8")
+region = Rect2(0, 0, 240, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ygk6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0yqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqk5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_384jw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bm0yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vprml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyu32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2k5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbl67")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_26deo"]
+radius = 13.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvejh"]
+size = Vector2(12.25, 3.5)
+
+[node name="FishMonster" type="Node2D"]
+script = ExtResource("1_f88be")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(39, 2.875)
+scale = Vector2(0.258333, 0.258333)
+sprite_frames = SubResource("SpriteFrames_ygk6w")
+autoplay = "default"
+frame = 7
+frame_progress = 0.26962
+
+[node name="KillZone" parent="." instance=ExtResource("2_r6u83")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(41, 2)
+shape = SubResource("CapsuleShape2D_26deo")
+
+[node name="HitZone" parent="." instance=ExtResource("3_aj3no")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
+position = Vector2(39, -17)
+shape = SubResource("RectangleShape2D_cvejh")

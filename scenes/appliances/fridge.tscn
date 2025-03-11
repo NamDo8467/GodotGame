@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://daaj22ddieg52"]
+
+[ext_resource type="Script" path="res://scripts/fridge.gd" id="1_edovd"]
+[ext_resource type="Texture2D" uid="uid://wp318agbg4cj" path="res://assets/Appliances/House-kitchen-Sheet2.png" id="1_wh22j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe2d5"]
+atlas = ExtResource("1_wh22j")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p1c2"]
+atlas = ExtResource("1_wh22j")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvsx2"]
+atlas = ExtResource("1_wh22j")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euhv0"]
+atlas = ExtResource("1_wh22j")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgo72"]
+atlas = ExtResource("1_wh22j")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_273dv"]
+atlas = ExtResource("1_wh22j")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmr4k"]
+atlas = ExtResource("1_wh22j")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkvoq"]
+atlas = ExtResource("1_wh22j")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b1i7o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe2d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p1c2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvsx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euhv0")
+}],
+"loop": false,
+"name": &"close",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgo72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_273dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmr4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkvoq")
+}],
+"loop": false,
+"name": &"open",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_af8mt"]
+radius = 28.0
+height = 96.0
+
+[node name="Fridge" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_edovd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(50.5, -51.375)
+scale = Vector2(3.21875, 3.57639)
+sprite_frames = SubResource("SpriteFrames_b1i7o")
+animation = &"close"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(33, -57)
+shape = SubResource("CapsuleShape2D_af8mt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
