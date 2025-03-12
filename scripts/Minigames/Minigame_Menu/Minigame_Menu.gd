@@ -38,12 +38,18 @@ func Update_Current_Minigame(number):
 func _process(delta):
 	if is_Minigame_Started:
 		return
-
+	
+	if Input.is_action_just_released("go_to_minigames"):
+		current_scores = [85.23, 85.21, 85.48]
+		End_Minigames_Mode()
+	
 	Ready_Buttons()
 	
 	if p1_State && p2_State:
 		Select_Minigame(current_Minigame_num)
 		Start_Minigame()
+	if Input.is_action_just_released("go_to_serving"):
+		Global.transition_to_serving()
 
 func Ready_Buttons():
 	if Input.is_action_just_pressed("P1_Minigame_Action_1"):
@@ -99,12 +105,18 @@ func Start_Minigame():
 
 func Minigame_Finished(score):
 	current_scores.append(score)
+	
 	steps.get_child(current_Minigame_num).get_child(0).text = "[font_size=14]Score:    " + str(score) + "%" #TODO: Make this better and cleaner
 	steps.get_child(current_Minigame_num).get_child(0).visible = true #TODO: Make this better and cleaner
 	
 	var tween = create_tween()
 	
 	tween.tween_property(transition, "color", Color(0,0,0,1), tansition_Time)
+	
+	if current_Minigame_num == 2:
+		End_Minigames_Mode()
+		return
+	
 	tween.tween_property(transition, "color", Color(0,0,0,0), tansition_Time / 2)
 	await get_tree().create_timer(tansition_Time).timeout
 	
@@ -113,6 +125,20 @@ func Minigame_Finished(score):
 	is_Minigame_Started = false
 	current_Minigame_num += 1
 	
+	
 	Update_Current_Minigame(current_Minigame_num)
 	Select_Minigame(current_Minigame_num)
 	
+
+func End_Minigames_Mode():
+	var total = 0
+	for score in current_scores:
+		total += score
+	
+	total /= current_scores.size()
+	
+	Global.score_from_minigames = total
+	
+	SceneTransitionAnimation.change_scene()
+	await SceneTransitionAnimation.animation_player.animation_finished
+	get_tree().change_scene_to_file("res://scenes/serving.tscn")

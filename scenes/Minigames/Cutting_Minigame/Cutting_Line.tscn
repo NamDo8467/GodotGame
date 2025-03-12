@@ -3,6 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://ft677ca7mddi" path="res://assets/Minigame_Assets/Cutting_Minigame/Dotted_Line.png" id="1_selkt"]
 
 [node name="Cutting_Line" type="Sprite2D"]
-position = Vector2(40, 300)
-scale = Vector2(0.3, 0.3)
+position = Vector2(50, 448.5)
+scale = Vector2(0.516, 0.516)
 texture = ExtResource("1_selkt")

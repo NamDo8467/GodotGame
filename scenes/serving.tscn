@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwg8axy0gsdtb"]
+[gd_scene load_steps=11 format=3 uid="uid://cujkjkimixppt"]
 
 [ext_resource type="Script" path="res://scripts/serving.gd" id="1_21v1n"]
 [ext_resource type="Texture2D" uid="uid://bm85pt8pebpmk" path="res://assets/serving_image.png" id="1_d0g74"]
-[ext_resource type="AudioStream" uid="uid://1jwlj53m33bk" path="res://assets/cat_evil_laugh.mp3" id="3_t3qb3"]
+[ext_resource type="AudioStream" uid="uid://cyl7u8esv21tt" path="res://assets/cat_evil_laugh.wav" id="3_h6dbk"]
+[ext_resource type="Script" path="res://scripts/score_bar.gd" id="4_u1kph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hrmv"]
 atlas = ExtResource("1_d0g74")
@@ -40,6 +41,19 @@ _data = {
 "fade_in": SubResource("Animation_0ex06")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ombf6"]
+bg_color = Color(1, 0.6, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y01k"]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [node name="Serving" type="Node2D"]
 script = ExtResource("1_21v1n")
 
@@ -55,5 +69,35 @@ libraries = {
 autoplay = "fade_in"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_t3qb3")
+position = Vector2(6.10352e-05, 0)
+stream = ExtResource("3_h6dbk")
 autoplay = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 223.0
+offset_top = 445.0
+offset_right = 786.0
+offset_bottom = 472.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ombf6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0y01k")
+script = ExtResource("4_u1kph")
+
+[node name="Thank_You_Text" type="RichTextLabel" parent="ProgressBar"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.5
+offset_top = -114.5
+offset_right = 495.5
+offset_bottom = -45.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=50][wave][center]Thanks for Playing!"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
