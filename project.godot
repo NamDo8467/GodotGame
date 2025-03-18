@@ -22,7 +22,7 @@ SceneTransitionAnimation="*res://scenes/scene_transition_animation.tscn"
 
 [display]
 
-window/size/viewport_width=1000
+window/size/viewport_width=1600
 window/size/viewport_height=900
 window/stretch/mode="viewport"
 
