@@ -521,7 +521,7 @@ position = Vector2(123, 712)
 position = Vector2(303, 712)
 
 [node name="Elevator" parent="." instance=ExtResource("8_j1x5n")]
-position = Vector2(-270, 2)
+position = Vector2(-219, 781)
 
 [node name="FireSpawner" parent="." instance=ExtResource("9_py4ni")]
 position = Vector2(45, 423)
