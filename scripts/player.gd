@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 250.0
-const JUMP_VELOCITY = -380.0
+const SPEED = 320.0
+const JUMP_VELOCITY = -550.0
 var weapon_list = []
 var current_weapon_index = -1
 
