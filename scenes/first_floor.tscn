@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c0ptlvl7i4gn8"]
 
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_aae8v"]
-[ext_resource type="Script" path="res://scenes/first_floor_camera.gd" id="1_tg14u"]
+[ext_resource type="Script" path="res://scripts/first_floor_camera.gd" id="1_tg14u"]
 [ext_resource type="PackedScene" uid="uid://br8nu8mu2ikc5" path="res://scenes/elevator.tscn" id="2_su16i"]
 [ext_resource type="PackedScene" uid="uid://nk47flta8bsj" path="res://scenes/player_spawner.tscn" id="3_yhggt"]
 [ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="4_edaoc"]
