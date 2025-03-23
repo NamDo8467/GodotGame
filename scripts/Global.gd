@@ -24,7 +24,7 @@ var current_ingredient_list = []
 var current_weapon_list = []
 
 # Spawning position
-var spawning_position_y = 927
+var spawning_position_y = 863
 
 func add_score():
 	score += 1
