@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_twcpy"]
-size = Vector2(100.5, 11.5)
+size = Vector2(618, 43.875)
 
 [node name="Elevator" type="AnimatableBody2D"]
 position = Vector2(7, -3)
@@ -30,9 +30,7 @@ script = ExtResource("1_umjbg")
 position = Vector2(18.25, 96.3749)
 scale = Vector2(1.4, 1.681)
 sprite_frames = SubResource("SpriteFrames_eppgq")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, 168.125)
+position = Vector2(15, 508.938)
 shape = SubResource("RectangleShape2D_twcpy")
-metadata/_edit_group_ = true
