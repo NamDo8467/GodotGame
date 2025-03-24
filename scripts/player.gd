@@ -5,6 +5,10 @@ const JUMP_VELOCITY = -550.0
 var weapon_list = []
 var current_weapon_index = -1
 
+var trampoline_x_when_facing_left = -80
+var trampoline_x_when_facing_right = -43
+var trampoline_y = -120
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var player_sprite = $AnimatedSprite2D
@@ -30,11 +34,11 @@ func _physics_process(delta):
 	if direction > 0:
 		player_sprite.flip_h = false
 		if current_weapon_index != -1:
-			weapon_list[current_weapon_index].position = Vector2(-43, -34)
+			weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_right, trampoline_y)
 		#print("yes")
 	elif direction < 0:
 		if current_weapon_index != -1:
-			weapon_list[current_weapon_index].position = Vector2(-52, -34)
+			weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_left, trampoline_y)
 		player_sprite.flip_h = true
 		
 	
@@ -63,12 +67,11 @@ func _physics_process(delta):
 			else:
 				current_weapon_index = current_weapon_index + 1
 				var new_weapon = weapon_list[current_weapon_index]
-				# -52, -43
-				new_weapon.position = Vector2(-43, -34)
-				if direction > 0:
-					new_weapon.position = Vector2(-43, -34)
-				elif direction < 0:
-					new_weapon.position = Vector2(-52, -34)
+				#new_weapon.position = Vector2(trampoline_x_when_facing_right, trampoline_y)
+				if player_sprite.flip_h == false:
+					new_weapon.position = Vector2(trampoline_x_when_facing_right, trampoline_y)
+				elif player_sprite.flip_h == true:
+					new_weapon.position = Vector2(trampoline_x_when_facing_left, trampoline_y)
 				add_child(new_weapon)
 			
 func add_to_weapon_list(weapon):
