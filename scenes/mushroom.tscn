@@ -186,18 +186,18 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77m12"]
-height = 26.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d37mk"]
+size = Vector2(25, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h03gj"]
-size = Vector2(17, 2)
+size = Vector2(33, 10)
 
 [node name="Mushroom" type="Node2D"]
 script = ExtResource("1_ohlfh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(32.9648, -12.5019)
-scale = Vector2(0.0816071, 0.0779801)
+position = Vector2(33, -27)
+scale = Vector2(0.194729, 0.186075)
 sprite_frames = SubResource("SpriteFrames_v6bfm")
 animation = &"run"
 autoplay = "run"
@@ -206,20 +206,12 @@ frame_progress = 0.491084
 [node name="KillZone" parent="." instance=ExtResource("2_3fryb")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(34, -12)
+position = Vector2(35, -23.5)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_77m12")
-
-[node name="RayCastRight" type="RayCast2D" parent="."]
-position = Vector2(35, -11)
-target_position = Vector2(18, 0)
-
-[node name="RayCastLeft" type="RayCast2D" parent="."]
-position = Vector2(31, -11)
-target_position = Vector2(-18, 0)
+shape = SubResource("RectangleShape2D_d37mk")
 
 [node name="HitZone" parent="." instance=ExtResource("5_afnbn")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
-position = Vector2(33.5, -24)
+position = Vector2(34.5, -51)
 shape = SubResource("RectangleShape2D_h03gj")
