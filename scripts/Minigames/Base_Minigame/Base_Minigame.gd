@@ -17,11 +17,12 @@ var current_Score = 0.0
 var timmer_Tween : Tween
 var is_Game_Started = false
 var current_Time = 0.0
-var minigame_Time = 15.0
+var minigame_Time
+
+# Transition Variables
 var transition : ColorRect
 var tansition_Time = 2.0
 
-# Player Variables
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
