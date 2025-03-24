@@ -11,6 +11,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super(delta)
+	
+	# Minigame Gameplay Here
+	
 
 func Calculate_Score():
 	return current_Score
