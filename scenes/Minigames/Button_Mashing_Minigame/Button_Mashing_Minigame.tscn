@@ -113,12 +113,15 @@ scale = Vector2(4, 4)
 texture = ExtResource("7_ng816")
 
 [node name="Player_1_Press_A" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
 z_index = 2
 position = Vector2(400, 300)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_5hg80")
 
 [node name="Player_1_Press_B" type="Sprite2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(400, 300)
 scale = Vector2(0.5, 0.5)
@@ -131,12 +134,15 @@ scale = Vector2(4, 4)
 texture = ExtResource("8_sxmj7")
 
 [node name="Player_2_Press_A" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
 z_index = 2
 position = Vector2(1200, 300)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_5hg80")
 
 [node name="Player_2_Press_B" type="Sprite2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(1200, 300)
 scale = Vector2(0.5, 0.5)
