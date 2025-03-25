@@ -87,22 +87,24 @@ texture = ExtResource("5_usph1")
 expand_mode = 1
 
 [node name="Progress_Bar" type="TextureProgressBar" parent="CanvasLayer"]
-anchors_preset = 2
+anchors_preset = 12
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -100.0
-offset_right = 1352.0
-offset_bottom = 148.0
+offset_right = -300.0
+grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(1, 0.4)
+max_value = 180.0
 step = 0.0
+value = 175.0
 nine_patch_stretch = true
 texture_under = ExtResource("6_7qjvb")
 texture_over = ExtResource("7_bhr4f")
 texture_progress = ExtResource("8_wlvk5")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(799, 448.5)
+position = Vector2(800, 448)
 scale = Vector2(24.9688, 14.0156)
 texture = ExtResource("6_xfddt")
 

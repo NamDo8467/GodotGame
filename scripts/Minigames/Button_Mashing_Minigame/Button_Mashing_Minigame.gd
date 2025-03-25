@@ -17,6 +17,8 @@ var p2_Switch_Chance = 99
 
 # Game Variables
 var rng = RandomNumberGenerator.new()
+var points_Gained = 2
+var points_Lost = -3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,34 +49,34 @@ func P1_Button_Check():
 	if Input.is_action_just_pressed("P1_Minigame_Action_1"):
 		match p1_Button_To_Press:
 			player_Buttons.A1:
-				Calculate_Score(2)
+				Calculate_Score(points_Gained)
 				Set_P1_Buttons_To_Press()
 			player_Buttons.A2:
-				Calculate_Score(-1)
+				Calculate_Score(points_Lost)
 	
 	if Input.is_action_just_pressed("P1_Minigame_Action_2"):
 		match p1_Button_To_Press:
 			player_Buttons.A1:
-				Calculate_Score(-1)
+				Calculate_Score(points_Lost)
 			player_Buttons.A2:
-				Calculate_Score(2)
+				Calculate_Score(points_Gained)
 				Set_P1_Buttons_To_Press()
 
 func P2_Button_Check():
 	if Input.is_action_just_pressed("P2_Minigame_Action_1"):
 		match p2_Button_To_Press:
 			player_Buttons.A1:
-				Calculate_Score(2)
+				Calculate_Score(points_Gained)
 				Set_P2_Buttons_To_Press()
 			player_Buttons.A2:
-				Calculate_Score(-1)
+				Calculate_Score(points_Lost)
 	
 	if Input.is_action_just_pressed("P2_Minigame_Action_2"):
 		match p2_Button_To_Press:
 			player_Buttons.A1:
-				Calculate_Score(-1)
+				Calculate_Score(points_Lost)
 			player_Buttons.A2:
-				Calculate_Score(2)
+				Calculate_Score(points_Gained)
 				Set_P2_Buttons_To_Press()
 
 func Set_P1_Buttons_To_Press():
@@ -94,6 +96,8 @@ func Set_P1_Buttons_To_Press():
 	else:
 		p1_Switch_Chance += 5
 		print(p1_Switch_Chance)
+	
+	Update_Button_To_Press_Display()
 
 func Set_P2_Buttons_To_Press():
 	rng.randomize()
@@ -136,11 +140,8 @@ func Calculate_Score(score):
 	current_Score = progress_Bar.value
 	
 	score_Text.text = ("[right]Score " + str(current_Score) + "%[/right]   ")
-	
-	if current_Score >= progress_Bar.max_value:
-		End_Minigame()
 
 func Game_Finished_Check():
-	
-	super()
+	if current_Score >= progress_Bar.max_value:
+		End_Minigame()
 
