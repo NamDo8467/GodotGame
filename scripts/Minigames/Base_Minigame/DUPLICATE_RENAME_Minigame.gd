@@ -10,13 +10,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !is_Game_Started:
+		return
+	
+	
+	
 	super(delta)
 
 func Calculate_Score():
-	return current_Score
+	pass
 
 func Game_Finished_Check():
-	print("Here")
+	pass
 	
 	super()
 

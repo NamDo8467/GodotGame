@@ -27,18 +27,15 @@ var tansition_Time = 2.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Start_Countdown()
-	await get_tree().create_timer(3).timeout
-	
-	Start_Timmer()
 
 func Start_Countdown():
 	current_Time = 0
-	current_Timmer.rotation = current_Time
-
 	var tween = create_tween()
 	
 	tween.tween_property(game_Timmer, "value", minigame_Time, 3)
-
+	
+	Start_Timmer()
+	
 	await get_tree().create_timer(1).timeout
 	start_Timmer.text = "[center]2[/center]"
 	await get_tree().create_timer(1).timeout
@@ -52,22 +49,18 @@ func Start_Countdown():
 	fade_out.tween_property(start_Timmer, "modulate", Color(1, 1, 1, 0), 1)
 
 func Start_Timmer():
+	current_Timmer.rotation_degrees = current_Time + 5
+	
+	timmer_Tween = get_tree().create_tween()
+	
 	var degree = 360 * (minigame_Time / game_Timmer.max_value)
-	timmer_Tween = create_tween()
-	timmer_Tween.tween_property(current_Timmer, "rotation_degrees", degree, minigame_Time).finished.connect(End_Minigame)
+	timmer_Tween.tween_property(current_Timmer, "rotation_degrees", degree, 3)
+	timmer_Tween.tween_property(current_Timmer, "rotation_degrees", 0, minigame_Time).finished.connect(End_Minigame)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !is_Game_Started:
-		return
-	
 	Game_Finished_Check()
-	
 	Update_Timmer(delta)
-
-# Abstract
-func Calculate_Score():
-	return current_Score
 
 func Update_Score_Stars():
 	return # TODO: Add the stars (maybe piece by piece)
@@ -77,7 +70,7 @@ func Update_Timmer(delta):
 
 # Abstract
 func Game_Finished_Check():
-	End_Minigame()
+	pass
 
 func End_Minigame():
 	if !is_Game_Started:

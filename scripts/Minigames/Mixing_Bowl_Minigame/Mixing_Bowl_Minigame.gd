@@ -102,7 +102,6 @@ func P1_Actions():
 		p1_Velocity.y = JUMP_VELOCITY
 		
 		Bowl_Rotation(1)
-
 	
 	if Input.is_action_just_pressed("P1_Minigame_Action_2") && p1_State == player_States.JUMP:
 		p1_State = player_States.FAST_FALL
@@ -228,7 +227,7 @@ func Update_Score_Text(height):
 	
 	if score <= -5:
 		score = -5
-
+	
 	mix_Bar.value += score 
 	
 	current_Score = mix_Bar.value
