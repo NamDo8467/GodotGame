@@ -15,7 +15,7 @@ var current_scores = []
 var current_Minigame
 var current_Minigame_num = 0
 var Minigame_0 = preload("res://scenes/Minigames/Cutting_Minigame/Cutting_Minigame.tscn")
-var Minigame_1 = preload("res://scenes/Minigames/Cutting_Minigame/Cutting_Minigame_Lettuce_Placeholder.tscn")
+var Minigame_1 = preload("res://scenes/Minigames/Button_Mashing_Minigame/Button_Mashing_Minigame.tscn")
 var Minigame_2 = preload("res://scenes/Minigames/Mixing_Bowl_Minigame/Mixing_Bowl_Minigame.tscn")
 var is_Minigame_Started = false
 

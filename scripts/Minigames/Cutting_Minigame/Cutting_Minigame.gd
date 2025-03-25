@@ -24,7 +24,7 @@ var tansition_Time = 2.0
 var is_P1_Action1 = 0.0 # 0 is false
 var is_P2_Action1 = 0.0 # 0 is false
 var SYNC_PRESS_TIME = 1.0
-var player_Speed = 2
+var player_Speed = 250
 
 # Knife Cutting Variables
 var is_Cutting = false
@@ -41,9 +41,9 @@ var ANGLE_CUTOFF = 0.05
 # Cutting Line Variables
 var Cutting_Line_Sprite = preload("res://scenes/Minigames/Cutting_Minigame/Cutting_Line.tscn")
 var Cut_Line_Nodes = Array()
-var MIN_CUTTING_ZONE = 160.0 # Arbitrary
-var MAX_CUTTING_ZONE = 610.0 # Arbitrary
-var BASE_CUTTING_ZONE = 450.0
+var MIN_CUTTING_ZONE = 250.0 # Arbitrary
+var MAX_CUTTING_ZONE = 1030.0 # Arbitrary
+var BASE_CUTTING_ZONE = MAX_CUTTING_ZONE - MIN_CUTTING_ZONE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -114,8 +114,8 @@ func _process(delta):
 		return
 	
 	if Can_Move():
-		Move_P1()
-		Move_P2()
+		Move_P1(delta)
+		Move_P2(delta)
 	
 	Move_Knife()
 	
@@ -131,17 +131,17 @@ func Can_Move():
 
 	return true
 
-func Move_P1():
+func Move_P1(delta):
 	if Input.is_action_pressed("P1_Minigame_Move_Right") && knife.rotation < 0.3:
-		p1.position.x += player_Speed
+		p1.position.x += player_Speed * delta
 	if Input.is_action_pressed("P1_Minigame_Move_Left") && knife.rotation > -0.3:
-		p1.position.x -= player_Speed
+		p1.position.x -= player_Speed * delta
 
-func Move_P2():
+func Move_P2(delta):
 	if Input.is_action_pressed("P2_Minigame_Move_Right") && knife.rotation > -0.3:
-		p2.position.x += player_Speed
+		p2.position.x += player_Speed * delta
 	if Input.is_action_pressed("P2_Minigame_Move_Left") && knife.rotation < 0.3:
-		p2.position.x -= player_Speed
+		p2.position.x -= player_Speed * delta
 
 func Move_Knife():
 	knife.position.x = (p1.position.x + p2.position.x) / 2 # position of centre of knife equal to half the distance between them
