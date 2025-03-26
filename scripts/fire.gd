@@ -15,6 +15,7 @@ func _on_ready():
 func _process(delta):
 	if trigger_dropping == true:
 		#timer.start()
+		
 		position.y += 4
 func _on_timer_timeout():
 	#position.y += 2
