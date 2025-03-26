@@ -26,6 +26,9 @@ var current_weapon_list = []
 # Spawning position
 var spawning_position_y = 863
 
+# set of players to transition to the elevator section
+var player_set_to_show_elevator = {}
+
 func add_score():
 	score += 1
 	
