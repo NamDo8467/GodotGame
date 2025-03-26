@@ -180,6 +180,11 @@ animations = [{
 "name": &"jump",
 "speed": 10.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l0r8s")
@@ -211,8 +216,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfkdx"]
-radius = 16.0
-height = 120.0
+radius = 18.0
+height = 104.57
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
@@ -223,12 +228,11 @@ script = ExtResource("1_1rj08")
 position = Vector2(-5.9233, -78.1539)
 scale = Vector2(0.565383, 0.619231)
 sprite_frames = SubResource("SpriteFrames_w30ob")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.700525
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20.1534, -66.2854)
+position = Vector2(26, -60)
 shape = SubResource("CapsuleShape2D_lfkdx")
 
 [node name="Timer" type="Timer" parent="."]
