@@ -90,9 +90,8 @@ expand_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -108.0
+offset_top = -100.0
 offset_right = 1300.0
-offset_bottom = -8.0
 grow_vertical = 0
 step = 0.0
 nine_patch_stretch = true
@@ -101,7 +100,7 @@ texture_over = ExtResource("7_tpea6")
 texture_progress = ExtResource("8_i5ljf")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(798.999, 448.5)
+position = Vector2(799, 448.5)
 scale = Vector2(24.9688, 14.0156)
 texture = ExtResource("1_w3n65")
 
@@ -111,22 +110,22 @@ scale = Vector2(0.739815, 0.553704)
 texture = ExtResource("10_81i8j")
 
 [node name="Bowl" type="Sprite2D" parent="."]
-position = Vector2(800, 525)
-scale = Vector2(0.5, 0.45)
+position = Vector2(800, 570)
+scale = Vector2(0.462037, 0.4)
 texture = ExtResource("11_fidi3")
 
 [node name="Player_1_Bowl" type="Node2D" parent="Bowl"]
-position = Vector2(-580.8, -226.8)
+position = Vector2(-580, -230)
 
 [node name="Player_2_Bowl" type="Node2D" parent="Bowl"]
-position = Vector2(609.6, -248.4)
+position = Vector2(610, -230)
 
 [node name="Player_1" type="Sprite2D" parent="."]
-position = Vector2(510, 423)
+position = Vector2(532, 479)
 scale = Vector2(1.025, 1.025)
 texture = ExtResource("12_vufdd")
 
 [node name="Player_2" type="Sprite2D" parent="."]
-position = Vector2(1105, 413)
+position = Vector2(1082, 478)
 scale = Vector2(1.04063, 1.04063)
 texture = ExtResource("13_fm3iy")

@@ -26,13 +26,13 @@ var current_Score = 0
 var MIN_SPEED = -250.0
 var JUMP_VELOCITY = 500.0
 var GRAVITY = 350.0
-var FALL_BOOST = -240.0
-var GRAVITY_BOOST = 2.0
+var FALL_BOOST = -360.0
+var GRAVITY_BOOST = 5.0
 
 var MAX_POINTS_HEIGHT = 100
-var MIN_POINTS_HEIGHT = 180
+var MIN_POINTS_HEIGHT = 220
 var MAX_POINTS_EARNED = 17
-var MIN_POINTS_EARNED = 2
+var MIN_POINTS_EARNED = -5
 
 enum player_States {BOWL, JUMP, FAST_FALL, STUMBLE}
 
@@ -186,7 +186,7 @@ func Bowl_Check():
 		p1_Node.position.y = p1_Bowl.global_position.y
 		p1_State = player_States.BOWL
 		
-		bowl_Left_Force = MAX_FORCE/3 * remap(p1_Height_Reached, MIN_POINTS_HEIGHT, MAX_POINTS_HEIGHT, MIN_FORCE, MAX_FORCE)
+		#bowl_Left_Force = Calculate_Force(p1_Height_Reached)
 		
 		Update_Score_Text(p1_Height_Reached)
 		p1_Height_Reached = -1
@@ -195,16 +195,22 @@ func Bowl_Check():
 		p2_Node.position.y = p2_Bowl.global_position.y
 		p2_State = player_States.BOWL
 		
-		bowl_Right_Force = MAX_FORCE/3 * remap(p2_Height_Reached, MIN_POINTS_HEIGHT, MAX_POINTS_HEIGHT, MIN_FORCE, MAX_FORCE)
+		#bowl_Right_Force = Calculate_Force(p2_Height_Reached)
 		
 		Update_Score_Text(p2_Height_Reached)
 		p2_Height_Reached = -1
+
+func Calculate_Force(height_Reached):
+		var final_Force = MAX_FORCE * remap(height_Reached, MIN_POINTS_HEIGHT, MAX_POINTS_HEIGHT, MIN_FORCE, MAX_FORCE)
+		
+		clamp(final_Force, MIN_FORCE, MAX_FORCE)
+		
+		return final_Force
 
 func Bowl_Rotation(delta):
 	var bowl_Rotation_Velocity = bowl_Right_Force - bowl_Left_Force
 	
 	bowl.rotation_degrees += bowl_Rotation_Velocity * bowl_Tilt_Speed * delta
-	print(bowl.rotation_degrees)
 	
 	if (bowl.rotation_degrees >= 30):
 		bowl_Right_Force = 0
@@ -248,16 +254,12 @@ func Bowl_Reset():
 	bowl_Tween.tween_property(bowl, "rotation_degrees", 0, 1.5).finished.connect(set.bind("is_Able_To_Jump", true))
 
 func Update_Score_Text(height):
-	var score = remap(height, MIN_POINTS_HEIGHT, MAX_POINTS_HEIGHT, MIN_POINTS_EARNED, MAX_POINTS_EARNED)
+	var score = remap(height, MAX_POINTS_HEIGHT, MIN_POINTS_HEIGHT, MIN_POINTS_EARNED, MAX_POINTS_EARNED)
 	score *= 100
 	score = round(score)
 	score /= 100
 	
-	if score >= 18:
-		score = 18
-	
-	if score <= -5:
-		score = -5
+	clamp(score, MIN_POINTS_EARNED, MAX_POINTS_EARNED)
 	
 	mix_Bar.value += score 
 	
