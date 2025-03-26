@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://rukqw151ru1f"]
+
+[ext_resource type="Script" path="res://scripts/leave_room_zone.gd" id="1_ixwcr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rhur"]
+size = Vector2(140, 10)
+
+[node name="LeaveRoomZone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_ixwcr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1rhur")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
