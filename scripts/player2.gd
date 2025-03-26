@@ -7,6 +7,7 @@ var current_weapon_index = -1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var player_sprite = $AnimatedSprite2D
+@onready var collision_shape = $CollisionShape2D
 
 var trampoline_x_when_facing_left = -80
 var trampoline_x_when_facing_right = -43
@@ -29,6 +30,9 @@ func _physics_process(delta):
 	# Flip the player to the direction it is going
 	if direction > 0:
 		player_sprite.flip_h = false
+		if collision_shape != null:
+			collision_shape.position.x = 28
+			collision_shape.position.y = -58
 		if current_weapon_index != -1:
 			weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_right, trampoline_y)
 		#print("yes")
@@ -36,6 +40,9 @@ func _physics_process(delta):
 		if current_weapon_index != -1:
 			weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_left, trampoline_y)
 		player_sprite.flip_h = true
+		if collision_shape != null:
+			collision_shape.position.x = -45
+			collision_shape.position.y = -58
 	
 	# Play animations
 	if is_on_floor():
