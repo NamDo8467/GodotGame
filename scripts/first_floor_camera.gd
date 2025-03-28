@@ -14,19 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#print(delta)
 	pass
-
-
-#func _on_camera_enter_zone_body_entered(body):
-	##print(player_set_to_show_elevator)
-	#var player = body.name
-	#player_set_to_show_elevator.erase(player)
-	#
-	#camera.zoom.x = 0.99
-	#camera.zoom.y = 1
-	#
-	#camera.position = Vector2(1657, 504)
 
 
 func _on_camera_leaving_zone_body_entered(body):
