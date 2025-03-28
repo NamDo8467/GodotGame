@@ -21,5 +21,4 @@ func _process(_delta):
 		player2 = player2_scene.instantiate()
 		player2_starting_position.y = Global.spawning_position_y
 		player2.position = player2_starting_position
-		get_parent().add_child(player2)
-	
+		get_parent().add_child(player2)	
