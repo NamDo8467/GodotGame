@@ -19,7 +19,6 @@ func _process(delta):
 
 func _on_body_entered(body):
 	var player = body.name
-	#print("ahhdf")
 	Global.player_set_to_show_elevator.erase(player)
 	
 	camera.zoom.x = 0.99
