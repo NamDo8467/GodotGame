@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bmlje5yx1bj8n"]
+[gd_scene load_steps=31 format=3 uid="uid://bmlje5yx1bj8n"]
 
 [ext_resource type="Script" path="res://scripts/player2.gd" id="1_jpci4"]
 [ext_resource type="Texture2D" uid="uid://m1w4jygtaun3" path="res://assets/rat2_idle.png" id="2_wivgn"]
@@ -215,8 +215,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uds2c"]
-radius = 18.0
+radius = 20.0
 height = 104.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1l2d0"]
+size = Vector2(44, 127)
 
 [node name="Player2" type="CharacterBody2D"]
 collision_layer = 2
@@ -230,5 +233,16 @@ animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(33, -60)
+position = Vector2(28, -58)
 shape = SubResource("CapsuleShape2D_uds2c")
+
+[node name="PickupZone" type="Area2D" parent="CollisionShape2D"]
+position = Vector2(-25, 58)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PickupZone"]
+position = Vector2(26, -74.5)
+shape = SubResource("RectangleShape2D_1l2d0")
+
+[connection signal="body_entered" from="CollisionShape2D/PickupZone" to="." method="_on_pickup_zone_body_entered"]
+[connection signal="body_exited" from="CollisionShape2D/PickupZone" to="." method="_on_pickup_zone_body_exited"]
