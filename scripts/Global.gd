@@ -21,10 +21,17 @@ var current_food = "pasta"
 var current_ingredient_list = []
 
 # Current possesing weapon
-var current_weapon_list = []
+var player1_current_weapon_list = []
+var player2_current_weapon_list = []
 
 # Spawning position
+# when x = 130, thats the spawning x coordinate in the elevator
+# when x = 1053, thats the spawning x cooridinate in the room
+var spawning_position_x = 1053
 var spawning_position_y = 863
+
+# Die outside of the room or not
+var die_outside_of_the_room = false
 
 # set of players to transition to the elevator section
 var player_set_to_show_elevator = {}
