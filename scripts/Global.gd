@@ -27,7 +27,7 @@ var player2_current_weapon_list = []
 # Spawning position
 # when x = 130, thats the spawning x coordinate in the elevator
 # when x = 1053, thats the spawning x cooridinate in the room
-var spawning_position_x = 1053
+var spawning_position_x = 130
 var spawning_position_y = 863
 
 # Die outside of the room or not
