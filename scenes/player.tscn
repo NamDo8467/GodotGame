@@ -220,7 +220,7 @@ radius = 22.0
 height = 104.57
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_geey3"]
-size = Vector2(51, 91)
+size = Vector2(48, 115)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
@@ -242,7 +242,7 @@ shape = SubResource("CapsuleShape2D_lfkdx")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PickupZone"]
-position = Vector2(-0.5, 3)
+position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_geey3")
 
 [connection signal="body_entered" from="CollisionShape2D/PickupZone" to="." method="_on_pickup_zone_body_entered"]
