@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 320.0
 const JUMP_VELOCITY = -500.0
-var weapon_list = []
+#var weapon_list = []
 var current_weapon_index = -1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -59,6 +59,7 @@ func _physics_process(delta):
 	else:
 		if not is_on_floor():
 			velocity.y += gravity * delta
+			
 		# Handle jump.
 		if Input.is_action_just_pressed("jump_2") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
@@ -73,11 +74,11 @@ func _physics_process(delta):
 				collision_shape.position.x = 28
 				collision_shape.position.y = -58
 			if current_weapon_index != -1:
-				weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_right, trampoline_y)
+				Global.player2_current_weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_right, trampoline_y)
 			#print("yes")
 		elif direction < 0:
 			if current_weapon_index != -1:
-				weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_left, trampoline_y)
+				Global.player2_current_weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_left, trampoline_y)
 			player_sprite.flip_h = true
 			if collision_shape != null:
 				collision_shape.position.x = -37
@@ -103,36 +104,30 @@ func _physics_process(delta):
 		if can_pickup:
 			if Input.is_action_just_pressed("pickup_2"):
 				player1 = get_node("../Player")
-				#is_picking_player1_up = true
 				if is_picking_player1_up == false:
 					player1.is_being_picked = true
 					is_picking_player1_up = true
 					change_position_of_player1_after_picking_up()
-					#print("yes here")
 				else:
 					
 					if player_sprite.flip_h == false:
-						#print("here")
 						player1.throw_player(420, 30, 1)
 					else:
-						#print("here1")
 						player1.throw_player(420, 30, -1)
-					#print("yes")
 					player1.is_being_picked = false
 					is_picking_player1_up = false
 					can_pickup = false
-					
-
-
+				
 		# Handle choosing weapon
 		if Input.is_action_just_pressed("choose_weapon_2") and is_picking_player1_up == false:
-			if len(weapon_list) > 0:
-				if current_weapon_index + 1 >= len(weapon_list):
-					remove_child(weapon_list[current_weapon_index])
+			if len(Global.player2_current_weapon_list) > 0:
+				if current_weapon_index + 1 >= len(Global.player2_current_weapon_list):
+					remove_child(Global.player2_current_weapon_list[current_weapon_index])
 					current_weapon_index = -1
 				else:
 					current_weapon_index = current_weapon_index + 1
-					var new_weapon = weapon_list[current_weapon_index]
+					var new_weapon = Global.player2_current_weapon_list[current_weapon_index]
+					new_weapon.position = Vector2(trampoline_x_when_facing_right, trampoline_y)
 					if player_sprite.flip_h == false:
 						new_weapon.position = Vector2(trampoline_x_when_facing_right, trampoline_y)
 					elif player_sprite.flip_h == true:
@@ -140,7 +135,7 @@ func _physics_process(delta):
 					add_child(new_weapon)
 		
 func add_to_weapon_list(weapon):
-	weapon_list.append(weapon)
+	Global.player2_current_weapon_list.append(weapon)
 
 # Function to throw the player
 func throw_player(speed: float, angle_degrees: float, direction: int):
