@@ -502,7 +502,7 @@ position = Vector2(1360, 340)
 position = Vector2(1018, 340)
 
 [node name="EnterRoomZone" parent="." instance=ExtResource("8_0pnf0")]
-position = Vector2(1031, 937)
+position = Vector2(1010, 937)
 
 [node name="LeaveRoomZone" parent="." instance=ExtResource("9_14wog")]
 position = Vector2(777, 937)
