@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbm1fvu8cp2ai"]
+[gd_scene load_steps=12 format=3 uid="uid://dbm1fvu8cp2ai"]
 
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_5lvgr"]
 [ext_resource type="PackedScene" uid="uid://br8nu8mu2ikc5" path="res://scenes/elevator.tscn" id="2_drl2y"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bmlje5yx1bj8n" path="res://scenes/player2.tscn" id="5_hefy5"]
 [ext_resource type="PackedScene" uid="uid://5nv16s3hgibq" path="res://scenes/box.tscn" id="6_j0623"]
 [ext_resource type="PackedScene" uid="uid://bwbiqfumj6y40" path="res://scenes/fish_monster.tscn" id="7_vsta0"]
+[ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="8_tsors"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eho43"]
 texture = ExtResource("1_5lvgr")
@@ -469,6 +470,8 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_eho43")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gg42k"]
+
 [node name="ThirdFloor" type="Node2D"]
 position = Vector2(273, -53)
 
@@ -512,20 +515,21 @@ position = Vector2(1587, 947)
 [node name="spike9" parent="." instance=ExtResource("3_kbo5s")]
 position = Vector2(1622, 947)
 
-[node name="spike10" parent="." instance=ExtResource("3_kbo5s")]
-position = Vector2(1657, 947)
-
-[node name="spike11" parent="." instance=ExtResource("3_kbo5s")]
-position = Vector2(1692, 947)
-
 [node name="Player" parent="." instance=ExtResource("4_jrvqg")]
-position = Vector2(1826, 946)
+position = Vector2(1900, 324)
 
 [node name="Player2" parent="." instance=ExtResource("5_hefy5")]
-position = Vector2(1746, 946)
+position = Vector2(1810, 341)
 
 [node name="Box" parent="." instance=ExtResource("6_j0623")]
 position = Vector2(1927, 925)
 
 [node name="FishMonster" parent="." instance=ExtResource("7_vsta0")]
 position = Vector2(863, 358)
+
+[node name="KillZone" parent="." instance=ExtResource("8_tsors")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(1000, 1000)
+scale = Vector2(13, 1)
+shape = SubResource("WorldBoundaryShape2D_gg42k")
