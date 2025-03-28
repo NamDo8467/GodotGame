@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 320.0
-const JUMP_VELOCITY = -550.0
+const JUMP_VELOCITY = -500.0
 var weapon_list = []
 var current_weapon_index = -1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -14,70 +14,162 @@ var trampoline_x_when_facing_right = -43
 var trampoline_y = -120
 
 var starting_position = Vector2(787, 888)
+var player1 : CharacterBody2D
+var is_picking_player1_up = false
+var can_pickup = false
+
+# These variables are used when this player is getting thrown away
+var time: float = 0.0
+
+var throw_direction : Vector2
+var is_being_picked = false
+
+var is_thrown = false
+var throw_velocity = Vector2.ZERO
+var throw_time = 0.0  # Time since throw started
+
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump_2") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	# direction = -1, 0, 1
 	var direction = Input.get_axis("move_left_2", "move_right_2")
-
-	# Flip the player to the direction it is going
-	if direction > 0:
-		player_sprite.flip_h = false
-		if collision_shape != null:
-			collision_shape.position.x = 28
-			collision_shape.position.y = -58
-		if current_weapon_index != -1:
-			weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_right, trampoline_y)
-		#print("yes")
-	elif direction < 0:
-		if current_weapon_index != -1:
-			weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_left, trampoline_y)
-		player_sprite.flip_h = true
-		if collision_shape != null:
-			collision_shape.position.x = -45
-			collision_shape.position.y = -58
-	
-	# Play animations
-	if is_on_floor():
-		if direction == 0:
-			player_sprite.play("idle")
-		elif direction == -1 or direction == 1:
-			player_sprite.play("run")
-	else:
-		player_sprite.play("jump")
+	time += delta
+	# Add the gravity.
+	if is_being_picked:
+		return
+	if is_thrown:
+		throw_time += delta  # Track time since thrown
 		
-	if direction:
-		velocity.x = direction * SPEED
+		# Apply gravity
+		throw_velocity.y += gravity * delta
+		
+		# Predict movement
+		var motion = throw_velocity * delta
+		var collision = move_and_collide(motion)  # Check for mid-air collision
+		
+		if collision:  # If player hits something in mid-air
+			throw_velocity.x = 0  # Stop forward motion
+			velocity = Vector2(0, throw_velocity.y)  # Only fall down
+		else:
+			velocity = throw_velocity
+		
+		move_and_slide()
+
+		# Stop when landing
+		if is_on_floor():
+			land()
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	move_and_slide()
-	
-	# Handle choosing weapon
-	if Input.is_action_just_pressed("choose_weapon_2"):
-		if len(weapon_list) > 0:
-			if current_weapon_index + 1 >= len(weapon_list):
-				remove_child(weapon_list[current_weapon_index])
-				current_weapon_index = -1
-			else:
-				current_weapon_index = current_weapon_index + 1
-				var new_weapon = weapon_list[current_weapon_index]
-				if player_sprite.flip_h == false:
-					new_weapon.position = Vector2(trampoline_x_when_facing_right, trampoline_y)
-				elif player_sprite.flip_h == true:
-					new_weapon.position = Vector2(trampoline_x_when_facing_left, trampoline_y)
-				add_child(new_weapon)
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		# Handle jump.
+		if Input.is_action_just_pressed("jump_2") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+			
+		
+		# direction = -1, 0, 1
+
+		# Flip the player to the direction it is going
+		if direction > 0:
+			player_sprite.flip_h = false
+			if collision_shape != null:
+				collision_shape.position.x = 28
+				collision_shape.position.y = -58
+			if current_weapon_index != -1:
+				weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_right, trampoline_y)
+			#print("yes")
+		elif direction < 0:
+			if current_weapon_index != -1:
+				weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_left, trampoline_y)
+			player_sprite.flip_h = true
+			if collision_shape != null:
+				collision_shape.position.x = -37
+				collision_shape.position.y = -58
+		
+		# Play animations
+		if is_on_floor():
+			if direction == 0:
+				player_sprite.play("idle")
+			elif direction == -1 or direction == 1:
+				player_sprite.play("run")
+		else:
+			player_sprite.play("jump")
+			
+		if direction:
+			velocity.x = direction * SPEED
+			change_position_of_player1_after_picking_up()
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			change_position_of_player1_after_picking_up()
+				
+		move_and_slide()
+		if can_pickup:
+			if Input.is_action_just_pressed("pickup_2"):
+				player1 = get_node("../Player")
+				#is_picking_player1_up = true
+				if is_picking_player1_up == false:
+					player1.is_being_picked = true
+					is_picking_player1_up = true
+					change_position_of_player1_after_picking_up()
+					#print("yes here")
+				else:
+					
+					if player_sprite.flip_h == false:
+						#print("here")
+						player1.throw_player(420, 30, 1)
+					else:
+						#print("here1")
+						player1.throw_player(420, 30, -1)
+					#print("yes")
+					player1.is_being_picked = false
+					is_picking_player1_up = false
+					can_pickup = false
+					
+
+
+		# Handle choosing weapon
+		if Input.is_action_just_pressed("choose_weapon_2") and is_picking_player1_up == false:
+			if len(weapon_list) > 0:
+				if current_weapon_index + 1 >= len(weapon_list):
+					remove_child(weapon_list[current_weapon_index])
+					current_weapon_index = -1
+				else:
+					current_weapon_index = current_weapon_index + 1
+					var new_weapon = weapon_list[current_weapon_index]
+					if player_sprite.flip_h == false:
+						new_weapon.position = Vector2(trampoline_x_when_facing_right, trampoline_y)
+					elif player_sprite.flip_h == true:
+						new_weapon.position = Vector2(trampoline_x_when_facing_left, trampoline_y)
+					add_child(new_weapon)
 		
 func add_to_weapon_list(weapon):
 	weapon_list.append(weapon)
+
+# Function to throw the player
+func throw_player(speed: float, angle_degrees: float, direction: int):
+	var angle_radians = deg_to_rad(angle_degrees)
+	throw_velocity = Vector2(
+		direction * speed * cos(angle_radians),  # Multiply by direction (-1 for left, 1 for right)
+		-speed * sin(angle_radians)  # Vertical velocity stays the same
+	)
+	is_thrown = true
+	throw_time = 0.0
+
+func land():
+	is_thrown = false
+	velocity = Vector2.ZERO  # Fully stop the player
+	throw_velocity = Vector2.ZERO
+	throw_time = 0.0
+
+func _on_pickup_zone_body_entered(body):
+	can_pickup = true
+	
+func change_position_of_player1_after_picking_up():
+	if is_picking_player1_up and player1 != null:
+		player1.position.y = self.position.y - 112
+		if player_sprite.flip_h == true:
+			player1.position.x = position.x - 50
+		else:
+			player1.position.x = position.x + 20
 	
 
 
-
+func _on_pickup_zone_body_exited(body):
+	can_pickup = false
