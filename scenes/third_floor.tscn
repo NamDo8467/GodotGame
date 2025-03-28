@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbm1fvu8cp2ai"]
+[gd_scene load_steps=13 format=3 uid="uid://dbm1fvu8cp2ai"]
 
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_5lvgr"]
+[ext_resource type="PackedScene" uid="uid://nk47flta8bsj" path="res://scenes/player_spawner.tscn" id="1_uvksh"]
 [ext_resource type="PackedScene" uid="uid://br8nu8mu2ikc5" path="res://scenes/elevator.tscn" id="2_drl2y"]
 [ext_resource type="PackedScene" uid="uid://bj5v7r8yby6un" path="res://scenes/spike.tscn" id="3_kbo5s"]
-[ext_resource type="PackedScene" uid="uid://dmwr40hhjso1q" path="res://scenes/player.tscn" id="4_jrvqg"]
-[ext_resource type="PackedScene" uid="uid://bmlje5yx1bj8n" path="res://scenes/player2.tscn" id="5_hefy5"]
 [ext_resource type="PackedScene" uid="uid://5nv16s3hgibq" path="res://scenes/box.tscn" id="6_j0623"]
 [ext_resource type="PackedScene" uid="uid://bwbiqfumj6y40" path="res://scenes/fish_monster.tscn" id="7_vsta0"]
+[ext_resource type="PackedScene" uid="uid://bj15g75e0ypnx" path="res://scenes/enter_room_zone.tscn" id="8_hk2ys"]
 [ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="8_tsors"]
+[ext_resource type="PackedScene" uid="uid://rukqw151ru1f" path="res://scenes/leave_room_zone.tscn" id="9_oq5mo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eho43"]
 texture = ExtResource("1_5lvgr")
@@ -476,8 +477,11 @@ sources/0 = SubResource("TileSetAtlasSource_eho43")
 position = Vector2(273, -53)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1655, 500)
-zoom = Vector2(0.99, 1)
+position = Vector2(300, 504)
+zoom = Vector2(1.4, 1)
+position_smoothing_enabled = true
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("1_uvksh")]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(864, 3)
@@ -515,12 +519,6 @@ position = Vector2(1587, 947)
 [node name="spike9" parent="." instance=ExtResource("3_kbo5s")]
 position = Vector2(1622, 947)
 
-[node name="Player" parent="." instance=ExtResource("4_jrvqg")]
-position = Vector2(1900, 324)
-
-[node name="Player2" parent="." instance=ExtResource("5_hefy5")]
-position = Vector2(1810, 341)
-
 [node name="Box" parent="." instance=ExtResource("6_j0623")]
 position = Vector2(1927, 925)
 
@@ -533,3 +531,9 @@ position = Vector2(863, 358)
 position = Vector2(1000, 1000)
 scale = Vector2(13, 1)
 shape = SubResource("WorldBoundaryShape2D_gg42k")
+
+[node name="EnterRoomZone" parent="." instance=ExtResource("8_hk2ys")]
+position = Vector2(1010, 937)
+
+[node name="LeaveRoomZone" parent="." instance=ExtResource("9_oq5mo")]
+position = Vector2(777, 937)
