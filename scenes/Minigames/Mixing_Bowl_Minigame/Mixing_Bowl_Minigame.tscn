@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bnvuomishuc75"]
+[gd_scene load_steps=15 format=3 uid="uid://bnvuomishuc75"]
 
-[ext_resource type="Script" path="res://scripts/Minigames/Mixing_Bowl_Minigame/OLD_Mixing_Bowl_Minigame.gd" id="1_oivj0"]
+[ext_resource type="Script" path="res://scripts/Minigames/Mixing_Bowl_Minigame/Mixing_Bowl_Minigame.gd" id="1_s43et"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="1_w3n65"]
 [ext_resource type="Texture2D" uid="uid://cvffwabybj7qd" path="res://assets/Minigame_Assets/Timer/Layer_0.png" id="2_afayr"]
 [ext_resource type="Texture2D" uid="uid://cp0y8oqypptqt" path="res://assets/Minigame_Assets/Timer/Layer_3.png" id="3_ikq7u"]
@@ -11,11 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://dt3bandv806j5" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Fill.png" id="8_i5ljf"]
 [ext_resource type="Texture2D" uid="uid://bodsgrjly6ind" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Table.png" id="10_81i8j"]
 [ext_resource type="Texture2D" uid="uid://nceyxfgl7bwe" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Bowl.png" id="11_fidi3"]
+[ext_resource type="Texture2D" uid="uid://dq2l8pg1j40xt" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Temp_Ladder.png" id="12_haopm"]
 [ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="12_vufdd"]
 [ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="13_fm3iy"]
 
 [node name="MixingBowlMinigame" type="Node2D"]
-script = ExtResource("1_oivj0")
+script = ExtResource("1_s43et")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -119,6 +120,31 @@ position = Vector2(-580, -230)
 
 [node name="Player_2_Bowl" type="Node2D" parent="Bowl"]
 position = Vector2(610, -230)
+
+[node name="Ladder_P1" type="Sprite2D" parent="."]
+position = Vector2(340, 445)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_haopm")
+
+[node name="Bottom_Point" type="Node2D" parent="Ladder_P1"]
+position = Vector2(0.000366211, 1046.67)
+
+[node name="Top_Point" type="Node2D" parent="Ladder_P1"]
+position = Vector2(0, -796)
+
+[node name="Jumping_Point" type="Node2D" parent="Ladder_P1"]
+position = Vector2(420, -864)
+
+[node name="Ladder_P2" type="Sprite2D" parent="."]
+position = Vector2(1260, 445)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_haopm")
+
+[node name="Bottom_Point" type="Node2D" parent="Ladder_P2"]
+position = Vector2(0.000366211, 1046.67)
+
+[node name="Top_Point" type="Node2D" parent="Ladder_P2"]
+position = Vector2(0, -796)
 
 [node name="Player_1" type="Sprite2D" parent="."]
 position = Vector2(532, 479)
