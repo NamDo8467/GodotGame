@@ -216,7 +216,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfkdx"]
-radius = 22.0
+radius = 18.0
 height = 104.57
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_geey3"]
@@ -235,7 +235,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(26, -60)
+position = Vector2(24, -60)
 shape = SubResource("CapsuleShape2D_lfkdx")
 
 [node name="PickupZone" type="Area2D" parent="CollisionShape2D"]
