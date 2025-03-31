@@ -8,8 +8,7 @@ const SPEED = 65
 
 #var direction = -1 # currently going to the left
 
-#func _ready():
-	#mushroom.flip_h = true
+#func _ready():	#mushroom.flip_h = true
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
