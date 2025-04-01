@@ -4,7 +4,8 @@ extends Area2D
 @onready var timer = $Timer
 @onready var monster = get_parent()
 func _on_body_entered(body):
-	monster.get_node("KillZone").queue_free()
+	if monster.get_node("KillZone"):
+		monster.get_node("KillZone").queue_free()
 	squished_sound.play()
 	await squished_sound.finished
 	if monster.name == "CabbageMonster":
