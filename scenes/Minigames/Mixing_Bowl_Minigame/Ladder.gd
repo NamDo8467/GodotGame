@@ -14,13 +14,12 @@ var ON = Color(1, 1, 1, 1)
 var OFF = Color(1, 1, 1, 0)
 
 # Score Variables
+enum Grade { BAD, GOOD, GREAT, PERFECT }
+
 var min_Score_Range
 var max_Score_Range
 var score_Buffer
 var score_Range_Center
-var good_Score = 15
-var great_Score = 30
-var perfect_Score = 45
 var good_Score_Range
 var great_Score_Range
 var perfect_Score_Range
@@ -60,8 +59,9 @@ func _process(delta):
 	if cursor.position.x <= min_Cursor_Range || cursor.position.x >= max_Cursor_Range:
 		direction *= -1
 	
-	if Input.is_action_just_pressed("P1_Minigame_Action_1"):
-		Stop_Cursor()
+	# Testing Call
+	#if Input.is_action_just_pressed("P1_Minigame_Action_1"):
+		#Stop_Cursor()
 
 func Start_Cursor():
 	rng.randomize()
@@ -74,25 +74,24 @@ func Start_Cursor():
 	
 	jumping_Point.modulate = ON
 
-func Stop_Cursor() -> int:
+func Stop_Cursor():
 	cursor_speed = 0
-	
 	Fade_Out()
-	
-	return Calculate_Score()
 
 func Fade_Out():
 	var tween = get_tree().create_tween()
 	tween.tween_property(jumping_Point, "modulate", OFF, 2.0)
 
-func Calculate_Score() -> int:
+func Calculate_Grade() -> Grade:
+	Stop_Cursor()
+	
 	var cursor_x_pos = cursor.position.x
 	
 	if cursor_x_pos >= score_Range_Center - perfect_Score_Range && cursor_x_pos <= score_Range_Center + perfect_Score_Range:
-		return perfect_Score
+		return Grade.PERFECT
 	if cursor_x_pos >= score_Range_Center - great_Score_Range && cursor_x_pos <= score_Range_Center + great_Score_Range:
-		return great_Score
+		return Grade.GREAT
 	if cursor_x_pos >= score_Range_Center - good_Score_Range && cursor_x_pos <= score_Range_Center + good_Score_Range:
-		return good_Score
+		return Grade.GOOD
 	
-	return 0 # Bad Score
+	return Grade.BAD

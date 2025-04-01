@@ -9,8 +9,14 @@ extends "res://scripts/Minigames/Base_Minigame/Base_Minigame.gd"
 
 var rng = RandomNumberGenerator.new()
 
+# Game Variables
+var BAD_POINTS = -15
+var GOOD_POINTS = 15
+var GREAT_POINTS = 30
+var PERFECT_POINTS = 45
+
 # Player Variables
-enum States {WALKING, CLIMBING, JUMPING, FALLING, STUMBLE}
+enum States { WALKING_BOTTOM, CLIMBING, WALKING_TOP, JUMPING, FALLING, STUMBLE }
 
 var MIN_SPEED = -250.0
 var JUMP_VELOCITY = 500.0
@@ -23,6 +29,8 @@ var MAX_CLIMB_SPEED_MULTI = 5.0
 var MASH_CLIMB_SPEED = 0.2
 var MASH_CLIMB_SPEED_LOSS = 0.05
 var CLIMB_SPEED_MULTI_STARTING = 0.5
+var WALK_SPEED = 100.0
+var MAX_WALK_SPEED_MULTI = 2.0
 
 var climbing_Top_Y_Pos
 var climbing_Bottom_Y_Pos
@@ -31,13 +39,13 @@ var climbing_X_Pos
 # Player 1 Variables
 var p1_Velocity = Vector2.ZERO
 var p1_State
-var is_P1_Ready_To_Jump = false
-var p1_climb_speed_multi = 0
+var p1_walk_Speed_Multi = 1.0
+var p1_climb_speed_multi = 0.0
 # Player 2 Variables
 var p2_Velocity = Vector2.ZERO
 var p2_State
-var is_P2_Ready_To_Jump = false
-var p2_climb_speed_multi = 0
+var p2_walk_Speed_Multi = 1.0
+var p2_climb_speed_multi = 0.0
 
 # Bowl Variables
 var MAX_BOWL_ANGLE = 30.0
@@ -90,24 +98,35 @@ func _process(delta):
 
 func Update_P1_Game_State():
 	match p1_State:
-		States.WALKING:
-			print("Walking")
+		States.WALKING_BOTTOM:
+			Calculate_Score()
+			# TODO: Setup animation that starts walking
+			p1_walk_Speed_Multi = 1.0
+			print("Walking Bottom")
 			pass
 		States.CLIMBING:
+			# TODO: Setup animation that starts climbing
 			p1.position = Vector2(climbing_X_Pos, climbing_Bottom_Y_Pos)
 			p1_climb_speed_multi = CLIMB_SPEED_MULTI_STARTING
 			print("Climbing")
 			pass
-		States.JUMPING:
-			# TODO: Setup animation that sets is_P1_Ready_To_Jump to true at the end
+		States.WALKING_TOP:
+			# TODO: Setup animation that starts walking
 			p1.position = Vector2(climbing_X_Pos, climbing_Top_Y_Pos)
-			p1_Ladder.get_script().Start_Cursor()
+			p1_Ladder.Start_Cursor()
+			print("Walking Top")
+			pass
+		States.JUMPING:
+			# TODO: Setup animation that starts Jumping
+			p1.position = p1_Ladder.jumping_Point.position
 			print("Jumping")
 			pass
 		States.FALLING:
+			# TODO: Setup animation that starts Falling
 			print("Falling")
 			pass
 		States.STUMBLE:
+			# TODO: Setup animation that starts Stumble
 			print("Stumble")
 			pass
 
@@ -118,47 +137,45 @@ func P1_Actions():
 	if Input.is_action_just_pressed("P1_Minigame_Action_1") && p1_State == States.CLIMBING:
 		p1_climb_speed_multi += MASH_CLIMB_SPEED
 	
-	if Input.is_action_just_pressed("P1_Minigame_Action_2") && is_P1_Ready_To_Jump:
-		Calculate_Score(p1_Ladder.get_script().Stop_Cursor())
+	if Input.is_action_just_pressed("P1_Minigame_Action_2") && p1_State == States.WALKING_TOP:
+		p1_walk_Speed_Multi = MAX_WALK_SPEED_MULTI
 	
 
 func P2_Actions():
 	if Input.is_action_just_pressed("P2_Minigame_Action_1") && p2_State == States.CLIMBING:
 		pass
-	if Input.is_action_just_pressed("P2_Minigame_Action_2") && is_P2_Ready_To_Jump:
+	if Input.is_action_just_pressed("P2_Minigame_Action_2") && p1_State == States.WALKING_TOP:
 		pass
 
 func Move_P1(delta):
-	
 	match p1_State:
-		States.WALKING:
+		States.WALKING_BOTTOM:
 			pass
 		States.CLIMBING:
 			p1.position.y -= BASE_CLIMB_SPEED * p1_climb_speed_multi * delta
 			
 			p1_climb_speed_multi -= MASH_CLIMB_SPEED_LOSS * delta
 			
-			clamp(p1_climb_speed_multi, MIN_CLIMB_SPEED_MULTI, MAX_CLIMB_SPEED_MULTI)
-			
-			print(p1_climb_speed_multi)
+			p1_climb_speed_multi = clamp(p1_climb_speed_multi, MIN_CLIMB_SPEED_MULTI, MAX_CLIMB_SPEED_MULTI)
 			
 			if p1.position.y <= climbing_Top_Y_Pos:
 				p1_climb_speed_multi = MIN_CLIMB_SPEED_MULTI
+				p1_State = States.WALKING_TOP
+				Update_P1_Game_State()
+		States.WALKING_TOP:
+			p1.position.x += WALK_SPEED * p1_walk_Speed_Multi * delta
+			
+			if p1.position.x > p1_Ladder.jumping_Point.position.x:
 				p1_State = States.JUMPING
 				Update_P1_Game_State()
 		States.JUMPING:
-			p1_Velocity.y -= GRAVITY * delta
+			p1.position.x += WALK_SPEED * p1_walk_Speed_Multi * delta
 			
-			if p1_Velocity.y < MIN_SPEED:
-				p1_Velocity.y = MIN_SPEED
-			
-			p1.position.y -= p1_Velocity.y * delta
-			
+			if p1.position.x < p1_Bowl.position.x:
+				p1_State = States.FALLING
+				Update_P1_Game_State()
 		States.FALLING:
 			p1_Velocity.y -= GRAVITY_BOOST * GRAVITY * delta
-			
-			if p1_Velocity.y < MIN_SPEED * GRAVITY_BOOST:
-				p1_Velocity.y = MIN_SPEED * GRAVITY_BOOST
 			
 			p1.position.y -= p1_Velocity.y * delta
 		States.STUMBLE:
@@ -239,8 +256,20 @@ func Bowl_Reset():
 	#bowl_Tween.tween_property(bowl, "rotation_degrees", 0, 1.5).finished.connect(set.bind("is_Able_To_Jump", true))
 	pass
 
-func Calculate_Score(score):
+func Calculate_Score():
 	# TODO: Update this to calculate score based on how fast they got to the top (through how far down the bowl has gone) + how accurate they were too the 
+	var score = 0
+	
+	match p1_Ladder.Calculate_Grade():
+		p1_Ladder.Grade.BAD:
+			score = BAD_POINTS
+		p1_Ladder.Grade.GOOD:
+			score = GOOD_POINTS
+		p1_Ladder.Grade.GREAT:
+			score = GREAT_POINTS
+		p1_Ladder.Grade.PERFECT:
+			score = PERFECT_POINTS
+	
 	Update_Mix_Bar(score)
 	
 	current_Score = mix_Bar.value
