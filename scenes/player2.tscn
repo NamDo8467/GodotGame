@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://bmlje5yx1bj8n"]
+[gd_scene load_steps=32 format=3 uid="uid://bmlje5yx1bj8n"]
 
 [ext_resource type="Script" path="res://scripts/player2.gd" id="1_jpci4"]
 [ext_resource type="Texture2D" uid="uid://m1w4jygtaun3" path="res://assets/rat2_idle.png" id="2_wivgn"]
 [ext_resource type="Texture2D" uid="uid://5hqihoqaid72" path="res://assets/2_Jump.png" id="3_lceav"]
 [ext_resource type="Texture2D" uid="uid://bm7n5v4e2ogwr" path="res://assets/2_Run.png" id="4_u3jh6"]
+[ext_resource type="AudioStream" uid="uid://c8ytwryxaxl6t" path="res://assets/Audio/falling.wav" id="5_oriq1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2xtq"]
 atlas = ExtResource("2_wivgn")
@@ -243,6 +244,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PickupZone"]
 position = Vector2(26, -74.5)
 shape = SubResource("RectangleShape2D_1l2d0")
+
+[node name="FallingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_oriq1")
 
 [connection signal="body_entered" from="CollisionShape2D/PickupZone" to="." method="_on_pickup_zone_body_entered"]
 [connection signal="body_exited" from="CollisionShape2D/PickupZone" to="." method="_on_pickup_zone_body_exited"]
