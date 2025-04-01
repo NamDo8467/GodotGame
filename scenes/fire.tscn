@@ -73,6 +73,7 @@ position = Vector2(3.50001, -34)
 shape = SubResource("RectangleShape2D_tduay")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [node name="TriggerZone" type="Area2D" parent="."]
@@ -89,5 +90,6 @@ position = Vector2(4.00002, -6.24999)
 shape = SubResource("RectangleShape2D_rwjr4")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="TriggerZone" to="." method="_on_trigger_zone_body_entered"]
 [connection signal="body_entered" from="HitTheFloorZone" to="." method="_on_hit_the_floor_zone_body_entered"]
