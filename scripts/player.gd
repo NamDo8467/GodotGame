@@ -116,7 +116,7 @@ func _physics_process(delta):
 			change_position_of_player2_after_picking_up()
 			
 		move_and_slide()
-		if can_pickup:
+		if can_pickup and current_weapon_index == -1 or current_weapon_index >= len(Global.player1_current_weapon_list):
 			if Input.is_action_just_pressed("pickup"):
 				player2 = get_node("../Player2")
 				if is_picking_player2_up == false:
@@ -175,8 +175,13 @@ func _on_pickup_zone_body_entered(body):
 func change_position_of_player2_after_picking_up():
 	if is_picking_player2_up and player2 != null:
 		player2.position.y = self.position.y - 112
-		if player_sprite.flip_h == true:
+		var player2_sprite = player2.get_node("AnimatedSprite2D")
+		if player_sprite.flip_h == true and player2_sprite.flip_h == false:
 			player2.position.x = position.x - 50
+		elif player_sprite.flip_h == false and player2_sprite.flip_h == false:
+			player2.position.x = position.x
+		elif player_sprite.flip_h == false and player2_sprite.flip_h == true:
+			player2.position.x = position.x + 50
 		else:
 			player2.position.x = position.x
 

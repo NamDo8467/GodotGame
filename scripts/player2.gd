@@ -75,6 +75,7 @@ func _physics_process(delta):
 				collision_shape.position.y = -58
 			if current_weapon_index != -1:
 				Global.player2_current_weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_right, trampoline_y)
+			
 			#print("yes")
 		elif direction < 0:
 			if current_weapon_index != -1:
@@ -101,7 +102,7 @@ func _physics_process(delta):
 			change_position_of_player1_after_picking_up()
 				
 		move_and_slide()
-		if can_pickup:
+		if can_pickup  and current_weapon_index == -1 or current_weapon_index >= len(Global.player2_current_weapon_list):
 			if Input.is_action_just_pressed("pickup_2"):
 				player1 = get_node("../Player")
 				if is_picking_player1_up == false:
@@ -109,7 +110,6 @@ func _physics_process(delta):
 					is_picking_player1_up = true
 					change_position_of_player1_after_picking_up()
 				else:
-					
 					if player_sprite.flip_h == false:
 						player1.throw_player(420, 30, 1)
 					else:
@@ -117,7 +117,6 @@ func _physics_process(delta):
 					player1.is_being_picked = false
 					is_picking_player1_up = false
 					can_pickup = false
-				
 		# Handle choosing weapon
 		if Input.is_action_just_pressed("choose_weapon_2") and is_picking_player1_up == false:
 			if len(Global.player2_current_weapon_list) > 0:
@@ -157,12 +156,18 @@ func _on_pickup_zone_body_entered(body):
 	can_pickup = true
 	
 func change_position_of_player1_after_picking_up():
+	#print(position.x)
 	if is_picking_player1_up and player1 != null:
 		player1.position.y = self.position.y - 112
-		if player_sprite.flip_h == true:
+		var player1_sprite = player1.get_node("AnimatedSprite2D")
+		if player_sprite.flip_h == true and player1_sprite.flip_h == false:
 			player1.position.x = position.x - 50
+		elif player_sprite.flip_h == false and player1_sprite.flip_h == false:
+			player1.position.x = position.x
+		elif player_sprite.flip_h == false and player1_sprite.flip_h == true:
+			player1.position.x = position.x + 50
 		else:
-			player1.position.x = position.x + 20
+			player1.position.x = position.x
 	
 
 
