@@ -76,14 +76,13 @@ func Start_Cursor():
 
 func Stop_Cursor():
 	cursor_speed = 0
-	Fade_Out()
 
 func Fade_Out():
 	var tween = get_tree().create_tween()
 	tween.tween_property(jumping_Point, "modulate", OFF, 2.0)
 
 func Calculate_Grade() -> Grade:
-	Stop_Cursor()
+	Fade_Out()
 	
 	var cursor_x_pos = cursor.position.x
 	

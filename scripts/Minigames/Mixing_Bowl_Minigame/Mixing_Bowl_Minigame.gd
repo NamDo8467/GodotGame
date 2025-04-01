@@ -19,7 +19,7 @@ var PERFECT_POINTS = 45
 enum States { WALKING_BOTTOM, CLIMBING, WALKING_TOP, JUMPING, FALLING, STUMBLE }
 
 var MIN_SPEED = -250.0
-var JUMP_VELOCITY = 500.0
+var JUMP_VELOCITY = 130.0
 var GRAVITY = 350.0
 var FALL_BOOST = -360.0
 var GRAVITY_BOOST = 5.0
@@ -29,7 +29,7 @@ var MAX_CLIMB_SPEED_MULTI = 5.0
 var MASH_CLIMB_SPEED = 0.2
 var MASH_CLIMB_SPEED_LOSS = 0.05
 var CLIMB_SPEED_MULTI_STARTING = 0.5
-var WALK_SPEED = 100.0
+var WALK_SPEED = 60.0
 var MAX_WALK_SPEED_MULTI = 2.0
 
 var climbing_Top_Y_Pos
@@ -40,12 +40,12 @@ var climbing_X_Pos
 var p1_Velocity = Vector2.ZERO
 var p1_State
 var p1_walk_Speed_Multi = 1.0
-var p1_climb_speed_multi = 0.0
+var p1_climb_speed_multi = 0.5
 # Player 2 Variables
 var p2_Velocity = Vector2.ZERO
 var p2_State
 var p2_walk_Speed_Multi = 1.0
-var p2_climb_speed_multi = 0.0
+var p2_climb_speed_multi = 0.5
 
 # Bowl Variables
 var MAX_BOWL_ANGLE = 30.0
@@ -68,11 +68,11 @@ func _ready():
 	rng.randomize()
 	match rng.randi_range(0, 1):
 			0:
-				p1_State = States.JUMPING
+				p1_State = States.WALKING_TOP
 				p2_State = States.CLIMBING
 			1:
 				p1_State = States.CLIMBING
-				p2_State = States.JUMPING
+				p2_State = States.WALKING_TOP
 	
 	Update_P1_Game_State()
 	Update_P2_Game_State()
@@ -91,10 +91,25 @@ func _process(delta):
 	Move_P1(delta)
 	Move_P2(delta)
 	
-	Bowl_Check()
-	Bowl_Rotation(delta)
+	#Bowl_Check()
+	#Bowl_Rotation(delta)
 	
 	super(delta)
+
+func P1_Actions():
+	if Input.is_action_just_pressed("P1_Minigame_Action_1") && p1_State == States.CLIMBING:
+		p1_climb_speed_multi += MASH_CLIMB_SPEED
+	
+	if Input.is_action_just_pressed("P1_Minigame_Action_2") && p1_State == States.WALKING_TOP:
+		p1_walk_Speed_Multi = MAX_WALK_SPEED_MULTI
+		p1_Ladder.Stop_Cursor()
+
+func P2_Actions():
+	if Input.is_action_just_pressed("P2_Minigame_Action_1") && p2_State == States.CLIMBING:
+		p2_climb_speed_multi += MASH_CLIMB_SPEED
+	if Input.is_action_just_pressed("P2_Minigame_Action_2") && p2_State == States.WALKING_TOP:
+		p2_walk_Speed_Multi = MAX_WALK_SPEED_MULTI
+		p2_Ladder.Stop_Cursor()
 
 func Update_P1_Game_State():
 	match p1_State:
@@ -119,6 +134,7 @@ func Update_P1_Game_State():
 		States.JUMPING:
 			# TODO: Setup animation that starts Jumping
 			p1.position = p1_Ladder.jumping_Point.position
+			p1_Velocity.y = JUMP_VELOCITY
 			print("Jumping")
 			pass
 		States.FALLING:
@@ -133,19 +149,6 @@ func Update_P1_Game_State():
 func Update_P2_Game_State():
 	pass
 
-func P1_Actions():
-	if Input.is_action_just_pressed("P1_Minigame_Action_1") && p1_State == States.CLIMBING:
-		p1_climb_speed_multi += MASH_CLIMB_SPEED
-	
-	if Input.is_action_just_pressed("P1_Minigame_Action_2") && p1_State == States.WALKING_TOP:
-		p1_walk_Speed_Multi = MAX_WALK_SPEED_MULTI
-	
-
-func P2_Actions():
-	if Input.is_action_just_pressed("P2_Minigame_Action_1") && p2_State == States.CLIMBING:
-		pass
-	if Input.is_action_just_pressed("P2_Minigame_Action_2") && p1_State == States.WALKING_TOP:
-		pass
 
 func Move_P1(delta):
 	match p1_State:
@@ -155,7 +158,6 @@ func Move_P1(delta):
 			p1.position.y -= BASE_CLIMB_SPEED * p1_climb_speed_multi * delta
 			
 			p1_climb_speed_multi -= MASH_CLIMB_SPEED_LOSS * delta
-			
 			p1_climb_speed_multi = clamp(p1_climb_speed_multi, MIN_CLIMB_SPEED_MULTI, MAX_CLIMB_SPEED_MULTI)
 			
 			if p1.position.y <= climbing_Top_Y_Pos:
@@ -169,92 +171,101 @@ func Move_P1(delta):
 				p1_State = States.JUMPING
 				Update_P1_Game_State()
 		States.JUMPING:
-			p1.position.x += WALK_SPEED * p1_walk_Speed_Multi * delta
+			p1_Velocity.y -= GRAVITY * delta
+			p1_Velocity.y = max(p1_Velocity.y, MIN_SPEED)
+			p1.position.y -= p1_Velocity.y * delta
 			
 			if p1.position.x < p1_Bowl.position.x:
+				p1.position.x += WALK_SPEED * p1_walk_Speed_Multi * delta
+			else:
 				p1_State = States.FALLING
 				Update_P1_Game_State()
 		States.FALLING:
+			p1.position.x = p1_Bowl.position.x
+
 			p1_Velocity.y -= GRAVITY_BOOST * GRAVITY * delta
-			
 			p1.position.y -= p1_Velocity.y * delta
+			
+			if p1.position.y < p1_Bowl.position.y:
+				p1_State = States.WALKING_BOTTOM
+				Update_P1_Game_State()
 		States.STUMBLE:
 			pass
 
 func Move_P2(delta):
-	pass
+	return delta
 
-func Bowl_Check():
-	Bowl_Reset()
-	#
-	#if p1.position.y > p1_Bowl.global_position.y && p1_State != States.BOWL:
-		#p1.position.y = p1_Bowl.global_position.y
-		#p1_State = States.BOWL
-		#
-		##bowl_Left_Force = Calculate_Force(p1_Height_Reached)
-		#
-		#Calculate_Score(p1_Height_Reached)
-		#p1_Height_Reached = -1
-	#
-	#if p2.position.y > p2_Bowl.global_position.y && p2_State != States.BOWL:
-		#p2.position.y = p2_Bowl.global_position.y
-		#p2_State = States.BOWL
-		#
-		##bowl_Right_Force = Calculate_Force(p2_Height_Reached)
-		#
-		#Calculate_Score(p2_Height_Reached)
-		#p2_Height_Reached = -1
+#func Bowl_Check():
+	#Bowl_Reset()
+	##
+	##if p1.position.y > p1_Bowl.global_position.y && p1_State != States.BOWL:
+		##p1.position.y = p1_Bowl.global_position.y
+		##p1_State = States.BOWL
+		##
+		###bowl_Left_Force = Calculate_Force(p1_Height_Reached)
+		##
+		##Calculate_Score(p1_Height_Reached)
+		##p1_Height_Reached = -1
+	##
+	##if p2.position.y > p2_Bowl.global_position.y && p2_State != States.BOWL:
+		##p2.position.y = p2_Bowl.global_position.y
+		##p2_State = States.BOWL
+		##
+		###bowl_Right_Force = Calculate_Force(p2_Height_Reached)
+		##
+		##Calculate_Score(p2_Height_Reached)
+		##p2_Height_Reached = -1
+##
+##func Calculate_Force(height_Reached):
+		##var final_Force = MAX_FORCE * remap(height_Reached, MIN_POINTS_HEIGHT, MAX_POINTS_HEIGHT, MIN_FORCE, MAX_FORCE)
+		##
+		##clamp(final_Force, MIN_FORCE, MAX_FORCE)
+		##
+		##return final_Force
 #
-#func Calculate_Force(height_Reached):
-		#var final_Force = MAX_FORCE * remap(height_Reached, MIN_POINTS_HEIGHT, MAX_POINTS_HEIGHT, MIN_FORCE, MAX_FORCE)
-		#
-		#clamp(final_Force, MIN_FORCE, MAX_FORCE)
-		#
-		#return final_Force
-
-func Bowl_Rotation(delta):
-	var bowl_Rotation_Velocity = bowl_Right_Force - bowl_Left_Force
-	
-	bowl.rotation_degrees += bowl_Rotation_Velocity * bowl_Tilt_Speed * delta
-	
-	if (bowl.rotation_degrees >= 30):
-		bowl_Right_Force = 0
-		bowl.rotation_degrees = 30
-	if (bowl.rotation_degrees <= -30):
-		bowl_Left_Force = 0
-		bowl.rotation_degrees = -30
-	
-	if bowl_Left_Force > MIN_FORCE:
-		bowl_Left_Force -= FORCE_DEC_RATE * delta
-	else:
-		bowl_Left_Force = MIN_FORCE
-	
-	if bowl_Right_Force > MIN_FORCE:
-		bowl_Right_Force -= FORCE_DEC_RATE * delta
-	else:
-		bowl_Right_Force = MIN_FORCE
-
-func Bowl_Reset():
-	#p1.modulate = Color(1, 1, 1, 1)
-	#p2.modulate = Color(1, 1, 1, 1)
+#func Bowl_Rotation(delta):
+	#var bowl_Rotation_Velocity = bowl_Right_Force - bowl_Left_Force
 	#
-	#if bowl.rotation_degrees == 0:
-		#return
+	#bowl.rotation_degrees += bowl_Rotation_Velocity * bowl_Tilt_Speed * delta
 	#
-	#if p1_State != States.BOWL || p2_State != States.BOWL:
-		#return
+	#if (bowl.rotation_degrees >= 30):
+		#bowl_Right_Force = 0
+		#bowl.rotation_degrees = 30
+	#if (bowl.rotation_degrees <= -30):
+		#bowl_Left_Force = 0
+		#bowl.rotation_degrees = -30
 	#
-	#is_Able_To_Jump = false
+	#if bowl_Left_Force > MIN_FORCE:
+		#bowl_Left_Force -= FORCE_DEC_RATE * delta
+	#else:
+		#bowl_Left_Force = MIN_FORCE
 	#
-	#bowl_Left_Force = 0
-	#bowl_Right_Force = 0
-	#
-	#p1.modulate = Color(0.2, 0.2, 0.2, 1)
-	#p2.modulate = Color(0.2, 0.2, 0.2, 1)
-	#
-	#var bowl_Tween = create_tween()
-	#bowl_Tween.tween_property(bowl, "rotation_degrees", 0, 1.5).finished.connect(set.bind("is_Able_To_Jump", true))
-	pass
+	#if bowl_Right_Force > MIN_FORCE:
+		#bowl_Right_Force -= FORCE_DEC_RATE * delta
+	#else:
+		#bowl_Right_Force = MIN_FORCE
+#
+#func Bowl_Reset():
+	##p1.modulate = Color(1, 1, 1, 1)
+	##p2.modulate = Color(1, 1, 1, 1)
+	##
+	##if bowl.rotation_degrees == 0:
+		##return
+	##
+	##if p1_State != States.BOWL || p2_State != States.BOWL:
+		##return
+	##
+	##is_Able_To_Jump = false
+	##
+	##bowl_Left_Force = 0
+	##bowl_Right_Force = 0
+	##
+	##p1.modulate = Color(0.2, 0.2, 0.2, 1)
+	##p2.modulate = Color(0.2, 0.2, 0.2, 1)
+	##
+	##var bowl_Tween = create_tween()
+	##bowl_Tween.tween_property(bowl, "rotation_degrees", 0, 1.5).finished.connect(set.bind("is_Able_To_Jump", true))
+	#pass
 
 func Calculate_Score():
 	# TODO: Update this to calculate score based on how fast they got to the top (through how far down the bowl has gone) + how accurate they were too the 
