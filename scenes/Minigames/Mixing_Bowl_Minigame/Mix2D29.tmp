@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dq2l8pg1j40xt" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Temp_Ladder.png" id="12_haopm"]
 [ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="12_vufdd"]
 [ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="13_fm3iy"]
-[ext_resource type="Script" path="res://scripts/Minigames/Mixing_Bowl_Minigame/Ladder.gd" id="13_m3ipn"]
+[ext_resource type="Script" path="res://scenes/Minigames/Mixing_Bowl_Minigame/Ladder.gd" id="13_jjxc7"]
 [ext_resource type="Texture2D" uid="uid://dsloqinxomko" path="res://assets/Minigame_Assets/White_Square.png" id="13_qskyw"]
 
 [node name="MixingBowlMinigame" type="Node2D"]
@@ -93,10 +93,8 @@ expand_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 7.0
 offset_top = -100.0
 offset_right = 1300.0
-offset_bottom = -6.0
 grow_vertical = 0
 step = 0.0
 nine_patch_stretch = true
@@ -119,7 +117,7 @@ position = Vector2(800, 570)
 scale = Vector2(0.462037, 0.4)
 texture = ExtResource("11_fidi3")
 
-[node name="Bowl_P1" type="Node2D" parent="Bowl"]
+[node name="Bowl_p1" type="Node2D" parent="Bowl"]
 position = Vector2(-580, -230)
 
 [node name="Bowl_P2" type="Node2D" parent="Bowl"]
@@ -129,7 +127,7 @@ position = Vector2(610, -230)
 position = Vector2(340, 445)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("12_haopm")
-script = ExtResource("13_m3ipn")
+script = ExtResource("13_jjxc7")
 
 [node name="Bottom_Point" type="Node2D" parent="Ladder_P1"]
 position = Vector2(0.000366211, 1050)
@@ -162,11 +160,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_right = 40.0003
+offset_left = 25.0
+offset_right = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 1)
+scale = Vector2(0.5, 1)
 color = Color(0.941176, 0.521569, 0, 1)
 
 [node name="Range_Great" type="ColorRect" parent="Ladder_P1/Jumping_Point/Timing_Bar/Background/Range_Good"]
@@ -200,9 +198,8 @@ texture = ExtResource("13_qskyw")
 
 [node name="Ladder_P2" type="Sprite2D" parent="."]
 position = Vector2(1260, 445)
-scale = Vector2(-0.25, 0.25)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("12_haopm")
-script = ExtResource("13_m3ipn")
 
 [node name="Bottom_Point" type="Node2D" parent="Ladder_P2"]
 position = Vector2(0.000366211, 1050)
@@ -211,138 +208,7 @@ position = Vector2(0.000366211, 1050)
 position = Vector2(0, -800)
 
 [node name="Jumping_Point" type="Node2D" parent="Ladder_P2"]
-position = Vector2(420, -864)
-
-[node name="Timing_Bar" type="Sprite2D" parent="Ladder_P2/Jumping_Point"]
-position = Vector2(0, -700)
-scale = Vector2(26, 2.4)
-texture = ExtResource("13_qskyw")
-
-[node name="Background" type="ColorRect" parent="Ladder_P2/Jumping_Point/Timing_Bar"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -50.0
-offset_right = -50.0
-offset_bottom = -50.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.811765, 0.0392157, 0.054902, 1)
-
-[node name="Range_Good" type="ColorRect" parent="Ladder_P2/Jumping_Point/Timing_Bar/Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_right = 40.0003
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.6, 1)
-color = Color(0.941176, 0.521569, 0, 1)
-
-[node name="Range_Great" type="ColorRect" parent="Ladder_P2/Jumping_Point/Timing_Bar/Background/Range_Good"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 25.0
-offset_right = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 1)
-color = Color(0.870588, 0.870588, 0.105882, 1)
-
-[node name="Range_Perfect" type="ColorRect" parent="Ladder_P2/Jumping_Point/Timing_Bar/Background/Range_Good/Range_Great"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 37.5
-offset_right = 37.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.25, 1)
-color = Color(0.298039, 0.890196, 0, 1)
-
-[node name="Cursor" type="Sprite2D" parent="Ladder_P2/Jumping_Point/Timing_Bar"]
-z_index = 1
-scale = Vector2(0.01, 1)
-texture = ExtResource("13_qskyw")
-
-[node name="Ladder_P" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1260, 445)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("12_haopm")
-script = ExtResource("13_m3ipn")
-
-[node name="Bottom_Point" type="Node2D" parent="Ladder_P"]
-position = Vector2(0.000366211, 1050)
-
-[node name="Top_Point" type="Node2D" parent="Ladder_P"]
-position = Vector2(0, -800)
-
-[node name="Jumping_Point" type="Node2D" parent="Ladder_P"]
 position = Vector2(-420, -864)
-
-[node name="Timing_Bar" type="Sprite2D" parent="Ladder_P/Jumping_Point"]
-position = Vector2(0, -700)
-scale = Vector2(26, 2.4)
-texture = ExtResource("13_qskyw")
-
-[node name="Background" type="ColorRect" parent="Ladder_P/Jumping_Point/Timing_Bar"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -50.0
-offset_right = -50.0
-offset_bottom = -50.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.811765, 0.0392157, 0.054902, 1)
-
-[node name="Range_Good" type="ColorRect" parent="Ladder_P/Jumping_Point/Timing_Bar/Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.000320435
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.6, 1)
-color = Color(0.941176, 0.521569, 0, 1)
-
-[node name="Range_Great" type="ColorRect" parent="Ladder_P/Jumping_Point/Timing_Bar/Background/Range_Good"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 25.0
-offset_right = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 1)
-color = Color(0.870588, 0.870588, 0.105882, 1)
-
-[node name="Range_Perfect" type="ColorRect" parent="Ladder_P/Jumping_Point/Timing_Bar/Background/Range_Good/Range_Great"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 37.5
-offset_right = 37.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.25, 1)
-color = Color(0.298039, 0.890196, 0, 1)
-
-[node name="Cursor" type="Sprite2D" parent="Ladder_P/Jumping_Point/Timing_Bar"]
-z_index = 1
-scale = Vector2(0.01, 1)
-texture = ExtResource("13_qskyw")
 
 [node name="Player_1" type="Sprite2D" parent="."]
 position = Vector2(532, 479)
@@ -353,3 +219,7 @@ texture = ExtResource("12_vufdd")
 position = Vector2(1082, 478)
 scale = Vector2(1.04063, 1.04063)
 texture = ExtResource("13_fm3iy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1152, 60)
+texture = ExtResource("6_7ifni")

@@ -138,29 +138,29 @@ autowrap_mode = 0
 
 [node name="Ready_Text" type="RichTextLabel" parent="Menu_Container/Forground"]
 layout_mode = 0
-offset_left = 252.0
-offset_top = 18.3037
-offset_right = 384.0
-offset_bottom = 66.3037
+offset_left = 479.0
+offset_top = 55.0
+offset_right = 611.0
+offset_bottom = 103.0
 bbcode_enabled = true
 text = "[font_size=30][color=black][center]Ready?"
 
 [node name="Player_1_Ready" type="TextureRect" parent="Menu_Container/Forground"]
 modulate = Color(0.196078, 0.196078, 0.196078, 1)
 layout_mode = 0
-offset_left = 242.0
-offset_top = 57.3037
-offset_right = 306.0
-offset_bottom = 121.304
+offset_left = 469.0
+offset_top = 94.0
+offset_right = 533.0
+offset_bottom = 158.0
 texture = ExtResource("6_18tsu")
 
 [node name="Player_2_Ready" type="TextureRect" parent="Menu_Container/Forground"]
 modulate = Color(0.196078, 0.196078, 0.196078, 1)
 layout_mode = 0
-offset_left = 332.0
-offset_top = 57.3037
-offset_right = 396.0
-offset_bottom = 121.304
+offset_left = 559.0
+offset_top = 94.0
+offset_right = 623.0
+offset_bottom = 158.0
 texture = ExtResource("7_h8xfg")
 
 [node name="Current_Minigame" type="Node2D" parent="."]

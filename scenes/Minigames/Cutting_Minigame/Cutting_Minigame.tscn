@@ -85,34 +85,37 @@ texture = ExtResource("5_2nyoa")
 expand_mode = 1
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(499, 448.5)
-scale = Vector2(15.5938, 14.0156)
+position = Vector2(798.999, 448.5)
+scale = Vector2(24.9688, 14.0156)
 texture = ExtResource("2_yo1ye")
 
 [node name="Cutting_Board" type="Sprite2D" parent="."]
-position = Vector2(482, 448.5)
-scale = Vector2(0.479629, 0.702469)
+position = Vector2(799, 448.5)
+scale = Vector2(0.739815, 0.702469)
 texture = ExtResource("3_dk2k4")
 
 [node name="Food" type="Sprite2D" parent="."]
-position = Vector2(481, 448.5)
-scale = Vector2(0.478704, 0.639815)
+position = Vector2(800, 448.5)
+scale = Vector2(0.740741, 0.639815)
 texture = ExtResource("4_66wye")
 
 [node name="Knife" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(50, 448.5)
+position = Vector2(106.8, 448.5)
 scale = Vector2(0.515591, 0.515591)
 texture = ExtResource("5_t4sjx")
 
 [node name="Player_1" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(50, 43)
+position = Vector2(106.8, 43)
 scale = Vector2(1.0875, 1.0875)
 texture = ExtResource("6_qyd6o")
 
 [node name="Player_2" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(50, 854)
+position = Vector2(106.8, 854)
 scale = Vector2(1.087, 1.083)
 texture = ExtResource("7_vc3o1")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1088, 456)

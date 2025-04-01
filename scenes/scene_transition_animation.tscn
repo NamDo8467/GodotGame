@@ -75,4 +75,8 @@ libraries = {
 "": SubResource("AnimationLibrary_4ypf1")
 }
 
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
