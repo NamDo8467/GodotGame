@@ -582,7 +582,7 @@ offset_top = 76.0
 offset_right = 976.0
 offset_bottom = 103.0
 theme_override_font_sizes/font_size = 25
-text = "Floor: 1/4"
+text = "Floor: 1/3"
 uppercase = true
 
 [node name="LevelBackgroundMusic" parent="." instance=ExtResource("10_m4ce2")]
