@@ -13,8 +13,12 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	var player = body.name
-	Global.player_set_to_show_elevator[player] = null
+	var player_name = body.name
+	if (player_name == "Player" and body.is_picking_player2_up) or (player_name == "Player2" and body.is_picking_player1_up):
+		Global.player_set_to_show_elevator["Player"] = null
+		Global.player_set_to_show_elevator["Player2"] = null
+	else:
+		Global.player_set_to_show_elevator[player_name] = null
 	
 	if len(Global.player_set_to_show_elevator) >= 2:
 		camera.zoom.x = 1.4
