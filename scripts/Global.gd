@@ -37,7 +37,7 @@ var die_outside_of_the_room = false
 var player_set_to_show_elevator = {}
 
 # Total number of floor levels
-var total_floor_level = 4
+var total_floor_level = 3
 var current_floor = 1
 func go_up_one_floor_level():
 	current_floor += 1
