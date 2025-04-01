@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0ptlvl7i4gn8"]
+[gd_scene load_steps=21 format=3 uid="uid://c0ptlvl7i4gn8"]
 
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_aae8v"]
+[ext_resource type="Script" path="res://scripts/first_floor.gd" id="1_ni3hf"]
 [ext_resource type="PackedScene" uid="uid://nk47flta8bsj" path="res://scenes/player_spawner.tscn" id="2_rqet4"]
 [ext_resource type="PackedScene" uid="uid://br8nu8mu2ikc5" path="res://scenes/elevator.tscn" id="2_su16i"]
 [ext_resource type="Texture2D" uid="uid://dpa44mqisecpc" path="res://assets/Free/Background/Brown.png" id="3_kwe7k"]
@@ -525,6 +526,7 @@ sources/2 = SubResource("TileSetAtlasSource_lop1o")
 
 [node name="FirstFloor" type="Node2D"]
 position = Vector2(273, -53)
+script = ExtResource("1_ni3hf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(300, 504)
