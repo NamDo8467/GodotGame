@@ -26,5 +26,10 @@ func _on_trigger_zone_body_entered(body):
 
 func _on_hit_the_floor_zone_body_entered(body):
 	if body.name == "TileMap":
-		queue_free()
+		timer.start()
+		#get_node(KillZone) queue_free()
 		#fire_spawner.drop_fire += 1
+
+
+func _on_timer_timeout():
+	queue_free()
