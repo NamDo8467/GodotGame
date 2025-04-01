@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbm1fvu8cp2ai"]
+[gd_scene load_steps=14 format=3 uid="uid://dbm1fvu8cp2ai"]
 
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_5lvgr"]
 [ext_resource type="PackedScene" uid="uid://nk47flta8bsj" path="res://scenes/player_spawner.tscn" id="1_uvksh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bj15g75e0ypnx" path="res://scenes/enter_room_zone.tscn" id="8_hk2ys"]
 [ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="8_tsors"]
 [ext_resource type="PackedScene" uid="uid://rukqw151ru1f" path="res://scenes/leave_room_zone.tscn" id="9_oq5mo"]
+[ext_resource type="PackedScene" uid="uid://beol1sysr1ymp" path="res://scenes/level_background_music.tscn" id="10_diugx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eho43"]
 texture = ExtResource("1_5lvgr")
@@ -546,3 +547,5 @@ offset_bottom = 99.0
 theme_override_font_sizes/font_size = 25
 text = "Floor: 3/4"
 uppercase = true
+
+[node name="LevelBackgroundMusic" parent="." instance=ExtResource("10_diugx")]
