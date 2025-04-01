@@ -23,4 +23,7 @@ func _process(_delta):
 		var player2_starting_position = Vector2(Global.spawning_position_x - 120, Global.spawning_position_y)
 		player2.position = player2_starting_position
 		Global.player_set_to_show_elevator[player2.name] = null
-		get_parent().add_child(player2)	
+		get_parent().add_child(player2)
+		
+	if Input.is_action_just_released("go_to_minigames"):
+		Global.transition_to_minigames()	
