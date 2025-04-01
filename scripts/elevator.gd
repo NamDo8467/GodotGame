@@ -5,6 +5,7 @@ func _process(delta):
 	if Input.is_action_just_released("move_elevator_up"):
 	#if Input.is_key_pressed(KEY_UP) or Input.is_joy_button_pressed(0, JOY_BUTTON_RIGHT_SHOULDER):
 		Global.go_up_one_floor_level()
+		print(Global.current_floor)
 		if Global.current_floor > Global.total_floor_level:
 			Global.go_down_one_floor_level()
 			return
@@ -15,6 +16,7 @@ func _process(delta):
 	elif Input.is_action_just_released("move_elevator_down"):
 	#elif Input.is_key_pressed(KEY_DOWN) or Input.is_joy_button_pressed(0, JOY_BUTTON_LEFT_SHOULDER):
 		Global.go_down_one_floor_level()
+		#print("hahah")
 		if Global.current_floor < 0:
 			Global.go_up_one_floor_level()
 			return
