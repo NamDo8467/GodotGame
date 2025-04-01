@@ -19,6 +19,7 @@ func _on_body_entered(body):
 		player.velocity.y = -1100
 	else:
 		picked_up = true
+		Global.is_trampoline_picked_up = true
 		body.add_to_weapon_list(self)
 		self.position = Vector2(0,0)
 		get_parent().call_deferred("remove_child", self)
