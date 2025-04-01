@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmod05f0wsmsp"]
+[gd_scene load_steps=13 format=3 uid="uid://bmod05f0wsmsp"]
 
 [ext_resource type="Script" path="res://scripts/fire.gd" id="1_rd7gp"]
 [ext_resource type="Texture2D" uid="uid://bwlrheq0565xr" path="res://assets/Free/Traps/Fire/On (16x32).png" id="1_vo81o"]
@@ -47,10 +47,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tduay"]
-size = Vector2(13, 20)
+size = Vector2(13, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3iujt"]
-size = Vector2(19, 120)
+size = Vector2(19, 267)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwjr4"]
+size = Vector2(20, 3.5)
 
 [node name="Fire" type="Node2D"]
 rotation = 3.14159
@@ -66,20 +69,27 @@ autoplay = "off"
 [node name="KillZone" parent="." instance=ExtResource("4_kg0vt")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(3.50001, -31)
+position = Vector2(3.50001, -34)
 shape = SubResource("RectangleShape2D_tduay")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [node name="TriggerZone" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerZone"]
-position = Vector2(3.49999, -98)
+position = Vector2(3.49999, -171.5)
 shape = SubResource("RectangleShape2D_3iujt")
 
+[node name="HitTheFloorZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitTheFloorZone"]
+position = Vector2(4.00002, -6.24999)
+shape = SubResource("RectangleShape2D_rwjr4")
+
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="TriggerZone" to="." method="_on_trigger_zone_body_entered"]
+[connection signal="body_entered" from="HitTheFloorZone" to="." method="_on_hit_the_floor_zone_body_entered"]

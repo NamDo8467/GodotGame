@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://beol1sysr1ymp"]
+
+[ext_resource type="AudioStream" uid="uid://ce64ntl7hrob0" path="res://assets/Audio/level_background_music.wav" id="1_acu4y"]
+
+[node name="LevelBackgroundMusic" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_acu4y")
+volume_db = 24.0
+autoplay = true
