@@ -12,6 +12,7 @@ var drop_fire = 0 # will be used to recreate fire after all of them drop. There 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if fire_instantiated == false:
+		#1110
 		for i in range(0, 1110, 30):
 			var fire = fire_scene.instantiate()
 			fire.position = Vector2(fire_starting_position_x + i, fire_starting_position_y)
