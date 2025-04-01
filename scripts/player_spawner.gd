@@ -25,5 +25,9 @@ func _process(_delta):
 		Global.player_set_to_show_elevator[player2.name] = null
 		get_parent().add_child(player2)
 		
+	if Input.is_action_just_released("restart"):
+		Global.reset_apartment_scene()
+		get_tree().reload_current_scene()
+		
 	if Input.is_action_just_released("go_to_minigames"):
 		Global.transition_to_minigames()
