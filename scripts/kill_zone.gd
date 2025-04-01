@@ -19,12 +19,18 @@ func _on_body_entered(body):
 		falling_sound.play()
 		#await falling_sound.finished
 		
-	if body.position.x <= 900:
-		Global.die_outside_of_the_room = true
-		Global.spawning_position_x = 130
-	else:
-		Global.die_outside_of_the_room = false
+	#if body.position.x <= 900:
+		#Global.die_outside_of_the_room = true
+		#Global.spawning_position_x = 130
+	#else:
+		#Global.die_outside_of_the_room = false
+		#Global.spawning_position_x = 1053
+	
+	if Global.is_Inisde_Room:
 		Global.spawning_position_x = 1053
+	else:
+		Global.spawning_position_x = 130
+	
 	timer.start()
 
 func _on_timer_timeout():

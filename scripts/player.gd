@@ -125,6 +125,7 @@ func _physics_process(delta):
 			change_position_of_player2_after_picking_up()
 			
 		move_and_slide()
+		
 		if can_pickup and current_weapon_index == -1 or current_weapon_index >= len(Global.player1_current_weapon_list):
 			if Input.is_action_just_pressed("pickup"):
 				player2 = get_node("../Player2")
@@ -197,7 +198,6 @@ func change_position_of_player2_after_picking_up():
 			player2.position.x = position.x + 50
 		else:
 			player2.position.x = position.x
-
 
 func _on_pickup_zone_body_exited(body):
 	can_pickup = false

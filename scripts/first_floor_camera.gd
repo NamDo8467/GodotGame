@@ -22,6 +22,8 @@ func _on_camera_leaving_zone_body_entered(body):
 	player_set_to_show_elevator[player] = null
 	
 	if len(player_set_to_show_elevator) >= 2:
+		print("NOW")
+		Global.is_Inisde_Room = false
 		camera.zoom.x = 1.4
 		camera.zoom.y = 1
 

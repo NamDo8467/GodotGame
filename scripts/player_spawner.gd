@@ -26,4 +26,4 @@ func _process(_delta):
 		get_parent().add_child(player2)
 		
 	if Input.is_action_just_released("go_to_minigames"):
-		Global.transition_to_minigames()	
+		Global.transition_to_minigames()

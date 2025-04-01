@@ -21,6 +21,8 @@ func _on_body_entered(body):
 	var player = body.name
 	Global.player_set_to_show_elevator.erase(player)
 	
+	Global.is_Inisde_Room = true
+	
 	camera.zoom.x = 0.99
 	camera.zoom.y = 1
 	
