@@ -19,7 +19,7 @@ var PERFECT_POINTS = 45
 enum States { WALKING_BOTTOM, CLIMBING, WALKING_TOP, JUMPING, FALLING, STUMBLE }
 
 var MIN_SPEED = -250.0
-var JUMP_VELOCITY = 130.0
+var JUMP_VELOCITY = 400.0
 var GRAVITY = 350.0
 var FALL_BOOST = -360.0
 var GRAVITY_BOOST = 5.0
@@ -59,14 +59,14 @@ var bowl_Tilt_Speed = 100.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	minigame_Time = 15.0 # Change this to adjust timers
+	minigame_Time = 20.0 # Change this to adjust timers
 	
 	climbing_Top_Y_Pos = p1_Ladder.get_child(1).global_position.y
 	climbing_Bottom_Y_Pos = p1_Ladder.get_child(0).global_position.y
 	climbing_X_Pos = p1_Ladder.get_child(0).global_position.x
 	
 	rng.randomize()
-	match rng.randi_range(0, 1):
+	match 0:#rng.randi_range(0, 1):
 			0:
 				p1_State = States.WALKING_TOP
 				p2_State = States.CLIMBING
@@ -114,14 +114,14 @@ func P2_Actions():
 func Update_P1_Game_State():
 	match p1_State:
 		States.WALKING_BOTTOM:
-			Calculate_Score()
 			# TODO: Setup animation that starts walking
+			p1.position = p1_Bowl.global_position
 			p1_walk_Speed_Multi = 1.0
 			print("Walking Bottom")
 			pass
 		States.CLIMBING:
 			# TODO: Setup animation that starts climbing
-			p1.position = Vector2(climbing_X_Pos, climbing_Bottom_Y_Pos)
+			#p1.position = Vector2(climbing_X_Pos, climbing_Bottom_Y_Pos)
 			p1_climb_speed_multi = CLIMB_SPEED_MULTI_STARTING
 			print("Climbing")
 			pass
@@ -133,7 +133,7 @@ func Update_P1_Game_State():
 			pass
 		States.JUMPING:
 			# TODO: Setup animation that starts Jumping
-			p1.position = p1_Ladder.jumping_Point.position
+			#p1.position = p1_Ladder.jumping_Point.global_position
 			p1_Velocity.y = JUMP_VELOCITY
 			print("Jumping")
 			pass
@@ -153,7 +153,16 @@ func Update_P2_Game_State():
 func Move_P1(delta):
 	match p1_State:
 		States.WALKING_BOTTOM:
-			pass
+			if p1.position.x >= climbing_X_Pos:
+				p1.position.x -= WALK_SPEED * p1_walk_Speed_Multi * 3 * delta
+			
+			if p1.position.y <= climbing_Bottom_Y_Pos:
+				p1.position.y += WALK_SPEED * p1_walk_Speed_Multi * 3 * delta
+			
+			if p1.position.x <= climbing_X_Pos && p1.position.y >= climbing_Bottom_Y_Pos:
+				p1_climb_speed_multi = MIN_CLIMB_SPEED_MULTI
+				p1_State = States.CLIMBING
+				Update_P1_Game_State()
 		States.CLIMBING:
 			p1.position.y -= BASE_CLIMB_SPEED * p1_climb_speed_multi * delta
 			
@@ -161,7 +170,6 @@ func Move_P1(delta):
 			p1_climb_speed_multi = clamp(p1_climb_speed_multi, MIN_CLIMB_SPEED_MULTI, MAX_CLIMB_SPEED_MULTI)
 			
 			if p1.position.y <= climbing_Top_Y_Pos:
-				p1_climb_speed_multi = MIN_CLIMB_SPEED_MULTI
 				p1_State = States.WALKING_TOP
 				Update_P1_Game_State()
 		States.WALKING_TOP:
@@ -175,19 +183,23 @@ func Move_P1(delta):
 			p1_Velocity.y = max(p1_Velocity.y, MIN_SPEED)
 			p1.position.y -= p1_Velocity.y * delta
 			
-			if p1.position.x < p1_Bowl.position.x:
+			print("Velocity Delta: " + str(p1_Velocity.y * delta))
+			print("p1.position.x: " + str(p1.position.x))
+			if p1.position.x < p1_Bowl.global_position.x:
 				p1.position.x += WALK_SPEED * p1_walk_Speed_Multi * delta
+				print(p1.position.x)
 			else:
 				p1_State = States.FALLING
 				Update_P1_Game_State()
 		States.FALLING:
-			p1.position.x = p1_Bowl.position.x
-
+			p1.position.x = p1_Bowl.global_position.x
+			
 			p1_Velocity.y -= GRAVITY_BOOST * GRAVITY * delta
 			p1.position.y -= p1_Velocity.y * delta
 			
-			if p1.position.y < p1_Bowl.position.y:
+			if p1.position.y > p1_Bowl.global_position.y:
 				p1_State = States.WALKING_BOTTOM
+				Calculate_Score()
 				Update_P1_Game_State()
 		States.STUMBLE:
 			pass
