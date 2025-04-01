@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 const SPEED = 320.0
-const JUMP_VELOCITY = -500.0
+const JUMP_VELOCITY = -550.0
 #var weapon_list = []
 var current_weapon_index = -1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var trampoline_scene = preload("res://scenes/trampoline.tscn")
 @onready var player_sprite = $AnimatedSprite2D
 @onready var collision_shape = $CollisionShape2D
 
@@ -121,12 +122,16 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("choose_weapon_2") and is_picking_player1_up == false:
 			if len(Global.player2_current_weapon_list) > 0:
 				if current_weapon_index + 1 >= len(Global.player2_current_weapon_list):
-					remove_child(Global.player2_current_weapon_list[current_weapon_index])
+					remove_child(get_node("Trampoline"))
+					#remove_child(Global.player2_current_weapon_list[current_weapon_index])
 					current_weapon_index = -1
 				else:
-					current_weapon_index = current_weapon_index + 1
-					var new_weapon = Global.player2_current_weapon_list[current_weapon_index]
+					var new_weapon = trampoline_scene.instantiate()
+					new_weapon.picked_up = true
 					new_weapon.position = Vector2(trampoline_x_when_facing_right, trampoline_y)
+					Global.player2_current_weapon_list[current_weapon_index] = new_weapon
+					current_weapon_index = current_weapon_index + 1
+
 					if player_sprite.flip_h == false:
 						new_weapon.position = Vector2(trampoline_x_when_facing_right, trampoline_y)
 					elif player_sprite.flip_h == true:
