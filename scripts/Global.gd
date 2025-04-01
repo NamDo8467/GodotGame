@@ -24,6 +24,9 @@ var current_ingredient_list = []
 var player1_current_weapon_list = []
 var player2_current_weapon_list = []
 
+# Check if the trampoline is picked up so that when transition betweeen scenes, the trampoline won't be rendered once picked
+var is_trampoline_picked_up = false
+
 # Spawning position
 # when x = 130, thats the spawning x coordinate in the elevator
 # when x = 1053, thats the spawning x cooridinate in the room
