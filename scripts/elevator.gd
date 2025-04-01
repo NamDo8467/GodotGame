@@ -12,7 +12,9 @@ func _process(delta):
 		else:
 			if len(Global.player_set_to_show_elevator) > 1:
 				move_elevator()
-				
+			else:
+				print(Global.player_set_to_show_elevator)
+				print("Noo")
 	elif Input.is_action_just_released("move_elevator_down"):
 	#elif Input.is_key_pressed(KEY_DOWN) or Input.is_joy_button_pressed(0, JOY_BUTTON_LEFT_SHOULDER):
 		Global.go_down_one_floor_level()
