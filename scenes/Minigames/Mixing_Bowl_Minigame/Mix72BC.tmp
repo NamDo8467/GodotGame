@@ -160,11 +160,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_right = 40.0003
+offset_left = 25.0
+offset_right = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 1)
+scale = Vector2(0.5, 1)
 color = Color(0.941176, 0.521569, 0, 1)
 
 [node name="Range_Great" type="ColorRect" parent="Ladder_P1/Jumping_Point/Timing_Bar/Background/Range_Good"]
