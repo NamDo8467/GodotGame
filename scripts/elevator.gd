@@ -1,8 +1,14 @@
 extends Node2D
 
+var is_Changing_Scenes = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta):	
+	if is_Changing_Scenes:
+		return
+	
 	if Input.is_action_just_released("move_elevator_up"):
+		print(Global.current_floor)
 	#if Input.is_key_pressed(KEY_UP) or Input.is_joy_button_pressed(0, JOY_BUTTON_RIGHT_SHOULDER):
 		Global.go_up_one_floor_level()
 		#print(Global.current_floor)
@@ -29,6 +35,7 @@ func _process(delta):
 func move_elevator():
 	#print(Global.current_floor)
 	SceneTransitionAnimation.change_scene()
+	is_Changing_Scenes = true
 	await SceneTransitionAnimation.animation_player.animation_finished
 	if Global.current_floor == 1:
 		get_tree().change_scene_to_file("res://scenes/first_floor.tscn")
@@ -36,3 +43,6 @@ func move_elevator():
 		get_tree().change_scene_to_file("res://scenes/second_floor.tscn")
 	elif Global.current_floor == 3:
 		get_tree().change_scene_to_file("res://scenes/third_floor.tscn")
+	
+	is_Changing_Scenes = false
+
