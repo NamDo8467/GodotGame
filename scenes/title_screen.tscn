@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlximt4txguys"]
+[gd_scene load_steps=15 format=3 uid="uid://dlximt4txguys"]
 
 [ext_resource type="Texture2D" uid="uid://b7xkxhd6ufshn" path="res://assets/title_screen_image.png" id="1_mn2pa"]
+[ext_resource type="AudioStream" uid="uid://bwt558woqat8w" path="res://assets/Audio/title_screen_background_sound.mp3" id="2_30ygb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54hi5"]
 bg_color = Color(0, 0, 0, 0)
@@ -122,3 +123,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_bpij7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_8olop")
 theme_override_styles/focus = SubResource("StyleBoxFlat_q6kit")
 text = "About Us"
+
+[node name="TitleScreenBackgroundSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_30ygb")
+autoplay = true
