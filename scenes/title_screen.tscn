@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlximt4txguys"]
+[gd_scene load_steps=16 format=3 uid="uid://dlximt4txguys"]
 
 [ext_resource type="Texture2D" uid="uid://b7xkxhd6ufshn" path="res://assets/title_screen_image.png" id="1_mn2pa"]
-[ext_resource type="AudioStream" uid="uid://bwt558woqat8w" path="res://assets/Audio/title_screen_background_sound.mp3" id="2_30ygb"]
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_vdngm"]
+[ext_resource type="AudioStream" uid="uid://ce64ntl7hrob0" path="res://assets/Audio/level_background_music.wav" id="2_0kmw2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54hi5"]
 bg_color = Color(0, 0, 0, 0)
@@ -70,6 +71,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_vdngm")
 
 [node name="TitleScreenImage" type="Sprite2D" parent="."]
 position = Vector2(800.889, 447.5)
@@ -125,5 +127,8 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_q6kit")
 text = "About Us"
 
 [node name="TitleScreenBackgroundSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_30ygb")
+stream = ExtResource("2_0kmw2")
+volume_db = 24.0
 autoplay = true
+
+[connection signal="pressed" from="TitleScreenImage/QuitButton" to="." method="_on_quit_button_pressed"]
