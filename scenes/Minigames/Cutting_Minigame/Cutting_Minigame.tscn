@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://rawb5qng2ktq"]
+[gd_scene load_steps=15 format=3 uid="uid://rawb5qng2ktq"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Cutting_Minigame/Cutting_Minigame.gd" id="1_llmj1"]
 [ext_resource type="Texture2D" uid="uid://cvffwabybj7qd" path="res://assets/Minigame_Assets/Timer/Layer_0.png" id="2_homt2"]
+[ext_resource type="PackedScene" uid="uid://8gy7aw2hdl8x" path="res://scenes/Minigames/Base_Minigame/Start_Countdown.tscn" id="2_l2tlq"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="2_yo1ye"]
 [ext_resource type="Texture2D" uid="uid://d3xh16jpkg2ed" path="res://assets/Minigame_Assets/Cutting_Minigame/Cutting_Board.png" id="3_dk2k4"]
 [ext_resource type="Texture2D" uid="uid://cp0y8oqypptqt" path="res://assets/Minigame_Assets/Timer/Layer_3.png" id="3_mo5ql"]
@@ -12,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="6_hlrgk"]
 [ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="6_qyd6o"]
 [ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="7_vc3o1"]
+[ext_resource type="AudioStream" uid="uid://oxt8a7otigc" path="res://assets/Minigame_Assets/Audio/Cutting_Sound.mp3" id="7_vodoo"]
 
 [node name="CuttingMinigame" type="Node2D"]
 script = ExtResource("1_llmj1")
@@ -30,21 +32,7 @@ text = "[right]score[/right]   "
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 
-[node name="Start_Timmer" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -82.5
-offset_bottom = 82.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 120
-bbcode_enabled = true
-text = "[center]3[/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
+[node name="Start_Countdown" parent="CanvasLayer" instance=ExtResource("2_l2tlq")]
 
 [node name="Game_Timmer" type="TextureProgressBar" parent="CanvasLayer"]
 anchors_preset = 3
@@ -92,6 +80,16 @@ stream = ExtResource("6_hlrgk")
 volume_db = -8.0
 
 [node name="Sound_Effects" type="Node" parent="CanvasLayer/Sound"]
+
+[node name="Cutting_Sound" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound/Sound_Effects"]
+stream = ExtResource("7_vodoo")
+volume_db = -3.0
+
+[node name="Walking_Sounds" type="Node" parent="CanvasLayer/Sound/Sound_Effects"]
+
+[node name="P1" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound/Sound_Effects/Walking_Sounds"]
+
+[node name="P2" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound/Sound_Effects/Walking_Sounds"]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(798.999, 448.5)

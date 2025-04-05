@@ -39,9 +39,6 @@ func _process(delta):
 	if !is_Game_Started:
 		return
 	
-	if bg_Music.playing == false:
-		bg_Music.play()
-	
 	# Minigame Gameplay Here
 	P1_Button_Check()
 	P2_Button_Check()

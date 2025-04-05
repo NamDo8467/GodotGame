@@ -1,5 +1,10 @@
 extends "res://scripts/Minigames/Base_Minigame/Base_Minigame.gd"
 
+# Sound Variables
+@onready var cutting_Sound = $CanvasLayer/Sound/Sound_Effects/Cutting_Sound
+@onready var p1_Walking_Sounds = $CanvasLayer/Sound/Sound_Effects/Walking_Sounds/P1
+@onready var p2_Walking_Sounds = $CanvasLayer/Sound/Sound_Effects/Walking_Sounds/P2
+
 @onready var knife = $Knife
 
 var BASE_POSITION = Vector2(50,448.5)
@@ -9,7 +14,7 @@ var BASE_POSITION = Vector2(50,448.5)
 var is_P1_Action1 = 0.0 # 0 is false
 var is_P2_Action1 = 0.0 # 0 is false
 var SYNC_PRESS_TIME = 1.0
-var player_Speed = 350
+var player_Speed = 450
 
 # Knife Cutting Variables
 var is_Cutting = false
@@ -71,9 +76,6 @@ func Create_CutLines():
 func _process(delta):
 	if !is_Game_Started:
 		return
-	
-	if bg_Music.playing == false:
-		bg_Music.play()
 	
 	if Can_Move():
 		Move_P1(delta)
@@ -143,6 +145,13 @@ func Cut_Knife():
 	
 	tween.tween_property(knife, "scale", original_Knife_Scale * knife_Shrink_Percent, knife_Shirnk_Time/2)
 	tween.tween_property(knife, "scale", original_Knife_Scale, knife_Shirnk_Time/2).finished.connect(set.bind("is_Cutting", false))
+	
+	
+	await get_tree().create_timer(knife_Shirnk_Time/4).timeout
+	
+	cutting_Sound.play()
+	
+	await get_tree().create_timer(knife_Shirnk_Time/4).timeout
 	
 	var distance_Diff = 0
 	var angle_Diff = 0

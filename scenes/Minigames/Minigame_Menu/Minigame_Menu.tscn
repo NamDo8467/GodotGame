@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://rhqa7najgfoh" path="res://assets/Minigame_Assets/Menu/Temp_Step_Images/Step_2_Text_Hovered.png" id="7_xfo5r"]
 [ext_resource type="Texture2D" uid="uid://dylg38jmjb0ui" path="res://assets/Minigame_Assets/Menu/Temp_Step_Images/Step_3_Text_Normal.png" id="8_a6j05"]
 [ext_resource type="Texture2D" uid="uid://kwp3npkxkquj" path="res://assets/Minigame_Assets/Menu/Temp_Step_Images/Step_3_Text_Hovered.png" id="9_xi7ce"]
-[ext_resource type="AudioStream" uid="uid://cu7mrj8fvw1dk" path="res://assets/Minigame_Assets/Audio/Minigame_Menu_BGM.mp3" id="13_iifls"]
-[ext_resource type="AudioStream" uid="uid://166er3w63dmu" path="res://assets/Minigame_Assets/Audio/Ready_Sound.wav" id="14_0avpb"]
+[ext_resource type="AudioStream" uid="uid://cu7mrj8fvw1dk" path="res://assets/Minigame_Assets/Menu/Audio/Minigame_Menu_BGM.mp3" id="13_iifls"]
+[ext_resource type="AudioStream" uid="uid://166er3w63dmu" path="res://assets/Minigame_Assets/Menu/Audio/Ready_Sound.wav" id="14_0avpb"]
 
 [node name="Minigame_Menu" type="Control"]
 layout_mode = 3

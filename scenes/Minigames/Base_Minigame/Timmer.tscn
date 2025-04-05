@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3st0kd57xowy"]
+
+[ext_resource type="Texture2D" uid="uid://cvffwabybj7qd" path="res://assets/Minigame_Assets/Timer/Layer_0.png" id="1_imphe"]
+[ext_resource type="Texture2D" uid="uid://cp0y8oqypptqt" path="res://assets/Minigame_Assets/Timer/Layer_3.png" id="2_kmy7v"]
+[ext_resource type="Texture2D" uid="uid://drhqdpctovfub" path="res://assets/Minigame_Assets/Timer/Layer_1.png" id="3_4v5kr"]
+[ext_resource type="AudioStream" uid="uid://btmdujxw6a8k4" path="res://assets/Minigame_Assets/Audio/Minigame_Over.mp3" id="4_wiya2"]
+[ext_resource type="AudioStream" uid="uid://buuld2qgkis06" path="res://assets/Minigame_Assets/Audio/Timer_Ticking.mp3" id="5_fbmas"]
+[ext_resource type="Texture2D" uid="uid://c0r8ue83qn0gh" path="res://assets/Minigame_Assets/Timer/Layer_2.png" id="6_dc0ac"]
+
+[node name="Timmer" type="Node"]
+
+[node name="Background" type="TextureProgressBar" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -212.5
+offset_top = -190.0
+offset_right = 207.5
+offset_bottom = 184.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+max_value = 30.0
+step = 0.0
+fill_mode = 4
+texture_under = ExtResource("1_imphe")
+texture_over = ExtResource("2_kmy7v")
+texture_progress = ExtResource("3_4v5kr")
+radial_initial_angle = 1.0
+
+[node name="Sound" type="Node" parent="Background"]
+
+[node name="Ending_Ring" type="AudioStreamPlayer2D" parent="Background/Sound"]
+position = Vector2(1387.5, 710)
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("4_wiya2")
+
+[node name="Tick" type="AudioStreamPlayer2D" parent="Background/Sound"]
+position = Vector2(1387.5, 710)
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("5_fbmas")
+
+[node name="Tracker" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = -374.0
+offset_bottom = 0.000244141
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 6.0179
+pivot_offset = Vector2(215, 172)
+texture = ExtResource("6_dc0ac")
+expand_mode = 1
