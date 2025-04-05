@@ -98,7 +98,6 @@ func Set_P1_Buttons_To_Press():
 					p1_Button_To_Press = player_Buttons.A2
 	else:
 		p1_Switch_Chance += 5
-		print(p1_Switch_Chance)
 	
 	Update_Button_To_Press_Display()
 

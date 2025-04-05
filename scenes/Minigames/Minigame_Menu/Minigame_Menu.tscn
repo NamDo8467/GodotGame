@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://yv2vf83msywe"]
+[gd_scene load_steps=15 format=3 uid="uid://yv2vf83msywe"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Minigame_Menu/Minigame_Menu.gd" id="1_714hd"]
 [ext_resource type="Texture2D" uid="uid://c8k2jnrmn6dul" path="res://assets/Minigame_Assets/Menu/Menu_Background.png" id="1_kag23"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dylg38jmjb0ui" path="res://assets/Minigame_Assets/Menu/Temp_Step_Images/Step_3_Text_Normal.png" id="8_a6j05"]
 [ext_resource type="Texture2D" uid="uid://kwp3npkxkquj" path="res://assets/Minigame_Assets/Menu/Temp_Step_Images/Step_3_Text_Hovered.png" id="9_xi7ce"]
 [ext_resource type="AudioStream" uid="uid://cu7mrj8fvw1dk" path="res://assets/Minigame_Assets/Audio/Minigame_Menu_BGM.mp3" id="13_iifls"]
+[ext_resource type="AudioStream" uid="uid://166er3w63dmu" path="res://assets/Minigame_Assets/Audio/Ready_Sound.wav" id="14_0avpb"]
 
 [node name="Minigame_Menu" type="Control"]
 layout_mode = 3
@@ -171,6 +172,14 @@ stream = ExtResource("13_iifls")
 autoplay = true
 
 [node name="Sound_Effects" type="Node" parent="Menu_Container/Sound"]
+
+[node name="Ready_Sounds" type="Node" parent="Menu_Container/Sound/Sound_Effects"]
+
+[node name="P1" type="AudioStreamPlayer2D" parent="Menu_Container/Sound/Sound_Effects/Ready_Sounds"]
+stream = ExtResource("14_0avpb")
+
+[node name="P2" type="AudioStreamPlayer2D" parent="Menu_Container/Sound/Sound_Effects/Ready_Sounds"]
+stream = ExtResource("14_0avpb")
 
 [node name="Current_Minigame" type="Node2D" parent="."]
 
