@@ -6,6 +6,9 @@ func _ready():
 	minigame_Time = 15.0 # Change this to adjust timers
 	
 	Start_Countdown()
+	await get_tree().create_timer(3).timeout
+	
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

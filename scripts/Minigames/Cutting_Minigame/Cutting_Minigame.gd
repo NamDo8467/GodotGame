@@ -33,7 +33,8 @@ var BASE_CUTTING_ZONE = MAX_CUTTING_ZONE - MIN_CUTTING_ZONE
 func _ready():
 	minigame_Time = 15.0 # Change this to adjust timers
 	
-	super()
+	Start_Countdown()
+	await get_tree().create_timer(3).timeout
 	
 	Create_CutLines()
 	
