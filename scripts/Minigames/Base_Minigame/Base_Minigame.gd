@@ -59,8 +59,7 @@ func Start_Timmer():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	Game_Finished_Check()
-	Update_Timmer(delta)
+	pass
 
 func Update_Score_Stars():
 	return # TODO: Add the stars (maybe piece by piece)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cpp8ayltity46"]
 
-[ext_resource type="Script" path="res://scripts/Minigames/Cutting_Minigame/Cutting_Minigame.gd" id="1_xjsv3"]
+[ext_resource type="Script" path="res://scripts/Minigames/Cutting_Minigame/OLD_Cutting_Minigame.gd" id="1_xjsv3"]
 [ext_resource type="Texture2D" uid="uid://cvffwabybj7qd" path="res://assets/Minigame_Assets/Timer/Layer_0.png" id="2_13be4"]
 [ext_resource type="Texture2D" uid="uid://cp0y8oqypptqt" path="res://assets/Minigame_Assets/Timer/Layer_3.png" id="3_7ybrb"]
 [ext_resource type="Texture2D" uid="uid://drhqdpctovfub" path="res://assets/Minigame_Assets/Timer/Layer_1.png" id="4_vx7rg"]
