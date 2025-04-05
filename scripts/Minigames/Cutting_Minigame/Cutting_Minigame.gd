@@ -86,7 +86,8 @@ func _process(delta):
 	if Can_Cut(delta):
 		Cut_Knife()
 	
-	super(delta)
+	Game_Finished_Check()
+	Update_Timmer(delta)
 
 func Can_Move():
 	if is_Cutting: return false

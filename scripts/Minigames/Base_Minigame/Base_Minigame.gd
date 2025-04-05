@@ -58,6 +58,7 @@ func Start_Countdown():
 	bg_Music.play()
 	
 	is_Game_Started = true
+	Game_Start()
 	
 	timmer_Tick.play()
 	
@@ -70,6 +71,9 @@ func Start_Timmer():
 	var degree = 360 * (minigame_Time / timmer_Background.max_value)
 	timmer_Tween.tween_property(timmer_Tracker, "rotation_degrees", degree, 3)
 	timmer_Tween.tween_property(timmer_Tracker, "rotation_degrees", 1, minigame_Time).finished.connect(End_Minigame)
+
+func Game_Start():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

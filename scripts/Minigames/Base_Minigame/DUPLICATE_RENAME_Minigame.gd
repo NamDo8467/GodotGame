@@ -10,14 +10,14 @@ func _ready():
 	
 	pass
 
+# Called after timmer ends
+func Game_Start():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !is_Game_Started:
 		return
-	
-	if bg_Music.playing == false:
-		bg_Music.play()
 	
 	# Custom Game Stuff Here
 	

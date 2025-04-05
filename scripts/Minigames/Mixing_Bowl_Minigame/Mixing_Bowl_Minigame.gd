@@ -97,7 +97,8 @@ func _process(delta):
 	
 	Bowl_Rotation(delta)
 	
-	super(delta)
+	Game_Finished_Check()
+	Update_Timmer(delta)
 
 func P1_Actions():
 	if Input.is_action_just_pressed("P1_Minigame_Action_1") && p1_State == States.CLIMBING:
