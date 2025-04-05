@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://p5v2d2gxrbfu"]
+[gd_scene load_steps=8 format=3 uid="uid://p5v2d2gxrbfu"]
 
 [ext_resource type="Texture2D" uid="uid://j3cfk4mnbfru" path="res://assets/xbox_one_controller.png" id="1_exvss"]
+[ext_resource type="Script" path="res://scripts/settings_scene.gd" id="1_gfgnu"]
 [ext_resource type="Texture2D" uid="uid://cmvhbqypbdnm6" path="res://assets/setting_background.png" id="1_huta6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80gmy"]
@@ -9,8 +10,18 @@ content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klyv6"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrydc"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fof1m"]
+bg_color = Color(0, 0, 0, 0)
+
 [node name="SettingsScene" type="Node2D"]
 z_index = -1
+script = ExtResource("1_gfgnu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(797, 447.5)
@@ -26,6 +37,7 @@ clip_tabs = false
 tab_focus_mode = 0
 
 [node name="Controller" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="XboxOneController" type="Sprite2D" parent="TabContainer/Controller"]
@@ -116,9 +128,10 @@ end_cap_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/LB"]
 offset_left = 67.843
-offset_top = -294.371
-offset_right = 225.843
-offset_bottom = -250.371
+offset_top = -299.101
+offset_right = 236.843
+offset_bottom = -255.101
+theme_override_font_sizes/font_size = 20
 text = "Move elevator up"
 
 [node name="RB" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
@@ -131,21 +144,286 @@ joint_mode = 2
 end_cap_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/RB"]
-offset_left = 56.4901
-offset_top = -293.425
-offset_right = 214.49
-offset_bottom = -249.425
+offset_left = 40.4069
+offset_top = -298.155
+offset_right = 237.407
+offset_bottom = -254.155
+theme_override_font_sizes/font_size = 20
 text = "Move elevator down"
 
 [node name="Keyboard" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
+
+[node name="Player1Side" type="GridContainer" parent="TabContainer/Keyboard"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 220.0
+offset_right = 783.0
+offset_bottom = 626.0
+
+[node name="Player1Label" type="Label" parent="TabContainer/Keyboard/Player1Side"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Player 1
+"
+horizontal_alignment = 1
+
+[node name="AButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_klyv6")
+text = "A"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/AButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 202.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = ": Move Left"
+
+[node name="DButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "D"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/DButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 214.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = ": Move Right"
+
+[node name="SpaceButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "Space"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/SpaceButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 181.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = ": Jump
+"
+
+[node name="EButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "E
+"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/EButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 181.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = ": Pick up"
+
+[node name="WButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "W
+"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/WButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 192.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = ": Use item"
+
+[node name="UButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "U"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/UButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 218.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = ": Elevator Up"
+
+[node name="JButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "J"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/JButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 247.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = ": Elevator Down"
+
+[node name="Player2Side" type="GridContainer" parent="TabContainer/Keyboard"]
+offset_left = 879.0
+offset_top = 220.0
+offset_right = 1111.0
+offset_bottom = 462.0
+
+[node name="Player2Label" type="Label" parent="TabContainer/Keyboard/Player2Side"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Player 2
+"
+horizontal_alignment = 1
+
+[node name="LeftArrowButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = "Left Arrow
+"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/LeftArrowButton"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 237.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Move Left"
+
+[node name="RightArrowButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = "Right Arrow"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/RightArrowButton"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 249.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Move Right"
+
+[node name="CommaButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = ","
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/CommaButton"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 220.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Jump
+"
+
+[node name="DotButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = ".
+"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/DotButton"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 220.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Pick up"
+
+[node name="UpArrowButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = "Up Arrow
+"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/UpArrowButton"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 227.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Use item"
+
+[node name="UButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = "U"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/UButton"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 253.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Elevator Up"
+
+[node name="JButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = "J"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/JButton"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 282.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Elevator Down"
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = -2.0
 offset_top = -7.0
 offset_right = 703.0
-offset_bottom = 33.0
+offset_bottom = 36.0
 color = Color(0.0745098, 0.0901961, 0.0784314, 0.537255)
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -154,3 +432,13 @@ offset_top = -7.0
 offset_right = 1601.0
 offset_bottom = 33.0
 color = Color(0.0745098, 0.0901961, 0.0784314, 0.537255)
+
+[node name="GoBackButton" type="Button" parent="."]
+offset_left = 741.0
+offset_top = 761.0
+offset_right = 865.0
+offset_bottom = 822.0
+theme_override_font_sizes/font_size = 25
+text = "GO BACK"
+
+[connection signal="pressed" from="GoBackButton" to="." method="_on_go_back_button_pressed"]
