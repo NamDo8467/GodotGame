@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c88onxb2vj1rs"]
+[gd_scene load_steps=10 format=3 uid="uid://c88onxb2vj1rs"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Base_Minigame/Base_Minigame.gd" id="1_jnsxl"]
 [ext_resource type="Texture2D" uid="uid://cvffwabybj7qd" path="res://assets/Minigame_Assets/Timer/Layer_0.png" id="2_sjrrh"]
 [ext_resource type="Texture2D" uid="uid://cp0y8oqypptqt" path="res://assets/Minigame_Assets/Timer/Layer_3.png" id="3_ji34p"]
 [ext_resource type="Texture2D" uid="uid://drhqdpctovfub" path="res://assets/Minigame_Assets/Timer/Layer_1.png" id="4_rjles"]
 [ext_resource type="Texture2D" uid="uid://c0r8ue83qn0gh" path="res://assets/Minigame_Assets/Timer/Layer_2.png" id="5_emfg6"]
+[ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="6_1uta0"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="6_olcc0"]
 [ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="10_664yx"]
 [ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="11_dakrr"]
@@ -80,6 +81,14 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(215, 172)
 texture = ExtResource("5_emfg6")
 expand_mode = 1
+
+[node name="Sound" type="Node" parent="CanvasLayer"]
+
+[node name="BG_Music" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound"]
+stream = ExtResource("6_1uta0")
+volume_db = -8.0
+
+[node name="Sound_Effects" type="Node" parent="CanvasLayer/Sound"]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(799, 448.5)

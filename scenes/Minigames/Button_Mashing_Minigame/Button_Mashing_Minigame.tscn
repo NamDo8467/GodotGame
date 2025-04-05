@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7cgwy5eeg7qn"]
+[gd_scene load_steps=15 format=3 uid="uid://c7cgwy5eeg7qn"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Button_Mashing_Minigame/Button_Mashing_Minigame.gd" id="1_5um5w"]
 [ext_resource type="Texture2D" uid="uid://cvffwabybj7qd" path="res://assets/Minigame_Assets/Timer/Layer_0.png" id="2_a5sac"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="7_ng816"]
 [ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="8_sxmj7"]
 [ext_resource type="Texture2D" uid="uid://dt3bandv806j5" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Fill.png" id="8_wlvk5"]
+[ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="9_gdj3l"]
 [ext_resource type="Texture2D" uid="uid://c78t68mrsr1gq" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/A.png" id="11_5hg80"]
 [ext_resource type="Texture2D" uid="uid://dn7c1uhm600lq" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/B.png" id="12_k2qfe"]
 
@@ -101,6 +102,14 @@ nine_patch_stretch = true
 texture_under = ExtResource("6_7qjvb")
 texture_over = ExtResource("7_bhr4f")
 texture_progress = ExtResource("8_wlvk5")
+
+[node name="Sound" type="Node" parent="CanvasLayer"]
+
+[node name="BG_Music" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound"]
+stream = ExtResource("9_gdj3l")
+volume_db = -8.0
+
+[node name="Sound_Effects" type="Node" parent="CanvasLayer/Sound"]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(800, 448)

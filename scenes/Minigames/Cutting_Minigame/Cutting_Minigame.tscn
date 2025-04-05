@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://rawb5qng2ktq"]
+[gd_scene load_steps=13 format=3 uid="uid://rawb5qng2ktq"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Cutting_Minigame/Cutting_Minigame.gd" id="1_llmj1"]
 [ext_resource type="Texture2D" uid="uid://cvffwabybj7qd" path="res://assets/Minigame_Assets/Timer/Layer_0.png" id="2_homt2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://biq48j6x3hsw8" path="res://assets/Minigame_Assets/Cutting_Minigame/Fish.png" id="4_66wye"]
 [ext_resource type="Texture2D" uid="uid://c0r8ue83qn0gh" path="res://assets/Minigame_Assets/Timer/Layer_2.png" id="5_2nyoa"]
 [ext_resource type="Texture2D" uid="uid://cyh8wvs5rl2pi" path="res://assets/Minigame_Assets/Cutting_Minigame/2_Handle_Knife.png" id="5_t4sjx"]
+[ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="6_hlrgk"]
 [ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="6_qyd6o"]
 [ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="7_vc3o1"]
 
@@ -83,6 +84,14 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(215, 172)
 texture = ExtResource("5_2nyoa")
 expand_mode = 1
+
+[node name="Sound" type="Node" parent="CanvasLayer"]
+
+[node name="BG_Music" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound"]
+stream = ExtResource("6_hlrgk")
+volume_db = -8.0
+
+[node name="Sound_Effects" type="Node" parent="CanvasLayer/Sound"]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(798.999, 448.5)

@@ -89,6 +89,9 @@ func _process(delta):
 	if !is_Game_Started:
 		return
 	
+	if bg_Music.playing == false:
+		bg_Music.play()
+	
 	P1_Actions()
 	P2_Actions()
 	

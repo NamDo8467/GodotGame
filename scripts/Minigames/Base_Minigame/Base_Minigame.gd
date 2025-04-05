@@ -10,6 +10,9 @@ signal Minigame_Finished(score)
 @onready var current_Timmer = $CanvasLayer/Current_Timmer
 @onready var score_Text = $CanvasLayer/Score_Text # TODO: Change this to be based off stars
 
+# Music Variables
+@onready var bg_Music = $CanvasLayer/Sound/BG_Music
+
 # Score Variables
 var current_Score = 0.0
 
@@ -17,7 +20,7 @@ var current_Score = 0.0
 var timmer_Tween : Tween
 var is_Game_Started = false
 var current_Time = 0.0
-var minigame_Time
+var minigame_Time = 10.0
 
 # Transition Variables
 var transition : ColorRect

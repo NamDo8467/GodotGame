@@ -5,6 +5,8 @@ extends Control
 @onready var p2_Ready = $Menu_Container/Forground/Player_2_Ready
 @onready var current_Minigame_Node = $Current_Minigame
 
+@onready var bg_Music = $Menu_Container/Sound/BG_Music
+
 @onready var transition = $Transition
 var tansition_Time = 1.0
 
@@ -89,6 +91,8 @@ func Select_Minigame(number):
 func Start_Minigame():
 	is_Minigame_Started = true
 	
+	Update_BGM()
+	
 	var tween = create_tween()
 	
 	tween.tween_property(transition, "color", Color(0,0,0,1), tansition_Time)
@@ -125,10 +129,18 @@ func Minigame_Finished(score):
 	is_Minigame_Started = false
 	current_Minigame_num += 1
 	
+	Update_BGM()
 	
 	Update_Current_Minigame(current_Minigame_num)
 	Select_Minigame(current_Minigame_num)
-	
+
+func Update_BGM():
+	match is_Minigame_Started:
+		true:
+			bg_Music.stop()
+		false:
+			bg_Music.play()
+
 
 func End_Minigames_Mode():
 	var total = 0

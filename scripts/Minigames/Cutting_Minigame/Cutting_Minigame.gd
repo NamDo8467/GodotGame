@@ -72,6 +72,9 @@ func _process(delta):
 	if !is_Game_Started:
 		return
 	
+	if bg_Music.playing == false:
+		bg_Music.play()
+	
 	if Can_Move():
 		Move_P1(delta)
 		Move_P2(delta)
@@ -160,6 +163,8 @@ func Cut_Knife():
 				break
 			
 		index += 1
+	
+	Game_Finished_Check()
 
 func Calculate_Score(index, distance, angle):
 	var distance_Score = 50  

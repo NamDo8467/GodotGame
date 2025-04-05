@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bnvuomishuc75"]
+[gd_scene load_steps=18 format=3 uid="uid://bnvuomishuc75"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Mixing_Bowl_Minigame/Mixing_Bowl_Minigame.gd" id="1_s43et"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="1_w3n65"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://h6nj721rktu3" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Background.png" id="6_7ifni"]
 [ext_resource type="Texture2D" uid="uid://dnagdiv7it1wc" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Border.png" id="7_tpea6"]
 [ext_resource type="Texture2D" uid="uid://dt3bandv806j5" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Fill.png" id="8_i5ljf"]
+[ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="9_0ybeq"]
 [ext_resource type="Texture2D" uid="uid://bodsgrjly6ind" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Table.png" id="10_81i8j"]
 [ext_resource type="Texture2D" uid="uid://nceyxfgl7bwe" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Bowl.png" id="11_fidi3"]
 [ext_resource type="Texture2D" uid="uid://dq2l8pg1j40xt" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Temp_Ladder.png" id="12_haopm"]
@@ -103,6 +104,14 @@ nine_patch_stretch = true
 texture_under = ExtResource("6_7ifni")
 texture_over = ExtResource("7_tpea6")
 texture_progress = ExtResource("8_i5ljf")
+
+[node name="Sound" type="Node" parent="CanvasLayer"]
+
+[node name="BG_Music" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound"]
+stream = ExtResource("9_0ybeq")
+volume_db = -8.0
+
+[node name="Sound_Effects" type="Node" parent="CanvasLayer/Sound"]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(799, 448.5)
