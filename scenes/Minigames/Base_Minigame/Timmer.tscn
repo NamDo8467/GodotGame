@@ -36,11 +36,13 @@ radial_initial_angle = 1.0
 position = Vector2(1387.5, 710)
 scale = Vector2(0.5, 0.5)
 stream = ExtResource("4_wiya2")
+volume_db = 2.0
 
 [node name="Tick" type="AudioStreamPlayer2D" parent="Background/Sound"]
 position = Vector2(1387.5, 710)
 scale = Vector2(0.5, 0.5)
 stream = ExtResource("5_fbmas")
+volume_db = -4.0
 
 [node name="Tracker" type="TextureRect" parent="Background"]
 layout_mode = 1

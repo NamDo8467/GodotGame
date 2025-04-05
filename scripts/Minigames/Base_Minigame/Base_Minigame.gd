@@ -86,18 +86,21 @@ func Game_Finished_Check():
 	pass
 
 func End_Minigame():
+	if !is_Game_Started:
+		return
+	
+	is_Game_Started = false
+	
 	timmer_Tick.stop()
 	bg_Music.stop()
 	timmer_Ending_Ring.play()
 	
-	if !is_Game_Started:
-		return
+	await get_tree().create_timer(1).timeout
 	
 	Update_Score_Stars()
 	
 	timmer_Tween.stop()
 	
-	is_Game_Started = false
 	start_Countdown.modulate = Color(0, 0, 0, 1)
 	
 	start_Countdown.text = "[font_size=100][center]Your score is " + str(current_Score) + "%[/center]" 

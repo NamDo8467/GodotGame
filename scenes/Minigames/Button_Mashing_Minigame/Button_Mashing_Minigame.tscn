@@ -1,11 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7cgwy5eeg7qn"]
+[gd_scene load_steps=13 format=3 uid="uid://c7cgwy5eeg7qn"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Button_Mashing_Minigame/Button_Mashing_Minigame.gd" id="1_5um5w"]
-[ext_resource type="Texture2D" uid="uid://cvffwabybj7qd" path="res://assets/Minigame_Assets/Timer/Layer_0.png" id="2_a5sac"]
 [ext_resource type="PackedScene" uid="uid://8gy7aw2hdl8x" path="res://scenes/Minigames/Base_Minigame/Start_Countdown.tscn" id="2_cmak5"]
-[ext_resource type="Texture2D" uid="uid://cp0y8oqypptqt" path="res://assets/Minigame_Assets/Timer/Layer_3.png" id="3_pnvys"]
-[ext_resource type="Texture2D" uid="uid://drhqdpctovfub" path="res://assets/Minigame_Assets/Timer/Layer_1.png" id="4_4q1vw"]
-[ext_resource type="Texture2D" uid="uid://c0r8ue83qn0gh" path="res://assets/Minigame_Assets/Timer/Layer_2.png" id="5_usph1"]
+[ext_resource type="PackedScene" uid="uid://c3st0kd57xowy" path="res://scenes/Minigames/Base_Minigame/Timmer.tscn" id="3_utb1a"]
 [ext_resource type="Texture2D" uid="uid://h6nj721rktu3" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Background.png" id="6_7qjvb"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="6_xfddt"]
 [ext_resource type="Texture2D" uid="uid://dnagdiv7it1wc" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Border.png" id="7_bhr4f"]
@@ -35,44 +32,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Start_Countdown" parent="CanvasLayer" instance=ExtResource("2_cmak5")]
 
-[node name="Game_Timmer" type="TextureProgressBar" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -212.5
-offset_top = -190.0
-offset_right = 207.5
-offset_bottom = 184.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-max_value = 30.0
-step = 0.0
-fill_mode = 4
-texture_under = ExtResource("2_a5sac")
-texture_over = ExtResource("3_pnvys")
-texture_progress = ExtResource("4_4q1vw")
-radial_initial_angle = 1.0
-
-[node name="Current_Timmer" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -320.5
-offset_top = -276.0
-offset_right = 99.5
-offset_bottom = 98.0
-grow_horizontal = 0
-grow_vertical = 0
-rotation = 4.0544
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(215, 172)
-texture = ExtResource("5_usph1")
-expand_mode = 1
+[node name="Timmer" parent="CanvasLayer" instance=ExtResource("3_utb1a")]
 
 [node name="Progress_Bar" type="TextureProgressBar" parent="CanvasLayer"]
 anchors_preset = 12
