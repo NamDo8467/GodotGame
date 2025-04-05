@@ -1,0 +1,156 @@
+[gd_scene load_steps=4 format=3 uid="uid://p5v2d2gxrbfu"]
+
+[ext_resource type="Texture2D" uid="uid://j3cfk4mnbfru" path="res://assets/xbox_one_controller.png" id="1_exvss"]
+[ext_resource type="Texture2D" uid="uid://cmvhbqypbdnm6" path="res://assets/setting_background.png" id="1_huta6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80gmy"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[node name="SettingsScene" type="Node2D"]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(797, 447.5)
+scale = Vector2(1.18314, 1.18992)
+texture = ExtResource("1_huta6")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+offset_right = 1600.0
+offset_bottom = 900.0
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_80gmy")
+tab_alignment = 1
+clip_tabs = false
+tab_focus_mode = 0
+
+[node name="Controller" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="XboxOneController" type="Sprite2D" parent="TabContainer/Controller"]
+position = Vector2(800, 450)
+scale = Vector2(1.057, 1.057)
+texture = ExtResource("1_exvss")
+
+[node name="YButton" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+rotation = 0.418879
+points = PackedVector2Array(75.3025, -158.835, 132.36, -307.476)
+closed = true
+width = 5.0
+default_color = Color(0.588235, 1, 0, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/YButton"]
+offset_left = 89.1281
+offset_top = -316.189
+offset_right = 202.128
+offset_bottom = -272.189
+rotation = -0.418879
+theme_override_font_sizes/font_size = 20
+text = "Use weapon"
+
+[node name="BButton" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(125.728, -30.2534)
+scale = Vector2(0.600994, 0.783823)
+points = PackedVector2Array(77.5781, -60.5487, 313.15, -60.5487)
+closed = true
+width = 5.0
+default_color = Color(0.588235, 1, 0, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/BButton"]
+offset_left = 321.0
+offset_top = -82.0
+offset_right = 425.0
+offset_bottom = -40.0
+theme_override_font_sizes/font_size = 30
+text = "Pick up/Throw"
+
+[node name="LeftStick" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(-120, -30.253)
+scale = Vector2(0.600994, 0.783823)
+points = PackedVector2Array(-15.9937, -61.5842, -223.786, -61.5842)
+closed = true
+width = 5.0
+default_color = Color(0.588235, 1, 0, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/LeftStick"]
+offset_left = -311.94
+offset_top = -86.9312
+offset_right = -207.94
+offset_bottom = -44.9312
+theme_override_font_sizes/font_size = 30
+text = "Move"
+
+[node name="AButton" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(150, 0)
+scale = Vector2(0.600994, 0.783823)
+points = PackedVector2Array(-29.201, -54.315, -29.201, 257.091)
+closed = true
+width = 5.0
+default_color = Color(0.588235, 1, 0, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/AButton"]
+offset_left = -71.7039
+offset_top = 249.849
+offset_right = 32.2961
+offset_bottom = 291.849
+theme_override_font_sizes/font_size = 30
+text = "Jump"
+
+[node name="LB" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(-30, -50)
+points = PackedVector2Array(131.504, -114.475, 131.504, -267.739)
+closed = true
+width = 5.0
+default_color = Color(0.588235, 1, 0, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/LB"]
+offset_left = 67.843
+offset_top = -294.371
+offset_right = 225.843
+offset_bottom = -250.371
+text = "Move elevator up"
+
+[node name="RB" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(-250, -50)
+points = PackedVector2Array(131.504, -114.475, 131.504, -267.739)
+closed = true
+width = 5.0
+default_color = Color(0.588235, 1, 0, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/RB"]
+offset_left = 56.4901
+offset_top = -293.425
+offset_right = 214.49
+offset_bottom = -249.425
+text = "Move elevator down"
+
+[node name="Keyboard" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -2.0
+offset_top = -7.0
+offset_right = 703.0
+offset_bottom = 33.0
+color = Color(0.0745098, 0.0901961, 0.0784314, 0.537255)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 896.0
+offset_top = -7.0
+offset_right = 1601.0
+offset_bottom = 33.0
+color = Color(0.0745098, 0.0901961, 0.0784314, 0.537255)
