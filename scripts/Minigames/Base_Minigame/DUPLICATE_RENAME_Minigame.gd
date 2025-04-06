@@ -31,3 +31,9 @@ func Calculate_Score():
 func Game_Finished_Check():
 	pass
 
+
+func End_Minigame():
+	# End animations and sounds here
+	
+	
+	super()
