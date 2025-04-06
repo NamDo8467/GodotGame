@@ -1,14 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://cujkjkimixppt"]
+[gd_scene load_steps=18 format=3 uid="uid://cujkjkimixppt"]
 
 [ext_resource type="Script" path="res://scripts/serving.gd" id="1_21v1n"]
-[ext_resource type="Texture2D" uid="uid://bm85pt8pebpmk" path="res://assets/serving_image.png" id="1_d0g74"]
 [ext_resource type="AudioStream" uid="uid://cyl7u8esv21tt" path="res://assets/cat_evil_laugh.wav" id="3_h6dbk"]
 [ext_resource type="Texture2D" uid="uid://bpu62061cx5gl" path="res://assets/Score_Screen/cat.png" id="3_vym1w"]
+[ext_resource type="Texture2D" uid="uid://1coujje1vaxw" path="res://assets/Score_Screen/Fish_Salad/Failed.png" id="4_bw4lk"]
 [ext_resource type="Script" path="res://scripts/score_bar.gd" id="4_u1kph"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1hrmv"]
-atlas = ExtResource("1_d0g74")
-region = Rect2(0, 0, 501, 488)
+[ext_resource type="Texture2D" uid="uid://bisio7gw56x86" path="res://assets/Score_Screen/Fish_Salad/Good.png" id="5_pvdf1"]
+[ext_resource type="Texture2D" uid="uid://bcfnktfd1qum0" path="res://assets/Score_Screen/Fish_Salad/Perfect.png" id="6_vgasd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6oyf"]
 atlas = ExtResource("3_vym1w")
@@ -18,9 +16,6 @@ region = Rect2(0, 0, 1920, 1080)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1hrmv")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_r6oyf")
 }],
 "loop": true,
@@ -28,54 +23,44 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_0ex06"]
-resource_name = "fade_in"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0.4, 0.4), Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(1.6, 1.6), Vector2(1.8, 1.8), Vector2(1.9, 1.9)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1.7411, 8.57419),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k4ig"]
+atlas = ExtResource("4_bw4lk")
+region = Rect2(0, 0, 1920, 1080)
 
-[sub_resource type="Animation" id="Animation_b22j1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dlfo"]
+atlas = ExtResource("5_pvdf1")
+region = Rect2(0, 0, 1920, 1080)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_snwow"]
-_data = {
-"RESET": SubResource("Animation_b22j1"),
-"fade_in": SubResource("Animation_0ex06")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s0hq"]
+atlas = ExtResource("6_vgasd")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rwphj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k4ig")
+}],
+"loop": false,
+"name": &"Bad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dlfo")
+}],
+"loop": false,
+"name": &"Good",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s0hq")
+}],
+"loop": false,
+"name": &"Perfect",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ombf6"]
 bg_color = Color(1, 0.6, 1, 1)
@@ -90,27 +75,61 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
+[sub_resource type="Animation" id="Animation_ylava"]
+resource_name = "Serving_Scene_Start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cat_King:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.75, 1.75),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Food:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 0.392292, 0.574349),
+"update": 0,
+"values": [Vector2(800, 1000), Vector2(800, 1000), Vector2(800, 630)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ltxg5"]
+_data = {
+"Serving_Scene_Start": SubResource("Animation_ylava")
+}
+
 [node name="Serving" type="Node2D"]
 script = ExtResource("1_21v1n")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Cat_King" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(800, 450)
 scale = Vector2(0.835, 0.835)
 sprite_frames = SubResource("SpriteFrames_knkku")
-frame = 1
 frame_progress = 0.665713
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
-libraries = {
-"": SubResource("AnimationLibrary_snwow")
-}
-autoplay = "fade_in"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(6.10352e-05, 0)
+[node name="Sound" type="AudioStreamPlayer2D" parent="Cat_King"]
+position = Vector2(-958.084, -538.922)
+scale = Vector2(1.1976, 1.1976)
 stream = ExtResource("3_h6dbk")
 volume_db = -8.0
 autoplay = true
+
+[node name="Food" type="AnimatedSprite2D" parent="."]
+position = Vector2(800, 1000)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_rwphj")
+animation = &"Bad"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 visible = false
@@ -141,3 +160,9 @@ text = "[font_size=50][wave][center]Thanks for Playing!"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ltxg5")
+}
+autoplay = "Serving_Scene_Start"
