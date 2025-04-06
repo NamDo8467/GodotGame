@@ -107,22 +107,22 @@ position = Vector2(-580, -230)
 position = Vector2(610, -230)
 
 [node name="Ladder_P1" type="Sprite2D" parent="."]
-position = Vector2(340, 445)
+position = Vector2(340, 500)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("12_haopm")
 script = ExtResource("13_m3ipn")
 
 [node name="Bottom_Point" type="Node2D" parent="Ladder_P1"]
-position = Vector2(0.000366211, 1050)
+position = Vector2(-80, 894)
 
 [node name="Top_Point" type="Node2D" parent="Ladder_P1"]
-position = Vector2(0, -800)
+position = Vector2(-80, -1088)
 
 [node name="Jumping_Point" type="Node2D" parent="Ladder_P1"]
 position = Vector2(420, -864)
 
 [node name="Timing_Bar" type="Sprite2D" parent="Ladder_P1/Jumping_Point"]
-position = Vector2(0, -700)
+position = Vector2(0, -950)
 scale = Vector2(26, 2.4)
 texture = ExtResource("13_qskyw")
 
@@ -180,22 +180,22 @@ scale = Vector2(0.01, 1)
 texture = ExtResource("13_qskyw")
 
 [node name="Ladder_P2" type="Sprite2D" parent="."]
-position = Vector2(1260, 445)
+position = Vector2(1260, 500)
 scale = Vector2(-0.25, 0.25)
 texture = ExtResource("12_haopm")
 script = ExtResource("13_m3ipn")
 
 [node name="Bottom_Point" type="Node2D" parent="Ladder_P2"]
-position = Vector2(0.000366211, 1050)
+position = Vector2(-80, 894)
 
 [node name="Top_Point" type="Node2D" parent="Ladder_P2"]
-position = Vector2(0, -800)
+position = Vector2(-80, -1088)
 
 [node name="Jumping_Point" type="Node2D" parent="Ladder_P2"]
 position = Vector2(420, -864)
 
 [node name="Timing_Bar" type="Sprite2D" parent="Ladder_P2/Jumping_Point"]
-position = Vector2(0, -700)
+position = Vector2(0, -950)
 scale = Vector2(26, 2.4)
 texture = ExtResource("13_qskyw")
 
@@ -326,9 +326,12 @@ scale = Vector2(0.01, 1)
 texture = ExtResource("13_qskyw")
 
 [node name="Player_1" parent="." instance=ExtResource("20_lgv7o")]
-position = Vector2(532, 478)
-animation = &"P1_Side_View_Walking_Left"
+position = Vector2(320, 228)
+scale = Vector2(0.5, 0.5)
+animation = &"Side_View_P1_Walking"
 
 [node name="Player_2" parent="." instance=ExtResource("20_lgv7o")]
-position = Vector2(1082, 478)
-animation = &"P1_Side_View_Walking_Left"
+position = Vector2(1280, 724)
+rotation = 3.14159
+scale = Vector2(0.5, -0.5)
+frame_progress = 0.0511901

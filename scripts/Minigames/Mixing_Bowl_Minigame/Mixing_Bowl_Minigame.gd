@@ -69,6 +69,9 @@ var bowl_Tilt_Speed = 100.0
 func _ready():
 	minigame_Time = 20.0 # Change this to adjust timers
 	
+	p1.play("Side_View_P1_A_Default")
+	p2.play("Side_View_P2_A_Default")
+	
 	climbing_Top_Y_Pos = p1_Ladder.get_child(1).global_position.y
 	climbing_Bottom_Y_Pos = p1_Ladder.get_child(0).global_position.y
 	
@@ -84,11 +87,12 @@ func _ready():
 				p1_State = States.CLIMBING
 				p2_State = States.WALKING_TOP
 	
-	Update_P1_Game_State()
-	Update_P2_Game_State()
 	
 	super()
 
+func Game_Start():
+	Update_P1_Game_State()
+	Update_P2_Game_State()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -126,79 +130,67 @@ func P2_Actions():
 func Update_P1_Game_State():
 	match p1_State:
 		States.WALKING_BOTTOM:
-			# TODO: Setup animation that starts walking
-			#p1.position = p1_Bowl.global_position
+			p1.flip_h = true
+			p1.play("Side_View_P1_Walking")
 			p1_walk_Speed_Multi = 1.0
-			print("Walking Bottom")
 			pass
 		States.CLIMBING:
-			# TODO: Setup animation that starts climbing
+			p1.play("Side_View_P1_Climbing")
 			p1.position = Vector2(p1_Climbing_X_Pos, climbing_Bottom_Y_Pos)
 			p1_Climb_Speed_Multi = CLIMB_SPEED_MULTI_STARTING
-			print("Climbing")
 			pass
 		States.WALKING_TOP:
-			# TODO: Setup animation that starts walking
+			p1.flip_h = false
+			p1.play("Side_View_P1_Walking")
 			p1.position = Vector2(p1_Climbing_X_Pos, climbing_Top_Y_Pos)
 			p1_Ladder.Start_Cursor()
-			print("Walking Top")
 			pass
 		States.JUMPING:
-			# TODO: Setup animation that starts Jumping
-			#p1.position = p1_Ladder.jumping_Point.global_position
+			p1.play("Side_View_P1_Jumping")
 			p1_Velocity.y = JUMP_VELOCITY
-			print("Jumping")
 			pass
 		States.FALLING:
-			# TODO: Setup animation that starts Falling
-			print("Falling")
+			p1.play("Side_View_P1_Falling")
 			pass
 		States.BOWL:
-			# TODO: Setup animation that starts Bowl (Just turn the rat around or not and do it in walk bottom anim)
+			p1.play("Side_View_P1_Landing")
 			p1_Bowl_Force = MAX_FORCE
-			print("Falling")
+			pass
 		States.STUMBLE:
 			# TODO: Setup animation that starts Stumble
-			print("Stumble")
 			pass
 
 func Update_P2_Game_State():
 	match p2_State:
 		States.WALKING_BOTTOM:
-			# TODO: Setup animation that starts walking
-			#p2.position = p2_Bowl.global_position
+			p2.flip_h = true
+			p2.play("Side_View_P2_Walking")
 			p2_walk_Speed_Multi = 1.0
-			print("Walking Bottom")
 			pass
 		States.CLIMBING:
-			# TODO: Setup animation that starts climbing
+			p2.play("Side_View_P2_Climbing")
 			p2.position = Vector2(p2_Climbing_X_Pos, climbing_Bottom_Y_Pos)
 			p2_Climb_Speed_Multi = CLIMB_SPEED_MULTI_STARTING
-			print("Climbing")
 			pass
 		States.WALKING_TOP:
-			# TODO: Setup animation that starts walking
+			p2.flip_h = false
+			p2.play("Side_View_P2_Walking")
 			p2.position = Vector2(p2_Climbing_X_Pos, climbing_Top_Y_Pos)
 			p2_Ladder.Start_Cursor()
-			print("Walking Top")
 			pass
 		States.JUMPING:
-			# TODO: Setup animation that starts Jumping
-			#p2.position = p2_Ladder.jumping_Point.global_position
+			p2.play("Side_View_P2_Jumping")
 			p2_Velocity.y = JUMP_VELOCITY
-			print("Jumping")
 			pass
 		States.FALLING:
-			# TODO: Setup animation that starts Falling
-			print("Falling")
+			p2.play("Side_View_P2_Falling")
 			pass
 		States.BOWL:
-			# TODO: Setup animation that starts Bowl (Just turn the rat around or not and do it in walk bottom anim)
+			p2.play("Side_View_P2_Landing")
 			p2_Bowl_Force = MAX_FORCE
-			print("Falling")
+			pass
 		States.STUMBLE:
 			# TODO: Setup animation that starts Stumble
-			print("Stumble")
 			pass
 
 func Move_P1(delta):
@@ -228,6 +220,8 @@ func Move_P1(delta):
 			
 			if p1.position.x > p1_Ladder.jumping_Point.global_position.x:
 				p1_State = States.JUMPING
+				if p1_Ladder.cursor_speed > 0:
+					p1_Ladder.Stop_Cursor()
 				Update_P1_Game_State()
 		States.JUMPING:
 			p1_Velocity.y -= GRAVITY * delta
@@ -284,6 +278,8 @@ func Move_P2(delta):
 			
 			if p2.position.x < p2_Ladder.jumping_Point.global_position.x:
 				p2_State = States.JUMPING
+				if p2_Ladder.cursor_speed > 0:
+					p2_Ladder.Stop_Cursor()
 				Update_P2_Game_State()
 		States.JUMPING:
 			p2_Velocity.y -= GRAVITY * delta
@@ -354,7 +350,6 @@ func Play_Score_Sound(ladder):
 		ladder.Grade.PERFECT:
 			sound_Perfect.play()
 
-
 func Calculate_Score(ladder):
 	# TODO: Update this to calculate score based on how fast they got to the top (through how far down the bowl has gone) + how accurate they were too the 
 	var score = 0
@@ -383,6 +378,11 @@ func Game_Finished_Check():
 		End_Minigame()
 
 func End_Minigame():
+	# Animation
+	p1.stop()
+	p2.stop()
+	
+	# Sound
 	sound_Bad.stop()
 	sound_Good.stop()
 	sound_Great.stop()
