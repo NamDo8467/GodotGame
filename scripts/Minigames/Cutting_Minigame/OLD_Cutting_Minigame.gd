@@ -1,9 +1,5 @@
+#extends Node2D
 extends "res://scripts/Minigames/Base_Minigame/Base_Minigame.gd"
-
-# Sound Variables
-@onready var cutting_Sound = $CanvasLayer/Sound/Sound_Effects/Cutting_Sound
-@onready var p1_Walking_Sounds = $CanvasLayer/Sound/Sound_Effects/Walking_Sounds/P1
-@onready var p2_Walking_Sounds = $CanvasLayer/Sound/Sound_Effects/Walking_Sounds/P2
 
 @onready var knife = $Knife
 
@@ -14,7 +10,7 @@ var BASE_POSITION = Vector2(50,448.5)
 var is_P1_Action1 = 0.0 # 0 is false
 var is_P2_Action1 = 0.0 # 0 is false
 var SYNC_PRESS_TIME = 1.0
-var player_Speed = 450
+var player_Speed = 250
 
 # Knife Cutting Variables
 var is_Cutting = false
@@ -36,14 +32,39 @@ var BASE_CUTTING_ZONE = MAX_CUTTING_ZONE - MIN_CUTTING_ZONE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	minigame_Time = 15.0 # Change this to adjust timers
-	
 	Start_Countdown()
 	await get_tree().create_timer(3).timeout
+	
+	Start_Timmer()
 	
 	Create_CutLines()
 	
 	original_Knife_Scale = knife.scale
+
+func Start_Countdown():
+	current_Time = 0
+	current_Timmer.rotation = current_Time
+
+	var tween = create_tween()
+	
+	tween.tween_property(game_Timmer, "value", minigame_Time, 3)
+
+	await get_tree().create_timer(1).timeout
+	start_Timmer.text = "[center]2[/center]"
+	await get_tree().create_timer(1).timeout
+	start_Timmer.text = "[center]1[/center]"
+	await get_tree().create_timer(1).timeout
+	start_Timmer.text = "[center]GO![/center]"
+	
+	is_Game_Started = true
+	
+	var fade_out = create_tween()
+	fade_out.tween_property(start_Timmer, "modulate", Color(1, 1, 1, 0), 1)
+
+func Start_Timmer():
+	var degree = 360 * (minigame_Time / game_Timmer.max_value)
+	timmer_Tween = create_tween()
+	timmer_Tween.tween_property(current_Timmer, "rotation_degrees", degree, minigame_Time).finished.connect(End_Minigame)
 
 func Create_CutLines():
 	var rng = RandomNumberGenerator.new()
@@ -87,6 +108,7 @@ func _process(delta):
 		Cut_Knife()
 	
 	Game_Finished_Check()
+	
 	Update_Timmer(delta)
 
 func Can_Move():
@@ -147,13 +169,6 @@ func Cut_Knife():
 	tween.tween_property(knife, "scale", original_Knife_Scale * knife_Shrink_Percent, knife_Shirnk_Time/2)
 	tween.tween_property(knife, "scale", original_Knife_Scale, knife_Shirnk_Time/2).finished.connect(set.bind("is_Cutting", false))
 	
-	
-	await get_tree().create_timer(knife_Shirnk_Time/4).timeout
-	
-	cutting_Sound.play()
-	
-	await get_tree().create_timer(knife_Shirnk_Time/4).timeout
-	
 	var distance_Diff = 0
 	var angle_Diff = 0
 	var index = 0
@@ -170,11 +185,10 @@ func Cut_Knife():
 			if angle_Diff < ANGLE_THRESHOLD:
 				Cut_Line_Nodes[index].hide()
 				Calculate_Score(index, distance_Diff, angle_Diff)
+				Update_Score_Text()
 				break
 			
 		index += 1
-	
-	Game_Finished_Check()
 
 func Calculate_Score(index, distance, angle):
 	var distance_Score = 50  
@@ -187,6 +201,27 @@ func Calculate_Score(index, distance, angle):
 	
 	cut_Scores[index] = distance_Score + angle_Score
 
+func Update_Score_Text():
+	var total = 0
+	var num_Scores = 0
+
+	for score in cut_Scores:
+		if score >= 0:
+			total += score
+			num_Scores += 1
+	
+	total /= num_Scores
+	total *= 100
+	total = round(total)
+	total /= 100
+	
+	current_Score = total
+	
+	score_Text.text = ("[right]Score " + str(current_Score) + "%[/right]   ")
+
+func Update_Timmer(delta):
+	current_Time += delta
+
 func Game_Finished_Check():
 	var index = 0
 	
@@ -198,3 +233,23 @@ func Game_Finished_Check():
 		
 		if index == cut_Scores.size():
 			End_Minigame()
+
+func End_Minigame():
+	if !is_Game_Started:
+		return
+	
+	for i in cut_Scores.size():
+		if cut_Scores[i] < 0:
+			cut_Scores[i] = 0
+	
+	Update_Score_Text()
+	
+	timmer_Tween.stop()
+	
+	is_Game_Started = false
+	start_Timmer.modulate = Color(0, 0, 0, 1)
+	
+	start_Timmer.text = "[font_size=100][center]Your score is " + str(current_Score) + "%[/center]" 
+	
+	emit_signal("Minigame_Finished", current_Score)
+

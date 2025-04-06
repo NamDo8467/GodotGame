@@ -5,6 +5,11 @@ extends Control
 @onready var p2_Ready = $Menu_Container/Forground/Player_2_Ready
 @onready var current_Minigame_Node = $Current_Minigame
 
+# Sound Variables
+@onready var bg_Music = $Menu_Container/Sound/BG_Music
+@onready var p1_Ready_Sound = $Menu_Container/Sound/Sound_Effects/Ready_Sounds/P1
+@onready var p2_Ready_Sound = $Menu_Container/Sound/Sound_Effects/Ready_Sounds/P2
+
 @onready var transition = $Transition
 var tansition_Time = 1.0
 
@@ -58,20 +63,22 @@ func Ready_Buttons():
 		Toggle_P2_Ready()
 
 func Toggle_P1_Ready():
-	var colour = Color(1, 1, 1, 1)
+	var colour = Color(0.2, 0.2, 0.2, 1)
 	
-	if p1_State:
-		colour = Color(0.2, 0.2, 0.2, 1)
+	if !p1_State:
+		p1_Ready_Sound.play()
+		colour = Color(1, 1, 1, 1)
 	
 	p1_Ready.modulate = colour
 	
 	p1_State = !p1_State
 
 func Toggle_P2_Ready():
-	var colour = Color(1, 1, 1, 1)
+	var colour = Color(0.2, 0.2, 0.2, 1)
 	
-	if p2_State:
-		colour = Color(0.2, 0.2, 0.2, 1)
+	if !p2_State:
+		p2_Ready_Sound.play()
+		colour = Color(1, 1, 1, 1)
 	
 	p2_Ready.modulate = colour
 	
@@ -88,6 +95,8 @@ func Select_Minigame(number):
 
 func Start_Minigame():
 	is_Minigame_Started = true
+	
+	Update_BGM()
 	
 	var tween = create_tween()
 	
@@ -125,10 +134,18 @@ func Minigame_Finished(score):
 	is_Minigame_Started = false
 	current_Minigame_num += 1
 	
+	Update_BGM()
 	
 	Update_Current_Minigame(current_Minigame_num)
 	Select_Minigame(current_Minigame_num)
-	
+
+func Update_BGM():
+	match is_Minigame_Started:
+		true:
+			bg_Music.stop()
+		false:
+			bg_Music.play()
+
 
 func End_Minigames_Mode():
 	var total = 0

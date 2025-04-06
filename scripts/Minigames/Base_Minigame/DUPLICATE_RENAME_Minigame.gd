@@ -5,23 +5,29 @@ extends "res://scripts/Minigames/Base_Minigame/Base_Minigame.gd"
 func _ready():
 	minigame_Time = 15.0 # Change this to adjust timers
 	
-	super()
+	Start_Countdown()
+	await get_tree().create_timer(3).timeout
+	
+	pass
 
+# Called after timmer ends
+func Game_Start():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !is_Game_Started:
 		return
 	
+	# Custom Game Stuff Here
 	
 	
-	super(delta)
+	Game_Finished_Check()
+	Update_Timmer(delta)
 
 func Calculate_Score():
 	pass
 
 func Game_Finished_Check():
 	pass
-	
-	super()
 

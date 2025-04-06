@@ -1,16 +1,16 @@
 [gd_scene load_steps=14 format=3 uid="uid://c7cgwy5eeg7qn"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Button_Mashing_Minigame/Button_Mashing_Minigame.gd" id="1_5um5w"]
-[ext_resource type="Texture2D" uid="uid://cvffwabybj7qd" path="res://assets/Minigame_Assets/Timer/Layer_0.png" id="2_a5sac"]
-[ext_resource type="Texture2D" uid="uid://cp0y8oqypptqt" path="res://assets/Minigame_Assets/Timer/Layer_3.png" id="3_pnvys"]
-[ext_resource type="Texture2D" uid="uid://drhqdpctovfub" path="res://assets/Minigame_Assets/Timer/Layer_1.png" id="4_4q1vw"]
-[ext_resource type="Texture2D" uid="uid://c0r8ue83qn0gh" path="res://assets/Minigame_Assets/Timer/Layer_2.png" id="5_usph1"]
+[ext_resource type="PackedScene" uid="uid://8gy7aw2hdl8x" path="res://scenes/Minigames/Base_Minigame/Start_Countdown.tscn" id="2_cmak5"]
+[ext_resource type="PackedScene" uid="uid://c3st0kd57xowy" path="res://scenes/Minigames/Base_Minigame/Timmer.tscn" id="3_utb1a"]
 [ext_resource type="Texture2D" uid="uid://h6nj721rktu3" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Background.png" id="6_7qjvb"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="6_xfddt"]
 [ext_resource type="Texture2D" uid="uid://dnagdiv7it1wc" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Border.png" id="7_bhr4f"]
 [ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="7_ng816"]
+[ext_resource type="AudioStream" uid="uid://snx78hyg4dlk" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/Knife_Cutting.wav" id="8_imrdb"]
 [ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="8_sxmj7"]
 [ext_resource type="Texture2D" uid="uid://dt3bandv806j5" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Fill.png" id="8_wlvk5"]
+[ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="9_gdj3l"]
 [ext_resource type="Texture2D" uid="uid://c78t68mrsr1gq" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/A.png" id="11_5hg80"]
 [ext_resource type="Texture2D" uid="uid://dn7c1uhm600lq" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/B.png" id="12_k2qfe"]
 
@@ -31,68 +31,19 @@ text = "[right]score[/right]   "
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 
-[node name="Start_Timmer" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -82.5
-offset_bottom = 82.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 120
-bbcode_enabled = true
-text = "[center]3[/center]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
+[node name="Start_Countdown" parent="CanvasLayer" instance=ExtResource("2_cmak5")]
 
-[node name="Game_Timmer" type="TextureProgressBar" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -212.5
-offset_top = -190.0
-offset_right = 207.5
-offset_bottom = 184.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-max_value = 30.0
-step = 0.0
-fill_mode = 4
-texture_under = ExtResource("2_a5sac")
-texture_over = ExtResource("3_pnvys")
-texture_progress = ExtResource("4_4q1vw")
-radial_initial_angle = 1.0
-
-[node name="Current_Timmer" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -320.5
-offset_top = -276.0
-offset_right = 99.5
-offset_bottom = 98.0
-grow_horizontal = 0
-grow_vertical = 0
-rotation = 4.0544
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(215, 172)
-texture = ExtResource("5_usph1")
-expand_mode = 1
+[node name="Timmer" parent="CanvasLayer" instance=ExtResource("3_utb1a")]
 
 [node name="Progress_Bar" type="TextureProgressBar" parent="CanvasLayer"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
-offset_right = -300.0
+offset_left = 5.0
+offset_top = -105.0
+offset_right = -295.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 max_value = 180.0
@@ -102,9 +53,25 @@ texture_under = ExtResource("6_7qjvb")
 texture_over = ExtResource("7_bhr4f")
 texture_progress = ExtResource("8_wlvk5")
 
+[node name="Sound" type="Node" parent="CanvasLayer"]
+
+[node name="BG_Music" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound"]
+stream = ExtResource("9_gdj3l")
+volume_db = -8.0
+
+[node name="Sound_Effects" type="Node" parent="CanvasLayer/Sound"]
+
+[node name="Cutting_P1" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound/Sound_Effects"]
+stream = ExtResource("8_imrdb")
+volume_db = -1.0
+
+[node name="Cutting_P2" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound/Sound_Effects"]
+stream = ExtResource("8_imrdb")
+volume_db = -1.0
+
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(800, 448)
-scale = Vector2(24.9688, 14.0156)
+position = Vector2(799.501, 450.25)
+scale = Vector2(24.9844, 14.0859)
 texture = ExtResource("6_xfddt")
 
 [node name="Player_1" type="Sprite2D" parent="."]

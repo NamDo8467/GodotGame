@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://8gy7aw2hdl8x"]
+
+[ext_resource type="AudioStream" uid="uid://u5mjk6ndq7to" path="res://assets/Minigame_Assets/Audio/Minigame_Start_Countdown.wav" id="1_v7g1u"]
+
+[node name="Start_Countdown" type="RichTextLabel"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -82.5
+offset_bottom = 82.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]3[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="Countdown_Bleep" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("1_v7g1u")
