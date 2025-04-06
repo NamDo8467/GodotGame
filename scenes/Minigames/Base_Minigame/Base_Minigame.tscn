@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c88onxb2vj1rs"]
+[gd_scene load_steps=9 format=3 uid="uid://c88onxb2vj1rs"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Base_Minigame/Base_Minigame.gd" id="1_jnsxl"]
 [ext_resource type="PackedScene" uid="uid://8gy7aw2hdl8x" path="res://scenes/Minigames/Base_Minigame/Start_Countdown.tscn" id="2_6ijcv"]
 [ext_resource type="PackedScene" uid="uid://c3st0kd57xowy" path="res://scenes/Minigames/Base_Minigame/Timmer.tscn" id="4_ewaec"]
 [ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="6_1uta0"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="6_olcc0"]
+[ext_resource type="PackedScene" uid="uid://02eb1ra0igio" path="res://scenes/Minigames/Base_Minigame/player_X.tscn" id="8_ggyrb"]
 [ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="10_664yx"]
 [ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="11_dakrr"]
 
@@ -43,12 +44,18 @@ position = Vector2(799, 448.5)
 scale = Vector2(24.9688, 14.0156)
 texture = ExtResource("6_olcc0")
 
-[node name="Player_1" type="Sprite2D" parent="."]
+[node name="Player_1_Old" type="Sprite2D" parent="."]
+visible = false
 z_index = 2
 scale = Vector2(1.0875, 1.0875)
 texture = ExtResource("10_664yx")
 
-[node name="Player_2" type="Sprite2D" parent="."]
+[node name="Player_2_Old" type="Sprite2D" parent="."]
+visible = false
 z_index = 2
 scale = Vector2(1.087, 1.083)
 texture = ExtResource("11_dakrr")
+
+[node name="Player_1" parent="." instance=ExtResource("8_ggyrb")]
+
+[node name="Player_2" parent="." instance=ExtResource("8_ggyrb")]

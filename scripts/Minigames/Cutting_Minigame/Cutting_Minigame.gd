@@ -101,12 +101,12 @@ func Can_Move():
 func Move_P1(delta):
 	if Input.is_action_pressed("P1_Minigame_Move_Right") && knife.rotation < MAX_KNIFE_ROTATION:
 		p1.position.x += player_Speed * delta
-		p1.play("Walking_Right")
+		p1.play("Top_Down_Walking_Right")
 		Rotate_P1()
 		return
 	if Input.is_action_pressed("P1_Minigame_Move_Left") && knife.rotation > -MAX_KNIFE_ROTATION:
 		p1.position.x -= player_Speed * delta
-		p1.play("Walking_Left")
+		p1.play("Top_Down_Walking_Left")
 		Rotate_P1()
 		return
 	
@@ -116,12 +116,12 @@ func Move_P1(delta):
 func Move_P2(delta):
 	if Input.is_action_pressed("P2_Minigame_Move_Right") && knife.rotation > -MAX_KNIFE_ROTATION:
 		p2.position.x += player_Speed * delta
-		p2.play("Walking_Right")
+		p2.play("Top_Down_Walking_Right")
 		Rotate_P2()
 		return
 	if Input.is_action_pressed("P2_Minigame_Move_Left") && knife.rotation < MAX_KNIFE_ROTATION:
 		p2.position.x -= player_Speed * delta
-		p2.play("Walking_Left")
+		p2.play("Top_Down_Walking_Left")
 		Rotate_P2()
 		return
 	
