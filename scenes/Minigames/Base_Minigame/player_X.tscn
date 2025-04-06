@@ -452,6 +452,11 @@ animations = [{
 "name": &"Side_View_P1_Landing",
 "speed": 12.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"Side_View_P1_Swinging",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_142lm")
@@ -571,6 +576,11 @@ animations = [{
 "loop": false,
 "name": &"Side_View_P2_Landing",
 "speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Side_View_P2_Swinging",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -715,4 +725,4 @@ animations = [{
 [node name="Player_1" type="AnimatedSprite2D"]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_8xlcw")
-animation = &"Side_View_P1_A_Default"
+animation = &"Side_View_P2_Swinging"

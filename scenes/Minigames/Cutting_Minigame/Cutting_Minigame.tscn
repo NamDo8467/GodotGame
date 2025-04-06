@@ -74,8 +74,10 @@ texture = ExtResource("5_t4sjx")
 [node name="Player_1" parent="." instance=ExtResource("10_2ejov")]
 position = Vector2(102, 96)
 scale = Vector2(0.595, 0.564)
+animation = &"Top_Down_P1_A_Default"
 
 [node name="Player_2" parent="." instance=ExtResource("10_2ejov")]
 position = Vector2(106.8, 801)
 rotation = 3.14159
 scale = Vector2(0.595, 0.564)
+animation = &"Top_Down_P2_A_Default"
