@@ -7,6 +7,12 @@ extends "res://scripts/Minigames/Base_Minigame/Base_Minigame.gd"
 @onready var p2_Bowl = $Bowl/Bowl_P2
 @onready var p2_Ladder = $Ladder_P2
 
+# Sound Variables
+@onready var sound_Bad = $CanvasLayer/Sound/Sound_Effects/Grade_Sounds/Bad
+@onready var sound_Good = $CanvasLayer/Sound/Sound_Effects/Grade_Sounds/Good
+@onready var sound_Great = $CanvasLayer/Sound/Sound_Effects/Grade_Sounds/Great
+@onready var sound_Perfect = $CanvasLayer/Sound/Sound_Effects/Grade_Sounds/Perfect
+
 var rng = RandomNumberGenerator.new()
 
 # Game Variables
@@ -107,6 +113,7 @@ func P1_Actions():
 	if Input.is_action_just_pressed("P1_Minigame_Action_2") && p1_State == States.WALKING_TOP:
 		p1_walk_Speed_Multi = MAX_WALK_SPEED_MULTI
 		p1_Ladder.Stop_Cursor()
+		Play_Score_Sound(p1_Ladder)
 
 func P2_Actions():
 	if Input.is_action_just_pressed("P2_Minigame_Action_1") && p2_State == States.CLIMBING:
@@ -114,6 +121,7 @@ func P2_Actions():
 	if Input.is_action_just_pressed("P2_Minigame_Action_2") && p2_State == States.WALKING_TOP:
 		p2_walk_Speed_Multi = MAX_WALK_SPEED_MULTI
 		p2_Ladder.Stop_Cursor()
+		Play_Score_Sound(p2_Ladder)
 
 func Update_P1_Game_State():
 	match p1_State:
@@ -192,7 +200,6 @@ func Update_P2_Game_State():
 			# TODO: Setup animation that starts Stumble
 			print("Stumble")
 			pass
-
 
 func Move_P1(delta):
 	match p1_State:
@@ -336,6 +343,18 @@ func Bowl_Rotation(delta):
 	else:
 		p2_Bowl_Force = MIN_FORCE
 
+func Play_Score_Sound(ladder):
+	match ladder.Calculate_Grade():
+		ladder.Grade.BAD:
+			sound_Bad.play()
+		ladder.Grade.GOOD:
+			sound_Good.play()
+		ladder.Grade.GREAT:
+			sound_Great.play()
+		ladder.Grade.PERFECT:
+			sound_Perfect.play()
+
+
 func Calculate_Score(ladder):
 	# TODO: Update this to calculate score based on how fast they got to the top (through how far down the bowl has gone) + how accurate they were too the 
 	var score = 0
@@ -362,3 +381,11 @@ func Update_Mix_Bar(score):
 func Game_Finished_Check():
 	if current_Score >= mix_Bar.max_value:
 		End_Minigame()
+
+func End_Minigame():
+	sound_Bad.stop()
+	sound_Good.stop()
+	sound_Great.stop()
+	sound_Perfect.stop()
+	
+	super()
