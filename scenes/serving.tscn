@@ -1,19 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://cujkjkimixppt"]
+[gd_scene load_steps=14 format=3 uid="uid://cujkjkimixppt"]
 
 [ext_resource type="Script" path="res://scripts/serving.gd" id="1_21v1n"]
 [ext_resource type="Texture2D" uid="uid://bm85pt8pebpmk" path="res://assets/serving_image.png" id="1_d0g74"]
 [ext_resource type="AudioStream" uid="uid://cyl7u8esv21tt" path="res://assets/cat_evil_laugh.wav" id="3_h6dbk"]
+[ext_resource type="Texture2D" uid="uid://bpu62061cx5gl" path="res://assets/Score_Screen/cat.png" id="3_vym1w"]
 [ext_resource type="Script" path="res://scripts/score_bar.gd" id="4_u1kph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hrmv"]
 atlas = ExtResource("1_d0g74")
 region = Rect2(0, 0, 501, 488)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6oyf"]
+atlas = ExtResource("3_vym1w")
+region = Rect2(0, 0, 1920, 1080)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_knkku"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1hrmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6oyf")
 }],
 "loop": true,
 "name": &"default",
@@ -25,7 +33,7 @@ resource_name = "fade_in"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -35,9 +43,37 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0.4, 0.4), Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(1.6, 1.6), Vector2(1.8, 1.8), Vector2(1.9, 1.9)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1.7411, 8.57419),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b22j1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_snwow"]
 _data = {
+"RESET": SubResource("Animation_b22j1"),
 "fade_in": SubResource("Animation_0ex06")
 }
 
@@ -58,9 +94,11 @@ corner_radius_bottom_left = 12
 script = ExtResource("1_21v1n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(496.867, 460.25)
-scale = Vector2(0.08, 0.08)
+position = Vector2(800, 450)
+scale = Vector2(0.835, 0.835)
 sprite_frames = SubResource("SpriteFrames_knkku")
+frame = 1
+frame_progress = 0.665713
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
@@ -71,9 +109,11 @@ autoplay = "fade_in"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(6.10352e-05, 0)
 stream = ExtResource("3_h6dbk")
+volume_db = -8.0
 autoplay = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = 223.0
 offset_top = 445.0
 offset_right = 786.0
