@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dndmpaxoh0181"
-path="res://.godot/imported/P2_Walking.png-d584f796f97dc1dd42db98626e3e2876.ctex"
+uid="uid://c85douj0ocp6a"
+path="res://.godot/imported/Side_View_P1_Default.png-4490e99ac2cded48a720a2bce6f9375b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Minigame_Assets/Cutting_Minigame/P2_Walking.png"
-dest_files=["res://.godot/imported/P2_Walking.png-d584f796f97dc1dd42db98626e3e2876.ctex"]
+source_file="res://assets/Minigame_Assets/Animations/P1/Side_View_P1_Default.png"
+dest_files=["res://.godot/imported/Side_View_P1_Default.png-4490e99ac2cded48a720a2bce6f9375b.ctex"]
 
 [params]
 

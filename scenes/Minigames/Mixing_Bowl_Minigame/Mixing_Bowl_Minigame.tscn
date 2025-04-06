@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bnvuomishuc75"]
+[gd_scene load_steps=19 format=3 uid="uid://bnvuomishuc75"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Mixing_Bowl_Minigame/Mixing_Bowl_Minigame.gd" id="1_s43et"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="1_w3n65"]
@@ -15,10 +15,9 @@
 [ext_resource type="AudioStream" uid="uid://bdi576mo863cp" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Audio/Perfect.mp3" id="11_0jal3"]
 [ext_resource type="Texture2D" uid="uid://nceyxfgl7bwe" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Bowl.png" id="11_fidi3"]
 [ext_resource type="Texture2D" uid="uid://dq2l8pg1j40xt" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Temp_Ladder.png" id="12_haopm"]
-[ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="12_vufdd"]
-[ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="13_fm3iy"]
 [ext_resource type="Script" path="res://scripts/Minigames/Mixing_Bowl_Minigame/Ladder.gd" id="13_m3ipn"]
 [ext_resource type="Texture2D" uid="uid://dsloqinxomko" path="res://assets/Minigame_Assets/White_Square.png" id="13_qskyw"]
+[ext_resource type="PackedScene" uid="uid://02eb1ra0igio" path="res://scenes/Minigames/Base_Minigame/player_X.tscn" id="20_lgv7o"]
 
 [node name="MixingBowlMinigame" type="Node2D"]
 script = ExtResource("1_s43et")
@@ -326,12 +325,10 @@ z_index = 1
 scale = Vector2(0.01, 1)
 texture = ExtResource("13_qskyw")
 
-[node name="Player_1" type="Sprite2D" parent="."]
-position = Vector2(532, 479)
-scale = Vector2(1.025, 1.025)
-texture = ExtResource("12_vufdd")
+[node name="Player_1" parent="." instance=ExtResource("20_lgv7o")]
+position = Vector2(532, 478)
+animation = &"P1_Side_View_Walking_Left"
 
-[node name="Player_2" type="Sprite2D" parent="."]
+[node name="Player_2" parent="." instance=ExtResource("20_lgv7o")]
 position = Vector2(1082, 478)
-scale = Vector2(1.04063, 1.04063)
-texture = ExtResource("13_fm3iy")
+animation = &"P1_Side_View_Walking_Left"
