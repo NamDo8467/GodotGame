@@ -134,7 +134,7 @@ func Move_P2(delta):
 
 func Rotate_P1():
 	p1.look_at(knife.global_position)
-	p1.rotation_degrees -= 90
+	p1.rotation_degrees += 90
 
 func Rotate_P2():
 	p2.look_at(knife.global_position)
