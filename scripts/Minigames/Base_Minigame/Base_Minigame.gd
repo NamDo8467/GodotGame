@@ -17,6 +17,8 @@ signal Minigame_Finished(score)
 @onready var timmer_Tick = $CanvasLayer/Timmer/Background/Sound/Tick
 
 # Score Variables
+@onready var star_Holder = $Star_Holder
+
 var current_Score = 0.0
 
 # Timmer Variables
@@ -106,7 +108,5 @@ func End_Minigame():
 	timmer_Tween.stop()
 	
 	start_Countdown.modulate = Color(0, 0, 0, 1)
-	
-	start_Countdown.text = "[font_size=100][center]Your score is " + str(current_Score) + "%[/center]" 
 	
 	emit_signal("Minigame_Finished", current_Score)

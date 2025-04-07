@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="6_1uta0"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="6_olcc0"]
 [ext_resource type="PackedScene" uid="uid://02eb1ra0igio" path="res://scenes/Minigames/Base_Minigame/player_X.tscn" id="8_ggyrb"]
-[ext_resource type="PackedScene" uid="uid://d3ltpnwj2r8aj" path="res://scenes/Minigames/Base_Minigame/Star.tscn" id="9_yt2w3"]
+[ext_resource type="PackedScene" uid="uid://cnoat30rn4h5g" path="res://scenes/Minigames/Base_Minigame/Star_Holder.tscn" id="9_vjup5"]
 [ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="10_664yx"]
 [ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="11_dakrr"]
 
@@ -61,5 +61,5 @@ texture = ExtResource("11_dakrr")
 
 [node name="Player_2" parent="." instance=ExtResource("8_ggyrb")]
 
-[node name="Star" parent="." instance=ExtResource("9_yt2w3")]
-position = Vector2(726, 246)
+[node name="Star_Holder" parent="." instance=ExtResource("9_vjup5")]
+position = Vector2(800, 450)
