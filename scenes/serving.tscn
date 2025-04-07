@@ -1,10 +1,44 @@
-[gd_scene load_steps=14 format=3 uid="uid://cujkjkimixppt"]
+[gd_scene load_steps=15 format=3 uid="uid://cujkjkimixppt"]
 
+[ext_resource type="PackedScene" uid="uid://cnoat30rn4h5g" path="res://scenes/Minigames/Base_Minigame/Star_Holder.tscn" id="1_cpitn"]
 [ext_resource type="AudioStream" uid="uid://cyl7u8esv21tt" path="res://assets/cat_evil_laugh.wav" id="3_h6dbk"]
 [ext_resource type="Texture2D" uid="uid://bpu62061cx5gl" path="res://assets/Score_Screen/cat.png" id="3_vym1w"]
 [ext_resource type="Texture2D" uid="uid://1coujje1vaxw" path="res://assets/Score_Screen/Fish_Salad/Failed.png" id="4_bw4lk"]
 [ext_resource type="Texture2D" uid="uid://bisio7gw56x86" path="res://assets/Score_Screen/Fish_Salad/Good.png" id="5_pvdf1"]
 [ext_resource type="Texture2D" uid="uid://bcfnktfd1qum0" path="res://assets/Score_Screen/Fish_Salad/Perfect.png" id="6_vgasd"]
+
+[sub_resource type="Animation" id="Animation_ylava"]
+resource_name = "Serving_Scene_Start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cat_King:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.75, 1.75),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Food:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 0.392292, 0.574349),
+"update": 0,
+"values": [Vector2(800, 1000), Vector2(800, 1000), Vector2(800, 630)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ltxg5"]
+_data = {
+"Serving_Scene_Start": SubResource("Animation_ylava")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6oyf"]
 atlas = ExtResource("3_vym1w")
@@ -60,43 +94,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_ylava"]
-resource_name = "Serving_Scene_Start"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cat_King:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1.75, 1.75),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Food:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 0.392292, 0.574349),
-"update": 0,
-"values": [Vector2(800, 1000), Vector2(800, 1000), Vector2(800, 630)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ltxg5"]
-_data = {
-"Serving_Scene_Start": SubResource("Animation_ylava")
-}
-
 [node name="Serving" type="Node2D"]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ltxg5")
+}
+autoplay = "Serving_Scene_Start"
+
 [node name="Cat_King" type="AnimatedSprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
 position = Vector2(800, 450)
 scale = Vector2(0.835, 0.835)
 sprite_frames = SubResource("SpriteFrames_knkku")
@@ -115,8 +121,25 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_rwphj")
 animation = &"Bad"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ltxg5")
-}
-autoplay = "Serving_Scene_Start"
+[node name="Star_Holder" parent="." instance=ExtResource("1_cpitn")]
+position = Vector2(784, 454)
+
+[node name="Star_1" parent="Star_Holder" index="0"]
+position = Vector2(-650, -60)
+
+[node name="Star_2" parent="Star_Holder" index="1"]
+position = Vector2(650, -60)
+
+[node name="Star_3" parent="Star_Holder" index="2"]
+position = Vector2(-460, -210)
+
+[node name="Star_4" parent="Star_Holder" index="3"]
+position = Vector2(460, -210)
+
+[node name="Star_5" parent="Star_Holder" index="4"]
+position = Vector2(0, -265)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-460, -210)
+
+[editable path="Star_Holder"]
