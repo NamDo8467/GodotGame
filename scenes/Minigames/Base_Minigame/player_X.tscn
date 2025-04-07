@@ -448,7 +448,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Side_View_P1_Climbing",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -588,7 +588,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Side_View_P2_Climbing",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -783,5 +783,5 @@ animations = [{
 [node name="Player_1" type="AnimatedSprite2D"]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_8xlcw")
-animation = &"Top_Down_P2_Walking"
-frame_progress = 0.985861
+animation = &"Side_View_P1_Climbing"
+frame_progress = 0.289356

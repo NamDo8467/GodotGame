@@ -16,10 +16,10 @@ extends "res://scripts/Minigames/Base_Minigame/Base_Minigame.gd"
 var rng = RandomNumberGenerator.new()
 
 # Game Variables
-var BAD_POINTS = -15
-var GOOD_POINTS = 15
-var GREAT_POINTS = 30
-var PERFECT_POINTS = 45
+var BAD_POINTS = -20
+var GOOD_POINTS = 10
+var GREAT_POINTS = 20
+var PERFECT_POINTS = 30
 
 # Player Variables
 enum States { WALKING_BOTTOM, CLIMBING, WALKING_TOP, JUMPING, FALLING, BOWL, STUMBLE }
@@ -106,6 +106,8 @@ func _process(delta):
 	Move_P2(delta)
 	
 	Bowl_Rotation(delta)
+	
+	Update_Anim_Speed()
 	
 	Game_Finished_Check()
 	Update_Timmer(delta)
@@ -338,6 +340,14 @@ func Bowl_Rotation(delta):
 		p2_Bowl_Force -= FORCE_DEC_RATE * delta
 	else:
 		p2_Bowl_Force = MIN_FORCE
+	
+	if bowl.rotation_degrees == 0:
+		if p1_State == States.BOWL:
+			p1_State = States.WALKING_BOTTOM
+			Update_P1_Game_State()
+		if p2_State == States.BOWL:
+			p2_State = States.WALKING_BOTTOM
+			Update_P2_Game_State()
 
 func Play_Score_Sound(ladder):
 	match ladder.Calculate_Grade():
@@ -372,6 +382,17 @@ func Calculate_Score(ladder):
 
 func Update_Mix_Bar(score):
 	mix_Bar.value += score
+
+func Update_Anim_Speed():
+	if p1_State == States.CLIMBING:
+		p1.speed_scale = clamp(p1_Climb_Speed_Multi, MIN_CLIMB_SPEED_MULTI, MAX_CLIMB_SPEED_MULTI)
+	else:
+		p1.speed_scale = 1
+	
+	if p2_State == States.CLIMBING:
+		p2.speed_scale = clamp(p2_Climb_Speed_Multi, MIN_CLIMB_SPEED_MULTI, MAX_CLIMB_SPEED_MULTI)
+	else:
+		p2.speed_scale = 1
 
 func Game_Finished_Check():
 	if current_Score >= mix_Bar.max_value:

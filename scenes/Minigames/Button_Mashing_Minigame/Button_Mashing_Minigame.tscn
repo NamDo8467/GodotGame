@@ -106,3 +106,4 @@ position = Vector2(400, 550)
 position = Vector2(1200, 550)
 scale = Vector2(-1, 1)
 animation = &"Side_View_P2_A_Default"
+frame_progress = 0.0
