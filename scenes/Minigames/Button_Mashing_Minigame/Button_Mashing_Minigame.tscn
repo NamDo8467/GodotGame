@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7cgwy5eeg7qn"]
+[gd_scene load_steps=21 format=3 uid="uid://c7cgwy5eeg7qn"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Button_Mashing_Minigame/Button_Mashing_Minigame.gd" id="1_5um5w"]
 [ext_resource type="PackedScene" uid="uid://8gy7aw2hdl8x" path="res://scenes/Minigames/Base_Minigame/Start_Countdown.tscn" id="2_cmak5"]
@@ -11,8 +11,50 @@
 [ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="9_gdj3l"]
 [ext_resource type="Texture2D" uid="uid://bodsgrjly6ind" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Table.png" id="10_0m8ut"]
 [ext_resource type="Texture2D" uid="uid://c78t68mrsr1gq" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/A.png" id="11_5hg80"]
+[ext_resource type="Texture2D" uid="uid://b6gatq2j7e5o5" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/Pile_3.png" id="11_vn412"]
+[ext_resource type="Texture2D" uid="uid://bp53q701y5nx8" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/Pile_2.png" id="12_fahwj"]
 [ext_resource type="Texture2D" uid="uid://dn7c1uhm600lq" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/B.png" id="12_k2qfe"]
+[ext_resource type="Texture2D" uid="uid://cye1bf45yi2i8" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/Pile_1.png" id="13_wfm24"]
 [ext_resource type="PackedScene" uid="uid://02eb1ra0igio" path="res://scenes/Minigames/Base_Minigame/player_X.tscn" id="14_n1n5t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3jmk"]
+atlas = ExtResource("11_vn412")
+region = Rect2(0, 0, 3523, 2676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28pct"]
+atlas = ExtResource("12_fahwj")
+region = Rect2(0, 0, 3523, 2676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ylih"]
+atlas = ExtResource("13_wfm24")
+region = Rect2(0, 0, 3523, 2676)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iuy8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3jmk")
+}],
+"loop": true,
+"name": &"Fully_Cut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28pct")
+}],
+"loop": true,
+"name": &"Semi_Cut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ylih")
+}],
+"loop": true,
+"name": &"Uncut",
+"speed": 5.0
+}]
 
 [node name="Button_Mashing_Minigame" type="Node2D"]
 script = ExtResource("1_5um5w")
@@ -80,8 +122,14 @@ scale = Vector2(0.740278, 0.209877)
 texture = ExtResource("10_0m8ut")
 
 [node name="Food" type="Node2D" parent="."]
+position = Vector2(800, 735)
 
-[node name="Sprite2D" type="Sprite2D" parent="Food"]
+[node name="Sprites" type="AnimatedSprite2D" parent="Food"]
+position = Vector2(0, -70)
+scale = Vector2(0.095, 0.095)
+sprite_frames = SubResource("SpriteFrames_iuy8x")
+animation = &"Uncut"
+autoplay = "Uncut"
 
 [node name="Player_1_Press_A" type="Sprite2D" parent="."]
 z_index = 2

@@ -7,6 +7,8 @@ extends "res://scripts/Minigames/Base_Minigame/Base_Minigame.gd"
 @onready var p2_Press_B = $Player_2_Press_B
 
 # Animation Variables
+@onready var food = $Food/Sprites
+
 var MIN_ANIM_SPEED = 0.5
 var MAX_ANIM_SPEED = 4
 var ANIM_SPEED_GAIN_STEP = 0.2
@@ -62,6 +64,7 @@ func Game_Start():
 	# Animations
 	p1.play("Side_View_P1_Swinging")
 	p2.play("Side_View_P2_Swinging")
+	food.play("Uncut")
 	
 	# Sounds
 	p1_Cutting.play()
@@ -213,16 +216,21 @@ func Calculate_Score(score):
 	
 	current_Score = progress_Bar.value
 	
+	if progress_Bar.value >= progress_Bar.max_value / 2.0:
+		food.play("Semi_Cut")
+	
 	score_Text.text = ("[right]Score " + str(current_Score) + "%[/right]   ")
 
 func Game_Finished_Check():
 	if current_Score >= progress_Bar.max_value:
+		food.play("Fully_Cut")
 		End_Minigame()
 
 func End_Minigame():
 	# Animations
 	p1.stop()
 	p2.stop()
+	food.stop()
 	
 	# Sounds
 	p1_Cutting.stop()
