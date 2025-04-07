@@ -6,33 +6,79 @@ extends Node2D
 @onready var star_4 = $Star_4
 @onready var star_5 = $Star_5
 
-var Star_Load_Time = 0.2
+var NUM_STARS = 5
+var STAR_SECTIONS = 5
+var FULL_STAR_PERCENT = 20
+var STAR_LOAD_TIME = 0.2
+var score_Value = 0
 
 func _ready():
+	Set_Stars(49)
+	pass
+
+func Set_Stars(number : int):
+	score_Value = number
+	
 	Display_Empty_Stars()
+
 
 func Display_Empty_Stars():
 	star_1.Display()
-	await get_tree().create_timer(Star_Load_Time).timeout
+	await get_tree().create_timer(STAR_LOAD_TIME).timeout
 	star_2.Display()
-	await get_tree().create_timer(Star_Load_Time).timeout
+	await get_tree().create_timer(STAR_LOAD_TIME).timeout
 	star_3.Display()
-	await get_tree().create_timer(Star_Load_Time).timeout
+	await get_tree().create_timer(STAR_LOAD_TIME).timeout
 	star_4.Display()
-	await get_tree().create_timer(Star_Load_Time).timeout
+	await get_tree().create_timer(STAR_LOAD_TIME).timeout
 	star_5.Display()
-	await get_tree().create_timer(Star_Load_Time).timeout
+	await get_tree().create_timer(STAR_LOAD_TIME).timeout
 	
-	Set_Stars(0.0)
+	Calculate_Star_Scores()
 
-func Set_Stars(score_Percent : float):
-	star_1.Section_Selection(1)
-	await get_tree().create_timer(Star_Load_Time).timeout
-	star_2.Section_Selection(2)
-	await get_tree().create_timer(Star_Load_Time).timeout
-	star_3.Section_Selection(3)
-	await get_tree().create_timer(Star_Load_Time).timeout
-	star_4.Section_Selection(4)
-	await get_tree().create_timer(Star_Load_Time).timeout
-	star_5.Section_Selection(5)
-	await get_tree().create_timer(Star_Load_Time).timeout
+func Calculate_Star_Scores():
+	var Score_Split = score_Value / FULL_STAR_PERCENT
+	var Full_Stars = int(Score_Split)
+	var Semi_Stars = int((score_Value % FULL_STAR_PERCENT) / (FULL_STAR_PERCENT / STAR_SECTIONS))
+	
+	if Score_Split >= 1.0:
+		star_1.Section_Selection(STAR_SECTIONS)
+	else:
+		star_1.Section_Selection(Semi_Stars)
+		return
+	
+	Score_Split -= 1
+	await get_tree().create_timer(STAR_LOAD_TIME * 2).timeout
+	
+	if Score_Split >= 1.0:
+		star_2.Section_Selection(STAR_SECTIONS)
+	else:
+		star_2.Section_Selection(Semi_Stars)
+		return
+	
+	Score_Split -= 1
+	await get_tree().create_timer(STAR_LOAD_TIME * 2).timeout
+	
+	if Score_Split >= 1.0:
+		star_3.Section_Selection(STAR_SECTIONS)
+	else:
+		star_3.Section_Selection(Semi_Stars)
+		return
+	
+	Score_Split -= 1
+	await get_tree().create_timer(STAR_LOAD_TIME * 2).timeout
+	
+	if Score_Split >= 1.0:
+		star_4.Section_Selection(STAR_SECTIONS)
+	else:
+		star_4.Section_Selection(Semi_Stars)
+		return
+	
+	Score_Split -= 1
+	await get_tree().create_timer(STAR_LOAD_TIME * 2).timeout
+	
+	if Score_Split >= 1.0:
+		star_5.Section_Selection(STAR_SECTIONS)
+	else:
+		star_5.Section_Selection(Semi_Stars)
+		return
