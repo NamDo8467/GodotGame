@@ -40,6 +40,9 @@ volume_db = -8.0
 
 [node name="Sound_Effects" type="Node" parent="CanvasLayer/Sound"]
 
+[node name="Star_Holder" parent="CanvasLayer" instance=ExtResource("9_vjup5")]
+position = Vector2(800, 450)
+
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(799, 448.5)
 scale = Vector2(24.9688, 14.0156)
@@ -60,6 +63,3 @@ texture = ExtResource("11_dakrr")
 [node name="Player_1" parent="." instance=ExtResource("8_ggyrb")]
 
 [node name="Player_2" parent="." instance=ExtResource("8_ggyrb")]
-
-[node name="Star_Holder" parent="." instance=ExtResource("9_vjup5")]
-position = Vector2(800, 450)

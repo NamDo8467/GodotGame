@@ -207,15 +207,21 @@ func Cut_Knife():
 	Game_Finished_Check()
 
 func Calculate_Score(index, distance, angle):
-	var distance_Score = 50  
-	var angle_Score = 50  
+	var distance_Score = 65
+	var angle_Score = 65
 	
 	if distance > DISTANCE_CUTOFF:
-		distance_Score -= 50 * distance / DISTANCE_THRESHOLD 
+		distance_Score -= distance_Score * distance / DISTANCE_THRESHOLD 
 	if angle > ANGLE_CUTOFF:
-		angle_Score -= 50 * angle / ANGLE_THRESHOLD 
+		angle_Score -= angle_Score * angle / ANGLE_THRESHOLD 
 	
-	cut_Scores[index] = distance_Score + angle_Score
+	cut_Scores[index] = 1
+	
+	var score_Remapped = remap(distance_Score + angle_Score, 0, 130, 0, 26)
+	
+	current_Score += clamp(score_Remapped, 0, 20)
+	
+	current_Score = clamp(current_Score, 0.0, 100.0)
 
 func Game_Finished_Check():
 	var index = 0

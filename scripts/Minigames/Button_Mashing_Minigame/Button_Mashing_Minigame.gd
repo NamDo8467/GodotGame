@@ -214,12 +214,14 @@ func Update_Button_To_Press_Display():
 func Calculate_Score(score):
 	progress_Bar.value += score
 	
-	current_Score = progress_Bar.value
+	current_Score = (progress_Bar.value / progress_Bar.max_value) * 100
 	
 	if progress_Bar.value >= progress_Bar.max_value / 2.0:
 		food.play("Semi_Cut")
 	
 	score_Text.text = ("[right]Score " + str(current_Score) + "%[/right]   ")
+	
+	current_Score = clamp(current_Score, 0.0, 100.0)
 
 func Game_Finished_Check():
 	if current_Score >= progress_Bar.max_value:

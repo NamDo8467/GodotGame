@@ -376,9 +376,8 @@ func Calculate_Score(ladder):
 	
 	Update_Mix_Bar(score)
 	
-	current_Score = mix_Bar.value
-	
-	score_Text.text = ("[right]Score " + str(current_Score) + "%[/right]   ")
+	current_Score = (mix_Bar.value / mix_Bar.max_value) * 100
+	current_Score = clamp(current_Score, 0.0, 100.0)
 
 func Update_Mix_Bar(score):
 	mix_Bar.value += score
