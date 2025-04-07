@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://02eb1ra0igio"]
+[gd_scene load_steps=119 format=3 uid="uid://02eb1ra0igio"]
 
 [ext_resource type="Texture2D" uid="uid://c85douj0ocp6a" path="res://assets/Minigame_Assets/Animations/P1/Side_View_P1_Default.png" id="1_cshw8"]
 [ext_resource type="Texture2D" uid="uid://r45ni0u0tbes" path="res://assets/Minigame_Assets/Animations/Side_View_P_Climbing.png" id="2_k4sww"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crpxn7r0nued4" path="res://assets/Minigame_Assets/Animations/P2/Side_View_P2_Jumping_Falling.png" id="2_rbdfw"]
 [ext_resource type="Texture2D" uid="uid://bsoely8m5xmig" path="res://assets/Minigame_Assets/Animations/P2/Side_View_P2_Default.png" id="3_dvjel"]
 [ext_resource type="Texture2D" uid="uid://vk0ffmnjy57o" path="res://assets/Minigame_Assets/Animations/P1/Side_View_P1_Jumping_Falling.png" id="3_k6qkr"]
+[ext_resource type="Texture2D" uid="uid://gvu48di3fox1" path="res://assets/Minigame_Assets/Animations/Side_View_P_Swinging.png" id="4_4vwc7"]
 [ext_resource type="Texture2D" uid="uid://dv86egrnjsfw7" path="res://assets/Minigame_Assets/Animations/P2/Side_View_P2_Walking.png" id="4_6u1a7"]
 [ext_resource type="Texture2D" uid="uid://dndmpaxoh0181" path="res://assets/Minigame_Assets/Animations/P2/Top_Down_P2_Walking.png" id="5_itvhw"]
 [ext_resource type="Texture2D" uid="uid://gc77ywd250aj" path="res://assets/Minigame_Assets/Animations/P1/Top_Down_P1_Walking.png" id="7_8r0vi"]
@@ -109,6 +110,30 @@ region = Rect2(1600, 400, 400, 400)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmur3"]
 atlas = ExtResource("3_k6qkr")
 region = Rect2(0, 800, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr2th"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frnwi"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juxfi"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1q7n"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(1200, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx27p"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(1600, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecdrd"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(0, 400, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_142lm"]
 atlas = ExtResource("2_n2f2o")
@@ -237,6 +262,30 @@ region = Rect2(1600, 400, 400, 400)
 [sub_resource type="AtlasTexture" id="AtlasTexture_sm01d"]
 atlas = ExtResource("2_rbdfw")
 region = Rect2(0, 800, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82ekx"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(400, 400, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4geqm"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(800, 400, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqv31"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(1200, 400, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tciu"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(1600, 400, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px0m6"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(0, 800, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix1uy"]
+atlas = ExtResource("4_4vwc7")
+region = Rect2(400, 800, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8noy8"]
 atlas = ExtResource("4_6u1a7")
@@ -498,10 +547,28 @@ animations = [{
 "name": &"Side_View_P1_Landing",
 "speed": 12.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr2th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frnwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juxfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1q7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx27p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecdrd")
+}],
 "loop": true,
 "name": &"Side_View_P1_Swinging",
-"speed": 15.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -635,10 +702,28 @@ animations = [{
 "name": &"Side_View_P2_Landing",
 "speed": 12.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82ekx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4geqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqv31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tciu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_px0m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix1uy")
+}],
 "loop": true,
 "name": &"Side_View_P2_Swinging",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -783,5 +868,5 @@ animations = [{
 [node name="Player_1" type="AnimatedSprite2D"]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_8xlcw")
-animation = &"Side_View_P1_Climbing"
-frame_progress = 0.289356
+animation = &"Side_View_P1_Swinging"
+frame_progress = 0.979541

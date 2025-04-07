@@ -35,15 +35,17 @@ var p2_Switch_Chance = 99
 
 # Game Variables
 var rng = RandomNumberGenerator.new()
-var points_Gained = 1.5
+var points_Gained = 2
 var points_Lost = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	minigame_Time = 15.0 # Change this to adjust timers
 	
-	p1.play("Side_View_P1_A_Default")
-	p2.play("Side_View_P2_A_Default")
+	p1.play("Side_View_P1_Swinging")
+	p1.stop()
+	p2.play("Side_View_P2_Swinging")
+	p2.stop()
 	
 	p1_Press_A.visible = false
 	p1_Press_B.visible = false

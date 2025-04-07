@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7cgwy5eeg7qn"]
+[gd_scene load_steps=14 format=3 uid="uid://c7cgwy5eeg7qn"]
 
 [ext_resource type="Script" path="res://scripts/Minigames/Button_Mashing_Minigame/Button_Mashing_Minigame.gd" id="1_5um5w"]
 [ext_resource type="PackedScene" uid="uid://8gy7aw2hdl8x" path="res://scenes/Minigames/Base_Minigame/Start_Countdown.tscn" id="2_cmak5"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://snx78hyg4dlk" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/Knife_Cutting.wav" id="8_imrdb"]
 [ext_resource type="Texture2D" uid="uid://dt3bandv806j5" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Mix_Bar_Fill.png" id="8_wlvk5"]
 [ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="9_gdj3l"]
+[ext_resource type="Texture2D" uid="uid://bodsgrjly6ind" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Table.png" id="10_0m8ut"]
 [ext_resource type="Texture2D" uid="uid://c78t68mrsr1gq" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/A.png" id="11_5hg80"]
 [ext_resource type="Texture2D" uid="uid://dn7c1uhm600lq" path="res://assets/Minigame_Assets/Button_Mashing_Minigame/B.png" id="12_k2qfe"]
 [ext_resource type="PackedScene" uid="uid://02eb1ra0igio" path="res://scenes/Minigames/Base_Minigame/player_X.tscn" id="14_n1n5t"]
@@ -73,6 +74,15 @@ position = Vector2(799.501, 450.25)
 scale = Vector2(24.9844, 14.0859)
 texture = ExtResource("6_xfddt")
 
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(799.5, 731)
+scale = Vector2(0.740278, 0.209877)
+texture = ExtResource("10_0m8ut")
+
+[node name="Food" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Food"]
+
 [node name="Player_1_Press_A" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(400, 300)
@@ -101,9 +111,11 @@ texture = ExtResource("12_k2qfe")
 
 [node name="Player_1" parent="." instance=ExtResource("14_n1n5t")]
 position = Vector2(400, 550)
+scale = Vector2(1.5, 1.5)
+frame_progress = 0.0
 
 [node name="Player_2" parent="." instance=ExtResource("14_n1n5t")]
 position = Vector2(1200, 550)
-scale = Vector2(-1, 1)
-animation = &"Side_View_P2_A_Default"
+scale = Vector2(-1.5, 1.5)
+animation = &"Side_View_P2_Swinging"
 frame_progress = 0.0
