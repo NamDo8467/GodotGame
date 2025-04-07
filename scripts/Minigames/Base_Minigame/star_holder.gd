@@ -13,7 +13,7 @@ var STAR_LOAD_TIME = 0.2
 var score_Value = 0
 
 func _ready():
-	Set_Stars(99)
+	#Set_Stars(99)
 	pass
 
 func Set_Stars(number : int):
