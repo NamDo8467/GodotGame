@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var Is_Alive = true
+
 const SPEED = 320.0
 const JUMP_VELOCITY = -800.0
 #var weapon_list = []
@@ -95,13 +97,14 @@ func _physics_process(delta):
 				collision_shape.position.y = -58
 		
 		# Play animations
-		if is_on_floor():
-			if direction == 0:
-				player_sprite.play("idle")
-			elif direction == -1 or direction == 1:
-				player_sprite.play("run")
-		else:
-			player_sprite.play("jump")
+		if Is_Alive:
+			if is_on_floor():
+				if direction == 0:
+					player_sprite.play("idle")
+				elif direction == -1 or direction == 1:
+					player_sprite.play("run")
+			else:
+				player_sprite.play("jump")
 			
 		if direction:
 			velocity.x = direction * SPEED

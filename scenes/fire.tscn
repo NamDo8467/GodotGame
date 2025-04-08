@@ -47,10 +47,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tduay"]
-size = Vector2(13, 26)
+size = Vector2(26.9999, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3iujt"]
-size = Vector2(19, 267)
+size = Vector2(23.9996, 267)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwjr4"]
 size = Vector2(20, 3.5)
@@ -69,7 +69,7 @@ autoplay = "off"
 [node name="KillZone" parent="." instance=ExtResource("4_kg0vt")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(3.50001, -34)
+position = Vector2(-3.49995, -34)
 shape = SubResource("RectangleShape2D_tduay")
 
 [node name="Timer" type="Timer" parent="."]
@@ -80,7 +80,7 @@ one_shot = true
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerZone"]
-position = Vector2(3.49999, -171.5)
+position = Vector2(1.00021, -171.5)
 shape = SubResource("RectangleShape2D_3iujt")
 
 [node name="HitTheFloorZone" type="Area2D" parent="."]

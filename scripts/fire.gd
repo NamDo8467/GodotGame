@@ -13,7 +13,7 @@ func _on_ready():
 	
 func _process(delta):
 	if trigger_dropping == true:
-		position.y += 600 * delta
+		position.y += 1400 * delta
 #func _on_timer_timeout():
 	#pass
 
