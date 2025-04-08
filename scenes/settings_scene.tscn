@@ -1,0 +1,451 @@
+[gd_scene load_steps=8 format=3 uid="uid://p5v2d2gxrbfu"]
+
+[ext_resource type="Texture2D" uid="uid://j3cfk4mnbfru" path="res://assets/xbox_one_controller.png" id="1_exvss"]
+[ext_resource type="Script" path="res://scripts/settings_scene.gd" id="1_gfgnu"]
+[ext_resource type="Texture2D" uid="uid://cmvhbqypbdnm6" path="res://assets/setting_background.png" id="1_huta6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80gmy"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klyv6"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrydc"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fof1m"]
+bg_color = Color(0, 0, 0, 0)
+
+[node name="SettingsScene" type="Node2D"]
+z_index = -1
+script = ExtResource("1_gfgnu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(797, 447.5)
+scale = Vector2(1.18314, 1.18992)
+texture = ExtResource("1_huta6")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+offset_right = 1600.0
+offset_bottom = 900.0
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_80gmy")
+tab_alignment = 1
+clip_tabs = false
+tab_focus_mode = 0
+
+[node name="Controller" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="XboxOneController" type="Sprite2D" parent="TabContainer/Controller"]
+position = Vector2(807, 476)
+scale = Vector2(1.057, 1.057)
+texture = ExtResource("1_exvss")
+
+[node name="YButton" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(6.62256, 2.83823)
+rotation = 0.418879
+points = PackedVector2Array(75.3025, -158.835, 132.36, -307.476)
+closed = true
+width = 5.0
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/YButton"]
+offset_left = 95.2667
+offset_top = -330.314
+offset_right = 214.267
+offset_bottom = -286.314
+rotation = -0.418879
+theme_override_font_sizes/font_size = 20
+text = "Use Item"
+
+[node name="BButton" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(130.458, -29.3073)
+scale = Vector2(0.600994, 0.783823)
+points = PackedVector2Array(77.5781, -60.5487, 313.15, -60.5487)
+closed = true
+width = 5.0
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/BButton"]
+offset_left = 333.892
+offset_top = -84.5167
+offset_right = 541.892
+offset_bottom = -42.5167
+theme_override_font_sizes/font_size = 30
+text = "Pick up/Throw"
+
+[node name="LeftStick" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(-120, -30.253)
+scale = Vector2(0.600994, 0.783823)
+points = PackedVector2Array(-15.9937, -61.5842, -223.786, -61.5842)
+closed = true
+width = 5.0
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/LeftStick"]
+offset_left = -319.811
+offset_top = -85.7242
+offset_right = -215.811
+offset_bottom = -43.7242
+theme_override_font_sizes/font_size = 30
+text = "Move"
+
+[node name="AButton" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(148.108, 10.4067)
+scale = Vector2(0.600994, 0.783823)
+points = PackedVector2Array(-29.201, -54.315, -29.201, 257.091)
+closed = true
+width = 5.0
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/AButton"]
+offset_left = -66.9815
+offset_top = 261.919
+offset_right = 37.0185
+offset_bottom = 303.919
+theme_override_font_sizes/font_size = 30
+text = "Jump"
+
+[node name="LB" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(-10.1323, -50.9461)
+points = PackedVector2Array(131.504, -114.475, 131.504, -267.739)
+closed = true
+width = 5.0
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/LB"]
+offset_left = 95.2791
+offset_top = -312.346
+offset_right = 264.279
+offset_bottom = -268.346
+theme_override_font_sizes/font_size = 20
+text = "Descend"
+
+[node name="RB" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(-252.838, -50.9461)
+points = PackedVector2Array(131.504, -114.475, 131.504, -267.739)
+closed = true
+width = 5.0
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/RB"]
+offset_left = 95.7899
+offset_top = -309.508
+offset_right = 292.79
+offset_bottom = -265.508
+theme_override_font_sizes/font_size = 20
+text = "Ascend"
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController"]
+offset_left = -78.5241
+offset_top = -396.405
+offset_right = 87.4759
+offset_bottom = -361.405
+theme_override_font_sizes/font_size = 22
+text = "Change Floor:"
+
+[node name="Keyboard" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="Player1Side" type="GridContainer" parent="TabContainer/Keyboard"]
+layout_mode = 0
+offset_left = 619.0
+offset_top = 201.0
+offset_right = 852.0
+offset_bottom = 607.0
+
+[node name="Player1Label" type="Label" parent="TabContainer/Keyboard/Player1Side"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Player 1
+"
+horizontal_alignment = 1
+
+[node name="AButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_klyv6")
+text = "A"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/AButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 261.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = "Move Left"
+horizontal_alignment = 1
+
+[node name="DButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "D"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/DButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 261.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = "Move Right"
+horizontal_alignment = 1
+
+[node name="SpaceButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "Space"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/SpaceButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 261.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = "Jump
+"
+horizontal_alignment = 1
+
+[node name="EButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "E
+"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/EButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 261.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = "Pick up"
+horizontal_alignment = 1
+
+[node name="WButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+visible = false
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "W
+"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/WButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 261.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = "Use item"
+horizontal_alignment = 1
+
+[node name="UButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "U"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/UButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 261.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = "Elevator Up"
+horizontal_alignment = 1
+
+[node name="JButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_wrydc")
+text = "J"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player1Side/JButton"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 261.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = "Elevator Down"
+horizontal_alignment = 1
+
+[node name="Player2Side" type="GridContainer" parent="TabContainer/Keyboard"]
+layout_mode = 0
+offset_left = 875.0
+offset_top = 201.0
+offset_right = 1107.0
+offset_bottom = 607.0
+
+[node name="Player2Label" type="Label" parent="TabContainer/Keyboard/Player2Side"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Player 2
+"
+horizontal_alignment = 1
+
+[node name="LeftArrowButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = "Left Arrow
+"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/LeftArrowButton"]
+visible = false
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 237.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Move Left"
+
+[node name="RightArrowButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = "Right Arrow"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/RightArrowButton"]
+visible = false
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 249.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Move Right"
+
+[node name="CommaButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = ","
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/CommaButton"]
+visible = false
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 220.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Jump
+"
+
+[node name="DotButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = ".
+"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/DotButton"]
+visible = false
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 220.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Pick up"
+
+[node name="UpArrowButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = "Up Arrow
+"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/UpArrowButton"]
+visible = false
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 227.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Use item"
+
+[node name="UButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
+text = "U"
+
+[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/UButton"]
+visible = false
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 253.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = ": Elevator Up"
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -2.0
+offset_top = -7.0
+offset_right = 703.0
+offset_bottom = 33.0
+color = Color(0.0745098, 0.0901961, 0.0784314, 0.537255)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 896.0
+offset_top = -7.0
+offset_right = 1601.0
+offset_bottom = 33.0
+color = Color(0.0745098, 0.0901961, 0.0784314, 0.537255)
+
+[node name="GoBackButton" type="Button" parent="."]
+offset_left = 755.0
+offset_top = 838.0
+offset_right = 879.0
+offset_bottom = 899.0
+theme_override_font_sizes/font_size = 25
+text = "GO BACK"
+
+[connection signal="pressed" from="GoBackButton" to="." method="_on_go_back_button_pressed"]

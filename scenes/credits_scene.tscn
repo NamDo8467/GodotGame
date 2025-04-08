@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3ulqxgqyj5g5"]
+
+[ext_resource type="Texture2D" uid="uid://cmvhbqypbdnm6" path="res://assets/setting_background.png" id="1_8dle7"]
+[ext_resource type="Script" path="res://scripts/credits_scene.gd" id="1_jjwd7"]
+
+[node name="CreditsScene" type="Node2D"]
+script = ExtResource("1_jjwd7")
+
+[node name="SettingBackground" type="Sprite2D" parent="."]
+position = Vector2(802.556, 453)
+scale = Vector2(1.168, 1.168)
+texture = ExtResource("1_8dle7")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 12.0
+offset_right = 728.0
+offset_bottom = 855.0
+theme_override_font_sizes/font_size = 20
+text = "Player 1 squeak (respawn & etc.)
+https://freesound.org/people/Higgs01/sounds/428114/
+
+Player 2 squeak (respawn & etc.)
+https://freesound.org/people/Breviceps/sounds/468442/
+
+Rats walking
+https://pixabay.com/sound-effects/baby-squeak-toy-2-183912/
+
+Rats falling
+https://freesound.org/people/colorsCrimsonTears/sounds/566204/
+
+Evil cat laugh
+https://tuna.voicemod.net/sound/c56bcf5a-0e1c-446a-8d65-67402d690183
+
+BGM for minigames
+https://freesound.org/people/dominictreis/sounds/514988/
+
+Knife chopping
+https://freesound.org/people/kyles/sounds/452221/
+
+Timer ticking
+https://pixabay.com/sound-effects/timer-clock-ticking-313948/
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 817.0
+offset_right = 1533.0
+offset_bottom = 855.0
+theme_override_font_sizes/font_size = 20
+text = "Bell ring
+https://pixabay.com/sound-effects/service-bell-ring-14610/
+
+Food is served!
+https://pixabay.com/sound-effects/gong-91013/
+
+Item picked up
+https://pixabay.com/sound-effects/yay-6120/
+
+Spring Boing Boing
+https://freesound.org/people/Johnny2810/sounds/577061/
+
+Squished
+https://freesound.org/people/FairCashew/sounds/686363/
+
+Main menu BGM
+https://freesound.org/people/vollkornbrot/sounds/371976/
+
+Elevator loop SFX
+https://freesound.org/people/simplen00b/sounds/182331/
+Level bgm (?)
+https://freesound.org/people/Elmatute/sounds/652935/
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 717.0
+offset_top = 829.0
+offset_right = 879.0
+offset_bottom = 892.0
+theme_override_font_sizes/font_size = 40
+text = "Go back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
