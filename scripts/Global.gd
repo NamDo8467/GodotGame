@@ -43,6 +43,11 @@ var player_set_to_show_elevator = {}
 # Total number of floor levels
 var total_floor_level = 3
 var current_floor = 1
+
+# Minigame Variables
+var final_Score = 0
+
+
 func go_up_one_floor_level():
 	current_floor += 1
 	
@@ -70,3 +75,7 @@ func transition_to_serving():
 	await SceneTransitionAnimation.animation_player.animation_finished
 	get_tree().change_scene_to_file("res://scenes/serving.tscn")
 	
+
+# Minigame Methods
+func Set_Final_Score(score):
+	final_Score = score
