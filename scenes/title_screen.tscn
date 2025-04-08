@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlximt4txguys"]
+[gd_scene load_steps=18 format=3 uid="uid://dlximt4txguys"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_vdngm"]
 [ext_resource type="Texture2D" uid="uid://dww58avshfvm8" path="res://assets/title_page_2.png" id="2_xo0gj"]
@@ -40,18 +40,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u25pd"]
-bg_color = Color(0, 0, 0, 0)
-shadow_color = Color(0, 0, 0, 0)
-shadow_size = 7
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0x65a"]
-bg_color = Color(0.603922, 0.105882, 0.239216, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2y6tq"]
 bg_color = Color(0, 0, 0, 0)
 
@@ -69,19 +57,104 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u25pd"]
+bg_color = Color(0, 0, 0, 0)
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0x65a"]
+bg_color = Color(0.603922, 0.105882, 0.239216, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_hx851"]
+resource_name = "Fade_In"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_jovqg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bsvd"]
+_data = {
+"Fade_In": SubResource("Animation_hx851"),
+"RESET": SubResource("Animation_jovqg")
+}
+
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_vdngm")
 
 [node name="TitleScreenImage" type="Sprite2D" parent="."]
-position = Vector2(799.143, 451.955)
-scale = Vector2(1.17066, 1.17066)
+position = Vector2(800, 450)
+scale = Vector2(1.16279, 1.16279)
 texture = ExtResource("2_xo0gj")
 
-[node name="PlayButton" type="Button" parent="TitleScreenImage"]
-offset_left = -102.628
-offset_top = -29.8595
-offset_right = 116.372
-offset_bottom = 33.1405
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreenImage"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -775.72
+offset_top = -408.5
+offset_right = -591.72
+offset_bottom = -77.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -3
+
+[node name="PlayButton" type="Button" parent="TitleScreenImage/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_54hi5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_c2ls2")
@@ -89,23 +162,43 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_yplgl")
 theme_override_styles/focus = SubResource("StyleBoxFlat_3iidv")
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="TitleScreenImage"]
-offset_left = -102.628
-offset_top = 30.7902
-offset_right = 116.372
-offset_bottom = 99.7904
+[node name="SettingsButton" type="Button" parent="TitleScreenImage/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_j0fl4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ckryd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yplgl")
 theme_override_styles/focus = SubResource("StyleBoxFlat_q6kit")
-text = "Settings"
+text = "Controls"
 
-[node name="QuitButton" type="Button" parent="TitleScreenImage"]
-offset_left = -108.608
-offset_top = 160.632
-offset_right = 110.392
-offset_bottom = 229.632
+[node name="Empty" type="Button" parent="TitleScreenImage/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_j0fl4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ckryd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yplgl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_q6kit")
+disabled = true
+text = "Empty"
+
+[node name="AboutUsButton" type="Button" parent="TitleScreenImage/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_2y6tq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bpij7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8olop")
+theme_override_styles/focus = SubResource("StyleBoxFlat_q6kit")
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="TitleScreenImage/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_u25pd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0x65a")
@@ -113,19 +206,23 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_yplgl")
 theme_override_styles/focus = SubResource("StyleBoxFlat_q6kit")
 text = "Quit"
 
-[node name="AboutUsButton" type="Button" parent="TitleScreenImage"]
-offset_left = -100.92
-offset_top = 226.407
-offset_right = 120.08
-offset_bottom = 295.407
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_2y6tq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_bpij7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_8olop")
-theme_override_styles/focus = SubResource("StyleBoxFlat_q6kit")
-text = "About"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1bsvd")
+}
+autoplay = "Fade_In"
 
-[connection signal="pressed" from="TitleScreenImage/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="TitleScreenImage/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="TitleScreenImage/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="TitleScreenImage/AboutUsButton" to="." method="_on_about_us_button_pressed"]
+[node name="Transition" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1600.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[connection signal="pressed" from="TitleScreenImage/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="TitleScreenImage/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="TitleScreenImage/VBoxContainer/AboutUsButton" to="." method="_on_about_us_button_pressed"]
+[connection signal="pressed" from="TitleScreenImage/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,8 +1,11 @@
 extends Node2D
 
+@onready var animation_player:AnimationPlayer = $AnimationPlayer
+@onready var transition = $Transition
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	await animation_player.animation_finished
 	AudioPlayer.play_title_screen_music()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

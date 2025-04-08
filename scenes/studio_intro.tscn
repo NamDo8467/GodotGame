@@ -7,7 +7,7 @@
 
 [sub_resource type="Animation" id="Animation_vtaie"]
 resource_name = "fade_in"
-length = 4.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,7 +67,7 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 z_index = 1
 position = Vector2(833, 464.25)
-scale = Vector2(1.1, 1.1)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_urw8c")
 
 [node name="GameLogo" type="Sprite2D" parent="."]
