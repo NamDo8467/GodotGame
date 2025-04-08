@@ -7,18 +7,18 @@
 
 [sub_resource type="Animation" id="Animation_vtaie"]
 resource_name = "fade_in"
-length = 2.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("StudioLogo:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.225313, 2.21606, 0.258816),
 "update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(0.2, 0.2), Vector2(0.3, 0.3), Vector2(0.4, 0.4), Vector2(0.5, 0.5)]
+"values": [Vector2(0.1, 0.1), Vector2(1.25, 1.25), Vector2(1.1, 1.1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -27,10 +27,10 @@ tracks/1/path = NodePath("StudioLogo:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.1, 2, 3),
+"transitions": PackedFloat32Array(0.307786, 0.15932, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.0980392), Color(1, 1, 1, 0.2), Color(1, 1, 1, 0.286275), Color(1, 1, 1, 0.384314), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0.580392), Color(1, 1, 1, 0.678431), Color(1, 1, 1, 0.776471), Color(1, 1, 1, 0.87451), Color(1, 1, 1, 0.941176), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -39,7 +39,7 @@ tracks/2/path = NodePath("GameLogo:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 1, 1.9),
+"times": PackedFloat32Array(0.1, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
@@ -67,7 +67,7 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 z_index = 1
 position = Vector2(833, 464.25)
-scale = Vector2(0.961224, 0.961224)
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("1_urw8c")
 
 [node name="GameLogo" type="Sprite2D" parent="."]
@@ -79,3 +79,4 @@ texture = ExtResource("3_a81lr")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_nhy44")
 volume_db = -8.0
+autoplay = true
