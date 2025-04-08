@@ -18,7 +18,7 @@ func play_music(music: AudioStream,  type:String, volume=0.0):
 	play()
 	
 func play_title_screen_music():
-	play_music(title_screen_background_music, "title_screen", 22)
+	play_music(title_screen_background_music, "title_screen", 15)
 	current_music = "title_screen"
 	
 func play_level_music():
