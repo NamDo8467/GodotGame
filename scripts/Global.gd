@@ -35,6 +35,7 @@ var spawning_position_y = 863
 
 # Die outside of the room or not
 var die_outside_of_the_room = false
+var is_Inisde_Room = false # Habib
 
 # set of players to transition to the elevator section
 var player_set_to_show_elevator = {}

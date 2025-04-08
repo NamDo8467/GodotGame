@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
 const SPEED = 320.0
-const JUMP_VELOCITY = -550.0
+const JUMP_VELOCITY = -800.0
 #var weapon_list = []
 var current_weapon_index = -1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var MIN_GRAVITY_MULTI = 4.0 # HABIB
+var MAX_GRAVITY_MULTI = 1.5 # HABIB
+var gravity_Multi # HABIB
 var trampoline_scene = preload("res://scenes/trampoline.tscn")
 @onready var player_sprite = $AnimatedSprite2D
 @onready var collision_shape = $CollisionShape2D
@@ -59,7 +62,12 @@ func _physics_process(delta):
 			land()
 	else:
 		if not is_on_floor():
-			velocity.y += gravity * delta
+			gravity_Multi = MIN_GRAVITY_MULTI
+			
+			if velocity.y < 0:
+				gravity_Multi = MAX_GRAVITY_MULTI
+			
+			velocity.y += gravity * gravity_Multi * delta
 			
 		# Handle jump.
 		if Input.is_action_just_pressed("jump_2") and is_on_floor():

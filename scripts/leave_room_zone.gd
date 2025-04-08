@@ -21,6 +21,8 @@ func _on_body_entered(body):
 		Global.player_set_to_show_elevator[player_name] = null
 	
 	if len(Global.player_set_to_show_elevator) >= 2:
+		Global.is_Inisde_Room = false
+		
 		camera.zoom.x = 1.4
 		camera.zoom.y = 1
 

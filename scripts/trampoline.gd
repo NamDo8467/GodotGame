@@ -16,7 +16,7 @@ func _on_body_entered(body):
 	if picked_up == true:
 		trampoline_animation.play("push")
 		var player = body
-		player.velocity.y = -1100
+		player.velocity.y = -1500
 	else:
 		picked_up = true
 		Global.is_trampoline_picked_up = true
