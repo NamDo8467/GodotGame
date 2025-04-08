@@ -72,22 +72,6 @@ texture_normal = ExtResource("3_quiix")
 texture_hover = ExtResource("4_2llta")
 texture_disabled = ExtResource("6_qnxjm")
 
-[node name="Score_Display" type="RichTextLabel" parent="Menu_Container/Forground/Steps/Step_1"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1.0
-offset_bottom = 40.0
-grow_horizontal = 0
-bbcode_enabled = true
-text = "[font_size=14][right]Score:    xx.xx%"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
 [node name="Step_2" type="TextureButton" parent="Menu_Container/Forground/Steps"]
 texture_filter = 2
 layout_mode = 2
@@ -97,22 +81,6 @@ texture_normal = ExtResource("6_gu1rf")
 texture_hover = ExtResource("7_xfo5r")
 texture_disabled = ExtResource("6_qnxjm")
 
-[node name="Score_Display" type="RichTextLabel" parent="Menu_Container/Forground/Steps/Step_2"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -103.0
-offset_bottom = 85.0
-grow_horizontal = 0
-bbcode_enabled = true
-text = "[font_size=14][right]Score:    xx.xx%"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
 [node name="Step_3" type="TextureButton" parent="Menu_Container/Forground/Steps"]
 texture_filter = 2
 layout_mode = 2
@@ -121,22 +89,6 @@ disabled = true
 texture_normal = ExtResource("8_a6j05")
 texture_hover = ExtResource("9_xi7ce")
 texture_disabled = ExtResource("6_qnxjm")
-
-[node name="Score_Display" type="RichTextLabel" parent="Menu_Container/Forground/Steps/Step_3"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -103.0
-offset_bottom = 85.0
-grow_horizontal = 0
-bbcode_enabled = true
-text = "[font_size=14][right]Score:    xx.xx%"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
 
 [node name="Ready_Text" type="RichTextLabel" parent="Menu_Container/Forground"]
 layout_mode = 0
