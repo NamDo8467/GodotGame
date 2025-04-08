@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnoat30rn4h5g"]
+
+[ext_resource type="Script" path="res://scripts/Minigames/Base_Minigame/star_holder.gd" id="1_5wv53"]
+[ext_resource type="PackedScene" uid="uid://d3ltpnwj2r8aj" path="res://scenes/Minigames/Base_Minigame/Star.tscn" id="1_cvtbr"]
+
+[node name="Star_Holder" type="Node2D"]
+position = Vector2(750, 355)
+script = ExtResource("1_5wv53")
+
+[node name="Star_1" parent="." instance=ExtResource("1_cvtbr")]
+position = Vector2(-550, 0)
+
+[node name="Star_2" parent="." instance=ExtResource("1_cvtbr")]
+position = Vector2(-275, 0)
+
+[node name="Star_3" parent="." instance=ExtResource("1_cvtbr")]
+
+[node name="Star_4" parent="." instance=ExtResource("1_cvtbr")]
+position = Vector2(275, 0)
+
+[node name="Star_5" parent="." instance=ExtResource("1_cvtbr")]
+position = Vector2(550, 0)

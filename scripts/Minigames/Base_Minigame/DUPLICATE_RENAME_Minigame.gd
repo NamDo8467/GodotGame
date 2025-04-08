@@ -26,8 +26,16 @@ func _process(delta):
 	Update_Timmer(delta)
 
 func Calculate_Score():
-	pass
+	# Custom calcs here
+	
+	current_Score = clamp(current_Score, 0.0, 100.0)
 
 func Game_Finished_Check():
 	pass
 
+
+func End_Minigame():
+	# End animations and sounds here
+	
+	
+	super()

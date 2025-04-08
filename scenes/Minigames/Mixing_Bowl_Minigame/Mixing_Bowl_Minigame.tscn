@@ -15,10 +15,10 @@
 [ext_resource type="AudioStream" uid="uid://bdi576mo863cp" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Audio/Perfect.mp3" id="11_0jal3"]
 [ext_resource type="Texture2D" uid="uid://nceyxfgl7bwe" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Bowl.png" id="11_fidi3"]
 [ext_resource type="Texture2D" uid="uid://dq2l8pg1j40xt" path="res://assets/Minigame_Assets/Mixing_Bowl_Minigame/Temp_Ladder.png" id="12_haopm"]
-[ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="12_vufdd"]
-[ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="13_fm3iy"]
+[ext_resource type="PackedScene" uid="uid://cnoat30rn4h5g" path="res://scenes/Minigames/Base_Minigame/Star_Holder.tscn" id="12_raw61"]
 [ext_resource type="Script" path="res://scripts/Minigames/Mixing_Bowl_Minigame/Ladder.gd" id="13_m3ipn"]
 [ext_resource type="Texture2D" uid="uid://dsloqinxomko" path="res://assets/Minigame_Assets/White_Square.png" id="13_qskyw"]
+[ext_resource type="PackedScene" uid="uid://02eb1ra0igio" path="res://scenes/Minigames/Base_Minigame/player_X.tscn" id="20_lgv7o"]
 
 [node name="MixingBowlMinigame" type="Node2D"]
 script = ExtResource("1_s43et")
@@ -86,6 +86,9 @@ stream = ExtResource("11_0jal3")
 volume_db = 7.0
 max_polyphony = 2
 
+[node name="Star_Holder" parent="CanvasLayer" instance=ExtResource("12_raw61")]
+position = Vector2(800, 450)
+
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(799, 448.5)
 scale = Vector2(24.9688, 14.0156)
@@ -108,22 +111,22 @@ position = Vector2(-580, -230)
 position = Vector2(610, -230)
 
 [node name="Ladder_P1" type="Sprite2D" parent="."]
-position = Vector2(340, 445)
+position = Vector2(340, 500)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("12_haopm")
 script = ExtResource("13_m3ipn")
 
 [node name="Bottom_Point" type="Node2D" parent="Ladder_P1"]
-position = Vector2(0.000366211, 1050)
+position = Vector2(-80, 894)
 
 [node name="Top_Point" type="Node2D" parent="Ladder_P1"]
-position = Vector2(0, -800)
+position = Vector2(-80, -1088)
 
 [node name="Jumping_Point" type="Node2D" parent="Ladder_P1"]
 position = Vector2(420, -864)
 
 [node name="Timing_Bar" type="Sprite2D" parent="Ladder_P1/Jumping_Point"]
-position = Vector2(0, -700)
+position = Vector2(0, -950)
 scale = Vector2(26, 2.4)
 texture = ExtResource("13_qskyw")
 
@@ -181,22 +184,22 @@ scale = Vector2(0.01, 1)
 texture = ExtResource("13_qskyw")
 
 [node name="Ladder_P2" type="Sprite2D" parent="."]
-position = Vector2(1260, 445)
+position = Vector2(1260, 500)
 scale = Vector2(-0.25, 0.25)
 texture = ExtResource("12_haopm")
 script = ExtResource("13_m3ipn")
 
 [node name="Bottom_Point" type="Node2D" parent="Ladder_P2"]
-position = Vector2(0.000366211, 1050)
+position = Vector2(-80, 894)
 
 [node name="Top_Point" type="Node2D" parent="Ladder_P2"]
-position = Vector2(0, -800)
+position = Vector2(-80, -1088)
 
 [node name="Jumping_Point" type="Node2D" parent="Ladder_P2"]
 position = Vector2(420, -864)
 
 [node name="Timing_Bar" type="Sprite2D" parent="Ladder_P2/Jumping_Point"]
-position = Vector2(0, -700)
+position = Vector2(0, -950)
 scale = Vector2(26, 2.4)
 texture = ExtResource("13_qskyw")
 
@@ -326,12 +329,15 @@ z_index = 1
 scale = Vector2(0.01, 1)
 texture = ExtResource("13_qskyw")
 
-[node name="Player_1" type="Sprite2D" parent="."]
-position = Vector2(532, 479)
-scale = Vector2(1.025, 1.025)
-texture = ExtResource("12_vufdd")
+[node name="Player_1" parent="." instance=ExtResource("20_lgv7o")]
+position = Vector2(320, 228)
+scale = Vector2(0.5, 0.5)
+animation = &"Side_View_P1_A_Default"
+frame_progress = 0.0
 
-[node name="Player_2" type="Sprite2D" parent="."]
-position = Vector2(1082, 478)
-scale = Vector2(1.04063, 1.04063)
-texture = ExtResource("13_fm3iy")
+[node name="Player_2" parent="." instance=ExtResource("20_lgv7o")]
+position = Vector2(1280, 724)
+rotation = 3.14159
+scale = Vector2(0.5, -0.5)
+animation = &"Side_View_P2_A_Default"
+frame_progress = 0.0

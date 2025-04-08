@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://c3st0kd57xowy" path="res://scenes/Minigames/Base_Minigame/Timmer.tscn" id="3_vdovl"]
 [ext_resource type="Texture2D" uid="uid://biq48j6x3hsw8" path="res://assets/Minigame_Assets/Cutting_Minigame/Fish.png" id="4_66wye"]
 [ext_resource type="Texture2D" uid="uid://cyh8wvs5rl2pi" path="res://assets/Minigame_Assets/Cutting_Minigame/2_Handle_Knife.png" id="5_t4sjx"]
+[ext_resource type="PackedScene" uid="uid://cnoat30rn4h5g" path="res://scenes/Minigames/Base_Minigame/Star_Holder.tscn" id="6_hh60h"]
 [ext_resource type="AudioStream" uid="uid://bsohkhle2rib6" path="res://assets/Minigame_Assets/Audio/Minigame_Game_BGM.wav" id="6_hlrgk"]
-[ext_resource type="Texture2D" uid="uid://caukgvcfok5u4" path="res://assets/Minigame_Assets/P1.png" id="6_qyd6o"]
-[ext_resource type="Texture2D" uid="uid://bwfxivpr5g67d" path="res://assets/Minigame_Assets/P2.png" id="7_vc3o1"]
 [ext_resource type="AudioStream" uid="uid://oxt8a7otigc" path="res://assets/Minigame_Assets/Audio/Cutting_Sound.mp3" id="7_vodoo"]
+[ext_resource type="PackedScene" uid="uid://02eb1ra0igio" path="res://scenes/Minigames/Base_Minigame/player_X.tscn" id="10_2ejov"]
 
 [node name="CuttingMinigame" type="Node2D"]
 script = ExtResource("1_llmj1")
@@ -51,6 +51,9 @@ volume_db = -3.0
 
 [node name="P2" type="AudioStreamPlayer2D" parent="CanvasLayer/Sound/Sound_Effects/Walking_Sounds"]
 
+[node name="Star_Holder" parent="CanvasLayer" instance=ExtResource("6_hh60h")]
+position = Vector2(800, 450)
+
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(798.999, 448.5)
 scale = Vector2(24.9688, 14.0156)
@@ -58,31 +61,30 @@ texture = ExtResource("2_yo1ye")
 
 [node name="Cutting_Board" type="Sprite2D" parent="."]
 position = Vector2(799, 448.5)
-scale = Vector2(0.739815, 0.702469)
+scale = Vector2(0.595, 0.564)
 texture = ExtResource("3_dk2k4")
 
 [node name="Food" type="Sprite2D" parent="."]
 position = Vector2(800, 448.5)
-scale = Vector2(0.740741, 0.639815)
+scale = Vector2(0.595, 0.564)
 texture = ExtResource("4_66wye")
 
 [node name="Knife" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(106.8, 448.5)
-scale = Vector2(0.515591, 0.515591)
+scale = Vector2(0.425, 0.403)
 texture = ExtResource("5_t4sjx")
 
-[node name="Player_1" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(106.8, 43)
-scale = Vector2(1.0875, 1.0875)
-texture = ExtResource("6_qyd6o")
+[node name="Player_1" parent="." instance=ExtResource("10_2ejov")]
+position = Vector2(102, 96)
+rotation = -3.14159
+scale = Vector2(0.595, 0.564)
+animation = &"Top_Down_P1_Walking"
+frame_progress = 0.0
 
-[node name="Player_2" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(106.8, 854)
-scale = Vector2(1.087, 1.083)
-texture = ExtResource("7_vc3o1")
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(1088, 456)
+[node name="Player_2" parent="." instance=ExtResource("10_2ejov")]
+position = Vector2(106.8, 801)
+rotation = -3.14159
+scale = Vector2(0.595, 0.564)
+animation = &"Top_Down_P2_A_Default"
+frame_progress = 0.0

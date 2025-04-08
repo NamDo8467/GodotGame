@@ -4,5 +4,5 @@
 
 [node name="Cutting_Line" type="Sprite2D"]
 position = Vector2(50, 448.5)
-scale = Vector2(0.516, 0.516)
+scale = Vector2(0.366, 0.366)
 texture = ExtResource("1_selkt")

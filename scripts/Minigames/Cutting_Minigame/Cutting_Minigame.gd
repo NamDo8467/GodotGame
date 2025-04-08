@@ -22,6 +22,7 @@ var original_Knife_Scale : Vector2
 var knife_Shrink_Percent = 0.95
 var knife_Shirnk_Time = 0.6 # Total Time /2 for going down then back up
 var cut_Scores = []
+var MAX_KNIFE_ROTATION = 0.3
 var DISTANCE_THRESHOLD = 40
 var DISTANCE_CUTOFF = 5
 var ANGLE_THRESHOLD = 0.2
@@ -39,11 +40,14 @@ func _ready():
 	minigame_Time = 15.0 # Change this to adjust timers
 	
 	Start_Countdown()
+	
+	Rotate_P1()
+	Rotate_P2()
+	original_Knife_Scale = knife.scale
+	
 	await get_tree().create_timer(3).timeout
 	
 	Create_CutLines()
-	
-	original_Knife_Scale = knife.scale
 
 func Create_CutLines():
 	var rng = RandomNumberGenerator.new()
@@ -95,29 +99,55 @@ func Can_Move():
 	return true
 
 func Move_P1(delta):
-	if Input.is_action_pressed("P1_Minigame_Move_Right") && knife.rotation < 0.3:
+	if Input.is_action_pressed("P1_Minigame_Move_Right") && knife.rotation < MAX_KNIFE_ROTATION:
 		p1.position.x += player_Speed * delta
-	if Input.is_action_pressed("P1_Minigame_Move_Left") && knife.rotation > -0.3:
+		p1.flip_h = false
+		p1.play("Top_Down_P1_Walking")
+		Rotate_P1()
+		return
+	if Input.is_action_pressed("P1_Minigame_Move_Left") && knife.rotation > -MAX_KNIFE_ROTATION:
 		p1.position.x -= player_Speed * delta
+		p1.flip_h = true
+		p1.play("Top_Down_P1_Walking")
+		Rotate_P1()
+		return
+	
+	Rotate_P1()
+	p1.play("Top_Down_P1_A_Default")
 
 func Move_P2(delta):
-	if Input.is_action_pressed("P2_Minigame_Move_Right") && knife.rotation > -0.3:
+	if Input.is_action_pressed("P2_Minigame_Move_Right") && knife.rotation > -MAX_KNIFE_ROTATION:
 		p2.position.x += player_Speed * delta
-	if Input.is_action_pressed("P2_Minigame_Move_Left") && knife.rotation < 0.3:
+		p2.flip_h = true
+		p2.play("Top_Down_P2_Walking")
+		Rotate_P2()
+		return
+	if Input.is_action_pressed("P2_Minigame_Move_Left") && knife.rotation < MAX_KNIFE_ROTATION:
 		p2.position.x -= player_Speed * delta
+		p1.flip_h = false
+		p2.play("Top_Down_P2_Walking")
+		Rotate_P2()
+		return
+	
+	Rotate_P2()
+	p2.play("Top_Down_P2_A_Default")
+
+func Rotate_P1():
+	p1.look_at(knife.global_position)
+	p1.rotation_degrees += 90
+
+func Rotate_P2():
+	p2.look_at(knife.global_position)
+	p2.rotation_degrees -= 90
 
 func Move_Knife():
 	knife.position.x = (p1.position.x + p2.position.x) / 2 # position of centre of knife equal to half the distance between them
 	
 	var Hypotenuse = p1.position.distance_to(knife.position)
 	var Adjacent = (p1.position.x - p2.position.x) / 2
-	knife.rotation = PI/2 - acos(Adjacent / Hypotenuse)
+	var Angle = PI/2 - acos(Adjacent / Hypotenuse)
 	
-	if (knife.rotation > 0.3):
-		knife.rotation = 0.3
-	
-	if (knife.rotation < -0.3):
-		knife.rotation = -0.3
+	knife.rotation = clamp(Angle, -MAX_KNIFE_ROTATION, MAX_KNIFE_ROTATION)
 
 func Can_Cut(time_delta):
 	is_P1_Action1 -= time_delta
@@ -177,15 +207,21 @@ func Cut_Knife():
 	Game_Finished_Check()
 
 func Calculate_Score(index, distance, angle):
-	var distance_Score = 50  
-	var angle_Score = 50  
+	var distance_Score = 65
+	var angle_Score = 65
 	
 	if distance > DISTANCE_CUTOFF:
-		distance_Score -= 50 * distance / DISTANCE_THRESHOLD 
+		distance_Score -= distance_Score * distance / DISTANCE_THRESHOLD 
 	if angle > ANGLE_CUTOFF:
-		angle_Score -= 50 * angle / ANGLE_THRESHOLD 
+		angle_Score -= angle_Score * angle / ANGLE_THRESHOLD 
 	
-	cut_Scores[index] = distance_Score + angle_Score
+	cut_Scores[index] = 1
+	
+	var score_Remapped = remap(distance_Score + angle_Score, 0, 130, 0, 26)
+	
+	current_Score += clamp(score_Remapped, 0, 20)
+	
+	current_Score = clamp(current_Score, 0.0, 100.0)
 
 func Game_Finished_Check():
 	var index = 0
@@ -198,3 +234,9 @@ func Game_Finished_Check():
 		
 		if index == cut_Scores.size():
 			End_Minigame()
+
+func End_Minigame():
+	p1.stop()
+	p2.stop()
+	
+	super()

@@ -17,13 +17,15 @@ signal Minigame_Finished(score)
 @onready var timmer_Tick = $CanvasLayer/Timmer/Background/Sound/Tick
 
 # Score Variables
-var current_Score = 0.0
+@onready var star_Holder = $CanvasLayer/Star_Holder
+
+var current_Score = 0
 
 # Timmer Variables
 var timmer_Tween : Tween
 var is_Game_Started = false
 var current_Time = 0.0
-var minigame_Time = 10.0
+var minigame_Time #= 3.0 # Should be set in the actual script
 
 # Transition Variables
 var transition : ColorRect
@@ -73,6 +75,7 @@ func Start_Timmer():
 	timmer_Tween.tween_property(timmer_Tracker, "rotation_degrees", 1, minigame_Time).finished.connect(End_Minigame)
 
 func Game_Start():
+	#current_Score = 85
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,7 +83,7 @@ func _process(delta):
 	pass
 
 func Update_Score_Stars():
-	return # TODO: Add the stars (maybe piece by piece)
+	star_Holder.Set_Stars(int(current_Score))
 
 func Update_Timmer(delta):
 	current_Time += delta
@@ -95,18 +98,15 @@ func End_Minigame():
 	
 	is_Game_Started = false
 	
+	# Sounds
 	timmer_Tick.stop()
 	bg_Music.stop()
 	timmer_Ending_Ring.play()
 	
-	await get_tree().create_timer(1).timeout
+	timmer_Tween.stop()
 	
 	Update_Score_Stars()
 	
-	timmer_Tween.stop()
-	
-	start_Countdown.modulate = Color(0, 0, 0, 1)
-	
-	start_Countdown.text = "[font_size=100][center]Your score is " + str(current_Score) + "%[/center]" 
+	await get_tree().create_timer(4.5).timeout
 	
 	emit_signal("Minigame_Finished", current_Score)

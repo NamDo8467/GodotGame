@@ -118,6 +118,8 @@ func Minigame_Finished(score):
 	steps.get_child(current_Minigame_num).get_child(0).text = "[font_size=14]Score:    " + str(score) + "%" #TODO: Make this better and cleaner
 	steps.get_child(current_Minigame_num).get_child(0).visible = true #TODO: Make this better and cleaner
 	
+	
+	
 	var tween = create_tween()
 	
 	tween.tween_property(transition, "color", Color(0,0,0,1), tansition_Time)
@@ -146,15 +148,19 @@ func Update_BGM():
 		false:
 			bg_Music.play()
 
-
-func End_Minigames_Mode():
+func Update_Global_Score():
 	var total = 0
+	
 	for score in current_scores:
 		total += score
 	
 	total /= current_scores.size()
 	
-	Global.score_from_minigames = total
+	Global.Set_Final_Score(total)
+
+
+func End_Minigames_Mode():
+	Update_Global_Score()
 	
 	SceneTransitionAnimation.change_scene()
 	await SceneTransitionAnimation.animation_player.animation_finished
