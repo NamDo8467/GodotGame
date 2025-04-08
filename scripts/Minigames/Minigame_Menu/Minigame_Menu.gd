@@ -34,8 +34,6 @@ func _ready():
 	for child in steps.get_children():
 		child.disabled = true
 	
-	Update_Global_Score()
-	
 	Update_Current_Minigame(current_Minigame_num)
 
 func Update_Current_Minigame(number):

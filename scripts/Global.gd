@@ -79,3 +79,6 @@ func transition_to_serving():
 # Minigame Methods
 func Set_Final_Score(score):
 	final_Score = score
+
+func Get_Final_Score() -> int:
+	return clamp(final_Score, 0, 100)

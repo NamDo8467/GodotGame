@@ -224,7 +224,7 @@ func Calculate_Score(score):
 	current_Score = clamp(current_Score, 0.0, 100.0)
 
 func Game_Finished_Check():
-	if current_Score >= progress_Bar.max_value:
+	if progress_Bar.value >= progress_Bar.max_value:
 		food.play("Fully_Cut")
 		End_Minigame()
 
