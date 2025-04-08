@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlgtovxrv64mf"
-path="res://.godot/imported/1_run.png-bc8b1a99735dde715b50753252318069.ctex"
+uid="uid://cwogarcup78dq"
+path="res://.godot/imported/Jump_On_Monsters.png-b01c28e0f1933aef450b71fe4688414a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/1_run.png"
-dest_files=["res://.godot/imported/1_run.png-bc8b1a99735dde715b50753252318069.ctex"]
+source_file="res://assets/Signs/Jump_On_Monsters.png"
+dest_files=["res://.godot/imported/Jump_On_Monsters.png-b01c28e0f1933aef450b71fe4688414a.ctex"]
 
 [params]
 

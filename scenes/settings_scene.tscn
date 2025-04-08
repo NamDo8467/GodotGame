@@ -28,6 +28,13 @@ position = Vector2(797, 447.5)
 scale = Vector2(1.18314, 1.18992)
 texture = ExtResource("1_huta6")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 276.0
+offset_top = 513.0
+offset_right = 500.0
+offset_bottom = 585.0
+text = "Bonus if you ever get stuck press |B| on the keyboard"
+
 [node name="TabContainer" type="TabContainer" parent="."]
 offset_right = 1600.0
 offset_bottom = 900.0
@@ -37,7 +44,6 @@ clip_tabs = false
 tab_focus_mode = 0
 
 [node name="Controller" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="XboxOneController" type="Sprite2D" parent="TabContainer/Controller"]
@@ -161,6 +167,7 @@ theme_override_font_sizes/font_size = 22
 text = "Change Floor:"
 
 [node name="Keyboard" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Player1Side" type="GridContainer" parent="TabContainer/Keyboard"]

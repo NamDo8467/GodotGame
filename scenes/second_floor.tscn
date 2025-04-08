@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://tgl8pjxaijqv"]
+[gd_scene load_steps=19 format=3 uid="uid://tgl8pjxaijqv"]
 
 [ext_resource type="PackedScene" uid="uid://nk47flta8bsj" path="res://scenes/player_spawner.tscn" id="1_672bi"]
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_t402b"]
@@ -8,9 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b07qvp6t07hmu" path="res://assets/Free/Background/Pink.png" id="3_ia2hh"]
 [ext_resource type="Texture2D" uid="uid://ceoln4dg2ygh1" path="res://assets/Free/Background/Purple.png" id="4_ayndp"]
 [ext_resource type="PackedScene" uid="uid://bwbiqfumj6y40" path="res://scenes/fish_monster.tscn" id="8_46qg1"]
-[ext_resource type="PackedScene" uid="uid://bj15g75e0ypnx" path="res://scenes/enter_room_zone.tscn" id="8_dihn0"]
-[ext_resource type="PackedScene" uid="uid://rukqw151ru1f" path="res://scenes/leave_room_zone.tscn" id="9_urb65"]
+[ext_resource type="PackedScene" path="res://scenes/enter_room_zone.tscn" id="8_dihn0"]
+[ext_resource type="PackedScene" path="res://scenes/leave_room_zone.tscn" id="9_urb65"]
 [ext_resource type="Texture2D" uid="uid://dswtnlqwl1l56" path="res://assets/Appliances/floor_2_kitchen.png" id="11_plyq7"]
+[ext_resource type="Texture2D" uid="uid://dsloqinxomko" path="res://assets/Minigame_Assets/White_Square.png" id="12_les7r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8fly"]
 texture = ExtResource("1_t402b")
@@ -572,3 +573,10 @@ z_index = -1
 position = Vector2(1661, 508.5)
 scale = Vector2(1.16134, 1.14083)
 texture = ExtResource("11_plyq7")
+
+[node name="Elevator Background" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.0784314, 0.0784314, 1)
+z_index = -10
+position = Vector2(1092.5, 505)
+scale = Vector2(27.29, 8.96)
+texture = ExtResource("12_les7r")

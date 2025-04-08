@@ -1,16 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbm1fvu8cp2ai"]
+[gd_scene load_steps=18 format=3 uid="uid://dbm1fvu8cp2ai"]
 
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_5lvgr"]
 [ext_resource type="PackedScene" uid="uid://nk47flta8bsj" path="res://scenes/player_spawner.tscn" id="1_uvksh"]
 [ext_resource type="PackedScene" uid="uid://br8nu8mu2ikc5" path="res://scenes/elevator.tscn" id="2_drl2y"]
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="3_k344x"]
 [ext_resource type="PackedScene" uid="uid://bj5v7r8yby6un" path="res://scenes/spike.tscn" id="3_kbo5s"]
-[ext_resource type="PackedScene" uid="uid://5nv16s3hgibq" path="res://scenes/box.tscn" id="6_j0623"]
-[ext_resource type="PackedScene" uid="uid://bj15g75e0ypnx" path="res://scenes/enter_room_zone.tscn" id="8_hk2ys"]
+[ext_resource type="PackedScene" path="res://scenes/box.tscn" id="6_j0623"]
+[ext_resource type="PackedScene" path="res://scenes/enter_room_zone.tscn" id="8_hk2ys"]
 [ext_resource type="PackedScene" uid="uid://b0t3u8giqtkq3" path="res://scenes/kill_zone.tscn" id="8_tsors"]
-[ext_resource type="PackedScene" uid="uid://rukqw151ru1f" path="res://scenes/leave_room_zone.tscn" id="9_oq5mo"]
+[ext_resource type="PackedScene" path="res://scenes/leave_room_zone.tscn" id="9_oq5mo"]
 [ext_resource type="PackedScene" uid="uid://cwhq1gf5evoxs" path="res://scenes/cabbage_monster.tscn" id="10_pyed3"]
 [ext_resource type="Texture2D" uid="uid://ckajepppptl6j" path="res://assets/Appliances/floor_3_bedroom.png" id="11_s6nkr"]
+[ext_resource type="Texture2D" uid="uid://dsloqinxomko" path="res://assets/Minigame_Assets/White_Square.png" id="12_e4iww"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eho43"]
 texture = ExtResource("1_5lvgr")
@@ -582,3 +583,10 @@ z_index = -1
 position = Vector2(1656, 496.5)
 scale = Vector2(1.15116, 1.15375)
 texture = ExtResource("11_s6nkr")
+
+[node name="Elevator Background" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.0784314, 0.0784314, 1)
+z_index = -10
+position = Vector2(1092.5, 505)
+scale = Vector2(27.29, 8.96)
+texture = ExtResource("12_e4iww")
