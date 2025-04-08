@@ -20,3 +20,7 @@ func _on_settings_button_pressed():
 
 func _on_about_us_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/about_scene.tscn")
+
+
+func _on_play_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/first_floor.tscn")
