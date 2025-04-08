@@ -133,12 +133,12 @@ position = Vector2(-650, -60)
 position = Vector2(650, -60)
 
 [node name="Star_3" parent="Star_Holder" index="2"]
-position = Vector2(-462, -217)
+position = Vector2(-464, -240)
 
 [node name="Star_4" parent="Star_Holder" index="3"]
-position = Vector2(462, -217)
+position = Vector2(460, -240)
 
 [node name="Star_5" parent="Star_Holder" index="4"]
-position = Vector2(0, -280)
+position = Vector2(24, -300)
 
 [editable path="Star_Holder"]
