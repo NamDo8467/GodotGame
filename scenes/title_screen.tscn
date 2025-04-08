@@ -124,7 +124,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_2y6tq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bpij7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_8olop")
 theme_override_styles/focus = SubResource("StyleBoxFlat_q6kit")
-text = "About Us"
+text = "About"
 
 [node name="TitleScreenBackgroundSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0kmw2")
