@@ -45,7 +45,7 @@ animations = [{
 size = Vector2(45, 78.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72y5j"]
-size = Vector2(49, 12)
+size = Vector2(63, 36)
 
 [node name="CabbageMonster" type="Node2D"]
 position = Vector2(-3, 2)
@@ -68,7 +68,7 @@ shape = SubResource("RectangleShape2D_vja87")
 position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
-position = Vector2(36.5, -97)
+position = Vector2(39, -86)
 shape = SubResource("RectangleShape2D_72y5j")
 
 [node name="Timer" type="Timer" parent="."]
