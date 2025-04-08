@@ -46,6 +46,7 @@ func _on_timer_timeout():
 			player1.remove_child(player1.get_node("Trampoline"))
 		player1.queue_free()
 		player1 = null
+		print("Hello")
 	if player2:
 		player2.Is_Alive = true
 		if player2.has_node("Trampoline"):
