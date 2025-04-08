@@ -6,4 +6,4 @@ func Display():
 	anim.play("Load_In")
 
 func Section_Selection(number : int):
-	anim.play(str(number) + "_Piece")
+	anim.play("Piece_" + str(number))

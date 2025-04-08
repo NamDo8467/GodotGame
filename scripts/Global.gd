@@ -1,12 +1,7 @@
 extends Node
 
-# Load score from a file
-var score = 0
-
 # Load level from a file
 var level = 1
-
-var score_from_minigames = 0.0
 
 # Map of each food's ingredient
 var food = {
@@ -55,14 +50,15 @@ func go_down_one_floor_level():
 	current_floor -= 1
 	
 func add_score():
-	score += 1
+	#score += 1
+	pass
 	
 func reset_score():
 	# Load score from a file
-	score = 0
+	#score = 0
+	pass
 	
 func reset_apartment_scene():
-	score = 0
 	spawning_position_y = 927
 
 func transition_to_minigames():

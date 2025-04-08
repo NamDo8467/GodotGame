@@ -8,15 +8,15 @@ position = Vector2(750, 355)
 script = ExtResource("1_5wv53")
 
 [node name="Star_1" parent="." instance=ExtResource("1_cvtbr")]
-position = Vector2(-550, 0)
+position = Vector2(-574, 0)
 
 [node name="Star_2" parent="." instance=ExtResource("1_cvtbr")]
-position = Vector2(-275, 0)
+position = Vector2(-287, 0)
 
 [node name="Star_3" parent="." instance=ExtResource("1_cvtbr")]
 
 [node name="Star_4" parent="." instance=ExtResource("1_cvtbr")]
-position = Vector2(275, 0)
+position = Vector2(287, 0)
 
 [node name="Star_5" parent="." instance=ExtResource("1_cvtbr")]
-position = Vector2(550, 0)
+position = Vector2(574, 0)
