@@ -115,10 +115,8 @@ func Start_Minigame():
 func Minigame_Finished(score):
 	current_scores.append(score)
 	
-	steps.get_child(current_Minigame_num).get_child(0).text = "[font_size=14]Score:    " + str(score) + "%" #TODO: Make this better and cleaner
-	steps.get_child(current_Minigame_num).get_child(0).visible = true #TODO: Make this better and cleaner
-	
-	
+	steps.get_child(current_Minigame_num).get_child(0).Set_Stars(score)
+	steps.get_child(current_Minigame_num).get_child(0).visible = true
 	
 	var tween = create_tween()
 	

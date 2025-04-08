@@ -27,7 +27,7 @@ var perfect_Score_Range
 # Cursor Variables
 var min_Cursor_Range
 var max_Cursor_Range
-var MIN_CURSOR_SPEED = 50
+var MIN_CURSOR_SPEED = 75
 var MAX_CURSOR_SPEED = 90
 var cursor_speed = 50
 var direction = 1

@@ -118,6 +118,7 @@ volume_db = 7.0
 max_polyphony = 2
 
 [node name="Star_Holder" parent="CanvasLayer" instance=ExtResource("12_raw61")]
+visible = false
 position = Vector2(800, 450)
 
 [node name="Background" type="Sprite2D" parent="."]

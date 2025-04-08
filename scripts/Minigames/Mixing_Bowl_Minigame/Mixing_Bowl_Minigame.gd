@@ -55,6 +55,8 @@ var p2_Climbing_X_Pos
 var p2_Climb_Speed_Multi = 0.5
 
 # Bowl Variables
+@onready var bowl_Food_Anim = $Bowl/Food
+
 var MAX_BOWL_ANGLE = 30.0
 var bowl_Current_Rotation = 0.0
 var p2_Bowl_Force = 0.0
@@ -71,6 +73,7 @@ func _ready():
 	
 	p1.play("Side_View_P1_A_Default")
 	p2.play("Side_View_P2_A_Default")
+	bowl_Food_Anim.play("Un_Mixed")
 	
 	climbing_Top_Y_Pos = p1_Ladder.get_child(1).global_position.y
 	climbing_Bottom_Y_Pos = p1_Ladder.get_child(0).global_position.y
@@ -91,6 +94,8 @@ func _ready():
 	super()
 
 func Game_Start():
+	
+	
 	Update_P1_Game_State()
 	Update_P2_Game_State()
 
@@ -376,6 +381,9 @@ func Calculate_Score(ladder):
 	
 	Update_Mix_Bar(score)
 	
+	if mix_Bar.value >= mix_Bar.max_value / 2:
+		bowl_Food_Anim.play("Half_Mixed")
+	
 	current_Score = (mix_Bar.value / mix_Bar.max_value) * 100
 	current_Score = clamp(current_Score, 0.0, 100.0)
 
@@ -395,6 +403,7 @@ func Update_Anim_Speed():
 
 func Game_Finished_Check():
 	if current_Score >= mix_Bar.max_value:
+		bowl_Food_Anim.play("Fully_Mixed")
 		End_Minigame()
 
 func End_Minigame():
