@@ -24,3 +24,6 @@ func play_title_screen_music():
 func play_level_music():
 	play_music(level_background_music, "level", 0)
 	current_music = "level"
+
+func Stop_All_Music():
+	self.stop()

@@ -31,6 +31,8 @@ func _process(delta):
 		else:
 			skip_Progress -= PROGRESS_GAIN * delta
 	
+	skip_Progress = clamp(skip_Progress, MIN_SKIP_PROGRESS, MAX_SKIP_PROGRESS)
+	
 	if progress_Bar.value >= progress_Bar.max_value:
 		Finish_Cutscene()
 	elif progress_Bar.value > 0:

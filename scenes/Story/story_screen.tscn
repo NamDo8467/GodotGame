@@ -428,3 +428,15 @@ grow_horizontal = 0
 grow_vertical = 0
 step = 0.0
 show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1200.0
+offset_top = 832.0
+offset_right = 1585.0
+offset_bottom = 862.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center] [font_size=20] [color=Black]Press and hold Jump to Skip"
