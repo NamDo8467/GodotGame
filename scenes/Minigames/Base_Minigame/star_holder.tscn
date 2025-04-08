@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ltpnwj2r8aj" path="res://scenes/Minigames/Base_Minigame/Star.tscn" id="1_cvtbr"]
 
 [node name="Star_Holder" type="Node2D"]
+visible = false
 position = Vector2(750, 355)
 script = ExtResource("1_5wv53")
 

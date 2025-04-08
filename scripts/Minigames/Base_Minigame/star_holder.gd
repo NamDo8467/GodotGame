@@ -14,6 +14,8 @@ var score_Value = 0
 
 func _ready():
 	# Set_Stars(77)
+	if !self.visible:
+		self.visible = true
 	pass
 
 func Set_Stars(number : int):
