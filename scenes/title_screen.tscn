@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://dlximt4txguys"]
+[gd_scene load_steps=15 format=3 uid="uid://dlximt4txguys"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_vdngm"]
-[ext_resource type="AudioStream" uid="uid://ce64ntl7hrob0" path="res://assets/Audio/level_background_music.wav" id="2_0kmw2"]
 [ext_resource type="Texture2D" uid="uid://dww58avshfvm8" path="res://assets/title_page_2.png" id="2_xo0gj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54hi5"]
@@ -126,10 +125,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_8olop")
 theme_override_styles/focus = SubResource("StyleBoxFlat_q6kit")
 text = "About"
 
-[node name="TitleScreenBackgroundSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_0kmw2")
-volume_db = 24.0
-autoplay = true
-
 [connection signal="pressed" from="TitleScreenImage/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="TitleScreenImage/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="TitleScreenImage/AboutUsButton" to="." method="_on_about_us_button_pressed"]
