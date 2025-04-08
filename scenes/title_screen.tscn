@@ -129,6 +129,7 @@ text = "About Us"
 [node name="TitleScreenBackgroundSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0kmw2")
 volume_db = 24.0
+autoplay = true
 
 [connection signal="pressed" from="TitleScreenImage/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="TitleScreenImage/QuitButton" to="." method="_on_quit_button_pressed"]

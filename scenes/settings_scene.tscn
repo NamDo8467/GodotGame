@@ -41,43 +41,44 @@ visible = false
 layout_mode = 2
 
 [node name="XboxOneController" type="Sprite2D" parent="TabContainer/Controller"]
-position = Vector2(800, 450)
+position = Vector2(807, 476)
 scale = Vector2(1.057, 1.057)
 texture = ExtResource("1_exvss")
 
 [node name="YButton" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
+position = Vector2(6.62256, 2.83823)
 rotation = 0.418879
 points = PackedVector2Array(75.3025, -158.835, 132.36, -307.476)
 closed = true
 width = 5.0
-default_color = Color(0.588235, 1, 0, 1)
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
 joint_mode = 2
 end_cap_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/YButton"]
-offset_left = 89.1281
-offset_top = -316.189
-offset_right = 202.128
-offset_bottom = -272.189
+offset_left = 95.2667
+offset_top = -330.314
+offset_right = 214.267
+offset_bottom = -286.314
 rotation = -0.418879
 theme_override_font_sizes/font_size = 20
-text = "Use weapon"
+text = "Use Item"
 
 [node name="BButton" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
-position = Vector2(125.728, -30.2534)
+position = Vector2(130.458, -29.3073)
 scale = Vector2(0.600994, 0.783823)
 points = PackedVector2Array(77.5781, -60.5487, 313.15, -60.5487)
 closed = true
 width = 5.0
-default_color = Color(0.588235, 1, 0, 1)
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
 joint_mode = 2
 end_cap_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/BButton"]
-offset_left = 321.0
-offset_top = -82.0
-offset_right = 425.0
-offset_bottom = -40.0
+offset_left = 333.892
+offset_top = -84.5167
+offset_right = 541.892
+offset_bottom = -42.5167
 theme_override_font_sizes/font_size = 30
 text = "Pick up/Throw"
 
@@ -87,79 +88,87 @@ scale = Vector2(0.600994, 0.783823)
 points = PackedVector2Array(-15.9937, -61.5842, -223.786, -61.5842)
 closed = true
 width = 5.0
-default_color = Color(0.588235, 1, 0, 1)
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
 joint_mode = 2
 end_cap_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/LeftStick"]
-offset_left = -311.94
-offset_top = -86.9312
-offset_right = -207.94
-offset_bottom = -44.9312
+offset_left = -319.811
+offset_top = -85.7242
+offset_right = -215.811
+offset_bottom = -43.7242
 theme_override_font_sizes/font_size = 30
 text = "Move"
 
 [node name="AButton" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
-position = Vector2(150, 0)
+position = Vector2(148.108, 10.4067)
 scale = Vector2(0.600994, 0.783823)
 points = PackedVector2Array(-29.201, -54.315, -29.201, 257.091)
 closed = true
 width = 5.0
-default_color = Color(0.588235, 1, 0, 1)
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
 joint_mode = 2
 end_cap_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/AButton"]
-offset_left = -71.7039
-offset_top = 249.849
-offset_right = 32.2961
-offset_bottom = 291.849
+offset_left = -66.9815
+offset_top = 261.919
+offset_right = 37.0185
+offset_bottom = 303.919
 theme_override_font_sizes/font_size = 30
 text = "Jump"
 
 [node name="LB" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
-position = Vector2(-30, -50)
+position = Vector2(-10.1323, -50.9461)
 points = PackedVector2Array(131.504, -114.475, 131.504, -267.739)
 closed = true
 width = 5.0
-default_color = Color(0.588235, 1, 0, 1)
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
 joint_mode = 2
 end_cap_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/LB"]
-offset_left = 67.843
-offset_top = -299.101
-offset_right = 236.843
-offset_bottom = -255.101
+offset_left = 95.2791
+offset_top = -312.346
+offset_right = 264.279
+offset_bottom = -268.346
 theme_override_font_sizes/font_size = 20
-text = "Move elevator up"
+text = "Descend"
 
 [node name="RB" type="Line2D" parent="TabContainer/Controller/XboxOneController"]
-position = Vector2(-250, -50)
+position = Vector2(-252.838, -50.9461)
 points = PackedVector2Array(131.504, -114.475, 131.504, -267.739)
 closed = true
 width = 5.0
-default_color = Color(0.588235, 1, 0, 1)
+default_color = Color(0.580392, 0.580392, 0.580392, 1)
 joint_mode = 2
 end_cap_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController/RB"]
-offset_left = 40.4069
-offset_top = -298.155
-offset_right = 237.407
-offset_bottom = -254.155
+offset_left = 95.7899
+offset_top = -309.508
+offset_right = 292.79
+offset_bottom = -265.508
 theme_override_font_sizes/font_size = 20
-text = "Move elevator down"
+text = "Ascend"
+
+[node name="Label" type="Label" parent="TabContainer/Controller/XboxOneController"]
+offset_left = -78.5241
+offset_top = -396.405
+offset_right = 87.4759
+offset_bottom = -361.405
+theme_override_font_sizes/font_size = 22
+text = "Change Floor:"
 
 [node name="Keyboard" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 
 [node name="Player1Side" type="GridContainer" parent="TabContainer/Keyboard"]
 layout_mode = 0
-offset_left = 550.0
-offset_top = 220.0
-offset_right = 783.0
-offset_bottom = 626.0
+offset_left = 619.0
+offset_top = 201.0
+offset_right = 852.0
+offset_bottom = 607.0
 
 [node name="Player1Label" type="Label" parent="TabContainer/Keyboard/Player1Side"]
 layout_mode = 2
@@ -179,10 +188,11 @@ text = "A"
 layout_mode = 0
 offset_left = 95.0
 offset_top = 10.0
-offset_right = 202.0
+offset_right = 261.0
 offset_bottom = 38.0
 theme_override_font_sizes/font_size = 20
-text = ": Move Left"
+text = "Move Left"
+horizontal_alignment = 1
 
 [node name="DButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
 custom_minimum_size = Vector2(90, 50)
@@ -195,10 +205,11 @@ text = "D"
 layout_mode = 0
 offset_left = 95.0
 offset_top = 10.0
-offset_right = 214.0
+offset_right = 261.0
 offset_bottom = 38.0
 theme_override_font_sizes/font_size = 20
-text = ": Move Right"
+text = "Move Right"
+horizontal_alignment = 1
 
 [node name="SpaceButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
 custom_minimum_size = Vector2(90, 50)
@@ -211,11 +222,12 @@ text = "Space"
 layout_mode = 0
 offset_left = 95.0
 offset_top = 10.0
-offset_right = 181.0
+offset_right = 261.0
 offset_bottom = 38.0
 theme_override_font_sizes/font_size = 20
-text = ": Jump
+text = "Jump
 "
+horizontal_alignment = 1
 
 [node name="EButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
 custom_minimum_size = Vector2(90, 50)
@@ -229,12 +241,14 @@ text = "E
 layout_mode = 0
 offset_left = 95.0
 offset_top = 10.0
-offset_right = 181.0
+offset_right = 261.0
 offset_bottom = 38.0
 theme_override_font_sizes/font_size = 20
-text = ": Pick up"
+text = "Pick up"
+horizontal_alignment = 1
 
 [node name="WButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
+visible = false
 custom_minimum_size = Vector2(90, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -246,10 +260,11 @@ text = "W
 layout_mode = 0
 offset_left = 95.0
 offset_top = 10.0
-offset_right = 192.0
+offset_right = 261.0
 offset_bottom = 38.0
 theme_override_font_sizes/font_size = 20
-text = ": Use item"
+text = "Use item"
+horizontal_alignment = 1
 
 [node name="UButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
 custom_minimum_size = Vector2(90, 50)
@@ -262,10 +277,11 @@ text = "U"
 layout_mode = 0
 offset_left = 95.0
 offset_top = 10.0
-offset_right = 218.0
+offset_right = 261.0
 offset_bottom = 38.0
 theme_override_font_sizes/font_size = 20
-text = ": Elevator Up"
+text = "Elevator Up"
+horizontal_alignment = 1
 
 [node name="JButton" type="Button" parent="TabContainer/Keyboard/Player1Side"]
 custom_minimum_size = Vector2(90, 50)
@@ -278,16 +294,18 @@ text = "J"
 layout_mode = 0
 offset_left = 95.0
 offset_top = 10.0
-offset_right = 247.0
+offset_right = 261.0
 offset_bottom = 38.0
 theme_override_font_sizes/font_size = 20
-text = ": Elevator Down"
+text = "Elevator Down"
+horizontal_alignment = 1
 
 [node name="Player2Side" type="GridContainer" parent="TabContainer/Keyboard"]
-offset_left = 879.0
-offset_top = 220.0
-offset_right = 1111.0
-offset_bottom = 462.0
+layout_mode = 0
+offset_left = 875.0
+offset_top = 201.0
+offset_right = 1107.0
+offset_bottom = 607.0
 
 [node name="Player2Label" type="Label" parent="TabContainer/Keyboard/Player2Side"]
 layout_mode = 2
@@ -305,6 +323,7 @@ text = "Left Arrow
 "
 
 [node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/LeftArrowButton"]
+visible = false
 custom_minimum_size = Vector2(90, 50)
 layout_mode = 0
 offset_left = 130.0
@@ -322,6 +341,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
 text = "Right Arrow"
 
 [node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/RightArrowButton"]
+visible = false
 custom_minimum_size = Vector2(90, 50)
 layout_mode = 0
 offset_left = 130.0
@@ -339,6 +359,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
 text = ","
 
 [node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/CommaButton"]
+visible = false
 custom_minimum_size = Vector2(90, 50)
 layout_mode = 0
 offset_left = 130.0
@@ -358,6 +379,7 @@ text = ".
 "
 
 [node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/DotButton"]
+visible = false
 custom_minimum_size = Vector2(90, 50)
 layout_mode = 0
 offset_left = 130.0
@@ -376,6 +398,7 @@ text = "Up Arrow
 "
 
 [node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/UpArrowButton"]
+visible = false
 custom_minimum_size = Vector2(90, 50)
 layout_mode = 0
 offset_left = 130.0
@@ -393,6 +416,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
 text = "U"
 
 [node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/UButton"]
+visible = false
 custom_minimum_size = Vector2(90, 50)
 layout_mode = 0
 offset_left = 130.0
@@ -402,28 +426,11 @@ offset_bottom = 60.0
 theme_override_font_sizes/font_size = 20
 text = ": Elevator Up"
 
-[node name="JButton" type="Button" parent="TabContainer/Keyboard/Player2Side"]
-custom_minimum_size = Vector2(90, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxFlat_fof1m")
-text = "J"
-
-[node name="Label" type="Label" parent="TabContainer/Keyboard/Player2Side/JButton"]
-custom_minimum_size = Vector2(90, 50)
-layout_mode = 0
-offset_left = 130.0
-offset_top = 10.0
-offset_right = 282.0
-offset_bottom = 60.0
-theme_override_font_sizes/font_size = 20
-text = ": Elevator Down"
-
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = -2.0
 offset_top = -7.0
 offset_right = 703.0
-offset_bottom = 36.0
+offset_bottom = 33.0
 color = Color(0.0745098, 0.0901961, 0.0784314, 0.537255)
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -434,10 +441,10 @@ offset_bottom = 33.0
 color = Color(0.0745098, 0.0901961, 0.0784314, 0.537255)
 
 [node name="GoBackButton" type="Button" parent="."]
-offset_left = 741.0
-offset_top = 761.0
-offset_right = 865.0
-offset_bottom = 822.0
+offset_left = 755.0
+offset_top = 838.0
+offset_right = 879.0
+offset_bottom = 899.0
 theme_override_font_sizes/font_size = 25
 text = "GO BACK"
 
