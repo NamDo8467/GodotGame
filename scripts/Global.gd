@@ -64,11 +64,13 @@ func reset_apartment_scene():
 func transition_to_minigames():
 	SceneTransitionAnimation.change_scene()
 	await SceneTransitionAnimation.animation_player.animation_finished
+	AudioPlayer.Stop_All_Music()
 	get_tree().change_scene_to_file("res://scenes/Minigames/Minigame_Menu/Minigame_Menu.tscn")
 
 func transition_to_serving():
 	SceneTransitionAnimation.change_scene()
 	await SceneTransitionAnimation.animation_player.animation_finished
+	AudioPlayer.Stop_All_Music()
 	get_tree().change_scene_to_file("res://scenes/serving.tscn")
 	
 
