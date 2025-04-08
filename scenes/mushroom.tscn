@@ -190,7 +190,7 @@ animations = [{
 size = Vector2(25, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h03gj"]
-size = Vector2(23, 10)
+size = Vector2(23, 12.362)
 
 [node name="Mushroom" type="Node2D"]
 script = ExtResource("1_ohlfh")
@@ -213,5 +213,6 @@ shape = SubResource("RectangleShape2D_d37mk")
 [node name="HitZone" parent="." instance=ExtResource("5_afnbn")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
-position = Vector2(34.5, -51)
+position = Vector2(34.5, -44)
+scale = Vector2(2.56, 2.265)
 shape = SubResource("RectangleShape2D_h03gj")

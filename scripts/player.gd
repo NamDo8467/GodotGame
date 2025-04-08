@@ -20,8 +20,6 @@ var MAX_GRAVITY_MULTI = 1.5 # HABIB
 var gravity_Multi # HABIB
 var trampoline_scene = preload("res://scenes/trampoline.tscn")
 @onready var player_sprite = $AnimatedSprite2D
-@onready var timer = $Timer
-
 
 
 var starting_position = Vector2(787, 888)

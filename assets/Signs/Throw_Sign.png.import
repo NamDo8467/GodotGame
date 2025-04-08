@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlgtovxrv64mf"
-path="res://.godot/imported/1_run.png-bc8b1a99735dde715b50753252318069.ctex"
+uid="uid://mncpeah4y6me"
+path="res://.godot/imported/Throw_Sign.png-956adea44249c0551517745a00cd20e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/1_run.png"
-dest_files=["res://.godot/imported/1_run.png-bc8b1a99735dde715b50753252318069.ctex"]
+source_file="res://assets/Signs/Throw_Sign.png"
+dest_files=["res://.godot/imported/Throw_Sign.png-956adea44249c0551517745a00cd20e1.ctex"]
 
 [params]
 

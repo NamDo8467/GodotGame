@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0ptlvl7i4gn8"]
+[gd_scene load_steps=22 format=3 uid="uid://c0ptlvl7i4gn8"]
 
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_aae8v"]
 [ext_resource type="Script" path="res://scripts/first_floor.gd" id="1_ni3hf"]
@@ -9,10 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="4_mn02s"]
 [ext_resource type="Texture2D" uid="uid://coyh8kes1nvwc" path="res://assets/Free/Background/Green.png" id="5_o5plf"]
 [ext_resource type="PackedScene" uid="uid://8atf1kg4igj7" path="res://scenes/trampoline.tscn" id="7_x3mbh"]
-[ext_resource type="PackedScene" uid="uid://bj15g75e0ypnx" path="res://scenes/enter_room_zone.tscn" id="8_0pnf0"]
+[ext_resource type="PackedScene" path="res://scenes/enter_room_zone.tscn" id="8_0pnf0"]
 [ext_resource type="PackedScene" uid="uid://xnv6oyf6p7o3" path="res://scenes/mushroom.tscn" id="8_jdfqd"]
-[ext_resource type="PackedScene" uid="uid://rukqw151ru1f" path="res://scenes/leave_room_zone.tscn" id="9_14wog"]
+[ext_resource type="PackedScene" path="res://scenes/leave_room_zone.tscn" id="9_14wog"]
 [ext_resource type="Texture2D" uid="uid://c3kodolvvybga" path="res://assets/Appliances/floor_1_living_room.png" id="13_ghu8k"]
+[ext_resource type="Texture2D" uid="uid://dsloqinxomko" path="res://assets/Minigame_Assets/White_Square.png" id="14_umau6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6nbao"]
 texture = ExtResource("1_aae8v")
@@ -593,3 +594,10 @@ z_index = -1
 position = Vector2(1660.1, 504.999)
 scale = Vector2(1.15762, 1.15762)
 texture = ExtResource("13_ghu8k")
+
+[node name="Elevator Background" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.0784314, 0.0784314, 1)
+z_index = -10
+position = Vector2(1092.5, 505)
+scale = Vector2(27.29, 8.96)
+texture = ExtResource("14_umau6")
