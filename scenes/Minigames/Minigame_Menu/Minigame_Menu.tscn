@@ -74,7 +74,6 @@ texture_hover = ExtResource("4_2llta")
 texture_disabled = ExtResource("6_qnxjm")
 
 [node name="Star_Holder" parent="Menu_Container/Forground/Steps/Step_1" instance=ExtResource("7_bi5ms")]
-visible = false
 position = Vector2(546.716, 118.46)
 scale = Vector2(0.24, 0.24)
 
@@ -88,7 +87,6 @@ texture_hover = ExtResource("7_xfo5r")
 texture_disabled = ExtResource("6_qnxjm")
 
 [node name="Star_Holder" parent="Menu_Container/Forground/Steps/Step_2" instance=ExtResource("7_bi5ms")]
-visible = false
 position = Vector2(546.716, 118.46)
 scale = Vector2(0.24, 0.24)
 
@@ -102,7 +100,6 @@ texture_hover = ExtResource("9_xi7ce")
 texture_disabled = ExtResource("6_qnxjm")
 
 [node name="Star_Holder" parent="Menu_Container/Forground/Steps/Step_3" instance=ExtResource("7_bi5ms")]
-visible = false
 position = Vector2(546.716, 118.46)
 scale = Vector2(0.24, 0.24)
 
