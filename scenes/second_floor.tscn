@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://tgl8pjxaijqv"]
+[gd_scene load_steps=17 format=3 uid="uid://tgl8pjxaijqv"]
 
 [ext_resource type="PackedScene" uid="uid://nk47flta8bsj" path="res://scenes/player_spawner.tscn" id="1_672bi"]
 [ext_resource type="Texture2D" uid="uid://diokvdyd8bxkl" path="res://assets/Free/Terrain/Terrain (16x16).png" id="1_t402b"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://ceoln4dg2ygh1" path="res://assets/Free/Background/Purple.png" id="4_ayndp"]
 [ext_resource type="PackedScene" uid="uid://bwbiqfumj6y40" path="res://scenes/fish_monster.tscn" id="8_46qg1"]
 [ext_resource type="PackedScene" uid="uid://bj15g75e0ypnx" path="res://scenes/enter_room_zone.tscn" id="8_dihn0"]
-[ext_resource type="PackedScene" uid="uid://beol1sysr1ymp" path="res://scenes/level_background_music.tscn" id="9_avxb3"]
 [ext_resource type="PackedScene" uid="uid://rukqw151ru1f" path="res://scenes/leave_room_zone.tscn" id="9_urb65"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8fly"]
@@ -565,5 +564,3 @@ offset_bottom = 111.0
 theme_override_font_sizes/font_size = 25
 text = "Floor: 2/3"
 uppercase = true
-
-[node name="LevelBackgroundMusic" parent="." instance=ExtResource("9_avxb3")]
