@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://ddjg8psxee587" path="res://assets/Free/Background/Gray.png" id="4_mn02s"]
 [ext_resource type="Texture2D" uid="uid://coyh8kes1nvwc" path="res://assets/Free/Background/Green.png" id="5_o5plf"]
 [ext_resource type="PackedScene" uid="uid://8atf1kg4igj7" path="res://scenes/trampoline.tscn" id="7_x3mbh"]
-[ext_resource type="PackedScene" path="res://scenes/enter_room_zone.tscn" id="8_0pnf0"]
+[ext_resource type="PackedScene" uid="uid://bj15g75e0ypnx" path="res://scenes/enter_room_zone.tscn" id="8_0pnf0"]
 [ext_resource type="PackedScene" uid="uid://xnv6oyf6p7o3" path="res://scenes/mushroom.tscn" id="8_jdfqd"]
-[ext_resource type="PackedScene" path="res://scenes/leave_room_zone.tscn" id="9_14wog"]
+[ext_resource type="PackedScene" uid="uid://rukqw151ru1f" path="res://scenes/leave_room_zone.tscn" id="9_14wog"]
 [ext_resource type="Texture2D" uid="uid://c3kodolvvybga" path="res://assets/Appliances/floor_1_living_room.png" id="13_ghu8k"]
 [ext_resource type="Texture2D" uid="uid://dsloqinxomko" path="res://assets/Minigame_Assets/White_Square.png" id="14_umau6"]
 
