@@ -4,25 +4,29 @@ extends Area2D
 var player1 = null
 var player2 = null
 func _on_body_entered(body):
-	if body.name == "Player" :
-		player1 = body
-		player1.Is_Alive = false
-		var collision_shape = body.get_node("CollisionShape2D")
-		collision_shape.queue_free()
-		var falling_sound = player1.get_node("FallingSound")
-		falling_sound.play()
-		var death_Animation = player1.player_sprite
-		death_Animation.play("Death")
-		#await falling_sound.finished
-			
-	if body.name == "Player2":
-		player2 = body
-		player2.Is_Alive = false
-		body.get_node("CollisionShape2D").queue_free()
-		var falling_sound = player2.get_node("FallingSound")
-		falling_sound.play()
+	
+	print(position.y - body.position.y)
+	#if body.name == "Player" :
+		#player1 = body
+		#player1.Is_Alive = false
+		#var collision_shape = body.get_node("CollisionShape2D")
+		#collision_shape.queue_free()
+		#var falling_sound = player1.get_node("FallingSound")
+		#falling_sound.play()
+		#var death_Animation = player1.player_sprite
+		#death_Animation.play("Death")
+		##await falling_sound.finished
+			#
+	#if body.name == "Player2":
+		#player2 = body
+		#player2.Is_Alive = false
+		#body.get_node("CollisionShape2D").queue_free()
+		#var falling_sound = player2.get_node("FallingSound")
+		#falling_sound.play()
+		#
+		#player2.player_sprite.play("Death")
 		
-		player2.player_sprite.play("Death")
+		
 		#await falling_sound.finished
 		
 	#if body.position.x <= 900:
