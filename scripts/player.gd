@@ -194,11 +194,12 @@ func land():
 	throw_time = 0.0
 
 func _on_pickup_zone_body_entered(body):
-	can_pickup = true
+	if body.name == "Player2":
+		can_pickup = true
 
 func change_position_of_player2_after_picking_up():
 	if is_picking_player2_up and player2 != null:
-		player2.position.y = self.position.y - 112
+		player2.position.y = self.position.y - 50
 		var player2_sprite = player2.get_node("AnimatedSprite2D")
 		if player_sprite.flip_h == true and player2_sprite.flip_h == false:
 			player2.position.x = position.x - 50
@@ -210,4 +211,5 @@ func change_position_of_player2_after_picking_up():
 			player2.position.x = position.x
 
 func _on_pickup_zone_body_exited(body):
-	can_pickup = false
+	if body.name == "Player2":
+		can_pickup = false
