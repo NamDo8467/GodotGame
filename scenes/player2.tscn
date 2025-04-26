@@ -285,10 +285,8 @@ script = ExtResource("1_jpci4")
 position = Vector2(-5.923, -78.154)
 scale = Vector2(0.565, 0.619)
 sprite_frames = SubResource("SpriteFrames_6lqii")
-animation = &"Death"
+animation = &"idle"
 autoplay = "idle"
-frame = 5
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(28, -58)
