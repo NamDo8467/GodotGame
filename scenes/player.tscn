@@ -268,7 +268,7 @@ radius = 18.0
 height = 116.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_geey3"]
-size = Vector2(46, 120)
+size = Vector2(46, 134)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
@@ -291,7 +291,7 @@ shape = SubResource("CapsuleShape2D_lfkdx")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PickupZone"]
-position = Vector2(2, -3)
+position = Vector2(2, -10)
 shape = SubResource("RectangleShape2D_geey3")
 
 [node name="FallingSound" type="AudioStreamPlayer2D" parent="."]
