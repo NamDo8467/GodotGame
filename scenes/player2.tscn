@@ -264,7 +264,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uds2c"]
-radius = 20.0
+radius = 16.0
 height = 104.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1l2d0"]
@@ -275,7 +275,6 @@ collision_layer = 2
 script = ExtResource("1_jpci4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-5.923, -78.154)
 scale = Vector2(0.565, 0.619)
 sprite_frames = SubResource("SpriteFrames_6lqii")
 animation = &"idle"
@@ -284,7 +283,7 @@ frame = 2
 frame_progress = 0.206866
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(28, -58)
+position = Vector2(35, 16)
 shape = SubResource("CapsuleShape2D_uds2c")
 
 [node name="PickupZone" type="Area2D" parent="CollisionShape2D"]
@@ -292,7 +291,7 @@ position = Vector2(-25, 58)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PickupZone"]
-position = Vector2(26, -76)
+position = Vector2(25, -68)
 shape = SubResource("RectangleShape2D_1l2d0")
 
 [node name="FallingSound" type="AudioStreamPlayer2D" parent="."]
