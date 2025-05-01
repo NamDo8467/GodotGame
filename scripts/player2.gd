@@ -14,6 +14,7 @@ var gravity_Multi # HABIB
 var trampoline_scene = preload("res://scenes/trampoline.tscn")
 @onready var player_sprite = $AnimatedSprite2D
 @onready var collision_shape = $CollisionShape2D
+@onready var pickup_zone_collision_shape = $CollisionShape2D/PickupZone/CollisionShape2D
 
 var trampoline_x_when_facing_left = -80
 var trampoline_x_when_facing_right = -43
@@ -81,9 +82,7 @@ func _physics_process(delta):
 		# Flip the player to the direction it is going
 		if direction > 0:
 			player_sprite.flip_h = false
-			if collision_shape != null:
-				collision_shape.position.x = 28
-				collision_shape.position.y = -58
+			change_position_of_collison_shape_and_pick_up_collision_shape()
 			if current_weapon_index != -1:
 				Global.player2_current_weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_right, trampoline_y)
 			
@@ -93,8 +92,7 @@ func _physics_process(delta):
 				Global.player2_current_weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_left, trampoline_y)
 			player_sprite.flip_h = true
 			if collision_shape != null:
-				collision_shape.position.x = -37
-				collision_shape.position.y = -58
+				change_position_of_collison_shape_and_pick_up_collision_shape()
 		
 		# Play animations
 		if Is_Alive:
@@ -108,9 +106,16 @@ func _physics_process(delta):
 			
 		if direction:
 			velocity.x = direction * SPEED
+			if direction == 1:
+				collision_shape.position.x = 23
+				#pickup_zone_collision_shape.position.x = 28
+			elif direction == -1:
+				collision_shape.position.x = -23
+				#pickup_zone_collision_shape.position.x = -28
 			change_position_of_player1_after_picking_up()
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+			change_position_of_collison_shape_and_pick_up_collision_shape()
 			change_position_of_player1_after_picking_up()
 				
 		move_and_slide()
@@ -148,6 +153,14 @@ func _physics_process(delta):
 					elif player_sprite.flip_h == true:
 						new_weapon.position = Vector2(trampoline_x_when_facing_left, trampoline_y)
 					add_child(new_weapon)
+
+func change_position_of_collison_shape_and_pick_up_collision_shape():
+	if collision_shape != null and player_sprite.flip_h == false:
+		collision_shape.position.x = 35
+		#pickup_zone_collision_shape.position.x = 2
+	if collision_shape != null and player_sprite.flip_h == true:
+		collision_shape.position.x = -35
+		#pickup_zone_collision_shape.position.x = -3
 		
 func add_to_weapon_list(weapon):
 	Global.player2_current_weapon_list.append(weapon)

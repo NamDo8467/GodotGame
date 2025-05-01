@@ -563,16 +563,16 @@ shape = SubResource("WorldBoundaryShape2D_bynay")
 position = Vector2(2093, 947)
 
 [node name="Mushroom" parent="." instance=ExtResource("8_jdfqd")]
-position = Vector2(2172, 340)
+position = Vector2(2208, 307)
 
 [node name="Mushroom4" parent="." instance=ExtResource("8_jdfqd")]
-position = Vector2(1710, 340)
+position = Vector2(1746, 307)
 
 [node name="Mushroom3" parent="." instance=ExtResource("8_jdfqd")]
-position = Vector2(1360, 340)
+position = Vector2(1392, 307)
 
 [node name="Mushroom2" parent="." instance=ExtResource("8_jdfqd")]
-position = Vector2(1018, 340)
+position = Vector2(1055, 307)
 
 [node name="EnterRoomZone" parent="." instance=ExtResource("8_0pnf0")]
 position = Vector2(1010, 937)

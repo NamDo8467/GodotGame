@@ -31,6 +31,7 @@ var is_picking_player2_up = false
 var can_pickup = false
 
 @onready var collision_shape = $CollisionShape2D
+@onready var pickup_zone_collision_shape = $CollisionShape2D/PickupZone/CollisionShape2D
 
 # These variables are used when this player is getting thrown away
 var time: float = 0.0
@@ -92,20 +93,15 @@ func _physics_process(delta):
 		# Flip the player to the direction it is going
 		if direction > 0:
 			player_sprite.flip_h = false
-			if collision_shape != null:
-				collision_shape.position.x = 28
-				collision_shape.position.y = -58
+			change_position_of_collison_shape_and_pick_up_collision_shape()
 			if current_weapon_index != -1:
 				Global.player1_current_weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_right, trampoline_y)
-			#print("yes")
 		elif direction < 0:
 			if current_weapon_index != -1:
 				Global.player1_current_weapon_list[current_weapon_index].position = Vector2(trampoline_x_when_facing_left, trampoline_y)
 			player_sprite.flip_h = true
-			#print(collision_shape == null)
 			if collision_shape != null:
-				collision_shape.position.x = -37
-				collision_shape.position.y = -58
+				change_position_of_collison_shape_and_pick_up_collision_shape()
 			
 		# Play animations
 		if Is_Alive:
@@ -114,15 +110,23 @@ func _physics_process(delta):
 					player_sprite.play("idle")
 				elif direction == -1 or direction == 1:
 					player_sprite.play("run")
+					
 			elif not is_on_floor():
 				player_sprite.play("jump")
 		
 			
 		if direction:
 			velocity.x = direction * SPEED
+			if direction == 1:
+				collision_shape.position.x = 25
+				pickup_zone_collision_shape.position.x = 6
+			elif direction == -1:
+				collision_shape.position.x = -25
+				pickup_zone_collision_shape.position.x = -6
 			change_position_of_player2_after_picking_up()
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+			change_position_of_collison_shape_and_pick_up_collision_shape()
 			change_position_of_player2_after_picking_up()
 			
 		move_and_slide()
@@ -163,8 +167,13 @@ func _physics_process(delta):
 						new_weapon.position = Vector2(trampoline_x_when_facing_left, trampoline_y)
 					add_child(new_weapon)
 				
-						
-			
+func change_position_of_collison_shape_and_pick_up_collision_shape():
+	if collision_shape != null and player_sprite.flip_h == false:
+		collision_shape.position.x = 37
+		pickup_zone_collision_shape.position.x = 2
+	if collision_shape != null and player_sprite.flip_h == true:
+		collision_shape.position.x = -37
+		pickup_zone_collision_shape.position.x = -3
 func add_to_weapon_list(weapon):
 	Global.player1_current_weapon_list.append(weapon)
 
@@ -185,11 +194,12 @@ func land():
 	throw_time = 0.0
 
 func _on_pickup_zone_body_entered(body):
-	can_pickup = true
+	if body.name == "Player2":
+		can_pickup = true
 
 func change_position_of_player2_after_picking_up():
 	if is_picking_player2_up and player2 != null:
-		player2.position.y = self.position.y - 112
+		player2.position.y = self.position.y - 50
 		var player2_sprite = player2.get_node("AnimatedSprite2D")
 		if player_sprite.flip_h == true and player2_sprite.flip_h == false:
 			player2.position.x = position.x - 50
@@ -201,4 +211,5 @@ func change_position_of_player2_after_picking_up():
 			player2.position.x = position.x
 
 func _on_pickup_zone_body_exited(body):
-	can_pickup = false
+	if body.name == "Player2":
+		can_pickup = false
