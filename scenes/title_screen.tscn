@@ -171,7 +171,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_j0fl4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ckryd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yplgl")
 theme_override_styles/focus = SubResource("StyleBoxFlat_q6kit")
-text = "Controls"
+text = "Settings
+"
 
 [node name="Empty" type="Button" parent="TitleScreenImage/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
