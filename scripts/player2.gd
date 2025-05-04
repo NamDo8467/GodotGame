@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var Is_Alive = true
+#var is_alive = true
 
 const SPEED = 320.0
 const JUMP_VELOCITY = -800.0
@@ -64,13 +64,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			land()
 	else:
-		if not is_on_floor():
-			gravity_Multi = MIN_GRAVITY_MULTI
-			
-			if velocity.y < 0:
-				gravity_Multi = MAX_GRAVITY_MULTI
-			
-			velocity.y += gravity * gravity_Multi * delta
+		
 			
 		# Handle jump.
 		if Input.is_action_just_pressed("jump_2") and is_on_floor():
@@ -95,21 +89,27 @@ func _physics_process(delta):
 				change_position_of_collison_shape_and_pick_up_collision_shape()
 		
 		# Play animations
-		if Is_Alive:
-			if is_on_floor():
-				if direction == 0:
-					player_sprite.play("idle")
-				elif direction == -1 or direction == 1:
-					player_sprite.play("run")
-			else:
-				player_sprite.play("jump")
+		#if is_alive:
+		if is_on_floor():
+			if direction == 0:
+				player_sprite.play("idle")
+			elif direction == -1 or direction == 1:
+				player_sprite.play("run")
+		if not is_on_floor():
+			gravity_Multi = MIN_GRAVITY_MULTI
+			
+			if velocity.y < 0:
+				gravity_Multi = MAX_GRAVITY_MULTI
+			
+			velocity.y += gravity * gravity_Multi * delta
+			player_sprite.play("jump")
 			
 		if direction:
 			velocity.x = direction * SPEED
-			if direction == 1:
+			if direction == 1 and collision_shape != null:
 				collision_shape.position.x = 23
 				#pickup_zone_collision_shape.position.x = 28
-			elif direction == -1:
+			elif direction == -1 and collision_shape != null:
 				collision_shape.position.x = -23
 				#pickup_zone_collision_shape.position.x = -28
 			change_position_of_player1_after_picking_up()
